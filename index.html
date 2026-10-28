@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Website Belajar</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        header {
+            background: #003366;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header h1 {
+            margin: 0 0 10px;
+        }
+
+        header p {
+            margin: 0;
+        }
+
+        nav {
+            background: #ffffff;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px #00000010;
+        }
+
+        nav a {
+            color: #003366;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        .kartu {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #00000010;
+        }
+
+        .tombol {
+            display: inline-block;
+            background: #003366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        footer {
+            background: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
+
+            header h1 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>SELAMAT DATANG</h1>
+        <p>Website Belajar dan Aplikasi Pendidikan</p>
+    </header>
+
+    <nav>
+        <a href="#beranda">Beranda</a>
+        <a href="#aplikasi">Aplikasi</a>
+        <a href="#tentang">Tentang</a>
+    </nav>
+
+    <main>
+
+        <section class="kartu" id="beranda">
+            <h2>Beranda</h2>
+
+            <p>
+                Selamat datang di website belajar.
+                Website ini dibuat untuk menyediakan
+                informasi dan aplikasi pembelajaran.
+            </p>
+        </section>
+
+        <section class="kartu" id="aplikasi">
+            <h2>Aplikasi Pembelajaran</h2>
+
+            <p>
+                Nantinya, bagian ini dapat diisi dengan
+                berbagai aplikasi pembelajaran interaktif.
+            </p>
+
+            <a href="#" class="tombol">
+                Mulai Belajar
+            </a>
+        </section>
+
+        <section class="kartu" id="tentang">
+            <h2>Tentang Website</h2>
+
+            <p>
+                Website ini dibuat menggunakan HTML,
+                CSS, dan GitHub Pages.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Website Belajar &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
