@@ -2,148 +2,192 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Website Belajar</title>
-
+    <title>Website Sekolah & Aplikasi Pembelajaran</title>
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #f1f5f9;
-            color: #1e293b;
+            background-color: #f4f7fc;
+            color: #333;
+            line-height: 1.6;
         }
 
+        /* Header / Navbar */
         header {
-            background: #003366;
+            background-color: #0b3c65;
             color: white;
             text-align: center;
-            padding: 35px 20px;
+            padding: 2rem 1rem;
         }
 
         header h1 {
-            margin: 0 0 10px;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
         header p {
-            margin: 0;
+            font-size: 0.9rem;
+            color: #cfd8dc;
         }
 
         nav {
-            background: #ffffff;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 5px #00000010;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         nav a {
-            color: #003366;
             text-decoration: none;
-            margin: 0 12px;
-            font-weight: bold;
+            color: #0b3c65;
+            font-weight: 600;
+            font-size: 0.95rem;
         }
 
-        main {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 0 18px;
+        nav a:hover {
+            color: #1d6fa5;
         }
 
-        .kartu {
+        /* Container Utama */
+        .container {
+            max-width: 800px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Card / Kotak Konten */
+        .card {
             background: white;
-            padding: 25px;
-            margin-bottom: 20px;
             border-radius: 12px;
-            box-shadow: 0 3px 12px #00000010;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
-        .tombol {
-            display: inline-block;
-            background: #003366;
-            color: white;
-            padding: 12px 20px;
+        .card h2 {
+            font-size: 1.25rem;
+            color: #0b3c65;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        /* Grid Kelas untuk Aplikasi Pembelajaran */
+        .kelas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .kelas-btn {
+            background-color: #e3f2fd;
+            border: 1px solid #90caf9;
+            color: #0b3c65;
+            padding: 10px;
+            text-align: center;
             border-radius: 8px;
             text-decoration: none;
-            margin-top: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
         }
 
-        footer {
-            background: #003366;
+        .kelas-btn:hover {
+            background-color: #0b3c65;
             color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
         }
 
-        @media (max-width: 600px) {
-            nav a {
-                display: inline-block;
-                margin: 7px;
-            }
+        /* Tombol Aksi Umum */
+        .btn-primary {
+            display: inline-block;
+            background-color: #0b3c65;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
 
-            header h1 {
-                font-size: 25px;
-            }
+        .btn-primary:hover {
+            background-color: #1d6fa5;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: #777;
+            font-size: 0.85rem;
         }
     </style>
 </head>
-
 <body>
 
+    <!-- Header Website -->
     <header>
         <h1>SELAMAT DATANG</h1>
-        <p>Website Belajar dan Aplikasi Pendidikan</p>
+        <p>Website Sekolah dan Aplikasi Pembelajaran Interaktif</p>
     </header>
 
+    <!-- Navigasi Menu -->
     <nav>
         <a href="#beranda">Beranda</a>
+        <a href="#informasi">Informasi</a>
         <a href="#aplikasi">Aplikasi</a>
-        <a href="#tentang">Tentang</a>
     </nav>
 
-    <main>
-
-        <section class="kartu" id="beranda">
+    <div class="container">
+        
+        <!-- Bagian Beranda -->
+        <section id="beranda" class="card">
             <h2>Beranda</h2>
-
-            <p>
-                Selamat datang di website belajar.
-                Website ini dibuat untuk menyediakan
-                informasi dan aplikasi pembelajaran.
-            </p>
+            <p>Selamat datang di portal resmi sekolah kami. Website ini dirancang untuk menyediakan informasi akademik terkini serta akses mudah ke berbagai aplikasi pembelajaran digital bagi siswa[span_1](start_span)[span_1](end_span).</p>
         </section>
 
-        <section class="kartu" id="aplikasi">
-            <h2>Aplikasi Pembelajaran</h2>
-
-            <p>
-                Nantinya, bagian ini dapat diisi dengan
-                berbagai aplikasi pembelajaran interaktif.
-            </p>
-
-            <a href="#" class="tombol">
-                Mulai Belajar
-            </a>
+        <!-- Bagian Informasi Sekolah -->
+        <section id="informasi" class="card">
+            <h2>Informasi Sekolah</h2>
+            <p><strong>Profil Singkat:</strong> Sekolah Dasar Unggul berkomitmen untuk menciptakan generasi yang cerdas, berkarakter, dan berprestasi.</p>
+            <p><strong>Pengumuman Terbaru:</strong> Pendaftaran Ujian Tengah Semester (UTS) semester ganjil akan segera dimulai minggu depan. Harap seluruh siswa mempersiapkan diri dengan baik.</p>
         </section>
 
-        <section class="kartu" id="tentang">
-            <h2>Tentang Website</h2>
-
-            <p>
-                Website ini dibuat menggunakan HTML,
-                CSS, dan GitHub Pages.
-            </p>
+        <!-- Bagian Aplikasi Pembelajaran Kelas 1-6 -->
+        <section id="aplikasi" class="card">
+            <h2>Aplikasi Pembelajaran Kelas 1 - 6</h2>
+            <p>Pilih kelas di bawah ini untuk mengakses materi pelajaran, latihan soal, dan video interaktif sesuai jenjang kelas:</p>
+            
+            <div class="kelas-grid">
+                <a href="#" class="kelas-btn">Kelas 1</a>
+                <a href="#" class="kelas-btn">Kelas 2</a>
+                <a href="#" class="kelas-btn">Kelas 3</a>
+                <a href="#" class="kelas-btn">Kelas 4</a>
+                <a href="#" class="kelas-btn">Kelas 5</a>
+                <a href="#" class="kelas-btn">Kelas 6</a>
+            </div>
         </section>
 
-    </main>
+    </div>
 
+    <!-- Footer -->
     <footer>
-        <p>Website Belajar &copy; 2026</p>
+        <p>&copy; 2026 Website Sekolah. Dibuat menggunakan HTML & CSS.</p>
     </footer>
 
 </body>
