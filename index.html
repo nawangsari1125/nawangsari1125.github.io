@@ -1,150 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Website Belajar</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #f1f5f9;
-            color: #1e293b;
-        }
-
-        header {
-            background: #003366;
-            color: white;
-            text-align: center;
-            padding: 35px 20px;
-        }
-
-        header h1 {
-            margin: 0 0 10px;
-        }
-
-        header p {
-            margin: 0;
-        }
-
-        nav {
-            background: #ffffff;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 5px #00000010;
-        }
-
-        nav a {
-            color: #003366;
-            text-decoration: none;
-            margin: 0 12px;
-            font-weight: bold;
-        }
-
-        main {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 0 18px;
-        }
-
-        .kartu {
-            background: white;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            box-shadow: 0 3px 12px #00000010;
-        }
-
-        .tombol {
-            display: inline-block;
-            background: #003366;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            margin-top: 10px;
-        }
-
-        footer {
-            background: #003366;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 600px) {
-            nav a {
-                display: inline-block;
-                margin: 7px;
-            }
-
-            header h1 {
-                font-size: 25px;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portal resmi pembelajaran SD Negeri Nawangsari.">
+  <title>SD Negeri Nawangsari | Portal Pembelajaran</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
-    <header>
-        <h1>SELAMAT DATANG</h1>
-        <p>Website Belajar dan Aplikasi Pendidikan</p>
-    </header>
-
-    <nav>
-        <a href="#beranda">Beranda</a>
-        <a href="#aplikasi">Aplikasi</a>
-        <a href="#tentang">Tentang</a>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html">
+      <img src="gambar/logo-sekolah.png" alt="Logo SD Negeri Nawangsari" class="brand-logo">
+      <span><strong>SD NEGERI NAWANGSARI</strong><small>Portal Pembelajaran</small></span>
+    </a>
+    <button class="menu-toggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="Navigasi utama">
+      <a class="active" href="index.html">Beranda</a>
+      <a href="materi/index.html">Materi</a>
+      <a href="latihan/index.html">Latihan Soal</a>
+      <a href="aplikasi/index.html">Aplikasi</a>
+      <a href="tentang/index.html">Tentang Sekolah</a>
     </nav>
-
-    <main>
-
-        <section class="kartu" id="beranda">
-            <h2>Beranda</h2>
-
-            <p>
-                Selamat datang di website belajar.
-                Website ini dibuat untuk menyediakan
-                informasi dan aplikasi pembelajaran.
-            </p>
-        </section>
-
-        <section class="kartu" id="aplikasi">
-            <h2>Aplikasi Pembelajaran</h2>
-
-            <p>
-                Nantinya, bagian ini dapat diisi dengan
-                berbagai aplikasi pembelajaran interaktif.
-            </p>
-
-            <a href="#" class="tombol">
-                Mulai Belajar
-            </a>
-        </section>
-
-        <section class="kartu" id="tentang">
-            <h2>Tentang Website</h2>
-
-            <p>
-                Website ini dibuat menggunakan HTML,
-                CSS, dan GitHub Pages.
-            </p>
-        </section>
-
-    </main>
-
-    <footer>
-        <p>Website Belajar &copy; 2026</p>
-    </footer>
-
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">BELAJAR • BERKARYA • BERPRESTASI</span>
+        <h1>Selamat Datang di Portal Pembelajaran<br><span>SD Negeri Nawangsari</span></h1>
+        <p>Ruang belajar digital yang ramah anak untuk menjelajahi materi, berlatih soal, dan mengenal berbagai aplikasi pendidikan.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="materi/index.html">Jelajahi Materi</a>
+          <a class="btn btn-secondary" href="latihan/index.html">Latihan Soal</a>
+        </div>
+      </div>
+      <div class="hero-emblem"><img src="gambar/logo-sekolah.png" alt="Logo sekolah"></div>
+    </div>
+  </section>
+  <section class="container section">
+    <div class="section-heading"><span class="eyebrow">MULAI DARI SINI</span><h2>Belajar untuk Setiap Kelas</h2><p>Pilih jenjang kelas untuk menuju halaman pembelajaran.</p></div>
+    <div class="class-grid">
+      <a class="class-card c1" href="materi/index.html"><span class="class-number">01</span><strong>Kelas I</strong><small>Belajar dasar</small></a>
+      <a class="class-card c2" href="materi/index.html"><span class="class-number">02</span><strong>Kelas II</strong><small>Belajar bersama</small></a>
+      <a class="class-card c3" href="materi/index.html"><span class="class-number">03</span><strong>Kelas III</strong><small>Tambah wawasan</small></a>
+      <a class="class-card c4" href="materi/index.html"><span class="class-number">04</span><strong>Kelas IV</strong><small>Jelajah ilmu</small></a>
+      <a class="class-card c5" href="materi/index.html"><span class="class-number">05</span><strong>Kelas V</strong><small>Asah kemampuan</small></a>
+      <a class="class-card c6" href="materi/index.html"><span class="class-number">06</span><strong>Kelas VI</strong><small>Siap melangkah</small></a>
+    </div>
+  </section>
+  <section class="feature-section">
+    <div class="container section">
+      <div class="section-heading"><span class="eyebrow">RUANG BELAJAR</span><h2>Semua kebutuhan belajar dalam satu tempat</h2></div>
+      <div class="feature-grid">
+        <a class="feature-card" href="materi/index.html"><span class="feature-icon">📚</span><h3>Materi Pembelajaran</h3><p>Temukan materi berdasarkan kelas dan mata pelajaran.</p><span class="text-link">Lihat materi →</span></a>
+        <a class="feature-card" href="latihan/index.html"><span class="feature-icon">✏️</span><h3>Latihan Soal</h3><p>Berlatih untuk menguji pemahaman dan mengulang pelajaran.</p><span class="text-link">Mulai latihan →</span></a>
+        <a class="feature-card" href="aplikasi/index.html"><span class="feature-icon">🧩</span><h3>Aplikasi Pendidikan</h3><p>Kumpulan alat dan aktivitas belajar interaktif.</p><span class="text-link">Jelajahi aplikasi →</span></a>
+        <a class="feature-card" href="simulasi/index.html"><span class="feature-icon">🏆</span><h3>Simulasi Ujian</h3><p>Persiapkan diri melalui latihan terstruktur.</p><span class="text-link">Lihat simulasi →</span></a>
+      </div>
+    </div>
+  </section>
+  <section class="container announcement">
+    <div><span class="eyebrow">INFORMASI</span><h2>Portal yang terus berkembang</h2><p>Halaman ini merupakan fondasi awal. Materi, soal, dan aplikasi dapat ditambahkan bertahap sesuai kebutuhan sekolah.</p></div>
+    <a class="btn btn-primary" href="tentang/index.html">Tentang Sekolah</a>
+  </section>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><img src="gambar/logo-sekolah.png" alt=""><span><strong>SD Negeri Nawangsari</strong><small>Portal Pembelajaran</small></span></div><p>Belajar dengan gembira, tumbuh bersama.</p><small>© <span id="year"></span> SD Negeri Nawangsari</small></div></footer>
+<script src="js/script.js"></script>
 </body>
 </html>
