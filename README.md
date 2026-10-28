@@ -1,13 +1,28 @@
-# Portal Pembelajaran SD Negeri Nawangsari
+# Portal Pembelajaran Digital SD Negeri Nawangsari
 
-Paket awal situs statis untuk GitHub Pages. Logo sekolah yang diberikan sudah dipasang pada header, bagian utama, dan footer.
+Starter website statis HTML, CSS, dan JavaScript untuk GitHub Pages.
 
-## Cara menerbitkan
-1. Unduh dan ekstrak ZIP ini.
-2. Buka repositori GitHub Pages sekolah.
-3. Cadangkan file lama sebelum mengganti isi situs.
-4. Unggah folder dan file di dalam paket ini ke folder publikasi repositori. Pastikan `index.html` berada langsung di root publikasi, bukan di dalam folder tambahan.
-5. Commit perubahan, lalu tunggu GitHub Pages menerbitkan versi baru.
+## Isi folder
+- `index.html`: beranda portal
+- `css/style.css`: desain responsif
+- `js/script.js`: menu HP dan tahun footer
+- `materi/`: halaman awal materi
+- `latihan/`: halaman awal latihan soal
+- `aplikasi/`: katalog aplikasi
+- `simulasi/`: halaman awal simulasi ujian
+- `tentang/`: halaman profil sekolah
+- `gambar/`: tempat logo dan gambar sekolah
+
+## Cara menggunakan
+1. Unduh dan ekstrak ZIP.
+2. Masukkan logo sekolah asli ke `gambar/` dan beri nama `logo-sekolah.png`.
+3. Buka `index.html` di browser untuk memeriksa tampilan.
+4. Unggah isi folder proyek ke repositori GitHub Pages Anda.
+5. Jika repositori bernama `username.github.io`, aktifkan Pages dari branch utama (`main`) dan folder root.
+6. Jika memakai repositori proyek seperti `username/nama-repo`, tautan relatif di proyek ini tetap membantu halaman dalam folder saling terhubung.
 
 ## Catatan
-Ini masih kerangka desain. Halaman Materi, Latihan Soal, Aplikasi, dan Simulasi belum memiliki bank konten atau fitur interaktif. Konten dan fitur dapat ditambahkan secara bertahap. Tidak ada backend atau login pada paket ini.
+- Halaman dan kartu aplikasi merupakan kerangka awal. Bank soal, konten materi, login, penyimpanan nilai bersama, dan dashboard guru belum diimplementasikan.
+- Ganti teks contoh pengumuman dan profil dengan informasi resmi sekolah.
+- Jangan memasukkan data pribadi siswa ke website publik.
+- GitHub Pages hanya menyajikan file statis; penyimpanan hasil seluruh siswa memerlukan layanan backend atau integrasi tambahan.
