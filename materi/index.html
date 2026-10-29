@@ -17,11 +17,26 @@
 <div class="header"><header><a class="brand" href="../index.html"><img src="../logo-sekolah.png" alt="Logo SD Negeri Nawangsari" onerror="this.style.display='none'"><span><strong>SD NEGERI NAWANGSARI</strong><small>Materi Pembelajaran Kelas I–VI</small></span></a><a class="back" href="../index.html">← Beranda</a></header></div>
 <section class="hero"><div class="hero-inner"><span class="eyebrow">Ruang belajar anak hebat</span><h1>Yuk, Belajar Hari Ini! 📘</h1><p>Pilih kelas dan mata pelajaran, lalu buka materi yang ingin kamu pelajari. Setelah membaca, coba kerjakan latihan singkat untuk memeriksa pemahamanmu.</p></div></section>
 <main class="container">
-<div class="toolbar"><div class="field"><label for="kelas">🎒 Pilih kelas</label><select id="kelas"><option value="1">Kelas I</option><option value="2">Kelas II</option><option value="3">Kelas III</option><option value="4">Kelas IV</option><option value="5">Kelas V</option><option value="6">Kelas VI</option></select></div><div class="field"><label for="cari">🔎 Cari materi</label><input id="cari" type="search" placeholder="Contoh: wudu, pecahan, membaca..."></div></div>
+<div class="toolbar"><div class="field"><label for="kelas">🎒 Pilih kelas</label><select id="kelas"><option value="1">Kelas I</option><option value="2">Kelas II</option><option value="3" selected>Kelas III</option><option value="4">Kelas IV</option><option value="5">Kelas V</option><option value="6">Kelas VI</option></select></div><div class="field"><label for="cari">🔎 Cari materi</label><input id="cari" type="search" placeholder="Contoh: wudu, pecahan, membaca..."></div></div>
+
+<!-- BAGIAN KHUSUS TOMBOL APLIKASI EKSTERNAL (KHUSUS KELAS III) -->
+<div id="externalAppSection" style="margin-bottom: 24px; display: none;">
+    <div style="background: linear-gradient(135deg, #092c55, #125da5); color: white; border-radius: 17px; padding: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; box-shadow: var(--shadow);">
+        <div>
+            <span style="background: var(--gold); color: var(--ink); padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 900; text-transform: uppercase;">Aplikasi Interaktif</span>
+            <h3 style="margin: 8px 0 4px; font-size: 1.25rem;">Game / Kuis Pembelajaran Kelas III</h3>
+            <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">Buka aplikasi eksternal yang telah dibuat untuk uji coba pembelajaran interaktif.</p>
+        </div>
+        <!-- Ganti link '#' di bawah dengan link Vercel / GitHub Pages aplikasi Anda -->
+        <a href="https://kelas3-sdnnawangsari.netlify.app/" target="_blank" class="btn" style="background: var(--gold); color: var(--ink);">Buka Aplikasi 🚀</a>
+    </div>
+</div>
+<!-- AKHIR BAGIAN APLIKASI EKSTERNAL -->
+
 <div class="section-title"><div><h2>1. Pilih Mata Pelajaran</h2><p>Pilih salah satu mata pelajaran di bawah ini.</p></div></div><div class="subject-grid" id="subjectGrid"></div>
 <div class="section-title"><div><h2>2. Pilih Materi</h2><p id="topicSubtitle">Materi yang tersedia untuk kelas terpilih.</p></div></div><div class="topic-list" id="topicList"></div>
 <section class="lesson" id="lesson" aria-live="polite"><div class="eyebrow" id="lessonMeta">Materi pembelajaran</div><h2 id="lessonTitle"></h2><div id="lessonBody"></div><div class="quiz" id="quiz"></div><div class="lesson-actions"><button class="btn secondary" id="closeLesson" type="button">Tutup materi</button><button class="btn" id="topButton" type="button">Kembali ke daftar materi ↑</button></div></section>
-<p class="notice">Catatan untuk pengelola: materi Bahasa Indonesia ini merupakan bahan awal untuk pengembangan dan uji fungsi, bukan pengganti ATP/modul ajar resmi. Silakan tinjau dan sesuaikan urutan, kedalaman, serta istilah dengan ATP, modul ajar, dan buku yang digunakan SD Negeri Nawangsari.</p>
+<p class="notice">Catatan untuk pengelola: materi ini merupakan bahan awal untuk pengembangan dan uji fungsi, bukan pengganti ATP/modul ajar resmi. Silakan tinjau dan sesuaikan urutan, kedalaman, serta istilah dengan ATP, modul ajar, dan buku yang digunakan SD Negeri Nawangsari.</p>
 </main><footer><div class="inner"><span>© <span id="year"></span> SD Negeri Nawangsari</span><span>Belajar dengan hati, tumbuh dengan karakter.</span></div></footer>
 <script>
 const subjects=[
@@ -34,7 +49,6 @@ const subjects=[
  {id:'jawa',name:'Bahasa Jawa',icon:'🗣️',tile:'#fff0e4'},
  {id:'inggris',name:'Bahasa Inggris',icon:'🔤',tile:'#edf0ff'}
 ];
-// Data berikut adalah contoh awal. Tambahkan materi per kelas pada array materi sesuai kebutuhan sekolah.
 const materi=[
  {kelas:1,subjek:'pai',judul:'Mengenal Allah dan Bersyukur',ringkas:'Mengenal Allah Swt. dan membiasakan mengucapkan hamdalah.',tujuan:'Siswa mengenal bahwa Allah Swt. adalah Tuhan yang menciptakan alam semesta dan belajar bersyukur.',isi:[['Mengenal Allah Swt.','Allah Swt. adalah Tuhan Yang Maha Esa. Kita dapat melihat tanda kebesaran-Nya melalui alam, tumbuhan, hewan, dan diri kita sendiri.'],['Membiasakan bersyukur','Ketika mendapat nikmat, kita mengucapkan الْحَمْدُ لِلّٰهِ (Alhamdulillah), yang berarti segala puji bagi Allah. Kita juga bersyukur dengan menjaga tubuh, belajar, dan berbuat baik.']],soal:[{t:'Ucapan ketika bersyukur atas nikmat Allah adalah ...',o:['Alhamdulillah','Selamat malam','Sampai jumpa'],j:0,p:'Alhamdulillah berarti segala puji bagi Allah.'},{t:'Salah satu cara bersyukur adalah ...',o:['Merusak tanaman','Menjaga lingkungan','Mengejek teman'],j:1,p:'Menjaga lingkungan merupakan salah satu bentuk syukur atas ciptaan Allah.'}]},
  {kelas:1,subjek:'indo',judul:'Mengenal Huruf dan Kata',ringkas:'Mengenali huruf, menyusun suku kata, dan membaca kata sederhana.',tujuan:'Siswa mengenali huruf dan membaca kata sederhana dengan jelas.',isi:[['Huruf dan kata','Huruf adalah lambang bunyi. Beberapa huruf dapat disusun menjadi suku kata dan kata. Contoh: b-u-k-u menjadi kata “buku”.'],['Berlatih membaca','Bacalah perlahan, perhatikan bunyi setiap huruf, lalu gabungkan menjadi kata. Contoh kata: ibu, mata, bola, dan buku.']],soal:[{t:'Gabungan huruf b-u-k-u membentuk kata ...',o:['buku','buka','baku'],j:0,p:'Huruf b-u-k-u disusun menjadi kata buku.'},{t:'Kata yang terdiri dari nama benda adalah ...',o:['berlari','buku','cantik'],j:1,p:'Buku adalah nama benda.'}]},
@@ -47,24 +61,139 @@ const materi=[
  {kelas:2,subjek:'indo',judul:'Membaca Teks Pendek',ringkas:'Membaca teks sederhana dan menemukan informasi penting.',tujuan:'Siswa membaca teks pendek dengan lancar dan menjawab pertanyaan berdasarkan isi teks.',isi:[['Membaca dengan cermat','Bacalah teks dari awal sampai akhir. Perhatikan siapa yang diceritakan, apa yang dilakukan, dan di mana peristiwa terjadi.'],['Contoh teks','“Pagi ini, Siti menyiram bunga di halaman. Ia menggunakan air secukupnya agar tanaman tetap segar.” Tokoh dalam teks adalah Siti. Kegiatan Siti adalah menyiram bunga.']],soal:[{t:'Siapa tokoh dalam teks contoh?',o:['Beni','Siti','Ibu'],j:1,p:'Teks menyebutkan bahwa Siti menyiram bunga.'},{t:'Mengapa Siti menyiram bunga?',o:['Agar tanaman tetap segar','Agar halaman kotor','Agar bunga layu'],j:0,p:'Teks menyebutkan tujuan agar tanaman tetap segar.'}]},
  {kelas:2,subjek:'indo',judul:'Kalimat Tanya dan Tanda Tanya',ringkas:'Mengenali kata tanya dan menggunakan tanda tanya.',tujuan:'Siswa membedakan kalimat tanya dan menggunakan tanda baca yang tepat.',isi:[['Kata tanya','Kata tanya antara lain apa, siapa, kapan, di mana, mengapa, dan bagaimana. Kata tanya digunakan untuk meminta informasi.'],['Tanda tanya','Kalimat tanya diakhiri tanda tanya (?). Contoh: “Di mana kamu tinggal?” dan “Siapa nama temanmu?”']],soal:[{t:'Tanda baca di akhir kalimat tanya adalah ...',o:['Titik (.)','Tanda tanya (?)','Koma (,)'],j:1,p:'Kalimat tanya diakhiri tanda tanya.'},{t:'Kata tanya untuk menanyakan tempat adalah ...',o:['Di mana','Siapa','Kapan'],j:0,p:'“Di mana” digunakan untuk menanyakan tempat.'}]},
  {kelas:3,subjek:'indo',judul:'Menemukan Informasi dalam Paragraf',ringkas:'Mencari informasi penting berdasarkan bacaan.',tujuan:'Siswa menemukan informasi tersurat dalam paragraf sederhana.',isi:[['Informasi penting','Informasi penting adalah keterangan yang membantu kita memahami isi bacaan. Bacalah setiap kalimat dan perhatikan nama, tempat, waktu, serta kegiatan.'],['Contoh','“Pada hari Minggu, warga membersihkan taman desa. Mereka mengumpulkan sampah dan menanam bunga.” Kegiatan warga adalah membersihkan taman, mengumpulkan sampah, dan menanam bunga.']],soal:[{t:'Kapan warga membersihkan taman?',o:['Hari Senin','Hari Minggu','Hari Jumat'],j:1,p:'Pada bacaan tertulis “Pada hari Minggu”.'},{t:'Apa yang dilakukan warga?',o:['Membersihkan taman','Menutup sekolah','Mengecat kelas'],j:0,p:'Bacaan menjelaskan warga membersihkan taman desa.'}]},
- {kelas:3,subjek:'indo',judul:'Kalimat Saran',ringkas:'Menyampaikan saran dengan bahasa yang santun.',tujuan:'Siswa mengenali dan membuat kalimat saran yang sesuai dengan situasi.',isi:[['Apa itu saran?','Saran adalah pendapat atau anjuran untuk membantu memperbaiki keadaan. Saran disampaikan dengan bahasa yang sopan.'],['Contoh kalimat saran','Jika teman membuang sampah sembarangan, kita dapat berkata, “Sebaiknya kamu membuang sampah di tempat sampah.”']],soal:[{t:'Kalimat saran yang santun adalah ...',o:['Kamu selalu salah!','Sebaiknya kita merapikan buku bersama.','Jangan pernah bicara!'],j:1,p:'Kalimat tersebut memberi anjuran dengan bahasa yang sopan.'},{t:'Saran bertujuan untuk ...',o:['Membantu memperbaiki keadaan','Mengejek teman','Membuat orang sedih'],j:0,p:'Saran yang baik membantu menemukan perbaikan.'}]},
+ {kelas:3,subjek:'indo',judul:'Kalimat Saran',ringkas:'Menyampaikan saran dengan bahasa yang santun.',tujuan:'Siswa mengenali dan membuat kalimat saran yang sesuai dengan situasi.',isi:[['Apa itu saran?','Saran adalah pendapat atau anjuran untuk membantu memperbaiki keadaan. Saran disampaikan dengan bahasa yang sopan.'],['Contoh kalimat saran','Jika teman membuang sampah sembarangan, kita dapat berkata, “Sebaiknya kamu membuang sampah di tempat sampah.”']],soal:[{t:'Kalimat saran yang santun adalah ...',o:['Kamu selalu salah!','Sebaiknya kita merapikan buku bersama.','Jangan pernah bicara!'],j:1,p:'Kalimat tersebut memberi anjuran dengan bahasa yang sopan.'},{t:'Saran bertujuan untuk ...',o:['Membantu memperbaiki keadaan','Mengejek teman','Membuat orang sedih'],j:0,p:'Saran yang baik membantu memperbaiki keadaan.'}]},
  {kelas:4,subjek:'indo',judul:'Teks Narasi',ringkas:'Mengenali tokoh, latar, dan urutan peristiwa dalam cerita.',tujuan:'Siswa mengidentifikasi unsur dan urutan peristiwa dalam teks narasi.',isi:[['Pengertian teks narasi','Teks narasi menceritakan rangkaian peristiwa. Cerita biasanya memiliki tokoh, latar, dan urutan kejadian.'],['Membaca cerita','Saat membaca cerita, perhatikan siapa tokohnya, kapan dan di mana peristiwa terjadi, serta bagaimana kejadian berlangsung dari awal hingga akhir.']],soal:[{t:'Teks narasi terutama berisi ...',o:['Rangkaian peristiwa atau cerita','Daftar harga saja','Petunjuk penggunaan alat saja'],j:0,p:'Teks narasi menyampaikan rangkaian peristiwa.'},{t:'Keterangan tempat dan waktu dalam cerita disebut ...',o:['Latar','Amanat','Judul'],j:0,p:'Latar berkaitan dengan tempat, waktu, atau suasana peristiwa.'}]},
  {kelas:4,subjek:'indo',judul:'Wawancara dan Pertanyaan',ringkas:'Menyusun pertanyaan dan bersikap santun saat wawancara.',tujuan:'Siswa menyusun pertanyaan sesuai topik dan memahami etika wawancara.',isi:[['Apa itu wawancara?','Wawancara adalah kegiatan tanya jawab untuk memperoleh informasi dari narasumber. Pertanyaan perlu jelas dan sesuai topik.'],['Sikap saat wawancara','Sampaikan salam, perkenalkan diri, gunakan bahasa santun, dengarkan jawaban, dan ucapkan terima kasih.']],soal:[{t:'Orang yang memberikan informasi dalam wawancara disebut ...',o:['Narasumber','Pembaca','Penyunting'],j:0,p:'Narasumber adalah orang yang dimintai informasi.'},{t:'Sikap yang tepat saat narasumber menjawab adalah ...',o:['Memotong pembicaraan','Mendengarkan dengan baik','Bermain sendiri'],j:1,p:'Pewawancara perlu menghormati narasumber dengan mendengarkan.'}]},
  {kelas:5,subjek:'indo',judul:'Iklan dan Informasi',ringkas:'Mengenali tujuan iklan dan informasi yang disampaikan.',tujuan:'Siswa mengidentifikasi tujuan, sasaran, dan informasi utama dalam iklan sederhana.',isi:[['Tujuan iklan','Iklan bertujuan memperkenalkan atau menawarkan barang, jasa, maupun ajakan. Iklan yang baik menyampaikan informasi secara jelas dan menarik.'],['Membaca iklan','Perhatikan hal yang ditawarkan, manfaatnya, siapa sasaran pembaca, dan ajakan yang disampaikan. Jangan langsung percaya sebelum memeriksa kebenaran informasi.']],soal:[{t:'Salah satu tujuan iklan adalah ...',o:['Menyampaikan penawaran atau ajakan','Menyembunyikan semua informasi','Membuat cerita tanpa tujuan'],j:0,p:'Iklan digunakan untuk menawarkan sesuatu atau menyampaikan ajakan.'},{t:'Sikap bijak terhadap iklan adalah ...',o:['Memeriksa informasi dengan cermat','Mempercayai semua klaim tanpa berpikir','Menyebarkan semua iklan'],j:0,p:'Informasi iklan sebaiknya diperiksa secara kritis.'}]},
  {kelas:5,subjek:'indo',judul:'Meringkas Isi Bacaan',ringkas:'Menuliskan inti bacaan dengan singkat dan runtut.',tujuan:'Siswa menyusun ringkasan yang memuat gagasan penting tanpa mengubah makna.',isi:[['Cara membuat ringkasan','Bacalah teks, tentukan gagasan penting setiap bagian, lalu tulis kembali dengan kalimat sendiri secara singkat. Jangan memasukkan pendapat yang tidak ada dalam teks.'],['Ringkasan yang baik','Ringkasan memuat inti bacaan, disusun runtut, menggunakan bahasa jelas, dan tidak mengubah makna teks asli.']],soal:[{t:'Ringkasan yang baik seharusnya ...',o:['Memuat inti bacaan secara singkat','Menambahkan cerita yang tidak ada','Mengulang semua kalimat tanpa memilih'],j:0,p:'Ringkasan mengambil inti bacaan secara singkat dan tepat.'},{t:'Sebelum membuat ringkasan, kita perlu ...',o:['Membaca dan memahami teks','Hanya membaca judul','Menghapus semua gagasan penting'],j:0,p:'Memahami teks membantu memilih informasi utama.'}]},
  {kelas:6,subjek:'indo',judul:'Surat Resmi dan Surat Pribadi',ringkas:'Membedakan tujuan dan bagian surat resmi serta surat pribadi.',tujuan:'Siswa mengenali perbedaan surat resmi dan surat pribadi beserta bagian umumnya.',isi:[['Surat pribadi','Surat pribadi ditulis untuk berkomunikasi dengan orang yang dikenal. Bahasanya dapat lebih akrab, tetapi tetap santun.'],['Surat resmi','Surat resmi digunakan untuk kepentingan formal. Bagian umumnya dapat mencakup kop surat, tanggal, nomor, perihal, alamat tujuan, salam pembuka, isi, penutup, dan tanda tangan sesuai jenis surat.']],soal:[{t:'Surat yang digunakan untuk kepentingan formal adalah ...',o:['Surat resmi','Catatan harian','Pesan rahasia tanpa penerima'],j:0,p:'Surat resmi digunakan untuk keperluan formal.'},{t:'Bahasa dalam surat resmi sebaiknya ...',o:['Baku dan santun','Bebas tanpa aturan','Mengandung ejekan'],j:0,p:'Surat resmi menggunakan bahasa yang baku dan santun.'}]},
  {kelas:6,subjek:'indo',judul:'Teks Eksplanasi',ringkas:'Memahami teks yang menjelaskan proses terjadinya suatu peristiwa.',tujuan:'Siswa mengenali tujuan dan susunan umum teks eksplanasi.',isi:[['Pengertian teks eksplanasi','Teks eksplanasi menjelaskan bagaimana atau mengapa suatu peristiwa terjadi, misalnya proses hujan atau terjadinya pelangi.'],['Susunan umum','Teks eksplanasi umumnya diawali pernyataan umum, dilanjutkan penjelasan proses atau sebab-akibat, dan dapat diakhiri interpretasi atau penutup. Perhatikan hubungan antarkejadian dalam bacaan.']],soal:[{t:'Teks eksplanasi menjelaskan ...',o:['Proses atau sebab terjadinya peristiwa','Daftar tokoh dalam cerita saja','Percakapan tanpa topik'],j:0,p:'Teks eksplanasi menjelaskan proses atau sebab suatu peristiwa.'},{t:'Kata “karena” sering digunakan untuk menunjukkan ...',o:['Hubungan sebab','Nama tokoh','Tempat kejadian saja'],j:0,p:'“Karena” dapat menandai hubungan sebab dalam penjelasan.'}]}
-
 ];
+
 let selectedSubject='pai', activeMaterial=null;
 const kelasEl=document.getElementById('kelas'), cariEl=document.getElementById('cari'), subjectGrid=document.getElementById('subjectGrid'), topicList=document.getElementById('topicList');
+const externalAppSection = document.getElementById('externalAppSection');
 const roman={1:'I',2:'II',3:'III',4:'IV',5:'V',6:'VI'};
-function renderSubjects(){subjectGrid.innerHTML='';subjects.forEach(s=>{const count=materi.filter(m=>m.kelas===+kelasEl.value&&m.subjek===s.id).length;const b=document.createElement('button');b.type='button';b.className='subject'+(selectedSubject===s.id?' active':'');b.style.setProperty('--tile',s.tile);b.innerHTML=`<span class="icon">${s.icon}</span><span><strong>${s.name}</strong><small>${count?count+' materi contoh':'Materi segera ditambahkan'}</small></span>`;b.addEventListener('click',()=>{selectedSubject=s.id;renderSubjects();renderTopics();hideLesson()});subjectGrid.appendChild(b)})}
-function renderTopics(){const q=cariEl.value.trim().toLocaleLowerCase('id');const list=materi.filter(m=>m.kelas===+kelasEl.value&&m.subjek===selectedSubject&&(`${m.judul} ${m.ringkas} ${m.isi.map(x=>x.join(' ')).join(' ')}`).toLocaleLowerCase('id').includes(q));document.getElementById('topicSubtitle').textContent=`Kelas ${roman[kelasEl.value]} · ${subjects.find(s=>s.id===selectedSubject)?.name||''}`;topicList.innerHTML='';if(!list.length){topicList.innerHTML='<div class="empty" style="grid-column:1/-1">📚 Belum ada materi contoh untuk pilihan ini. Materi dapat ditambahkan pada data halaman ini. Coba kelas atau mata pelajaran lain.</div>';return}list.forEach((m,i)=>{const el=document.createElement('article');el.className='topic';el.innerHTML=`<div><h3>${m.judul}</h3><p>${m.ringkas}</p></div><button class="btn" type="button">Buka materi →</button>`;el.querySelector('button').addEventListener('click',()=>openLesson(m));topicList.appendChild(el)})}
-function openLesson(m){activeMaterial=m;document.getElementById('lessonMeta').textContent=`Kelas ${roman[m.kelas]} · ${subjects.find(s=>s.id===m.subjek).name}`;document.getElementById('lessonTitle').textContent=m.judul;let html=`<div class="callout"><strong>Tujuan pembelajaran:</strong> ${m.tujuan}</div>`;m.isi.forEach(([h,p])=>html+=`<h3>${h}</h3><p>${p}</p>`);document.getElementById('lessonBody').innerHTML=html;renderQuiz(m);const lesson=document.getElementById('lesson');lesson.classList.add('show');lesson.scrollIntoView({behavior:'smooth',block:'start'})}
-function renderQuiz(m){const box=document.getElementById('quiz');if(!m.soal?.length){box.innerHTML='<h3>Latihan singkat</h3><p>Latihan untuk materi ini akan ditambahkan.</p>';return}box.innerHTML='<h3>📝 Latihan Singkat</h3><p>Pilih satu jawaban yang paling tepat untuk setiap soal.</p>'+m.soal.map((s,i)=>`<div class="question"><p>${i+1}. ${s.t}</p>${s.o.map((o,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}"> <span>${String.fromCharCode(65+j)}. ${o}</span></label>`).join('')}<div id="explain${i}" class="notice hidden"></div></div>`).join('')+'<div class="lesson-actions"><button class="btn" type="button" id="checkQuiz">Periksa Jawaban</button><button class="btn secondary" type="button" id="retryQuiz">Ulangi Latihan</button></div><div id="quizResult" class="feedback" role="status"></div>';document.getElementById('checkQuiz').addEventListener('click',()=>{let score=0,answered=0;m.soal.forEach((s,i)=>{const chosen=box.querySelector(`input[name="q${i}"]:checked`);const ex=document.getElementById('explain'+i);ex.classList.remove('hidden');if(chosen){answered++;if(+chosen.value===s.j)score++;ex.textContent=(+chosen.value===s.j?'Benar. ':'Belum tepat. ')+s.p}else ex.textContent='Belum dijawab. '+s.p});const res=document.getElementById('quizResult');res.className='feedback show '+(score===m.soal.length?'good':'bad');res.textContent=`Hasil latihan: ${score} dari ${m.soal.length} benar. ${answered<m.soal.length?'Masih ada soal yang belum dijawab. ':''}${score===m.soal.length?'Hebat! Kamu menjawab semua soal dengan benar.':'Pelajari kembali materi dan coba lagi, ya!'}`});document.getElementById('retryQuiz').addEventListener('click',()=>{box.querySelectorAll('input[type=radio]').forEach(x=>x.checked=false);m.soal.forEach((_,i)=>{const ex=document.getElementById('explain'+i);ex.classList.add('hidden');ex.textContent=''});const res=document.getElementById('quizResult');res.className='feedback';res.textContent=''})}
-function hideLesson(){document.getElementById('lesson').classList.remove('show');activeMaterial=null}
-kelasEl.addEventListener('change',()=>{selectedSubject='pai';renderSubjects();renderTopics();hideLesson();history.replaceState(null,'',`?kelas=${kelasEl.value}`)});cariEl.addEventListener('input',renderTopics);document.getElementById('closeLesson').addEventListener('click',hideLesson);document.getElementById('topButton').addEventListener('click',()=>{hideLesson();document.querySelector('.section-title').scrollIntoView({behavior:'smooth'})});document.getElementById('year').textContent=new Date().getFullYear();
-const params=new URLSearchParams(location.search);const requested=Number(params.get('kelas'));if(requested>=1&&requested<=6)kelasEl.value=String(requested);renderSubjects();renderTopics();
+
+function updateExternalAppVisibility() {
+    // Tombol/banner aplikasi eksternal hanya akan muncul jika kelas yang dipilih adalah Kelas 3 (value="3")
+    if (kelasEl.value === '3') {
+        externalAppSection.style.display = 'block';
+    } else {
+        externalAppSection.style.display = 'none';
+    }
+}
+
+function renderSubjects(){
+    subjectGrid.innerHTML='';
+    subjects.forEach(s=>{
+        const count=materi.filter(m=>m.kelas===+kelasEl.value&&m.subjek===s.id).length;
+        const b=document.createElement('button');
+        b.type='button';
+        b.className='subject'+(selectedSubject===s.id?' active':'');
+        b.style.setProperty('--tile',s.tile);
+        b.innerHTML=`<span class="icon">${s.icon}</span><span><strong>${s.name}</strong><small>${count?count+' materi contoh':'Materi segera ditambahkan'}</small></span>`;
+        b.addEventListener('click',()=>{selectedSubject=s.id;renderSubjects();renderTopics();hideLesson()});
+        subjectGrid.appendChild(b);
+    })
+}
+
+function renderTopics(){
+    const q=cariEl.value.trim().toLocaleLowerCase('id');
+    const list=materi.filter(m=>m.kelas===+kelasEl.value&&m.subjek===selectedSubject&&(`${m.judul} ${m.ringkas} ${m.isi.map(x=>x.join(' ')).join(' ')}`).toLocaleLowerCase('id').includes(q));
+    document.getElementById('topicSubtitle').textContent=`Kelas ${roman[kelasEl.value]} · ${subjects.find(s=>s.id===selectedSubject)?.name||''}`;
+    topicList.innerHTML='';
+    if(!list.length){
+        topicList.innerHTML='<div class="empty" style="grid-column:1/-1">📚 Belum ada materi contoh untuk pilihan ini. Materi dapat ditambahkan pada data halaman ini. Coba kelas atau mata pelajaran lain.</div>';
+        return;
+    }
+    list.forEach((m,i)=>{
+        const el=document.createElement('article');
+        el.className='topic';
+        el.innerHTML=`<div><h3>${m.judul}</h3><p>${m.ringkas}</p></div><button class="btn" type="button">Buka materi →</button>`;
+        el.querySelector('button').addEventListener('click',()=>openLesson(m));
+        topicList.appendChild(el);
+    })
+}
+
+function openLesson(m){
+    activeMaterial=m;
+    document.getElementById('lessonMeta').textContent=`Kelas ${roman[m.kelas]} · ${subjects.find(s=>s.id===m.subjek).name}`;
+    document.getElementById('lessonTitle').textContent=m.judul;
+    let html=`<div class="callout"><strong>Tujuan pembelajaran:</strong> ${m.tujuan}</div>`;
+    m.isi.forEach(([h,p])=>html+=`<h3>${h}</h3><p>${p}</p>`);
+    document.getElementById('lessonBody').innerHTML=html;
+    renderQuiz(m);
+    const lesson=document.getElementById('lesson');
+    lesson.classList.add('show');
+    lesson.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function renderQuiz(m){
+    const box=document.getElementById('quiz');
+    if(!m.soal?.length){
+        box.innerHTML='<h3>Latihan singkat</h3><p>Latihan untuk materi ini akan ditambahkan.</p>';
+        return;
+    }
+    box.innerHTML='<h3>📝 Latihan Singkat</h3><p>Pilih satu jawaban yang paling tepat untuk setiap soal.</p>'+m.soal.map((s,i)=>`<div class="question"><p>${i+1}. ${s.t}</p>${s.o.map((o,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}"> <span>${String.fromCharCode(65+j)}. ${o}</span></label>`).join('')}<div id="explain${i}" class="notice hidden"></div></div>`).join('')+'<div class="lesson-actions"><button class="btn" type="button" id="checkQuiz">Periksa Jawaban</button><button class="btn secondary" type="button" id="retryQuiz">Ulangi Latihan</button></div><div id="quizResult" class="feedback" role="status">';
+    document.getElementById('checkQuiz').addEventListener('click',()=>{
+        let score=0,answered=0;
+        m.soal.forEach((s,i)=>{
+            const chosen=box.querySelector(`input[name="q${i}"]:checked`);
+            const ex=document.getElementById('explain'+i);
+            ex.classList.remove('hidden');
+            if(chosen){
+                answered++;
+                if(+chosen.value===s.j)score++;
+                ex.textContent=(+chosen.value===s.j?'Benar. ':'Belum tepat. ')+s.p;
+            }else ex.textContent='Belum dijawab. '+s.p;
+        });
+        const res=document.getElementById('quizResult');
+        res.className='feedback show '+(score===m.soal.length?'good':'bad');
+        res.textContent=`Hasil latihan: ${score} dari ${m.soal.length} benar. ${answered<m.soal.length?'Masih ada soal yang belum dijawab. ':''}${score===m.soal.length?'Hebat! Kamu menjawab semua soal dengan benar.':'Pelajari kembali materi dan coba lagi, ya!'}`;
+    });
+    document.getElementById('retryQuiz').addEventListener('click',()=>{
+        box.querySelectorAll('input[type=radio]').forEach(x=>x.checked=false);
+        m.soal.forEach((_,i)=>{
+            const ex=document.getElementById('explain'+i);
+            ex.classList.add('hidden');
+            ex.textContent='';
+        });
+        const res=document.getElementById('quizResult');
+        res.className='feedback';
+        res.textContent='';
+    });
+}
+
+function hideLesson(){
+    document.getElementById('lesson').classList.remove('show');
+    activeMaterial=null;
+}
+
+kelasEl.addEventListener('change',()=>{
+    selectedSubject='pai';
+    updateExternalAppVisibility();
+    renderSubjects();
+    renderTopics();
+    hideLesson();
+    history.replaceState(null,'',`?kelas=${kelasEl.value}`);
+});
+
+cariEl.addEventListener('input',renderTopics);
+document.getElementById('closeLesson').addEventListener('click',hideLesson);
+document.getElementById('topButton').addEventListener('click',()=>{
+    hideLesson();
+    document.querySelector('.section-title').scrollIntoView({behavior:'smooth'});
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+
+const params=new URLSearchParams(location.search);
+const requested=Number(params.get('kelas'));
+if(requested>=1&&requested<=6) kelasEl.value=String(requested);
+
+// Inisialisasi awal saat halaman dibuka
+updateExternalAppVisibility();
+renderSubjects();
+renderTopics();
 </script>
 </body></html>
