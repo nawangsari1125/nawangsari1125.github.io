@@ -1,315 +1,251 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portal resmi informasi dan pembelajaran SD Negeri Nawangsari.">
-  <title>SD Negeri Nawangsari | Portal Pembelajaran</title>
-  <style>
-    :root {
-      --navy: #092c55;
-      --blue: #125da5;
-      --sky: #eaf5ff;
-      --gold: #f2bd45;
-      --ink: #172b45;
-      --muted: #61738a;
-      --white: #ffffff;
-      --line: #e4ebf3;
-      --shadow: 0 12px 34px rgba(9,44,85,.10);
-      --radius: 22px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0; font-family: "Nunito", "Segoe UI", Arial, sans-serif;
-      color: var(--ink); background: #f7faff; line-height: 1.6;
-    }
-    a { color: inherit; text-decoration: none; }
-    .top-strip { background: var(--navy); color: #fff; font-size: .84rem; }
-    .top-strip .wrap { max-width: 1160px; margin: auto; padding: 8px 22px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-    .header { background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); }
-    .nav-wrap { max-width:1160px; margin:auto; padding: 13px 22px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
-    .brand { display:flex; align-items:center; gap:12px; min-width:0; }
-    .brand img { width:58px; height:58px; object-fit:contain; flex-shrink:0; }
-    .brand-name { line-height:1.2; }
-    .brand-name strong { display:block; color:var(--navy); font-size:1rem; letter-spacing:.2px; }
-    .brand-name span { color:var(--muted); font-size:.78rem; }
-    .nav-links { display:flex; align-items:center; gap:22px; font-weight:800; font-size:.9rem; }
-    .nav-links a:hover { color:var(--blue); }
-    .nav-cta { background:var(--gold); color:var(--navy)!important; padding:10px 16px; border-radius:999px; }
-    .menu-btn { display:none; border:1px solid var(--line); background:white; border-radius:10px; padding:8px 12px; color:var(--navy); font-size:1.2rem; }
-    .hero { overflow:hidden; background:linear-gradient(120deg,#eaf5ff 0%,#f8fbff 58%,#fff7df 100%); }
-    .hero-inner { max-width:1160px; margin:auto; padding:64px 22px 58px; display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:40px; }
-    .eyebrow { display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid #dceafa; border-radius:999px; padding:7px 13px; color:var(--blue); font-size:.82rem; font-weight:900; }
-    .dot { width:8px; height:8px; background:#35b56b; border-radius:50%; }
-    h1 { color:var(--navy); font-size:clamp(2.2rem,4.6vw,3.65rem); line-height:1.12; margin:18px 0; letter-spacing:-1.4px; }
-    h1 em { color:var(--blue); font-style:normal; }
-    .hero-copy { color:#526982; font-size:1.06rem; max-width:590px; margin:0 0 26px; }
-    .actions { display:flex; flex-wrap:wrap; gap:12px; }
-    .btn { display:inline-flex; justify-content:center; align-items:center; gap:8px; padding:13px 20px; border-radius:13px; font-weight:900; border:1px solid transparent; transition:.2s; }
-    .btn-primary { background:var(--navy); color:white; box-shadow:0 8px 20px rgba(9,44,85,.18); }
-    .btn-primary:hover { background:var(--blue); transform:translateY(-2px); }
-    .btn-secondary { background:#fff; border-color:#d7e4f2; color:var(--navy); }
-    .hero-visual { position:relative; min-height:330px; display:grid; place-items:center; }
-    .hero-circle { width:min(330px,78vw); aspect-ratio:1; border-radius:50%; background:linear-gradient(145deg,#fff 5%,#d7edff 65%,#ffeab1); display:grid; place-items:center; box-shadow:var(--shadow); position:relative; }
-    .hero-circle:before,.hero-circle:after { content:""; position:absolute; border-radius:50%; border:1px dashed rgba(18,93,165,.24); inset:18px; }
-    .hero-circle:after { inset:-16px; border-style:solid; border-color:rgba(242,189,69,.4); }
-    .hero-logo { width:55%; height:55%; object-fit:contain; position:relative; z-index:1; }
-    .float-card { position:absolute; background:white; padding:12px 16px; border-radius:15px; box-shadow:var(--shadow); font-weight:900; color:var(--navy); font-size:.88rem; }
-    .float-card small { display:block; color:var(--muted); font-weight:600; }
-    .float-one { top:25px; left:0; } .float-two { right:-2px; bottom:34px; }
-    .section { max-width:1160px; margin:auto; padding:58px 22px; }
-    .section-head { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:25px; }
-    .section-kicker { color:var(--blue); text-transform:uppercase; font-size:.78rem; font-weight:1000; letter-spacing:1.5px; }
-    h2 { color:var(--navy); font-size:clamp(1.65rem,3vw,2.25rem); line-height:1.2; margin:7px 0 0; }
-    .section-desc { color:var(--muted); margin:8px 0 0; max-width:620px; }
-    .grade-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:14px; }
-    .grade-card { background:#fff; border:1px solid var(--line); border-radius:18px; padding:20px 12px; text-align:center; box-shadow:0 5px 18px rgba(9,44,85,.04); transition:.2s; }
-    .grade-card:hover { transform:translateY(-5px); box-shadow:var(--shadow); border-color:#b9d8f7; }
-    .grade-icon { width:52px; height:52px; margin:0 auto 10px; border-radius:16px; display:grid; place-items:center; font-size:1.6rem; background:var(--tile,#e8f4ff); }
-    .grade-card strong { display:block; color:var(--navy); }
-    .grade-card span { display:block; color:var(--muted); font-size:.78rem; margin-top:3px; }
-    .feature-band { background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-    .subject-grid,.app-grid,.info-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-    .subject-card,.app-card,.info-card { background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:23px; box-shadow:0 6px 22px rgba(9,44,85,.04); }
-    .subject-card { display:flex; gap:15px; align-items:flex-start; }
-    .subject-icon { width:50px; height:50px; border-radius:15px; flex-shrink:0; display:grid; place-items:center; font-size:1.45rem; background:var(--tile,#eaf5ff); }
-    .subject-card h3,.app-card h3,.info-card h3 { color:var(--navy); margin:0 0 6px; font-size:1.05rem; }
-    .subject-card p,.app-card p,.info-card p { color:var(--muted); margin:0; font-size:.91rem; }
-    .app-card { position:relative; overflow:hidden; }
-    .app-card:before { content:""; position:absolute; right:-25px; top:-30px; width:100px; height:100px; border-radius:50%; background:var(--tile,#eaf5ff); opacity:.8; }
-    .app-icon { position:relative; width:54px; height:54px; border-radius:16px; display:grid; place-items:center; font-size:1.6rem; background:var(--tile,#eaf5ff); margin-bottom:17px; }
-    .app-card p { min-height:48px; }
-    .app-link { display:inline-block; margin-top:16px; color:var(--blue); font-weight:900; font-size:.9rem; }
-    .profile { display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:stretch; }
-    .profile-panel { background:var(--navy); color:#fff; border-radius:26px; padding:30px; position:relative; overflow:hidden; }
-    .profile-panel:after { content:""; position:absolute; width:190px; height:190px; right:-60px; bottom:-80px; border:28px solid rgba(255,255,255,.07); border-radius:50%; }
-    .profile-panel h2 { color:#fff; }
-    .profile-panel p { color:#d9e7f7; }
-    .profile-label { color:var(--gold); text-transform:uppercase; letter-spacing:1.5px; font-size:.78rem; font-weight:1000; }
-    .value-list { display:grid; gap:12px; margin-top:22px; }
-    .value-item { display:flex; gap:10px; align-items:flex-start; color:#eef6ff; }
-    .check { width:24px; height:24px; flex-shrink:0; border-radius:50%; display:grid; place-items:center; background:var(--gold); color:var(--navy); font-weight:1000; font-size:.8rem; }
-    .info-card { display:flex; gap:14px; align-items:flex-start; }
-    .info-icon { font-size:1.5rem; }
-    .notice { margin-top:24px; padding:15px 18px; background:#fff8e6; border:1px solid #f7e4ac; border-radius:14px; color:#765512; font-size:.9rem; }
-    footer { background:#061e3a; color:#dce8f6; }
-    .footer-inner { max-width:1160px; margin:auto; padding:35px 22px 20px; display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; }
-    .footer-brand { display:flex; gap:13px; align-items:center; }
-    .footer-brand img { width:55px; height:55px; object-fit:contain; background:white; border-radius:12px; padding:4px; }
-    .footer-brand strong { display:block; color:#fff; }
-    .footer-brand span { font-size:.84rem; color:#b8cbe0; }
-    .footer-links { display:flex; gap:16px; flex-wrap:wrap; align-items:center; font-size:.88rem; }
-    .copyright { max-width:1160px; margin:auto; padding:15px 22px 22px; border-top:1px solid rgba(255,255,255,.13); font-size:.82rem; color:#a9bfd7; }
-    .back-top { position:fixed; right:18px; bottom:18px; width:44px; height:44px; border-radius:14px; display:grid; place-items:center; background:var(--gold); color:var(--navy); font-size:1.2rem; font-weight:1000; box-shadow:var(--shadow); }
-    @media (max-width:900px) {
-      .nav-links { gap:13px; font-size:.82rem; }
-      .grade-grid { grid-template-columns:repeat(3,1fr); }
-      .subject-grid,.app-grid,.info-grid { grid-template-columns:repeat(2,1fr); }
-      .hero-inner { gap:15px; }
-    }
-    @media (max-width:680px) {
-      .top-strip .wrap { justify-content:center; text-align:center; }
-      .nav-wrap { padding:10px 16px; }
-      .brand img { width:48px; height:48px; }
-      .brand-name strong { font-size:.84rem; }
-      .brand-name span { font-size:.72rem; }
-      .menu-btn { display:block; }
-      .nav-links { display:none; position:absolute; left:12px; right:12px; top:75px; padding:16px; background:white; border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); flex-direction:column; align-items:stretch; }
-      .nav-links.open { display:flex; }
-      .nav-links a { padding:8px 10px; }
-      .hero-inner { grid-template-columns:1fr; padding-top:42px; }
-      .hero-copy { font-size:1rem; }
-      .hero-visual { min-height:290px; margin-top:10px; }
-      .hero-circle { width:245px; }
-      .float-one { left:4px; top:15px; } .float-two { right:0; bottom:22px; }
-      .section { padding:42px 16px; }
-      .section-head { display:block; }
-      .grade-grid { gap:10px; }
-      .grade-card { padding:15px 7px; }
-      .grade-icon { width:45px; height:45px; }
-      .subject-grid,.app-grid,.info-grid,.profile { grid-template-columns:1fr; }
-      .subject-card,.app-card,.info-card { padding:19px; }
-      .profile-panel { padding:24px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Materi dan latihan pembelajaran kelas I–VI SD Negeri Nawangsari.">
+<title>Materi Pembelajaran | SD Negeri Nawangsari</title>
+<style>
+:root{--navy:#092c55;--blue:#125da5;--sky:#eaf5ff;--gold:#f2bd45;--ink:#172b45;--muted:#61738a;--line:#e4ebf3;--white:#fff;--shadow:0 12px 34px rgba(9,44,85,.09);--radius:20px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f7faff;color:var(--ink);font-family:"Nunito","Segoe UI",Arial,sans-serif;line-height:1.65}a{color:inherit;text-decoration:none}button,select{font:inherit}.top{background:var(--navy);color:white;padding:8px 18px;font-size:.85rem}.top-inner,header,.container,footer .inner{max-width:1120px;margin:auto}.top-inner{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}.header{position:sticky;top:0;z-index:5;background:#ffffffef;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}header{padding:12px 20px;display:flex;justify-content:space-between;align-items:center;gap:14px}.brand{display:flex;align-items:center;gap:12px}.brand img{width:50px;height:50px;object-fit:contain}.brand strong{display:block;color:var(--navy);line-height:1.2}.brand small{color:var(--muted)}.back{padding:10px 15px;border:1px solid var(--line);border-radius:12px;font-weight:800;color:var(--navy);background:white}.hero{background:linear-gradient(120deg,#eaf5ff,#fff8e4);padding:38px 20px}.hero-inner{max-width:1120px;margin:auto}.eyebrow{color:var(--blue);font-weight:900;font-size:.82rem;text-transform:uppercase;letter-spacing:1px}.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.15;color:var(--navy);margin:8px 0}.hero p{max-width:700px;color:#526982;margin:0}.container{padding:28px 20px 60px}.toolbar{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}.field{background:white;border:1px solid var(--line);padding:14px;border-radius:16px}.field label{display:block;font-weight:900;color:var(--navy);margin-bottom:7px}.field select,.field input{width:100%;padding:12px;border:1px solid #cfdceb;border-radius:10px;background:#fff;color:var(--ink)}.section-title{display:flex;justify-content:space-between;align-items:end;gap:10px;margin:26px 0 14px}.section-title h2{color:var(--navy);font-size:1.45rem;margin:0}.section-title p{color:var(--muted);margin:3px 0 0;font-size:.92rem}.subject-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.subject{background:white;border:1px solid var(--line);border-radius:17px;padding:17px;display:flex;gap:13px;align-items:center;text-align:left;cursor:pointer;box-shadow:0 5px 16px #092c5508;transition:.18s}.subject:hover,.subject.active{border-color:#80b8ef;box-shadow:var(--shadow);transform:translateY(-2px)}.subject.active{outline:2px solid #c9e3ff}.subject .icon{width:48px;height:48px;border-radius:14px;background:var(--tile,#eaf5ff);display:grid;place-items:center;font-size:1.5rem;flex-shrink:0}.subject strong{display:block;color:var(--navy)}.subject small{color:var(--muted)}.topic-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.topic{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:15px;padding:16px}.topic h3{font-size:1rem;color:var(--navy);margin:0 0 4px}.topic p{font-size:.86rem;color:var(--muted);margin:0}.btn{border:0;border-radius:11px;background:var(--navy);color:white;padding:10px 14px;font-weight:900;cursor:pointer;white-space:nowrap}.btn:hover{background:var(--blue)}.btn.secondary{background:#eaf5ff;color:var(--navy)}.empty{background:white;border:1px dashed #b8cde2;border-radius:16px;padding:22px;color:var(--muted);text-align:center}.lesson{display:none;background:white;border:1px solid var(--line);border-radius:20px;padding:clamp(18px,4vw,30px);margin-top:25px;box-shadow:var(--shadow)}.lesson.show{display:block}.lesson h2{color:var(--navy);margin-top:0}.lesson h3{color:var(--blue)}.lesson p,.lesson li{line-height:1.8}.callout{background:#f0f7ff;border-left:4px solid var(--blue);padding:13px 16px;border-radius:8px;margin:16px 0}.quiz{margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}.question{padding:14px 0;border-bottom:1px solid var(--line)}.question p{font-weight:900;margin:0 0 8px}.option{display:flex;gap:9px;align-items:flex-start;padding:6px 0;cursor:pointer}.feedback{margin-top:14px;padding:13px;border-radius:12px;display:none}.feedback.show{display:block}.feedback.good{background:#e8fff0;color:#155d34}.feedback.bad{background:#fff4d9;color:#765512}.lesson-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.notice{margin-top:18px;color:var(--muted);font-size:.86rem}footer{background:#061e3a;color:#dce8f6;padding:24px 20px}footer .inner{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:.88rem}.hidden{display:none!important}
+
+/* Desain Kompak Tombol Aplikasi Kelas III */
+.app-container{background:white;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:24px;box-shadow:0 5px 16px #092c5505}
+.app-header-mini{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.app-header-mini h3{font-size:1.05rem;color:var(--navy);margin:0}
+.app-header-mini span{font-size:0.78rem;color:var(--muted);font-weight:700}
+.app-grid-compact{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.app-pill{background:var(--sky);border:1px solid #c9e3ff;border-radius:12px;padding:10px 12px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all .2s ease;box-shadow:0 2px 6px rgba(18,93,165,.04)}
+.app-pill:hover{background:var(--navy);border-color:var(--navy);transform:translateY(-2px);box-shadow:var(--shadow)}
+.app-pill:hover .app-title{color:white}
+.app-pill:hover .app-icon{transform:scale(1.1)}
+.app-icon{font-size:1.4rem;margin-bottom:4px;transition:transform .2s ease}
+.app-title{font-size:0.82rem;font-weight:900;color:var(--navy);line-height:1.2}
+
+/* Desain Papan Informasi / Pengumuman Sekolah */
+.info-board{background:white;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:24px;box-shadow:0 5px 16px #092c5505}
+.info-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.info-card{background:#fffdf4;border:1px solid #faecca;border-radius:14px;padding:14px;position:relative}
+.info-card h4{font-size:0.95rem;color:var(--navy);margin:0 0 6px}
+.info-card p{font-size:0.84rem;color:var(--muted);margin:0 0 8px}
+.info-date{font-size:0.75rem;font-weight:800;color:#b2820d;background:#fef3cd;padding:2px 8px;border-radius:6px;display:inline-block}
+
+@media(max-width:900px){.app-grid-compact{grid-template-columns:repeat(3,1fr)}.info-list{grid-template-columns:1fr}}
+@media(max-width:540px){.app-grid-compact{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head>
 <body>
-  <div class="top-strip">
-    <div class="wrap">
-      <span>📚 Portal Informasi & Pembelajaran Digital</span>
-      <span>SD NEGERI NAWANGSARI · Tahun Ajaran 2026/2027</span>
+<div class="top"><div class="top-inner"><span>📚 Portal Pembelajaran Digital</span><span>SD NEGERI NAWANGSARI · Tahun Ajaran 2026/2027</span></div></div>
+<div class="header"><header><a class="brand" href="../index.html"><img src="../logo-sekolah.png" alt="Logo SD Negeri Nawangsari" onerror="this.style.display='none'"><span><strong>SD NEGERI NAWANGSARI</strong><small>Materi Pembelajaran Kelas I–VI</small></span></a><a class="back" href="../index.html">← Beranda</a></header></div>
+<section class="hero"><div class="hero-inner"><span class="eyebrow">Ruang belajar anak hebat</span><h1>Yuk, Belajar Hari Ini! 📘</h1><p>Pilih kelas dan mata pelajaran, lalu buka materi yang ingin kamu pelajari. Setelah membaca, coba kerjakan latihan singkat untuk memeriksa pemahamanmu.</p></div></section>
+<main class="container">
+<div class="toolbar"><div class="field"><label for="kelas">🎒 Pilih kelas</label><select id="kelas"><option value="1">Kelas I</option><option value="2">Kelas II</option><option value="3" selected>Kelas III</option><option value="4">Kelas IV</option><option value="5">Kelas V</option><option value="6">Kelas VI</option></select></div><div class="field"><label for="cari">🔎 Cari materi</label><input id="cari" type="search" placeholder="Contoh: wudu, pecahan, membaca..."></div></div>
+
+<!-- BAGIAN PAPAN INFORMASI / PENGUMUMAN SEKOLAH -->
+<div class="info-board">
+    <div class="app-header-mini" style="margin-bottom: 10px;">
+        <h3>📢 Papan Informasi & Pengumuman</h3>
+        <span>Informasi Terbaru SDN Nawangsari</span>
     </div>
-  </div>
-
-  <header class="header">
-    <div class="nav-wrap">
-      <a class="brand" href="#beranda" aria-label="Beranda SD Negeri Nawangsari">
-        <img src="logo-sekolah.png" alt="Logo SD Negeri Nawangsari">
-        <span class="brand-name">
-          <strong>SD NEGERI NAWANGSARI</strong>
-          <span>Portal Pendidikan & Pembelajaran</span>
-        </span>
-      </a>
-      <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">☰</button>
-      <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
-        <a href="#beranda">Beranda</a>
-        <a href="#profil">Profil Sekolah</a>
-        <a href="#kelas">Pilih Kelas</a>
-        <a href="#aplikasi">Aplikasi Belajar</a>
-        <a href="#informasi">Informasi</a>
-        <a class="nav-cta" href="#kelas">Mulai Belajar ↗</a>
-      </nav>
+    <div class="info-list">
+        <div class="info-card">
+            <h4>Jadwal Asesmen Formatif</h4>
+            <p>Pelaksanaan evaluasi tengah semester akan dimulai minggu depan. Harap persiapkan diri dengan baik.</p>
+            <span class="info-date">📅 15 Mei 2026</span>
+        </div>
+        <div class="info-card">
+            <h4>Kegiatan Kerja Bakti Kelas</h4>
+            <p>Siswa dihimbau membawa perlengkapan kebersihan ringan untuk giat Jumat Bersih di lingkungan sekolah.</p>
+            <span class="info-date">📅 18 Mei 2026</span>
+        </div>
+        <div class="info-card">
+            <h4>Pameran Karya Siswa</h4>
+            <p>Mari saksikan hasil proyek digital dan kerajinan tangan kreatif dari siswa-siswi kelas I sampai VI.</p>
+            <span class="info-date">📅 25 Mei 2026</span>
+        </div>
     </div>
-  </header>
+</div>
+<!-- AKHIR PAPAN INFORMASI -->
 
-  <main>
-    <section class="hero" id="beranda">
-      <div class="hero-inner">
-        <div>
-          <span class="eyebrow"><span class="dot"></span> Ruang Belajar Anak Hebat</span>
-          <h1>Belajar Ceria,<br><em>Raih Cita-Cita!</em></h1>
-          <p class="hero-copy">Selamat datang di Portal Pembelajaran SD Negeri Nawangsari. Temukan materi, latihan soal, dan aktivitas belajar yang menyenangkan untuk membantu kalian tumbuh menjadi anak yang cerdas, mandiri, dan berbudi pekerti.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="#kelas">🎒 Pilih Kelas</a>
-            <a class="btn btn-secondary" href="#aplikasi">Jelajahi Aplikasi →</a>
-          </div>
-        </div>
-        <div class="hero-visual" aria-label="Identitas sekolah">
-          <div class="hero-circle">
-            <img class="hero-logo" src="logo-sekolah.png" alt="Logo SD Negeri Nawangsari">
-          </div>
-          <div class="float-card float-one">🌟 Anak Hebat<small>Semangat belajar setiap hari</small></div>
-          <div class="float-card float-two">📖 Belajar Mandiri<small>Belajar kapan saja</small></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="kelas">
-      <div class="section-head">
-        <div>
-          <div class="section-kicker">Mulai dari sini</div>
-          <h2>Ayo, Pilih Kelasmu!</h2>
-          <p class="section-desc">Pilih kelas untuk menemukan materi dan latihan yang sesuai dengan kegiatan belajarmu.</p>
-        </div>
-      </div>
-      <div class="grade-grid">
-        <a class="grade-card" href="materi/?kelas=1" style="--tile:#e8f4ff"><div class="grade-icon">🧸</div><strong>Kelas I</strong><span>Belajar dasar</span></a>
-        <a class="grade-card" href="materi/?kelas=2" style="--tile:#e8fff0"><div class="grade-icon">✏️</div><strong>Kelas II</strong><span>Belajar dan berlatih</span></a>
-        <a class="grade-card" href="materi/?kelas=3" style="--tile:#fff4d9"><div class="grade-icon">📚</div><strong>Kelas III</strong><span>Makin banyak tahu</span></a>
-        <a class="grade-card" href="materi/?kelas=4" style="--tile:#f2eaff"><div class="grade-icon">🔎</div><strong>Kelas IV</strong><span>Jelajah pengetahuan</span></a>
-        <a class="grade-card" href="materi/?kelas=5" style="--tile:#ffe9e9"><div class="grade-icon">🚀</div><strong>Kelas V</strong><span>Siap berkembang</span></a>
-        <a class="grade-card" href="materi/?kelas=6" style="--tile:#e2faff"><div class="grade-icon">🏆</div><strong>Kelas VI</strong><span>Melangkah maju</span></a>
-      </div>
-      <div class="notice">📘 Pilih kelas untuk membuka daftar mata pelajaran dan materi pembelajaran yang tersedia.</div>
-    </section>
-
-    <div class="feature-band">
-      <section class="section" id="mata-pelajaran">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">Jelajahi pengetahuan</div>
-            <h2>Mata Pelajaran</h2>
-            <p class="section-desc">Belajar berbagai hal baru dengan cara yang mudah dipahami dan menyenangkan.</p>
-          </div>
-        </div>
-        <div class="subject-grid">
-          <article class="subject-card" style="--tile:#e8f4ff"><div class="subject-icon">🔢</div><div><h3>Matematika</h3><p>Berhitung, pola, pengukuran, dan pemecahan masalah.</p></div></article>
-          <article class="subject-card" style="--tile:#e8fff0"><div class="subject-icon">📖</div><div><h3>Bahasa Indonesia</h3><p>Membaca, menulis, menyimak, dan bercerita.</p></div></article>
-          <article class="subject-card" style="--tile:#fff4d9"><div class="subject-icon">🌱</div><div><h3>IPAS</h3><p>Mengenal alam, makhluk hidup, dan lingkungan sekitar.</p></div></article>
-          <article class="subject-card" style="--tile:#f2eaff"><div class="subject-icon">🤝</div><div><h3>Pendidikan Pancasila</h3><p>Belajar hidup rukun, tanggung jawab, dan gotong royong.</p></div></article>
-          <article class="subject-card" style="--tile:#ffe9e9"><div class="subject-icon">🌙</div><div><h3>Pendidikan Agama</h3><p>Menguatkan pengetahuan agama dan akhlak mulia.</p></div></article>
-          <article class="subject-card" style="--tile:#e2faff"><div class="subject-icon">🎨</div><div><h3>Seni & Bahasa</h3><p>Berkreasi serta mengenal Bahasa Jawa dan Bahasa Inggris.</p></div></article>
-        </div>
-      </section>
+<!-- BAGIAN 10 TOMBOL APLIKASI KELAS III -->
+<div id="externalAppsSection" class="app-container" style="display: none;">
+    <div class="app-header-mini">
+        <h3>🚀 Aplikasi & Game Interaktif</h3>
+        <span>Pilih salah satu aplikasi</span>
     </div>
-
-    <section class="section" id="aplikasi">
-      <div class="section-head">
-        <div>
-          <div class="section-kicker">Belajar sambil mencoba</div>
-          <h2>Aplikasi Pembelajaran</h2>
-          <p class="section-desc">Kumpulan fitur digital yang akan dikembangkan untuk mendukung belajar siswa.</p>
-        </div>
-      </div>
-      <div class="app-grid">
-        <article class="app-card" style="--tile:#e8f4ff"><div class="app-icon">📝</div><h3>Latihan Soal</h3><p>Berlatih soal pilihan ganda dan periksa hasil latihan secara langsung.</p><a class="app-link" href="latihan/">Buka latihan →</a></article>
-        <article class="app-card" style="--tile:#fff4d9"><div class="app-icon">⏱️</div><h3>Simulasi Ujian</h3><p>Berlatih mengerjakan soal dengan waktu seperti suasana ujian.</p><a class="app-link" href="simulasi/">Buka simulasi →</a></article>
-        <article class="app-card" style="--tile:#e8fff0"><div class="app-icon">🎯</div><h3>Arena Kuis</h3><p>Uji pemahaman melalui kuis edukatif yang seru dan menantang.</p><a class="app-link" href="kuis/">Masuk arena kuis →</a></article>
-      </div>
-      <div class="notice">ℹ️ Menu latihan, simulasi, dan kuis mandiri akan dikembangkan bertahap. Untuk mulai belajar, silakan pilih kelas pada bagian “Ayo, Pilih Kelasmu!”.</div>
-    </section>
-
-    <div class="feature-band">
-      <section class="section" id="profil">
-        <div class="profile">
-          <div>
-            <div class="section-kicker">Mengenal sekolah kita</div>
-            <h2>SD Negeri Nawangsari</h2>
-            <p class="section-desc">Sekolah sebagai tempat tumbuh, belajar, berkarya, dan membangun karakter. Melalui portal ini, siswa diharapkan dapat mengakses sumber belajar dengan lebih mudah serta mengembangkan kebiasaan belajar mandiri.</p>
-            <p class="section-desc">Portal ini dirancang untuk mendukung pembelajaran di sekolah maupun di rumah, dengan tetap mengutamakan nilai karakter, kemandirian, dan semangat berprestasi.</p>
-            <a class="btn btn-primary" href="#informasi" style="margin-top:18px">Lihat informasi sekolah</a>
-          </div>
-          <div class="profile-panel">
-            <div class="profile-label">Semangat Nawangsari</div>
-            <h2>Belajar dengan hati, tumbuh dengan karakter.</h2>
-            <p>Mari membangun lingkungan belajar yang bersih, sehat, mandiri, dan inovatif.</p>
-            <div class="value-list">
-              <div class="value-item"><span class="check">✓</span><span>Rajin belajar dan berani mencoba.</span></div>
-              <div class="value-item"><span class="check">✓</span><span>Saling menghormati dan bekerja sama.</span></div>
-              <div class="value-item"><span class="check">✓</span><span>Menjaga kejujuran dan tanggung jawab.</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div class="app-grid-compact">
+        <a href="https://link-aplikasi-1.vercel.app" target="_blank" class="app-pill"><span class="app-icon">🌙</span><span class="app-title">Kuis PAI</span></a>
+        <a href="https://link-aplikasi-2.vercel.app" target="_blank" class="app-pill"><span class="app-icon">🔢</span><span class="app-title">Matematika</span></a>
+        <a href="https://link-aplikasi-3.vercel.app" target="_blank" class="app-pill"><span class="app-icon">📖</span><span class="app-title">Membaca</span></a>
+        <a href="https://link-aplikasi-4.vercel.app" target="_blank" class="app-pill"><span class="app-icon">🗣️</span><span class="app-title">Bahasa Jawa</span></a>
+        <a href="https://link-aplikasi-5.vercel.app" target="_blank" class="app-pill"><span class="app-icon">🤝</span><span class="app-title">Pancasila</span></a>
+        <a href="https://link-aplikasi-6.vercel.app" target="_blank" class="app-pill"><span class="app-icon">🌱</span><span class="app-title">IPAS Alam</span></a>
+        <a href="https://link-aplikasi-7.vercel.app" target="_blank" class="app-pill"><span class="app-icon">🎨</span><span class="app-title">Seni Budaya</span></a>
+        <a href="https://link-aplikasi-8.vercel.app" target="_blank" class="app-pill"><span class="app-icon">🔤</span><span class="app-title">English Fun</span></a>
+        <a href="https://link-aplikasi-9.vercel.app" target="_blank" class="app-pill"><span class="app-icon">📝</span><span class="app-title">Evaluasi</span></a>
+        <a href="https://link-aplikasi-10.vercel.app" target="_blank" class="app-pill"><span class="app-icon">⭐</span><span class="app-title">Asah Otak</span></a>
     </div>
+</div>
 
-    <section class="section" id="informasi">
-      <div class="section-head">
-        <div>
-          <div class="section-kicker">Tetap terhubung</div>
-          <h2>Informasi Sekolah</h2>
-          <p class="section-desc">Bagian ini dapat digunakan untuk menampilkan berita, pengumuman, dan dokumentasi kegiatan sekolah.</p>
-        </div>
-      </div>
-      <div class="info-grid">
-        <article class="info-card"><div class="info-icon">📣</div><div><h3>Pengumuman</h3><p>Informasi penting untuk siswa dan orang tua dapat ditambahkan di bagian ini.</p></div></article>
-        <article class="info-card"><div class="info-icon">🎉</div><div><h3>Kegiatan Sekolah</h3><p>Dokumentasikan kegiatan pembelajaran, peringatan hari besar, dan prestasi siswa.</p></div></article>
-        <article class="info-card"><div class="info-icon">🖼️</div><div><h3>Galeri Sekolah</h3><p>Galeri foto dapat ditambahkan setelah foto kegiatan sekolah disiapkan.</p></div></article>
-      </div>
-      <div class="notice">Catatan: informasi profil, visi-misi, alamat, kontak, berita, dan foto resmi sebaiknya diperiksa serta dilengkapi oleh pihak sekolah sebelum website diumumkan kepada publik.</div>
-    </section>
-  </main>
+<div class="section-title"><div><h2>1. Pilih Mata Pelajaran</h2><p>Pilih salah satu mata pelajaran di bawah ini.</p></div></div><div class="subject-grid" id="subjectGrid"></div>
+<div class="section-title"><div><h2>2. Pilih Materi</h2><p id="topicSubtitle">Materi yang tersedia untuk kelas terpilih.</p></div></div><div class="topic-list" id="topicList"></div>
+<section class="lesson" id="lesson" aria-live="polite"><div class="eyebrow" id="lessonMeta">Materi pembelajaran</div><h2 id="lessonTitle"></h2><div id="lessonBody"></div><div class="quiz" id="quiz"></div><div class="lesson-actions"><button class="btn secondary" id="closeLesson" type="button">Tutup materi</button><button class="btn" id="topButton" type="button">Kembali ke daftar materi ↑</button></div></section>
+<p class="notice">Catatan untuk pengelola: materi ini merupakan bahan awal untuk pengembangan dan uji fungsi, bukan pengganti ATP/modul ajar resmi. Silakan tinjau dan sesuaikan urutan, kedalaman, serta istilah dengan ATP, modul ajar, dan buku yang digunakan SD Negeri Nawangsari.</p>
+</main><footer><div class="inner"><span>© <span id="year"></span> SD Negeri Nawangsari</span><span>Belajar dengan hati, tumbuh dengan karakter.</span></div></footer>
+<script>
+const subjects=[
+ {id:'pai',name:'Pendidikan Agama Islam',icon:'🌙',tile:'#fff4d9'},
+ {id:'indo',name:'Bahasa Indonesia',icon:'📖',tile:'#e8f4ff'},
+ {id:'mtk',name:'Matematika',icon:'🔢',tile:'#e8fff0'},
+ {id:'pancasila',name:'Pendidikan Pancasila',icon:'🤝',tile:'#f2eaff'},
+ {id:'ipas',name:'IPAS',icon:'🌱',tile:'#e2faff'},
+ {id:'seni',name:'Seni Budaya',icon:'🎨',tile:'#ffe9e9'},
+ {id:'jawa',name:'Bahasa Jawa',icon:'🗣️',tile:'#fff0e4'},
+ {id:'inggris',name:'Bahasa Inggris',icon:'🔤',tile:'#edf0ff'}
+];
+const materi=[
+ {kelas:1,subjek:'pai',judul:'Mengenal Allah dan Bersyukur',ringkas:'Mengenal Allah Swt. dan membiasakan mengucapkan hamdalah.',tujuan:'Siswa mengenal bahwa Allah Swt. adalah Tuhan yang menciptakan alam semesta dan belajar bersyukur.',isi:[['Mengenal Allah Swt.','Allah Swt. adalah Tuhan Yang Maha Esa. Kita dapat melihat tanda kebesaran-Nya melalui alam, tumbuhan, hewan, dan diri kita sendiri.'],['Membiasakan bersyukur','Ketika mendapat nikmat, kita mengucapkan الْحَمْدُ لِلّٰهِ (Alhamdulillah), yang berarti segala puji bagi Allah. Kita juga bersyukur dengan menjaga tubuh, belajar, dan berbuat baik.']],soal:[{t:'Ucapan ketika bersyukur atas nikmat Allah adalah ...',o:['Alhamdulillah','Selamat malam','Sampai jumpa'],j:0,p:'Alhamdulillah berarti segala puji bagi Allah.'},{t:'Salah satu cara bersyukur adalah ...',o:['Merusak tanaman','Menjaga lingkungan','Mengejek teman'],j:1,p:'Menjaga lingkungan merupakan salah satu bentuk syukur atas ciptaan Allah.'}]},
+ {kelas:1,subjek:'indo',judul:'Mengenal Huruf dan Kata',ringkas:'Mengenali huruf, menyusun suku kata, dan membaca kata sederhana.',tujuan:'Siswa mengenali huruf dan membaca kata sederhana dengan jelas.',isi:[['Huruf dan kata','Huruf adalah lambang bunyi. Beberapa huruf dapat disusun menjadi suku kata dan kata. Contoh: b-u-k-u menjadi kata “buku”.'],['Berlatih membaca','Bacalah perlahan, perhatikan bunyi setiap huruf, lalu gabungkan menjadi kata. Contoh kata: ibu, mata, bola, dan buku.']],soal:[{t:'Gabungan huruf b-u-k-u membentuk kata ...',o:['buku','buka','baku'],j:0,p:'Huruf b-u-k-u disusun menjadi kata buku.'},{t:'Kata yang terdiri dari nama benda adalah ...',o:['berlari','buku','cantik'],j:1,p:'Buku adalah nama benda.'}]},
+ {kelas:1,subjek:'mtk',judul:'Bilangan 1 sampai 10',ringkas:'Mengenal lambang bilangan dan menghitung benda.',tujuan:'Siswa dapat menyebutkan, membaca, dan menghitung bilangan 1–10.',isi:[['Mengenal bilangan','Bilangan digunakan untuk menyatakan banyak benda. Contoh: 🍎🍎🍎 berjumlah tiga buah apel. Lambang bilangannya adalah 3.'],['Menghitung benda','Hitung benda satu per satu dari kiri ke kanan. Pastikan setiap benda dihitung satu kali.']],soal:[{t:'Lambang bilangan setelah 4 adalah ...',o:['3','5','7'],j:1,p:'Urutan bilangan adalah 1, 2, 3, 4, 5, dan seterusnya.'},{t:'Ada 2 pensil lalu ditambah 1 pensil. Jumlahnya ...',o:['2','3','4'],j:1,p:'2 + 1 = 3.'}]},
+ {kelas:4,subjek:'pai',judul:'Salat Sunah Rawatib, Duha, dan Tahajud',ringkas:'Mengenal pengertian dan waktu pelaksanaan beberapa salat sunah.',tujuan:'Siswa menjelaskan pengertian serta waktu pelaksanaan salat sunah rawatib, duha, dan tahajud.',isi:[['Salat sunah rawatib','Salat sunah rawatib adalah salat sunah yang mengiringi salat fardu, baik sebelum maupun sesudahnya. Pelaksanaannya membantu membiasakan diri menjaga salat.'],['Salat duha','Salat duha dikerjakan pada waktu duha, setelah matahari naik hingga menjelang waktu zuhur.'],['Salat tahajud','Salat tahajud dikerjakan pada malam hari setelah tidur. Biasakan beribadah dengan ikhlas dan sesuai tuntunan yang dipelajari.']],soal:[{t:'Salat sunah yang dikerjakan pada waktu duha disebut ...',o:['Tahajud','Duha','Rawatib'],j:1,p:'Salat duha dilaksanakan pada waktu duha, setelah matahari naik hingga menjelang zuhur.'},{t:'Salat tahajud dikerjakan pada ...',o:['Malam hari setelah tidur','Saat matahari terbit','Setelah salat Id'],j:0,p:'Tahajud merupakan salat sunah malam yang dikerjakan setelah tidur.'}]},
+ {kelas:4,subjek:'mtk',judul:'Pecahan Sederhana',ringkas:'Mengenal pembilang dan penyebut melalui bagian benda utuh.',tujuan:'Siswa mengenali pecahan sederhana dan maknanya.',isi:[['Apa itu pecahan?','Pecahan menyatakan bagian dari satu keseluruhan yang dibagi sama besar. Pada pecahan 1/2, angka 1 disebut pembilang dan angka 2 disebut penyebut.'],['Contoh','Sebuah kue dibagi menjadi 4 bagian sama besar. Jika satu bagian diambil, bagian yang diambil adalah 1/4.']],soal:[{t:'Pada pecahan 3/4, angka 4 disebut ...',o:['Pembilang','Penyebut','Hasil kali'],j:1,p:'Penyebut adalah angka di bawah garis pecahan.'},{t:'Satu bagian dari benda yang dibagi menjadi 2 bagian sama besar adalah ...',o:['1/2','1/3','2/3'],j:0,p:'Satu dari dua bagian sama besar ditulis 1/2.'}]},
+ {kelas:5,subjek:'pai',judul:'Akhlak kepada Allah: Berdoa dan Bertawakal',ringkas:'Memahami doa, ikhtiar, dan tawakal dalam kehidupan sehari-hari.',tujuan:'Siswa menjelaskan pentingnya berdoa dan bertawakal setelah melakukan usaha.',isi:[['Berdoa','Berdoa adalah memohon pertolongan dan kebaikan kepada Allah Swt. Doa dapat dilakukan kapan saja dengan sopan, khusyuk, dan penuh harapan.'],['Berikhtiar dan bertawakal','Ikhtiar berarti berusaha sungguh-sungguh. Tawakal berarti menyerahkan hasil kepada Allah setelah berusaha dan berdoa. Contohnya belajar dengan tekun sebelum ujian, lalu berdoa.']],soal:[{t:'Sikap menyerahkan hasil kepada Allah setelah berusaha disebut ...',o:['Putus asa','Tawakal','Sombong'],j:1,p:'Tawakal dilakukan setelah ikhtiar dan doa, bukan menggantikan usaha.'},{t:'Sebelum ujian, sikap yang tepat adalah ...',o:['Tidak belajar dan hanya berharap','Belajar, berdoa, lalu bertawakal','Menyontek teman'],j:1,p:'Belajar adalah ikhtiar, kemudian berdoa dan bertawakal kepada Allah.'}]},
+ {kelas:6,subjek:'pai',judul:'Asmaulhusna: Al-Waliyy, Al-Hamid, Al-Adl, dan As-Sabur',ringkas:'Memahami makna empat nama Allah dan meneladaninya dalam perilaku.',tujuan:'Siswa menyebutkan makna Asmaulhusna dan memberi contoh perilaku terpuji.',isi:[['Makna Asmaulhusna','Al-Waliyy bermakna Yang Maha Melindungi; Al-Hamid Yang Maha Terpuji; Al-Adl Yang Maha Adil; dan As-Sabur Yang Maha Sabar.'],['Meneladani dalam kehidupan','Kita dapat berusaha bersikap adil kepada teman, bersabar saat menghadapi kesulitan, dan membiasakan memuji Allah atas nikmat-Nya. Sifat Allah tidak sama dengan sifat makhluk; manusia berusaha meneladani nilai kebaikannya sesuai kemampuan.']],soal:[{t:'As-Sabur memiliki makna ...',o:['Yang Maha Sabar','Yang Maha Adil','Yang Maha Terpuji'],j:0,p:'As-Sabur berarti Yang Maha Sabar.'},{t:'Contoh perilaku adil di sekolah adalah ...',o:['Memilih kasih saat kerja kelompok','Membagi tugas secara seimbang','Mengambil hak teman'],j:1,p:'Membagi tugas secara seimbang merupakan contoh bersikap adil.'}]},
+ {kelas:6,subjek:'indo',judul:'Menemukan Gagasan Utama',ringkas:'Menentukan ide pokok dalam paragraf.',tujuan:'Siswa dapat menemukan gagasan utama dan gagasan pendukung.',isi:[['Gagasan utama','Gagasan utama adalah inti pembahasan dalam paragraf. Gagasan ini dapat berada di awal, akhir, atau tersirat dalam paragraf.'],['Cara menemukan','Bacalah seluruh paragraf, tanyakan “paragraf ini membahas apa?”, lalu bedakan inti pembahasan dari rincian pendukung.']],soal:[{t:'Gagasan utama adalah ...',o:['Inti pembahasan paragraf','Judul buku saja','Kalimat yang paling panjang'],j:0,p:'Gagasan utama menyatakan inti pembahasan paragraf.'},{t:'Langkah yang tepat untuk mencari gagasan utama adalah ...',o:['Membaca satu kata saja','Membaca seluruh paragraf','Mengabaikan kalimat lain'],j:1,p:'Membaca seluruh paragraf membantu memahami inti bacaan.'}]},
+ {kelas:2,subjek:'indo',judul:'Membaca Teks Pendek',ringkas:'Membaca teks sederhana dan menemukan informasi penting.',tujuan:'Siswa membaca teks pendek dengan lancar dan menjawab pertanyaan berdasarkan isi teks.',isi:[['Membaca dengan cermat','Bacalah teks dari awal sampai akhir. Perhatikan siapa yang diceritakan, apa yang dilakukan, dan di mana peristiwa terjadi.'],['Contoh teks','“Pagi ini, Siti menyiram bunga di halaman. Ia menggunakan air secukupnya agar tanaman tetap segar.” Tokoh dalam teks adalah Siti. Kegiatan Siti adalah menyiram bunga.']],soal:[{t:'Siapa tokoh dalam teks contoh?',o:['Beni','Siti','Ibu'],j:1,p:'Teks menyebutkan bahwa Siti menyiram bunga.'},{t:'Mengapa Siti menyiram bunga?',o:['Agar tanaman tetap segar','Agar halaman kotor','Agar bunga layu'],j:0,p:'Teks menyebutkan tujuan agar tanaman tetap segar.'}]},
+ {kelas:2,subjek:'indo',judul:'Kalimat Tanya dan Tanda Tanya',ringkas:'Mengenali kata tanya dan menggunakan tanda tanya.',tujuan:'Siswa membedakan kalimat tanya dan menggunakan tanda baca yang tepat.',isi:[['Kata tanya','Kata tanya antara lain apa, siapa, kapan, di mana, mengapa, dan bagaimana. Kata tanya digunakan untuk meminta informasi.'],['Tanda tanya','Kalimat tanya diakhiri tanda tanya (?). Contoh: “Di mana kamu tinggal?” dan “Siapa nama temanmu?”']],soal:[{t:'Tanda baca di akhir kalimat tanya adalah ...',o:['Titik (.)','Tanda tanya (?)','Koma (,)'],j:1,p:'Kalimat tanya diakhiri tanda tanya.'},{t:'Kata tanya untuk menanyakan tempat adalah ...',o:['Di mana','Siapa','Kapan'],j:0,p:'“Di mana” digunakan untuk menanyakan tempat.'}]},
+ {kelas:3,subjek:'indo',judul:'Menemukan Informasi dalam Paragraf',ringkas:'Mencari informasi penting berdasarkan bacaan.',tujuan:'Siswa menemukan informasi tersurat dalam paragraf sederhana.',isi:[['Informasi penting','Informasi penting adalah keterangan yang membantu kita memahami isi bacaan. Bacalah setiap kalimat dan perhatikan nama, tempat, waktu, serta kegiatan.'],['Contoh','“Pada hari Minggu, warga membersihkan taman desa. Mereka mengumpulkan sampah dan menanam bunga.” Kegiatan warga adalah membersihkan taman, mengumpulkan sampah, dan menanam bunga.']],soal:[{t:'Kapan warga membersihkan taman?',o:['Hari Senin','Hari Minggu','Hari Jumat'],j:1,p:'Pada bacaan tertulis “Pada hari Minggu”.'},{t:'Apa yang dilakukan warga?',o:['Membersihkan taman','Menutup sekolah','Mengecat kelas'],j:0,p:'Bacaan menjelaskan warga membersihkan taman desa.'}]},
+ {kelas:3,subjek:'indo',judul:'Kalimat Saran',ringkas:'Menyampaikan saran dengan bahasa yang santun.',tujuan:'Siswa mengenali dan membuat kalimat saran yang sesuai dengan situasi.',isi:[['Apa itu saran?','Saran adalah pendapat atau anjuran untuk membantu memperbaiki keadaan. Saran disampaikan dengan bahasa yang sopan.'],['Contoh kalimat saran','Jika teman membuang sampah sembarangan, kita dapat berkata, “Sebaiknya kamu membuang sampah di tempat sampah.”']],soal:[{t:'Kalimat saran yang santun adalah ...',o:['Kamu selalu salah!','Sebaiknya kita merapikan buku bersama.','Jangan pernah bicara!'],j:1,p:'Kalimat tersebut memberi anjuran dengan bahasa yang sopan.'},{t:'Saran bertujuan untuk ...',o:['Membantu memperbaiki keadaan','Mengejek teman','Membuat orang sedih'],j:0,p:'Saran yang baik membantu memperbaiki keadaan.'}]},
+ {kelas:4,subjek:'indo',judul:'Teks Narasi',ringkas:'Mengenali tokoh, latar, dan urutan peristiwa dalam cerita.',tujuan:'Siswa mengidentifikasi unsur dan urutan peristiwa dalam teks narasi.',isi:[['Pengertian teks narasi','Teks narasi menceritakan rangkaian peristiwa. Cerita biasanya memiliki tokoh, latar, dan urutan kejadian.'],['Membaca cerita','Saat membaca cerita, perhatikan siapa tokohnya, kapan dan di mana peristiwa terjadi, serta bagaimana kejadian berlangsung dari awal hingga akhir.']],soal:[{t:'Teks narasi terutama berisi ...',o:['Rangkaian peristiwa atau cerita','Daftar harga saja','Petunjuk penggunaan alat saja'],j:0,p:'Teks narasi menyampaikan rangkaian peristiwa.'},{t:'Keterangan tempat dan waktu dalam cerita disebut ...',o:['Latar','Amanat','Judul'],j:0,p:'Latar berkaitan dengan tempat, waktu, atau suasana peristiwa.'}]},
+ {kelas:4,subjek:'indo',judul:'Wawancara dan Pertanyaan',ringkas:'Menyusun pertanyaan dan bersikap santun saat wawancara.',tujuan:'Siswa menyusun pertanyaan sesuai topik dan memahami etika wawancara.',isi:[['Apa itu wawancara?','Wawancara adalah kegiatan tanya jawab untuk memperoleh informasi dari narasumber. Pertanyaan perlu jelas dan sesuai topik.'],['Sikap saat wawancara','Sampaikan salam, perkenalkan diri, gunakan bahasa santun, dengarkan jawaban, dan ucapkan terima kasih.']],soal:[{t:'Orang yang memberikan informasi dalam wawancara disebut ...',o:['Narasumber','Pembaca','Penyunting'],j:0,p:'Narasumber adalah orang yang dimintai informasi.'},{t:'Sikap yang tepat saat narasumber menjawab adalah ...',o:['Memotong pembicaraan','Mendengarkan dengan baik','Bermain sendiri'],j:1,p:'Pewawancara perlu menghormati narasumber dengan mendengarkan.'}]},
+ {kelas:5,subjek:'indo',judul:'Iklan dan Informasi',ringkas:'Mengenali tujuan iklan dan informasi yang disampaikan.',tujuan:'Siswa mengidentifikasi tujuan, sasaran, dan informasi utama dalam iklan sederhana.',isi:[['Tujuan iklan','Iklan bertujuan memperkenalkan atau menawarkan barang, jasa, maupun ajakan. Iklan yang baik menyampaikan informasi secara jelas dan menarik.'],['Membaca iklan','Perhatikan hal yang ditawarkan, manfaatnya, siapa sasaran pembaca, dan ajakan yang disampaikan. Jangan langsung percaya sebelum memeriksa kebenaran informasi.']],soal:[{t:'Salah satu tujuan iklan adalah ...',o:['Menyampaikan penawaran atau ajakan','Menyembunyikan semua informasi','Membuat cerita tanpa tujuan'],j:0,p:'Iklan digunakan untuk menawarkan sesuatu atau menyampaikan ajakan.'},{t:'Sikap bijak terhadap iklan adalah ...',o:['Memeriksa informasi dengan cermat','Mempercayai semua klaim tanpa berpikir','Menyebarkan semua iklan'],j:0,p:'Informasi iklan sebaiknya diperiksa secara kritis.'}]},
+ {kelas:5,subjek:'indo',judul:'Meringkas Isi Bacaan',ringkas:'Menuliskan inti bacaan dengan singkat dan runtut.',tujuan:'Siswa menyusun ringkasan yang memuat gagasan penting tanpa mengubah makna.',isi:[['Cara membuat ringkasan','Bacalah teks, tentukan gagasan penting setiap bagian, lalu tulis kembali dengan kalimat sendiri secara singkat. Jangan memasukkan pendapat yang tidak ada dalam teks.'],['Ringkasan yang baik','Ringkasan memuat inti bacaan, disusun runtut, menggunakan bahasa jelas, dan tidak mengubah makna teks asli.']],soal:[{t:'Ringkasan yang baik seharusnya ...',o:['Memuat inti bacaan secara singkat','Menambahkan cerita yang tidak ada','Mengulang semua kalimat tanpa memilih'],j:0,p:'Ringkasan mengambil inti bacaan secara singkat dan tepat.'},{t:'Sebelum membuat ringkasan, kita perlu ...',o:['Membaca dan memahami teks','Hanya membaca judul','Menghapus semua gagasan penting'],j:0,p:'Memahami teks membantu memilih informasi utama.'}]},
+ {kelas:6,subjek:'indo',judul:'Surat Resmi dan Surat Pribadi',ringkas:'Membedakan tujuan dan bagian surat resmi serta surat pribadi.',tujuan:'Siswa mengenali perbedaan surat resmi dan surat pribadi beserta bagian umumnya.',isi:[['Surat pribadi','Surat pribadi ditulis untuk berkomunikasi dengan orang yang dikenal. Bahasanya dapat lebih akrab, tetapi tetap santun.'],['Surat resmi','Surat resmi digunakan untuk kepentingan formal. Bagian umumnya dapat mencakup kop surat, tanggal, nomor, perihal, alamat tujuan, salam pembuka, isi, penutup, dan tanda tangan sesuai jenis surat.']],soal:[{t:'Surat yang digunakan untuk kepentingan formal adalah ...',o:['Surat resmi','Catatan harian','Pesan rahasia tanpa penerima'],j:0,p:'Surat resmi digunakan untuk keperluan formal.'},{t:'Bahasa dalam surat resmi sebaiknya ...',o:['Baku dan santun','Bebas tanpa aturan','Mengandung ejekan'],j:0,p:'Surat resmi menggunakan bahasa yang baku dan santun.'}]},
+ {kelas:6,subjek:'indo',judul:'Teks Eksplanasi',ringkas:'Memahami teks yang menjelaskan proses terjadinya suatu peristiwa.',tujuan:'Siswa mengenali tujuan dan susunan umum teks eksplanasi.',isi:[['Pengertian teks eksplanasi','Teks eksplanasi menjelaskan bagaimana atau mengapa suatu peristiwa terjadi, misalnya proses hujan atau terjadinya pelangi.'],['Susunan umum','Teks eksplanasi umumnya diawali pernyataan umum, dilanjutkan penjelasan proses atau sebab-akibat, dan dapat diakhiri interpretasi atau penutup. Perhatikan hubungan antarkejadian dalam bacaan.']],soal:[{t:'Teks eksplanasi menjelaskan ...',o:['Proses atau sebab terjadinya peristiwa','Daftar tokoh dalam cerita saja','Percakapan tanpa topik'],j:0,p:'Teks eksplanasi menjelaskan proses atau sebab suatu peristiwa.'},{t:'Kata “karena” sering digunakan untuk menunjukkan ...',o:['Hubungan sebab','Nama tokoh','Tempat kejadian saja'],j:0,p:'“Karena” dapat menandai hubungan sebab dalam penjelasan.'}]}
+];
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <img src="logo-sekolah.png" alt="Logo sekolah">
-        <div><strong>SD NEGERI NAWANGSARI</strong><span>Portal Pendidikan & Pembelajaran</span></div>
-      </div>
-      <div class="footer-links">
-        <a href="#beranda">Beranda</a><a href="#profil">Profil Sekolah</a><a href="#kelas">Pilih Kelas</a><a href="#aplikasi">Aplikasi Belajar</a>
-      </div>
-    </div>
-    <div class="copyright">© <span id="year"></span> SD Negeri Nawangsari. Portal pembelajaran untuk mendukung belajar sepanjang hayat.</div>
-  </footer>
-  <a class="back-top" href="#beranda" aria-label="Kembali ke atas">↑</a>
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', String(open));
-      menuBtn.textContent = open ? '✕' : '☰';
+let selectedSubject='pai', activeMaterial=null;
+const kelasEl=document.getElementById('kelas'), cariEl=document.getElementById('cari'), subjectGrid=document.getElementById('subjectGrid'), topicList=document.getElementById('topicList');
+const externalAppsSection = document.getElementById('externalAppsSection');
+const roman={1:'I',2:'II',3:'III',4:'IV',5:'V',6:'VI'};
+
+function updateExternalAppVisibility() {
+    if (kelasEl.value === '3') {
+        externalAppsSection.style.display = 'block';
+    } else {
+        externalAppsSection.style.display = 'none';
+    }
+}
+
+function renderSubjects(){
+    subjectGrid.innerHTML='';
+    subjects.forEach(s=>{
+        const count=materi.filter(m=>m.kelas===+kelasEl.value&&m.subjek===s.id).length;
+        const b=document.createElement('button');
+        b.type='button';
+        b.className='subject'+(selectedSubject===s.id?' active':'');
+        b.style.setProperty('--tile',s.tile);
+        b.innerHTML=`<span class="icon">${s.icon}</span><span><strong>${s.name}</strong><small>${count?count+' materi contoh':'Materi segera ditambahkan'}</small></span>`;
+        b.addEventListener('click',()=>{selectedSubject=s.id;renderSubjects();renderTopics();hideLesson()});
+        subjectGrid.appendChild(b);
+    })
+}
+
+function renderTopics(){
+    const q=cariEl.value.trim().toLocaleLowerCase('id');
+    const list=materi.filter(m=>m.kelas===+kelasEl.value&&m.subjek===selectedSubject&&(`${m.judul} ${m.ringkas} ${m.isi.map(x=>x.join(' ')).join(' ')}`).toLocaleLowerCase('id').includes(q));
+    document.getElementById('topicSubtitle').textContent=`Kelas ${roman[kelasEl.value]} · ${subjects.find(s=>s.id===selectedSubject)?.name||''}`;
+    topicList.innerHTML='';
+    if(!list.length){
+        topicList.innerHTML='<div class="empty" style="grid-column:1/-1">📚 Belum ada materi contoh untuk pilihan ini. Materi dapat ditambahkan pada data halaman ini. Coba kelas atau mata pelajaran lain.</div>';
+        return;
+    }
+    list.forEach((m,i)=>{
+        const el=document.createElement('article');
+        el.className='topic';
+        el.innerHTML=`<div><h3>${m.judul}</h3><p>${m.ringkas}</p></div><button class="btn" type="button">Buka materi →</button>`;
+        el.querySelector('button').addEventListener('click',()=>openLesson(m));
+        topicList.appendChild(el);
+    })
+}
+
+function openLesson(m){
+    activeMaterial=m;
+    document.getElementById('lessonMeta').textContent=`Kelas ${roman[m.kelas]} · ${subjects.find(s=>s.id===m.subjek).name}`;
+    document.getElementById('lessonTitle').textContent=m.judul;
+    let html=`<div class="callout"><strong>Tujuan pembelajaran:</strong> ${m.tujuan}</div>`;
+    m.isi.forEach(([h,p])=>html+=`<h3>${h}</h3><p>${p}</p>`);
+    document.getElementById('lessonBody').innerHTML=html;
+    renderQuiz(m);
+    const lesson=document.getElementById('lesson');
+    lesson.classList.add('show');
+    lesson.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function renderQuiz(m){
+    const box=document.getElementById('quiz');
+    if(!m.soal?.length){
+        box.innerHTML='<h3>Latihan singkat</h3><p>Latihan untuk materi ini akan ditambahkan.</p>';
+        return;
+    }
+    box.innerHTML='<h3>📝 Latihan Singkat</h3><p>Pilih satu jawaban yang paling tepat untuk setiap soal.</p>'+m.soal.map((s,i)=>`<div class="question"><p>${i+1}. ${s.t}</p>${s.o.map((o,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}"> <span>${String.fromCharCode(65+j)}. ${o}</span></label>`).join('')}<div id="explain${i}" class="notice hidden"></div></div>`).join('')+'<div class="lesson-actions"><button class="btn" type="button" id="checkQuiz">Periksa Jawaban</button><button class="btn secondary" type="button" id="retryQuiz">Ulangi Latihan</button></div><div id="quizResult" class="feedback" role="status">';
+    document.getElementById('checkQuiz').addEventListener('click',()=>{
+        let score=0,answered=0;
+        m.soal.forEach((s,i)=>{
+            const chosen=box.querySelector(`input[name="q${i}"]:checked`);
+            const ex=document.getElementById('explain'+i);
+            ex.classList.remove('hidden');
+            if(chosen){
+                answered++;
+                if(+chosen.value===s.j)score++;
+                ex.textContent=(+chosen.value===s.j?'Benar. ':'Belum tepat. ')+s.p;
+            }else ex.textContent='Belum dijawab. '+s.p;
+        });
+        const res=document.getElementById('quizResult');
+        res.className='feedback show '+(score===m.soal.length?'good':'bad');
+        res.textContent=`Hasil latihan: ${score} dari ${m.soal.length} benar. ${answered<m.soal.length?'Masih ada soal yang belum dijawab. ':''}${score===m.soal.length?'Hebat! Kamu menjawab semua soal dengan benar.':'Pelajari kembali materi dan coba lagi, ya!'}`;
     });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        menuBtn.setAttribute('aria-expanded', 'false');
-        menuBtn.textContent = '☰';
-      });
+    document.getElementById('retryQuiz').addEventListener('click',()=>{
+        box.querySelectorAll('input[type=radio]').forEach(x=>x.checked=false);
+        m.soal.forEach((_,i)=>{
+            const ex=document.getElementById('explain'+i);
+            ex.classList.add('hidden');
+            ex.textContent='';
+        });
+        const res=document.getElementById('quizResult');
+        res.className='feedback';
+        res.textContent='';
     });
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+}
+
+function hideLesson(){
+    document.getElementById('lesson').classList.remove('show');
+    activeMaterial=null;
+}
+
+kelasEl.addEventListener('change',()=>{
+    selectedSubject='pai';
+    updateExternalAppVisibility();
+    renderSubjects();
+    renderTopics();
+    hideLesson();
+    history.replaceState(null,'',`?kelas=${kelasEl.value}`);
+});
+
+cariEl.addEventListener('input',renderTopics);
+document.getElementById('closeLesson').addEventListener('click',hideLesson);
+document.getElementById('topButton').addEventListener('click',()=>{
+    hideLesson();
+    document.querySelector('.section-title').scrollIntoView({behavior:'smooth'});
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+
+const params=new URLSearchParams(location.search);
+const requested=Number(params.get('kelas'));
+if(requested>=1&&requested<=6) kelasEl.value=String(requested);
+
+updateExternalAppVisibility();
+renderSubjects();
+renderTopics();
+</script>
+</body></html>
