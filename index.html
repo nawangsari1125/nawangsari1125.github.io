@@ -6,6 +6,23 @@
   <meta name="description" content="Portal resmi informasi dan pembelajaran SD Negeri Nawangsari.">
   <title>SD Negeri Nawangsari | Portal Pembelajaran</title>
   <style>
+    /* Efek interaktif untuk kartu Mata Pelajaran */
+.subject-card.clickable {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.subject-card.clickable:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(9, 44, 85, 0.12);
+  border-color: #b9d8f7;
+}
+
+.subject-card.clickable h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
     :root {
       --navy: #092c55;
       --blue: #125da5;
