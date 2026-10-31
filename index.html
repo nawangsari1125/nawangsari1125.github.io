@@ -599,8 +599,33 @@
     // Skrip Simulasi Kirim Buku Tamu
     
 <script>
-    <script>
-    // Pastikan masukan URL Web App dari Apps Script Anda yang berawalan https://script.google.com/macros/s/.../exec
+    // Konfigurasi Navigasi Mobile
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (menuBtn && navLinks) {
+      menuBtn.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', String(open));
+        menuBtn.textContent = open ? '✕' : '☰';
+      });
+      
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          menuBtn.textContent = '☰';
+        });
+      });
+    }
+
+    // Tahun Otomatis di Footer
+    const yearEl = document.getElementById('year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+
+    // Integrasi Pengiriman Buku Tamu & Pesan/Saran ke Google Sheets
     const scriptURL = 'https://script.google.com/macros/s/AKfycbz-ZT-yDP5CZiHDcRx8meDZ3_LFJ6oC3ij2RZj1uh-1ibtCk1SjVuM3mL0K3MWdd774/exec';
     
     const feedbackForm = document.getElementById('feedbackForm');
