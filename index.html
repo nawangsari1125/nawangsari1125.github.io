@@ -158,7 +158,30 @@
     }
 
     .profile { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: center; }
-    .profile-panel { background: var(--navy); color: #fff; border-radius: 22px; padding: 24px; position: relative; overflow: hidden; }
+    .profile-panel { 
+      background: var(--navy); 
+      color: #fff; 
+      border-radius: 22px; 
+      padding: 24px; 
+      position: relative; 
+      overflow: hidden; 
+    }
+    
+    /* Pastikan warna teks judul (h2) di dalam panel profil berwarna putih terang */
+    .profile-panel h2 { 
+      color: #ffffff !important; 
+      font-size: 1.4rem;
+      margin: 8px 0 12px;
+      line-height: 1.3;
+    }
+
+    .profile-panel p { 
+      color: #d9e7f7; 
+      text-align: justify; 
+      font-size: 0.95rem; 
+      margin-bottom: 14px; 
+    }
+   
     .profile-panel:after { content: ""; position: absolute; width: 140px; height: 140px; right: -40px; bottom: -60px; border: 20px solid rgba(255,255,255,.07); border-radius: 50%; }
     .section-desc { color: var(--muted); margin: 8px 0 0; max-width: 580px; text-align: justify; }
     .profile-panel p { color: #d9e7f7; text-align: justify; font-size: 0.95rem; margin-bottom: 14px; }
