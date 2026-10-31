@@ -1,1 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulasi Ujian CBT | SD Negeri Nawangsari</title>
+  <style>
+    :root {
+      --navy: #092c55;
+      --blue: #125da5;
+      --sky: #eaf5ff;
+      --gold: #f2bd45;
+      --ink: #172b45;
+      --muted: #61738a;
+      --white: #ffffff;
+      --line: #e4ebf3;
+      --shadow: 0 12px 34px rgba(9,44,85,.10);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: "Nunito", "Segoe UI", Arial, sans-serif;
+      color: var(--ink); background: #f7faff; line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
 
+    /* Header */
+    .header { background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); }
+    .nav-wrap { max-width: 1160px; margin: auto; padding: 13px 22px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; color: var(--navy); }
+    .back-btn { background: var(--sky); color: var(--blue); padding: 8px 14px; border-radius: 10px; font-weight: 800; font-size: 0.88rem; transition: 0.2s; }
+    .back-btn:hover { background: var(--blue); color: #fff; }
+
+    /* Kontainer Utama */
+    .container { max-width: 850px; margin: 40px auto; padding: 0 22px; }
+    
+    /* Panel Ujian */
+    .exam-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    /* Bar Atas Ujian (Timer & Info) */
+    .exam-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--line);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .exam-title h2 { color: var(--navy); margin: 0; font-size: 1.35rem; }
+    .exam-title span { color: var(--muted); font-size: 0.85rem; }
+    
+    /* Kotak Timer */
+    .timer-box {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      color: #856404;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-weight: 900;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Soal & Pilihan */
+    .question-number { color: var(--blue); font-weight: 1000; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 8px; }
+    .question-text { color: var(--navy); font-size: 1.15rem; font-weight: 800; margin-bottom: 20px; }
+    
+    .options-list { display: grid; gap: 12px; margin-bottom: 30px; }
+    .option-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      cursor: pointer;
+      background: #fcfdfe;
+      transition: 0.2s;
+      font-weight: 700;
+    }
+    .option-item:hover { border-color: var(--blue); background: var(--sky); }
+    .option-item input { accent-color: var(--blue); width: 18px; height: 18px; }
+
+    /* Tombol Navigasi Ujian */
+    .exam-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+    }
+    .btn {
+      padding: 11px 22px;
+      border-radius: 12px;
+      font-weight: 900;
+      cursor: pointer;
+      border: none;
+      transition: 0.2s;
+    }
+    .btn-prev { background: #e4ebf3; color: var(--navy); }
+    .btn-next, .btn-submit { background: var(--navy); color: #fff; }
+    .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+    /* Hasil Ujian (Selesai) */
+    .result-box {
+      text-align: center;
+      padding: 40px 20px;
+      display: none;
+    }
+    .result-score {
+      font-size: 3.5rem;
+      font-weight: 1000;
+      color: var(--blue);
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="nav-wrap">
+      <div class="brand">⏱️ Simulasi Ujian CBT SD Negeri Nawangsari</div>
+      <a class="back-btn" href="../">← Keluar Ujian</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="exam-card">
+      
+      <!-- TAMPILAN SOAL UJIAN -->
+      <div id="quizContainer">
+        <div class="exam-header">
+          <div class="exam-title">
+            <h2>Asesmen Literasi & Numerasi</h2>
+            <span>Tahun Ajaran 2026/2027</span>
+          </div>
+          <div class="timer-box" id="timerDisplay">
+            ⏳ Sisa Waktu: <span id="timeRemaining">10:00</span>
+          </div>
+        </div>
+
+        <div class="question-number" id="qNum">Soal 1 dari 5</div>
+        <div class="question-text" id="qText">Memuat pertanyaan...</div>
+
+        <div class="options-list" id="optionsList">
+          <!-- Pilihan ganda akan dimuat otomatis oleh JavaScript -->
+        </div>
+
+        <div class="exam-footer">
+          <button class="btn btn-prev" id="prevBtn" onclick="prevQuestion()" disabled>← Sebelumnya</button>
+          <button class="btn btn-next" id="nextBtn" onclick="nextQuestion()">Selanjutnya →</button>
+        </div>
+      </div>
+
+      <!-- TAMPILAN HASIL SELESAI UJIAN -->
+      <div id="resultContainer" class="result-box">
+        <h2>🎉 Ujian Telah Selesai!</h2>
+        <p style="color: var(--muted);">Berikut adalah hasil perolehan nilai simulasi ujian Anda:</p>
+        <div class="result-score" id="finalScore">0</div>
+        <p id="resultMessage" style="font-weight: 800; color: var(--navy);"></p>
+        <div style="margin-top: 30px;">
+          <a href="../" class="btn btn-next" style="display: inline-block;">Kembali ke Beranda 🏠</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Database Soal Simulasi Ujian
+    const questions = [
+      {
+        question: "Ibukota Provinsi Jawa Tengah tempat sekolah kita berada adalah...",
+        options: ["Semarang", "Surakarta", "Pekalongan", "Tegal"],
+        answer: 0
+      },
+      {
+        question: "Hasil dari 125 + 75 - 50 adalah...",
+        options: ["140", "150", "160", "170"],
+        answer: 1
+      },
+      {
+        question: "Tumbuhan hijau dapat membuat makanannya sendiri melalui proses...",
+        options: ["Respirasi", "Fotosintesis", "Transpirasi", "Erosi"],
+        answer: 1
+      },
+      {
+        question: "Sikap saling menghormati antarteman di sekolah sesuai dengan pengamalan Pancasila sila ke...",
+        options: ["Sila Pertama", "Sila Kedua", "Sila Ketiga", "Sila Keempat"],
+        answer: 1
+      },
+      {
+        question: "Alat indra pada manusia yang digunakan untuk mengecap rasa makanan adalah...",
+        options: ["Kulit", "Hidung", "Lidah", "Telinga"],
+        answer: 2
+      }
+    ];
+
+    let currentIdx = 0;
+    let userAnswers = new Array(questions.length).fill(null);
+    let timeLeft = 600; // 10 Menit (dalam detik)
+    let timerInterval;
+
+    const qNum = document.getElementById('qNum');
+    const qText = document.getElementById('qText');
+    const optionsList = document.getElementById('optionsList');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const timeRemaining = document.getElementById('timeRemaining');
+    const quizContainer = document.getElementById('quizContainer');
+    const resultContainer = document.getElementById('resultContainer');
+    const finalScore = document.getElementById('finalScore');
+    const resultMessage = document.getElementById('resultMessage');
+
+    // Memulai Timer Hitung Mundur
+    function startTimer() {
+      timerInterval = setInterval(() => {
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          submitExam(); // Otomatis kumpul jika waktu habis
+        } else {
+          timeLeft--;
+          let minutes = Math.floor(timeLeft / 60);
+          let seconds = timeLeft % 60;
+          timeRemaining.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+      }, 1000);
+    }
+
+    // Memuat Soal ke Layar
+    function loadQuestion() {
+      const current = questions[currentIdx];
+      qNum.textContent = `Soal ${currentIdx + 1} dari ${questions.length}`;
+      qText.textContent = current.question;
+      
+      optionsList.innerHTML = '';
+      current.options.forEach((opt, index) => {
+        const isChecked = userAnswers[currentIdx] === index ? 'checked' : '';
+        const item = document.createElement('label');
+        item.className = 'option-item';
+        item.innerHTML = `
+          <input type="radio" name="answer" value="${index}" ${isChecked} onclick="saveAnswer(${index})">
+          <span>${String.fromCharCode(65 + index)}. ${opt}</span>
+        `;
+        optionsList.appendChild(item);
+      });
+
+      prevBtn.disabled = currentIdx === 0;
+      if (currentIdx === questions.length - 1) {
+        nextBtn.textContent = 'Kirim Ujian 🚀';
+        nextBtn.className = 'btn btn-submit';
+      } else {
+        nextBtn.textContent = 'Selanjutnya →';
+        nextBtn.className = 'btn btn-next';
+      }
+    }
+
+    // Menyimpan Jawaban Siswa
+    function saveAnswer(index) {
+      userAnswers[currentIdx] = index;
+    }
+
+    // Tombol Navigasi: Selanjutnya / Kirim
+    function nextQuestion() {
+      if (currentIdx < questions.length - 1) {
+        currentIdx++;
+        loadQuestion();
+      } else {
+        if (confirm("Apakah Anda yakin ingin menyelesaikan dan mengirimkan jawaban ujian?")) {
+          submitExam();
+        }
+      }
+    }
+
+    // Tombol Navigasi: Sebelumnya
+    function prevQuestion() {
+      if (currentIdx > 0) {
+        currentIdx--;
+        loadQuestion();
+      }
+    }
+
+    // Proses Penilaian & Menampilkan Hasil
+    function submitExam() {
+      clearInterval(timerInterval);
+      let score = 0;
+      questions.forEach((q, idx) => {
+        if (userAnswers[idx] === q.answer) {
+          score += 20; // Bobot nilai per soal (Total 100)
+        }
+      });
+
+      quizContainer.style.display = 'none';
+      resultContainer.style.display = 'block';
+      finalScore.textContent = score;
+
+      if (score >= 80) {
+        resultMessage.textContent = "Luar biasa! Pertahankan prestasi belajarmu, anak hebat! 🌟";
+      } else if (score >= 60) {
+        resultMessage.textContent = "Bagus! Tingkatkan lagi belajarmu agar lebih menguasai materi. 👍";
+      } else {
+        resultMessage.textContent = "Tetap semangat! Jangan menyerah dan coba pelajari materinya kembali ya. 💪";
+      }
+    }
+
+    // Inisialisasi saat halaman dibuka
+    window.onload = () => {
+      loadQuestion();
+      startTimer();
+    };
+  </script>
+</body>
+</html>
