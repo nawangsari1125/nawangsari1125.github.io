@@ -114,7 +114,53 @@
     .app-icon { position:relative; width:54px; height:54px; border-radius:16px; display:grid; place-items:center; font-size:1.6rem; background:var(--tile,#e8f4ff); margin-bottom:17px; }
     .app-card p { min-height:48px; }
     .app-link { display:inline-block; margin-top:16px; color:var(--blue); font-weight:900; font-size:.9rem; }
-    .profile { display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:stretch; }
+    /* Penyesuaian agar bagian profil lebih ramping dan tulisan rata */
+    .profile { 
+      display: grid; 
+      grid-template-columns: 1.1fr 0.9fr; 
+      gap: 24px; 
+      align-items: center; 
+    }
+    
+    .profile-panel { 
+      background: var(--navy); 
+      color: #fff; 
+      border-radius: 22px; 
+      padding: 24px; /* Membuat panel kanan lebih padat/ramping */
+      position: relative; 
+      overflow: hidden; 
+    }
+    
+    .profile-panel:after { 
+      content: ""; 
+      position: absolute; 
+      width: 140px; 
+      height: 140px; 
+      right: -40px; 
+      bottom: -60px; 
+      border: 20px solid rgba(255,255,255,.07); 
+      border-radius: 50%; 
+    }
+    
+    /* Membuat teks paragraf menjadi rata kiri-kanan (justify) */
+    .section-desc { 
+      color: var(--muted); 
+      margin: 8px 0 0; 
+      max-width: 580px; 
+      text-align: justify; 
+    }
+    
+    .profile-panel p { 
+      color: #d9e7f7; 
+      text-align: justify; 
+      font-size: 0.95rem; 
+      margin-bottom: 14px; 
+    }
+
+    /* Mengurangi sedikit jarak padding vertikal pada section profil agar lebih ringkas */
+    #profil {
+      padding: 40px 22px;
+    }
     .profile-panel { background:var(--navy); color:#fff; border-radius:26px; padding:30px; position:relative; overflow:hidden; }
     .profile-panel:after { content:""; position:absolute; width:190px; height:190px; right:-60px; bottom:-80px; border:28px solid rgba(255,255,255,.07); border-radius:50%; }
     .profile-panel h2 { color:#fff; }
