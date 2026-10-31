@@ -599,7 +599,8 @@
     // Skrip Simulasi Kirim Buku Tamu
     
 <script>
-    // Ganti teks di bawah ini dengan URL Web App dari Google Apps Script Anda
+    <script>
+    // Pastikan masukan URL Web App dari Apps Script Anda yang berawalan https://script.google.com/macros/s/.../exec
     const scriptURL = 'https://script.google.com/macros/s/AKfycbz-ZT-yDP5CZiHDcRx8meDZ3_LFJ6oC3ij2RZj1uh-1ibtCk1SjVuM3mL0K3MWdd774/exec';
     
     const feedbackForm = document.getElementById('feedbackForm');
@@ -613,24 +614,28 @@
         btnKirim.disabled = true;
         btnKirim.textContent = 'Mengirim Pesan...';
 
-        // Mengirim data form ke Google Sheets
-        fetch(scriptURL, { method: 'POST', body: new FormData(feedbackForm) })
-          .then(response => {
-            alertSuccess.style.display = 'block';
-            feedbackForm.reset();
-            btnKirim.disabled = false;
-            btnKirim.textContent = 'Kirim Pesan 🚀';
+        fetch(scriptURL, { 
+          method: 'POST', 
+          mode: 'no-cors', // Menghindari masalah CORS di browser
+          body: new FormData(feedbackForm) 
+        })
+        .then(() => {
+          // Tampilkan notifikasi sukses
+          alertSuccess.style.display = 'block';
+          feedbackForm.reset();
+          btnKirim.disabled = false;
+          btnKirim.textContent = 'Kirim Pesan 🚀';
 
-            setTimeout(() => {
-              alertSuccess.style.display = 'none';
-            }, 5000);
-          })
-          .catch(error => {
-            console.error('Error!', error.message);
-            alert('Gagal mengirim pesan. Silakan coba lagi.');
-            btnKirim.disabled = false;
-            btnKirim.textContent = 'Kirim Pesan 🚀';
-          });
+          setTimeout(() => {
+            alertSuccess.style.display = 'none';
+          }, 5000);
+        })
+        .catch(error => {
+          console.error('Error!', error.message);
+          alert('Gagal mengirim pesan. Silakan periksa koneksi atau coba lagi.');
+          btnKirim.disabled = false;
+          btnKirim.textContent = 'Kirim Pesan 🚀';
+        });
       });
     }
   </script>
