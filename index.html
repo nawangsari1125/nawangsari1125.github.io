@@ -493,36 +493,7 @@
       </section>
     </div>
 
-    <section class="section" id="informasi">
-      <!-- BUKU TAMU & KOTAK SARAN DIGITAL -->
-      <div class="feedback-card">
-        <h3 style="color: var(--navy); font-size: 1.2rem; margin: 0 0 6px;">💬 Buku Tamu & Pesan/Saran</h3>
-        <p style="color: var(--muted); font-size: 0.9rem; margin: 0 0 20px;">Sampaikan pertanyaan, masukan, atau saran Anda untuk kemajuan SD Negeri Nawangsari.</p>
-        
-        <form id="feedbackForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="namaPengirim">Nama Lengkap *</label>
-              <input type="text" id="namaPengirim" name="nama" class="form-control" placeholder="Contoh: Bpk. Ahmad / Orang Tua Kelas 3" required>
-            </div>
-            <div class="form-group">
-              <label for="kontakPengirim">No. WhatsApp / Email</label>
-              <input type="text" id="kontakPengirim" name="kontak" class="form-control" placeholder="Contoh: 081234567890">
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="pesanPengirim">Pesan / Masukan *</label>
-            <textarea id="pesanPengirim" name="pesan" class="form-control" rows="4" placeholder="Tuliskan saran atau masukan Anda di sini..." required></textarea>
-          </div>
-
-          <button type="submit" class="btn-submit" id="btnKirimPesan">Kirim Pesan 🚀</button>
-        </form>
-
-        <div id="alertSuccess" class="alert-success">
-          ✅ Terima kasih! Pesan dan masukan Anda telah berhasil terkirim.
-        </div>
-      </div>
+  <section class="section" id="informasi">
       <div class="section-head">
         <div>
           <div class="section-kicker">Tetap terhubung</div>
@@ -579,7 +550,37 @@
         </article>
       </div>
 
-    <!-- BAGIAN GALERI KEGIATAN SEKOLAH (DIPERLUAS UNTUK BANYAK GAMBAR) -->
+      <!-- BUKU TAMU & KOTAK SARAN DIGITAL (Ditempatkan di bawah informasi sekolah agar lebih rapi) -->
+      <div class="feedback-card">
+        <h3 style="color: var(--navy); font-size: 1.2rem; margin: 0 0 6px;">💬 Buku Tamu & Pesan/Saran</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; margin: 0 0 20px;">Sampaikan pertanyaan, masukan, atau saran Anda untuk kemajuan SD Negeri Nawangsari.</p>
+        
+        <form id="feedbackForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="namaPengirim">Nama Lengkap *</label>
+              <input type="text" id="namaPengirim" name="nama" class="form-control" placeholder="Contoh: Bpk. Ahmad / Orang Tua Kelas 3" required>
+            </div>
+            <div class="form-group">
+              <label for="kontakPengirim">No. WhatsApp / Email</label>
+              <input type="text" id="kontakPengirim" name="kontak" class="form-control" placeholder="Contoh: 081234567890">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="pesanPengirim">Pesan / Masukan *</label>
+            <textarea id="pesanPengirim" name="pesan" class="form-control" rows="4" placeholder="Tuliskan saran atau masukan Anda di sini..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" id="btnKirimPesan">Kirim Pesan 🚀</button>
+        </form>
+
+        <div id="alertSuccess" class="alert-success">
+          ✅ Terima kasih! Pesan dan masukan Anda telah berhasil terkirim.
+        </div>
+      </div>
+
+      <!-- BAGIAN GALERI KEGIATAN SEKOLAH -->
       <div style="margin-top: 45px;">
         <div class="section-head" style="margin-bottom: 15px;">
           <div>
@@ -588,13 +589,10 @@
           </div>
         </div>
 
-        <!-- Grid galeri diubah agar bisa menampung banyak foto dengan rapi -->
         <div class="gallery-grid" style="grid-template-columns: repeat(3, 1fr); gap: 20px;">
-          
-          <!-- Foto 1 -->
           <article class="gallery-card">
             <div class="gallery-img-box" style="padding: 0; height: 180px;">
-              <img src="upacara.jpeg" alt="Upacara Bendera" style="width: 80%; height: 70%; object-fit: cover;">
+              <img src="upacara.jpeg" alt="Upacara Bendera" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div class="gallery-body">
               <h3>Kegiatan Upacara Bendera</h3>
@@ -602,10 +600,9 @@
             </div>
           </article>
 
-          <!-- Foto 2 -->
           <article class="gallery-card">
             <div class="gallery-img-box" style="padding: 0; height: 180px;">
-              <img src="digitalis.jpeg" alt="Pembelajaran Digital" style="width: 80%; height: 70%; object-fit: cover;">
+              <img src="digitalis.jpeg" alt="Pembelajaran Digital" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div class="gallery-body">
               <h3>Pembelajaran Digital</h3>
@@ -613,7 +610,6 @@
             </div>
           </article>
 
-          <!-- Foto 3 -->
           <article class="gallery-card">
             <div class="gallery-img-box" style="padding: 0; height: 180px;">
               <img src="bersih.jpg" alt="Jumat Bersih" style="width: 100%; height: 100%; object-fit: cover;">
@@ -624,7 +620,6 @@
             </div>
           </article>
 
-          <!-- Foto 4 (Tambahan Baru) -->
           <article class="gallery-card">
             <div class="gallery-img-box" style="padding: 0; height: 180px;">
               <img src="pramuka.jpeg" alt="Kegiatan Pramuka" style="width: 100%; height: 100%; object-fit: cover;">
@@ -635,7 +630,6 @@
             </div>
           </article>
 
-          <!-- Foto 5 (Tambahan Baru) -->
           <article class="gallery-card">
             <div class="gallery-img-box" style="padding: 0; height: 180px;">
               <img src="senam.jpg" alt="Senam Pagi" style="width: 100%; height: 100%; object-fit: cover;">
@@ -646,9 +640,8 @@
             </div>
           </article>
 
-          <!-- Foto 6 (Tambahan Baru) -->
           <article class="gallery-card">
-            <div class="gallery-img-box" style="padding: 0; height: 180px;">
+            <div class="gallery-img-box" style="padding:0; height: 180px;">
               <img src="pameran.jpeg" alt="Pameran Karya" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div class="gallery-body">
@@ -656,9 +649,10 @@
               <p>Menampilkan hasil kreativitas seni dan kerajinan tangan anak-anak.</p>
             </div>
           </article>
-
         </div>
       </div>
+    </section>
+  </main>
       <!-- AKHIR GALERI -->
 
   <footer>
