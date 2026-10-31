@@ -596,10 +596,8 @@
     });
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Skrip Simulasi Kirim Buku Tamu
-    
 <script>
-    // Konfigurasi Navigasi Mobile
+    // 1. Konfigurasi Navigasi Mobile
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
     
@@ -619,14 +617,14 @@
       });
     }
 
-    // Tahun Otomatis di Footer
+    // 2. Tahun Otomatis di Footer
     const yearEl = document.getElementById('year');
     if (yearEl) {
       yearEl.textContent = new Date().getFullYear();
     }
 
-    // Integrasi Pengiriman Buku Tamu & Pesan/Saran ke Google Sheets
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbz-ZT-yDP5CZiHDcRx8meDZ3_LFJ6oC3ij2RZj1uh-1ibtCk1SjVuM3mL0K3MWdd774/exec';
+    // 3. Integrasi Pengiriman Buku Tamu & Pesan/Saran ke Google Sheets
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz-ZT-yDP5CZiHDcRx8meDZ3_LFJ6oC3ij2RZj1uh-1ibtCk1SjVuM3mL0K3kWdd774/exec';
     
     const feedbackForm = document.getElementById('feedbackForm');
     const alertSuccess = document.getElementById('alertSuccess');
@@ -641,11 +639,10 @@
 
         fetch(scriptURL, { 
           method: 'POST', 
-          mode: 'no-cors', // Menghindari masalah CORS di browser
+          mode: 'no-cors', 
           body: new FormData(feedbackForm) 
         })
         .then(() => {
-          // Tampilkan notifikasi sukses
           alertSuccess.style.display = 'block';
           feedbackForm.reset();
           btnKirim.disabled = false;
@@ -664,5 +661,7 @@
       });
     }
   </script>
+</body>
+</html>
 </body>
 </html>
