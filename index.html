@@ -6,6 +6,75 @@
   <meta name="description" content="Portal resmi informasi dan pembelajaran SD Negeri Nawangsari.">
   <title>SD Negeri Nawangsari | Portal Pembelajaran</title>
   <style>
+    /* Style untuk Formulir Buku Tamu / Kotak Saran */
+    .feedback-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 6px 22px rgba(9,44,85,.04);
+      margin-top: 30px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: var(--ink);
+      background: #fcfdfe;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(18,93,165,0.12);
+      background: #fff;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .btn-submit {
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-submit:hover {
+      background: var(--blue);
+      transform: translateY(-2px);
+    }
+    .alert-success {
+      display: none;
+      margin-top: 15px;
+      padding: 12px 16px;
+      background: #e8fff0;
+      border: 1px solid #b3f0c4;
+      border-radius: 12px;
+      color: #155d34;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+    @media (max-width: 680px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
     /* Efek interaktif untuk kartu Mata Pelajaran */
 .subject-card.clickable {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
@@ -425,6 +494,35 @@
     </div>
 
     <section class="section" id="informasi">
+      <!-- BUKU TAMU & KOTAK SARAN DIGITAL -->
+      <div class="feedback-card">
+        <h3 style="color: var(--navy); font-size: 1.2rem; margin: 0 0 6px;">💬 Buku Tamu & Pesan/Saran</h3>
+        <p style="color: var(--muted); font-size: 0.9rem; margin: 0 0 20px;">Sampaikan pertanyaan, masukan, atau saran Anda untuk kemajuan SD Negeri Nawangsari.</p>
+        
+        <form id="feedbackForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="namaPengirim">Nama Lengkap *</label>
+              <input type="text" id="namaPengirim" name="nama" class="form-control" placeholder="Contoh: Bpk. Ahmad / Orang Tua Kelas 3" required>
+            </div>
+            <div class="form-group">
+              <label for="kontakPengirim">No. WhatsApp / Email</label>
+              <input type="text" id="kontakPengirim" name="kontak" class="form-control" placeholder="Contoh: 081234567890">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="pesanPengirim">Pesan / Masukan *</label>
+            <textarea id="pesanPengirim" name="pesan" class="form-control" rows="4" placeholder="Tuliskan saran atau masukan Anda di sini..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" id="btnKirimPesan">Kirim Pesan 🚀</button>
+        </form>
+
+        <div id="alertSuccess" class="alert-success">
+          ✅ Terima kasih! Pesan dan masukan Anda telah berhasil terkirim.
+        </div>
+      </div>
       <div class="section-head">
         <div>
           <div class="section-kicker">Tetap terhubung</div>
