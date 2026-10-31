@@ -462,6 +462,7 @@
       </div>
 
       <!-- BUKU TAMU & KOTAK SARAN DIGITAL (Tampilan Baru Bergradasi) -->
+      <!-- BUKU TAMU & KOTAK SARAN DIGITAL -->
       <div class="feedback-card">
         <h3 style="color: var(--navy); font-size: 1.2rem; margin: 0 0 6px;">💬 Buku Tamu & Pesan/Saran</h3>
         <p style="color: var(--muted); font-size: 0.9rem; margin: 0 0 20px;">Sampaikan pertanyaan, masukan, atau saran Anda untuk kemajuan SD Negeri Nawangsari.</p>
@@ -483,7 +484,14 @@
             <textarea id="pesanPengirim" name="pesan" class="form-control" rows="4" placeholder="Tuliskan saran atau masukan Anda di sini..." required></textarea>
           </div>
 
-          <button type="submit" class="btn-submit" id="btnKirimPesan">Kirim Pesan 🚀</button>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 15px;">
+            <button type="submit" class="btn-submit" id="btnKirimPesan">Kirim Pesan 🚀</button>
+            
+            <!-- Kalimat Bantuan & Kontak Admin WhatsApp -->
+            <div style="font-size: 0.85rem; color: var(--muted); text-align: right;">
+              Butuh respon cepat? Hubungi Admin via <a href="https://wa.me/0895378275170?text=Halo%20Admin%20SD%20Negeri%20Nawangsari,%20saya%20ingin%20bertanya..." target="_blank" style="color: #25d366; font-weight: 800; text-decoration: underline;">WhatsApp 📞 0895378275170</a>
+            </div>
+          </div>
         </form>
 
         <div id="alertSuccess" class="alert-success">
