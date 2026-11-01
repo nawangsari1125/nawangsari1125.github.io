@@ -1,1 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri Kegiatan & Prestasi | SD Negeri Nawangsari</title>
+  <style>
+    :root {
+      --navy: #092c55;
+      --blue: #125da5;
+      --sky: #eaf5ff;
+      --gold: #f2bd45;
+      --ink: #172b45;
+      --muted: #61738a;
+      --line: #e4ebf3;
+      --white: #ffffff;
+      --shadow: 0 12px 34px rgba(9,44,85,.10);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: "Nunito", "Segoe UI", Arial, sans-serif;
+      color: var(--ink); background: #f7faff; line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    
+    /* Header & Navigasi Ringkas */
+    header { background: var(--navy); color: #fff; padding: 16px 22px; position: sticky; top: 0; z-index: 10; }
+    .header-wrap { max-width: 1160px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+    .brand-title { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 1.1rem; }
+    .btn-back { background: rgba(255,255,255,0.15); color: #fff; padding: 8px 16px; border-radius: 999px; font-size: 0.88rem; font-weight: 800; border: 1px solid rgba(255,255,255,0.2); transition: 0.2s; }
+    .btn-back:hover { background: var(--gold); color: var(--navy); }
 
+    .container { max-width: 1160px; margin: auto; padding: 40px 22px 60px; }
+    
+    /* Hero Title */
+    .hero-title { text-align: center; margin-bottom: 35px; }
+    .hero-title h1 { color: var(--navy); font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin: 0 0 10px; }
+    .hero-title p { color: var(--muted); max-width: 620px; margin: auto; font-size: 1rem; }
+
+    /* Tombol Filter Kategori */
+    .filter-wrap { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 35px; }
+    .filter-btn {
+      background: #fff; border: 1px solid var(--line); padding: 9px 20px; border-radius: 999px;
+      font-weight: 800; font-size: 0.88rem; color: var(--navy); cursor: pointer; transition: 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+    /* Grid Galeri Foto */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .gallery-card {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+      overflow: hidden; box-shadow: 0 6px 20px rgba(9,44,85,.05); transition: 0.25s; cursor: pointer;
+    }
+    .gallery-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .gallery-img-box { width: 100%; height: 210px; overflow: hidden; position: relative; background: var(--sky); }
+    .gallery-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .gallery-card:hover .gallery-img-box img { transform: scale(1.06); }
+    .badge-tag {
+      position: absolute; top: 12px; left: 12px; background: rgba(9, 44, 85, 0.85); color: #fff;
+      font-size: 0.72rem; font-weight: 900; padding: 4px 10px; border-radius: 8px; backdrop-filter: blur(4px);
+    }
+    .gallery-body { padding: 18px; }
+    .gallery-body h3 { color: var(--navy); margin: 0 0 6px; font-size: 1.05rem; line-height: 1.35; }
+    .gallery-body p { color: var(--muted); margin: 0; font-size: 0.88rem; line-height: 1.5; }
+
+    /* Modal Pop-up Zoom Gambar */
+    .modal {
+      display: none; position: fixed; inset: 0; z-index: 99; background: rgba(9,44,85,0.88);
+      backdrop-filter: blur(6px); place-items: center; padding: 20px;
+    }
+    .modal.show { display: grid; }
+    .modal-content { max-width: 800px; width: 100%; background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .modal-img { width: 100%; max-height: 480px; object-fit: cover; }
+    .modal-body { padding: 22px; position: relative; }
+    .modal-close { position: absolute; right: 18px; top: 18px; background: #eee; border: 0; width: 34px; height: 34px; border-radius: 50%; font-weight: 900; cursor: pointer; }
+
+    footer { background: #061e3a; color: #a9bfd7; text-align: center; padding: 25px 20px; font-size: 0.85rem; }
+
+    @media (max-width: 880px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .gallery-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-wrap">
+      <div class="brand-title">📸 Galeri SD Negeri Nawangsari</div>
+      <a href="../#beranda" class="btn-back">← Kembali ke Beranda</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="hero-title">
+      <h1>Dokumentasi & Prestasi Siswa</h1>
+      <p>Kumpulan momen berkesan, kegiatan positif, serta catatan prestasi membanggakan yang diraih oleh siswa-siswi SD Negeri Nawangsari.</p>
+    </div>
+
+    <!-- Tombol Filter Kategori -->
+    <div class="filter-wrap">
+      <button class="filter-btn active" onclick="filterGaleri('semua', this)">🌟 Semua Foto</button>
+      <button class="filter-btn" onclick="filterGaleri('prestasi', this)">🏆 Prestasi Lomba</button>
+      <button class="filter-btn" onclick="filterGaleri('kegiatan', this)">🏫 Kegiatan Sekolah</button>
+      <button class="filter-btn" onclick="filterGaleri('ekstra', this)">⛺ Ekstrakurikuler</button>
+    </div>
+
+    <!-- Grid Kartu Galeri -->
+    <div class="gallery-grid" id="galeriGrid">
+      
+      <!-- FOTO PRESTASI 1 -->
+      <article class="gallery-card" data-kat="prestasi" onclick="zoomFoto('../pameran.jpeg', 'Juara MAPSI / Pameran Karya', 'Prestasi perwakilan siswa dalam ajang kreativitas dan seni.')">
+        <div class="gallery-img-box">
+          <span class="badge-tag">PRESTASI</span>
+          <img src="../pameran.jpeg" alt="Pameran Karya Siswa">
+        </div>
+        <div class="gallery-body">
+          <h3>Juara Pameran Karya & Seni Siswa</h3>
+          <p>Unjuk kreativitas seni dan hasil kerajinan tangan anak-anak SD Negeri Nawangsari.</p>
+        </div>
+      </article>
+
+      <!-- FOTO KEGIATAN 1 -->
+      <article class="gallery-card" data-kat="kegiatan" onclick="zoomFoto('../upacara.jpeg', 'Kegiatan Upacara Bendera', 'Pembiasaan kedisiplinan dan rasa nasionalisme setiap hari Senin.')">
+        <div class="gallery-img-box">
+          <span class="badge-tag">KEGIATAN</span>
+          <img src="../upacara.jpeg" alt="Upacara Bendera">
+        </div>
+        <div class="gallery-body">
+          <h3>Upacara Bendera Hari Senin</h3>
+          <p>Meningkatkan kedisiplinan dan jiwa nasionalisme seluruh peserta didik.</p>
+        </div>
+      </article>
+
+      <!-- FOTO KEGIATAN 2 -->
+      <article class="gallery-card" data-kat="kegiatan" onclick="zoomFoto('../digitalis.jpeg', 'Pembelajaran Digital di Kelas', 'Siswa antusias mengerjakan latihan soal dan kuis edukatif di portal.')">
+        <div class="gallery-img-box">
+          <span class="badge-tag">KEGIATAN</span>
+          <img src="../digitalis.jpeg" alt="Pembelajaran Digital">
+        </div>
+        <div class="gallery-body">
+          <h3>Pembelajaran Berbasis Digital</h3>
+          <p>Siswa antusias mengikuti pembelajaran interaktif mengaplikasikan teknologi kelas.</p>
+        </div>
+      </article>
+
+      <!-- FOTO EKSTRA 1 -->
+      <article class="gallery-card" data-kat="ekstra" onclick="zoomFoto('../pramuka.jpeg', 'Latihan Ekstrakurikuler Pramuka', 'Melatih kemandirian, kekompakan, dan kepemimpinan anggota pramuka penggalang/siaga.')">
+        <div class="gallery-img-box">
+          <span class="badge-tag">EKSTRAKURIKULER</span>
+          <img src="../pramuka.jpeg" alt="Kegiatan Pramuka">
+        </div>
+        <div class="gallery-body">
+          <h3>Kegiatan Ekstrakurikuler Pramuka</h3>
+          <p>Melatih kemandirian, kedisiplinan, dan kekompakan tim anggota Pramuka.</p>
+        </div>
+      </article>
+
+      <!-- FOTO KEGIATAN 3 -->
+      <article class="gallery-card" data-kat="kegiatan" onclick="zoomFoto('../senam.jpg', 'Senam Sehat Pagi', 'Kegiatan kebugaran jasmani seluruh warga sekolah sebelum jam pelajaran.')">
+        <div class="gallery-img-box">
+          <span class="badge-tag">KEGIATAN</span>
+          <img src="../senam.jpg" alt="Senam Sehat">
+        </div>
+        <div class="gallery-body">
+          <h3>Senam Sehat Bersama</h3>
+          <p>Menjaga kebugaran jasmani seluruh warga sekolah secara rutin.</p>
+        </div>
+      </article>
+
+      <!-- FOTO KEGIATAN 4 -->
+      <article class="gallery-card" data-kat="kegiatan" onclick="zoomFoto('../bersih.jpg', 'Jumat Bersih & Green School', 'Kerja bakti kebersihan dan penghijauan di lingkungan sekolah.')">
+        <div class="gallery-img-box">
+          <span class="badge-tag">KEGIATAN</span>
+          <img src="../bersih.jpg" alt="Jumat Bersih">
+        </div>
+        <div class="gallery-body">
+          <h3>Jumat Bersih & Berkebun</h3>
+          <p>Membiasakan kepedulian siswa terhadap kebersihan lingkungan sekitar.</p>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Modal Zoom Gambar -->
+  <div class="modal" id="modalFoto" onclick="tutupModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <img id="imgZoom" class="modal-img" src="" alt="Zoom Foto">
+      <div class="modal-body">
+        <button class="modal-close" onclick="tutupModal()">✕</button>
+        <h3 id="judulZoom" style="color:var(--navy); margin:0 0 6px;"></h3>
+        <p id="deskripsiZoom" style="color:var(--muted); margin:0; font-size:0.9rem;"></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © <span id="year"></span> SD Negeri Nawangsari · Portal Dokumentasi Resmi
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 1. Fungsi Filter Foto
+    function filterGaleri(kategori, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const kartuList = document.querySelectorAll('.gallery-card');
+      kartuList.forEach(kartu => {
+        if (kategori === 'semua' || kartu.getAttribute('data-kat') === kategori) {
+          kartu.style.display = 'block';
+        } else {
+          kartu.style.display = 'none';
+        }
+      });
+    }
+
+    // 2. Fungsi Zoom Pop-up Foto
+    function zoomFoto(src, judul, deskripsi) {
+      document.getElementById('imgZoom').src = src;
+      document.getElementById('judulZoom').textContent = judul;
+      document.getElementById('deskripsiZoom').textContent = deskripsi;
+      document.getElementById('modalFoto').classList.add('show');
+    }
+
+    function tutupModal() {
+      document.getElementById('modalFoto').classList.remove('show');
+    }
+  </script>
+</body>
+</html>
