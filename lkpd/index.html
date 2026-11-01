@@ -1,1 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LKPD Digital Interaktif | SD Negeri Nawangsari</title>
+  <style>
+    :root {
+      --navy: #092c55;
+      --blue: #125da5;
+      --sky: #eaf5ff;
+      --gold: #f2bd45;
+      --ink: #172b45;
+      --muted: #61738a;
+      --line: #e4ebf3;
+      --white: #ffffff;
+      --shadow: 0 12px 34px rgba(9,44,85,.10);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: "Nunito", "Segoe UI", Arial, sans-serif;
+      color: var(--ink); background: #f7faff; line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    
+    header { background: var(--navy); color: #fff; padding: 16px 22px; position: sticky; top: 0; z-index: 10; }
+    .header-wrap { max-width: 900px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+    .brand-title { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 1.1rem; }
+    .btn-back { background: rgba(255,255,255,0.15); color: #fff; padding: 8px 16px; border-radius: 999px; font-size: 0.88rem; font-weight: 800; border: 1px solid rgba(255,255,255,0.2); transition: 0.2s; }
+    .btn-back:hover { background: var(--gold); color: var(--navy); }
 
+    .container { max-width: 800px; margin: 35px auto; padding: 0 20px; }
+    
+    .lkpd-card {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 32px; box-shadow: var(--shadow); margin-bottom: 25px;
+    }
+
+    .lkpd-head { border-bottom: 2px dashed var(--line); padding-bottom: 15px; margin-bottom: 24px; }
+    .lkpd-head h1 { color: var(--navy); font-size: 1.5rem; margin: 0 0 6px; }
+    .lkpd-head p { color: var(--muted); margin: 0; font-size: 0.92rem; }
+
+    /* Form Isian / Tugas */
+    .task-item { margin-bottom: 22px; padding: 16px; background: #f9fbff; border-radius: 14px; border: 1px solid var(--line); }
+    .task-item label { display: block; font-weight: 800; color: var(--navy); margin-bottom: 8px; font-size: 0.98rem; }
+    .task-input {
+      width: 100%; padding: 10px 14px; border: 2px solid var(--line); border-radius: 10px;
+      font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.2s;
+    }
+    .task-input:focus { border-color: var(--blue); background: #fff; }
+    .task-input.correct-input { border-color: #35b56b; background: #e8fff0; }
+    .task-input.wrong-input { border-color: #ff5c5c; background: #ffe9e9; }
+
+    .feedback-text { font-size: 0.85rem; font-weight: 800; margin-top: 6px; display: none; }
+    .feedback-text.show { display: block; }
+    .feedback-text.valid { color: #155d34; }
+    .feedback-text.invalid { color: #8a1717; }
+
+    .btn-submit-lkpd {
+      background: var(--navy); color: #fff; border: none; padding: 14px 28px;
+      border-radius: 12px; font-weight: 900; font-size: 1rem; cursor: pointer; width: 100%; transition: 0.2s;
+    }
+    .btn-submit-lkpd:hover { background: var(--blue); }
+
+    .score-banner {
+      display: none; text-align: center; background: linear-gradient(135deg, #e8fff0 0%, #c3f7d3 100%);
+      border: 2px solid #35b56b; border-radius: 16px; padding: 20px; margin-top: 20px; color: #155d34;
+    }
+    .score-banner.show { display: block; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-wrap">
+      <div class="brand-title">📄 LKPD Digital Interaktif</div>
+      <a href="../#aplikasi" class="btn-back">← Kembali ke Portal</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="lkpd-card">
+      <div class="lkpd-head">
+        <span style="background:var(--gold); color:var(--navy); font-size:0.75rem; font-weight:900; padding:3px 10px; border-radius:99px; text-transform:uppercase;">Lembar Kerja Siswa</span>
+        <h1>Lembar Latihan Mandiri: Pengetahuan Umum & IPAS</h1>
+        <p>Lengkapi titik-titik di bawah ini dengan jawaban yang benar, lalu klik tombol periksa jawaban!</p>
+      </div>
+
+      <form id="lkpdForm">
+        <!-- Soal 1 -->
+        <div class="task-item">
+          <label for="q1">1. Ibu kota Negara Kesatuan Republik Indonesia saat ini adalah ...</label>
+          <input type="text" id="q1" class="task-input" placeholder="Ketik jawabanmu di sini..." autocomplete="off">
+          <div class="feedback-text" id="fb1"></div>
+        </div>
+
+        <!-- Soal 2 -->
+        <div class="task-item">
+          <label for="q2">2. Lambang sila pertama Pancasila adalah ...</label>
+          <input type="text" id="q2" class="task-input" placeholder="Ketik jawabanmu di sini..." autocomplete="off">
+          <div class="feedback-text" id="fb2"></div>
+        </div>
+
+        <!-- Soal 3 -->
+        <div class="task-item">
+          <label for="q3">3. Alat pernapasan pada hewan ikan adalah ...</label>
+          <input type="text" id="q3" class="task-input" placeholder="Ketik jawabanmu di sini..." autocomplete="off">
+          <div class="feedback-text" id="fb3"></div>
+        </div>
+
+        <!-- Soal 4 -->
+        <div class="task-item">
+          <label for="q4">4. Hasil dari 25 ditambah 35 adalah ... (tulis dalam angka)</label>
+          <input type="text" id="q4" class="task-input" placeholder="Contoh: 50" autocomplete="off">
+          <div class="feedback-text" id="fb4"></div>
+        </div>
+
+        <button type="button" class="btn-submit-lkpd" onclick="periksaLKPD()">Periksa Jawaban Saya 🚀</button>
+      </form>
+
+      <!-- Banner Hasil Nilai -->
+      <div class="score-banner" id="scoreBanner">
+        <h2 style="margin:0 0 5px;" id="scoreTitle">Nilai LKPD Kamu: 100</h2>
+        <p style="margin:0; font-weight:800;" id="scoreDesc">Hebat! Semua jawabanmu benar sempurna!</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Kunci Jawaban (Mendukung beberapa variasi penulisan huruf besar/kecil)
+    const kunciJawaban = {
+      q1: ["jakarta", "dkai jakarta"],
+      q2: ["bintang"],
+      q3: ["insang"],
+      q4: ["60"]
+    };
+
+    function periksaLKPD() {
+      let skorTotal = 0;
+      const totalSoal = Object.keys(kunciJawaban).length;
+      const bobot = 100 / totalSoal;
+
+      for (let i = 1; i <= totalSoal; i++) {
+        const inputEl = document.getElementById(`q${i}`);
+        const fbEl = document.getElementById(`fb${i}`);
+        const valUser = inputEl.value.trim().toLowerCase();
+
+        const opsiBenar = kunciJawaban[`q${i}`];
+
+        if (opsiBenar.includes(valUser)) {
+          skorTotal += bobot;
+          inputEl.className = 'task-input correct-input';
+          fbEl.className = 'feedback-text show valid';
+          fbEl.textContent = '✅ Jawaban Benar!';
+        } else {
+          inputEl.className = 'task-input wrong-input';
+          fbEl.className = 'feedback-text show invalid';
+          fbEl.textContent = `❌ Belum tepat. Jawaban yang benar: ${opsiBenar[0]}`;
+        }
+      }
+
+      // Tampilkan banner hasil
+      const banner = document.getElementById('scoreBanner');
+      const scoreTitle = document.getElementById('scoreTitle');
+      const scoreDesc = document.getElementById('scoreDesc');
+
+      banner.classList.add('show');
+      scoreTitle.textContent = `Nilai LKPD Kamu: ${Math.round(skorTotal)}`;
+
+      if (skorTotal === 100) {
+        scoreDesc.textContent = "🌟 Sempurna! Kamu mengerjakan lembar latihan ini dengan sangat teliti!";
+      } else if (skorTotal >= 50) {
+        scoreDesc.textContent = "👍 Cukup baik! Periksa kembali jawaban yang kurang tepat ya.";
+      } else {
+        scoreDesc.textContent = "💪 Terus berlatih! Ayo pelajari lagi materinya.";
+      }
+    }
+  </script>
+</body>
+</html>
