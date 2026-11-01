@@ -312,61 +312,50 @@
       <div class="notice">📘 Pilih kelas untuk membuka daftar mata pelajaran dan materi pembelajaran yang tersedia.</div>
     </section>
 
-    <div class="feature-band">
-      <section class="section" id="mata-pelajaran">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">Jelajahi pengetahuan</div>
-            <h2>Mata Pelajaran</h2>
-            <p class="section-desc">Pilih mata pelajaran di bawah ini untuk menjelajahi materi dan latihan interaktif.</p>
-          </div>
-        </div>
-        <div class="subject-grid">
-          <a class="subject-card clickable" href="materi/?subjek=mtk" style="--tile:#e8f4ff">
-            <div class="subject-icon">🔢</div>
-            <div>
-              <h3>Matematika ↗</h3>
-              <p>Berhitung, pola, pengukuran, dan pemecahan masalah.</p>
-            </div>
-          </a>
-          <a class="subject-card clickable" href="materi/?subjek=indo" style="--tile:#e8fff0">
-            <div class="subject-icon">📖</div>
-            <div>
-              <h3>Bahasa Indonesia ↗</h3>
-              <p>Membaca, menulis, menyimak, dan bercerita.</p>
-            </div>
-          </a>
-          <a class="subject-card clickable" href="materi/?subjek=ipas" style="--tile:#fff4d9">
-            <div class="subject-icon">🌱</div>
-            <div>
-              <h3>IPAS ↗</h3>
-              <p>Mengenal alam, makhluk hidup, dan lingkungan sekitar.</p>
-            </div>
-          </a>
-          <a class="subject-card clickable" href="materi/?subjek=pancasila" style="--tile:#f2eaff">
-            <div class="subject-icon">🤝</div>
-            <div>
-              <h3>Pendidikan Pancasila ↗</h3>
-              <p>Belajar hidup rukun, tanggung jawab, dan gotong royong.</p>
-            </div>
-          </a>
-          <a class="subject-card clickable" href="materi/?subjek=pai" style="--tile:#ffe9e9">
-            <div class="subject-icon">🌙</div>
-            <div>
-              <h3>Pendidikan Agama ↗</h3>
-              <p>Menguatkan pengetahuan agama dan akhlak mulia.</p>
-            </div>
-          </a>
-          <a class="subject-card clickable" href="materi/?subjek=seni" style="--tile:#e2faff">
-            <div class="subject-icon">🎨</div>
-            <div>
-              <h3>Seni & Bahasa ↗</h3>
-              <p>Berkreasi serta mengenal Bahasa Jawa dan Bahasa Inggris.</p>
-            </div>
-          </a>
-        </div>
-      </section>
+    <!-- GANTI DENGAN BAGIAN INI -->
+<div class="feature-band">
+  <section class="section" id="pengumuman">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">Informasi Terkini</div>
+        <h2>Pengumuman & Agenda Sekolah</h2>
+        <p class="section-desc">Catat tanggal penting dan informasi terbaru seputar kegiatan di SD Negeri Nawangsari.</p>
+      </div>
     </div>
+    
+    <div class="subject-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <!-- Pengumuman 1 -->
+      <article class="subject-card" style="--tile:#fff4d9; align-items: flex-start;">
+        <div class="subject-icon">📢</div>
+        <div>
+          <span style="font-size: 0.75rem; font-weight: 900; color: var(--gold); background: var(--navy); padding: 2px 8px; border-radius: 99px;">PENTING</span>
+          <h3 style="margin-top: 6px; font-size: 1.05rem;">Jadwal Penilaian Tengah Semester (PTS)</h3>
+          <p style="font-size: 0.88rem; margin-top: 4px;">Pelaksanaan PTS Semester Genap Tahun Ajaran 2026/2027 akan dimulai pada minggu kedua bulan ini. Harap siswa mempersiapkan diri.</p>
+        </div>
+      </article>
+
+      <!-- Pengumuman 2 -->
+      <article class="subject-card" style="--tile:#e8fff0; align-items: flex-start;">
+        <div class="subject-icon">🏆</div>
+        <div>
+          <span style="font-size: 0.75rem; font-weight: 900; color: #155d34; background: #b3f0c4; padding: 2px 8px; border-radius: 99px;">PRESTASI</span>
+          <h3 style="margin-top: 6px; font-size: 1.05rem;">Juara Lomba MAPSI Tingkat Kecamatan</h3>
+          <p style="font-size: 0.88rem; margin-top: 4px;">Selamat kepada perwakilan siswa SD Negeri Nawangsari yang telah meraih juara dalam ajang perlombaan MAPSI tahun ini.</p>
+        </div>
+      </article>
+
+      <!-- Pengumuman 3 -->
+      <article class="subject-card" style="--tile:#e8f4ff; align-items: flex-start;">
+        <div class="subject-icon">🗓️</div>
+        <div>
+          <span style="font-size: 0.75rem; font-weight: 900; color: var(--blue); background: var(--sky); padding: 2px 8px; border-radius: 99px;">AGENDA</span>
+          <h3 style="margin-top: 6px; font-size: 1.05rem;">Kegiatan Jumat Bersih & Sehat</h3>
+          <p style="font-size: 0.88rem; margin-top: 4px;">Minggu ini kegiatan Jumat pagi diisi dengan kerja bakti membersihkan lingkungan kelas dan senam bersama.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>
 
     <section class="section" id="aplikasi">
       <div class="section-head">
