@@ -357,6 +357,26 @@
   </section>
 </div>
 
+<!-- BAGIAN PAPAN PENGUMUMAN DINAMIS -->
+<div class="feature-band">
+  <section class="section" id="pengumuman">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">Informasi Terkini</div>
+        <h2>Pengumuman & Agenda Sekolah</h2>
+        <p class="section-desc">Informasi resmi yang diperbarui langsung dari pihak sekolah.</p>
+      </div>
+    </div>
+    
+    <!-- Tempat Pengumuman Dimuat secara Otomatis -->
+    <div class="subject-grid" id="announcementContainer" style="grid-template-columns: repeat(3, 1fr);">
+      <div style="grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 20px;">
+        ⏳ Memuat pengumuman terbaru...
+      </div>
+    </div>
+  </section>
+</div>
+    
     <section class="section" id="aplikasi">
       <div class="section-head">
         <div>
@@ -644,5 +664,37 @@
       });
     }
   </script>
+  // URL Web App Google Apps Script Anda
+  const announcementURL = 'https://script.google.com/macros/s/AKfycbzsIuhngSp5NuaILT2c0A74lJb2pafC257IOY4XQxtcXBmKEEh9sRsp3JAMiAB3CNayvQ/exec';
+
+  const container = document.getElementById('announcementContainer');
+
+  if (container && announcementURL !== 'GANTI_DENGAN_URL_WEB_APP_ANDA') {
+    fetch(announcementURL)
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.length > 0) {
+          // Urutkan dari yang terbaru jika perlu, atau tampilkan langsung
+          container.innerHTML = data.map(item => `
+            <article class="subject-card" style="--tile:#fff4d9; align-items: flex-start; display: flex; gap: 15px;">
+              <div class="subject-icon">📢</div>
+              <div style="flex-grow: 1;">
+                <span style="font-size: 0.72rem; font-weight: 900; color: var(--navy); background: var(--gold); padding: 2px 8px; border-radius: 99px;">${item.kategori || 'INFO'}</span>
+                <span style="font-size: 0.72rem; color: var(--muted); float: right;">${item.tanggal || ''}</span>
+                <h3 style="margin-top: 6px; font-size: 1.05rem; color: var(--navy);">${item.judul}</h3>
+                <p style="font-size: 0.88rem; margin-top: 4px; color: var(--muted);">${item.isi}</p>
+              </div>
+            </article>
+          `).join('');
+        } else {
+          container.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--muted);">Belum ada pengumuman saat ini.</div>';
+        }
+      })
+      .catch(error => {
+        console.error('Gagal memuat pengumuman:', error);
+        container.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--muted);">Gagal memuat data pengumuman.</div>';
+      });
+  }
+</script>
 </body>
 </html>
