@@ -1,1 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arena Kuis Edukatif | SD Negeri Nawangsari</title>
+  <style>
+    :root {
+      --navy: #092c55;
+      --blue: #125da5;
+      --sky: #eaf5ff;
+      --gold: #f2bd45;
+      --ink: #172b45;
+      --muted: #61738a;
+      --line: #e4ebf3;
+      --white: #ffffff;
+      --shadow: 0 12px 34px rgba(9,44,85,.10);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: "Nunito", "Segoe UI", Arial, sans-serif;
+      color: var(--ink); background: #f7faff; line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    
+    header { background: var(--navy); color: #fff; padding: 16px 22px; position: sticky; top: 0; z-index: 10; }
+    .header-wrap { max-width: 900px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+    .brand-title { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 1.1rem; }
+    .btn-back { background: rgba(255,255,255,0.15); color: #fff; padding: 8px 16px; border-radius: 999px; font-size: 0.88rem; font-weight: 800; border: 1px solid rgba(255,255,255,0.2); transition: 0.2s; }
+    .btn-back:hover { background: var(--gold); color: var(--navy); }
 
+    .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+    
+    /* Kotak Kuis Utama */
+    .quiz-box {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 32px; box-shadow: var(--shadow); position: relative; overflow: hidden;
+    }
+    
+    /* Header Kuis (Nomor & Skor) */
+    .quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+    .quiz-progress { font-weight: 900; color: var(--blue); font-size: 0.95rem; }
+    .quiz-score-badge { background: var(--sky); color: var(--navy); padding: 4px 12px; border-radius: 99px; font-weight: 900; font-size: 0.85rem; }
+
+    /* Pertanyaan */
+    .question-text { color: var(--navy); font-size: clamp(1.15rem, 2.5vw, 1.4rem); font-weight: 900; margin: 0 0 22px; }
+
+    /* Pilihan Opsi Jawaban */
+    .options-grid { display: grid; gap: 12px; margin-bottom: 24px; }
+    .option-btn {
+      width: 100%; text-align: left; background: #f9fbff; border: 2px solid var(--line);
+      padding: 14px 18px; border-radius: 14px; font-weight: 800; font-size: 0.95rem; color: var(--navy);
+      cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 12px;
+    }
+    .option-btn:hover:not(:disabled) { background: var(--sky); border-color: var(--blue); transform: translateX(4px); }
+    .option-btn.correct { background: #e8fff0 !important; border-color: #35b56b !important; color: #155d34 !important; }
+    .option-btn.wrong { background: #ffe9e9 !important; border-color: #ff5c5c !important; color: #8a1717 !important; }
+
+    /* Tombol Aksi & Pembahasan */
+    .feedback-box { margin-bottom: 20px; padding: 14px 18px; border-radius: 12px; font-size: 0.92rem; font-weight: 800; display: none; }
+    .feedback-box.show { display: block; }
+    .feedback-box.correct-fb { background: #e8fff0; color: #155d34; border: 1px solid #b3f0c4; }
+    .feedback-box.wrong-fb { background: #fff4d9; color: #765512; border: 1px solid #f7e4ac; }
+
+    .btn-next {
+      background: var(--navy); color: #fff; border: none; padding: 12px 24px; border-radius: 12px;
+      font-weight: 900; font-size: 0.95rem; cursor: pointer; transition: 0.2s; display: none; float: right;
+    }
+    .btn-next:hover { background: var(--blue); }
+
+    /* Layar Hasil Akhir */
+    .result-screen { text-align: center; padding: 20px; display: none; }
+    .result-screen.show { display: block; }
+    .result-icon { font-size: 4rem; margin-bottom: 10px; }
+    .result-screen h2 { color: var(--navy); font-size: 2rem; margin: 0 0 10px; }
+    .result-score-big { font-size: 2.8rem; font-weight: 1000; color: var(--blue); margin: 15px 0; }
+    .btn-restart {
+      background: var(--gold); color: var(--navy); border: none; padding: 12px 28px;
+      border-radius: 12px; font-weight: 1000; font-size: 1rem; cursor: pointer; margin-top: 15px; box-shadow: 0 5px 15px rgba(242,189,69,.3);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-wrap">
+      <div class="brand-title">🎯 Arena Kuis Edukatif</div>
+      <a href="../#aplikasi" class="btn-back">← Kembali ke Portal</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="quiz-box">
+      
+      <!-- Area Pertanyaan Kuis -->
+      <div id="quizArea">
+        <div class="quiz-header">
+          <span class="quiz-progress" id="progressText">Soal 1 dari 5</span>
+          <span class="quiz-score-badge" id="currentScoreBadge">Skor: 0</span>
+        </div>
+
+        <h2 class="question-text" id="questionText">Memuat pertanyaan...</h2>
+
+        <div class="options-grid" id="optionsContainer">
+          <!-- Opsi jawaban dimuat otomatis via JavaScript -->
+        </div>
+
+        <div class="feedback-box" id="feedbackBox"></div>
+        
+        <button class="btn-next" id="nextBtn" onclick="lanjutSoal()">Soal Selanjutnya →</button>
+      </div>
+
+      <!-- Area Hasil Akhir Kuis -->
+      <div class="result-screen" id="resultScreen">
+        <div class="result-icon">🏆</div>
+        <h2>Kuis Selesai!</h2>
+        <p style="color: var(--muted); margin: 0;">Hebat! Kamu telah menyelesaikan tantangan kuis hari ini.</p>
+        <div class="result-score-big" id="finalScoreText">Skor: 100</div>
+        <p id="resultMessage" style="font-weight: 800; color: var(--navy); margin-bottom: 20px;"></p>
+        <button class="btn-restart" onclick="mulaiKuis()">🔄 Coba Kuis Lagi</button>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Bank Soal Kuis (Bisa Anda tambah atau ubah sesuka hati)
+    const bankSoal = [
+      {
+        tanya: "Ibu kota Provinsi Jawa Tengah adalah ...",
+        opsi: ["Semarang", "Surakarta", "Yogyakarta", "Pekalongan"],
+        jawaban: 0,
+        pembahasan: "Semarang adalah ibu kota sekaligus pusat pemerintahan Provinsi Jawa Tengah."
+      },
+      {
+        tanya: "Pada lambang Garuda Pancasila, simbol sila ke-3 Persatuan Indonesia adalah ...",
+        opsi: ["Bintang", "Rantai", "Pohon Beringin", "Padi dan Kapas"],
+        jawaban: 2,
+        pembahasan: "Simbol sila ke-3 adalah Pohon Beringin yang melambangkan tempat berteduh."
+      },
+      {
+        tanya: "Benda di bawah ini yang berwujud cair adalah ...",
+        opsi: ["Batu", "Kayu", "Air Mineral", "Pensil"],
+        jawaban: 2,
+        pembahasan: "Air mineral adalah zat cair yang bentuknya mengikuti wadahnya."
+      },
+      {
+        tanya: "Sikap yang baik ketika teman sedang menyampaikan pendapat saat musyawarah adalah ...",
+        opsi: ["Mendengarkan dengan baik", "Berbicara lebih keras", "Mengejeknya", "Keluar ruangan"],
+        jawaban: 0,
+        pembahasan: "Kita harus menghormati dan mendengarkan pendapat orang lain dengan santun."
+      },
+      {
+        tanya: "Hewan yang bernapas menggunakan insang di dalam air adalah ...",
+        opsi: ["Kucing", "Ikan", "Burung", "Kelinci"],
+        jawaban: 1,
+        pembahasan: "Ikan menggunakan organ insang untuk menyerap oksigen di dalam air."
+      }
+    ];
+
+    let soalAktif = 0;
+    let skor = 0;
+    let sudahJawab = false;
+
+    const progressText = document.getElementById('progressText');
+    const currentScoreBadge = document.getElementById('currentScoreBadge');
+    const questionText = document.getElementById('questionText');
+    const optionsContainer = document.getElementById('optionsContainer');
+    const feedbackBox = document.getElementById('feedbackBox');
+    const nextBtn = document.getElementById('nextBtn');
+    const quizArea = document.getElementById('quizArea');
+    const resultScreen = document.getElementById('resultScreen');
+    const finalScoreText = document.getElementById('finalScoreText');
+    const resultMessage = document.getElementById('resultMessage');
+
+    function mulaiKuis() {
+      soalAktif = 0;
+      skor = 0;
+      quizArea.style.display = 'block';
+      resultScreen.classList.remove('show');
+      tampilkanSoal();
+    }
+
+    function tampilkanSoal() {
+      sudahJawab = false;
+      feedbackBox.className = 'feedback-box';
+      feedbackBox.textContent = '';
+      nextBtn.style.display = 'none';
+
+      const current = bankSoal[soalAktif];
+      progressText.textContent = `Soal ${soalAktif + 1} dari ${bankSoal.length}`;
+      currentScoreBadge.textContent = `Skor: ${skor}`;
+      questionText.textContent = current.tanya;
+
+      optionsContainer.innerHTML = current.opsi.map((item, index) => `
+        <button class="option-btn" onclick="pilihJawaban(${index})" id="opt${index}">
+          <span style="background:var(--sky); width:28px; height:28px; border-radius:50%; display:grid; place-items:center; font-size:0.8rem; font-weight:1000; color:var(--blue);">${String.fromCharCode(65 + index)}</span>
+          <span>${item}</span>
+        </button>
+      `).join('');
+    }
+
+    function pilihJawaban(pilihanPemain) {
+      if (sudahJawab) return;
+      sudahJawab = true;
+
+      const current = bankSoal[soalAktif];
+      const tombolPilihan = document.getElementById(`opt${pilihanPemain}`);
+      const tombolBenar = document.getElementById(`opt${current.jawaban}`);
+
+      if (pilihanPemain === current.jawaban) {
+        skor += 20; // Setiap soal benar bernilai 20 poin (total 100)
+        currentScoreBadge.textContent = `Skor: ${skor}`;
+        tombolPilihan.classList.add('correct');
+        feedbackBox.className = 'feedback-box show correct-fb';
+        feedbackBox.textContent = `🎉 Benar! ${current.pembahasan}`;
+      } else {
+        tombolPilihan.classList.add('wrong');
+        tombolBenar.classList.add('correct');
+        feedbackBox.className = 'feedback-box show wrong-fb';
+        feedbackBox.textContent = `❌ Belum tepat. ${current.pembahasan}`;
+      }
+
+      // Nonaktifkan semua tombol setelah memilih
+      for (let i = 0; i < current.opsi.length; i++) {
+        document.getElementById(`opt${i}`).disabled = true;
+      }
+
+      // Tampilkan tombol lanjut atau selesai
+      nextBtn.style.display = 'block';
+    }
+
+    function lanjutSoal() {
+      soalAktif++;
+      if (soalAktif < bankSoal.length) {
+        tampilkanSoal();
+      } else {
+        tampilkanHasil();
+      }
+    }
+
+    function tampilkanHasil() {
+      quizArea.style.display = 'none';
+      resultScreen.classList.add('show');
+      finalScoreText.textContent = `Skor: ${skor}`;
+
+      if (skor === 100) {
+        resultMessage.textContent = "🌟 Sempurna! Kamu adalah Bintang Kelas sejati!";
+      } else if (skor >= 60) {
+        resultMessage.textContent = "👍 Bagus sekali! Pertahankan prestasi belajarmu.";
+      } else {
+        resultMessage.textContent = "💪 Jangan menyerah! Ayo baca materinya lagi dan coba tantangan ini.";
+      }
+    }
+
+    // Jalankan kuis saat halaman dibuka
+    mulaiKuis();
+  </script>
+</body>
+</html>
