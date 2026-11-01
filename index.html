@@ -312,51 +312,7 @@
       <div class="notice">📘 Pilih kelas untuk membuka daftar mata pelajaran dan materi pembelajaran yang tersedia.</div>
     </section>
 
-    <!-- GANTI DENGAN BAGIAN INI -->
-<div class="feature-band">
-  <section class="section" id="pengumuman">
-    <div class="section-head">
-      <div>
-        <div class="section-kicker">Informasi Terkini</div>
-        <h2>Pengumuman & Agenda Sekolah</h2>
-        <p class="section-desc">Catat tanggal penting dan informasi terbaru seputar kegiatan di SD Negeri Nawangsari.</p>
-      </div>
-    </div>
     
-    <div class="subject-grid" style="grid-template-columns: repeat(3, 1fr);">
-      <!-- Pengumuman 1 -->
-      <article class="subject-card" style="--tile:#fff4d9; align-items: flex-start;">
-        <div class="subject-icon">📢</div>
-        <div>
-          <span style="font-size: 0.75rem; font-weight: 900; color: var(--gold); background: var(--navy); padding: 2px 8px; border-radius: 99px;">PENTING</span>
-          <h3 style="margin-top: 6px; font-size: 1.05rem;">Jadwal Penilaian Tengah Semester (PTS)</h3>
-          <p style="font-size: 0.88rem; margin-top: 4px;">Pelaksanaan PTS Semester Genap Tahun Ajaran 2026/2027 akan dimulai pada minggu kedua bulan ini. Harap siswa mempersiapkan diri.</p>
-        </div>
-      </article>
-
-      <!-- Pengumuman 2 -->
-      <article class="subject-card" style="--tile:#e8fff0; align-items: flex-start;">
-        <div class="subject-icon">🏆</div>
-        <div>
-          <span style="font-size: 0.75rem; font-weight: 900; color: #155d34; background: #b3f0c4; padding: 2px 8px; border-radius: 99px;">PRESTASI</span>
-          <h3 style="margin-top: 6px; font-size: 1.05rem;">Juara Lomba MAPSI Tingkat Kecamatan</h3>
-          <p style="font-size: 0.88rem; margin-top: 4px;">Selamat kepada perwakilan siswa SD Negeri Nawangsari yang telah meraih juara dalam ajang perlombaan MAPSI tahun ini.</p>
-        </div>
-      </article>
-
-      <!-- Pengumuman 3 -->
-      <article class="subject-card" style="--tile:#e8f4ff; align-items: flex-start;">
-        <div class="subject-icon">🗓️</div>
-        <div>
-          <span style="font-size: 0.75rem; font-weight: 900; color: var(--blue); background: var(--sky); padding: 2px 8px; border-radius: 99px;">AGENDA</span>
-          <h3 style="margin-top: 6px; font-size: 1.05rem;">Kegiatan Jumat Bersih & Sehat</h3>
-          <p style="font-size: 0.88rem; margin-top: 4px;">Minggu ini kegiatan Jumat pagi diisi dengan kerja bakti membersihkan lingkungan kelas dan senam bersama.</p>
-        </div>
-      </article>
-    </div>
-  </section>
-</div>
-
 <!-- BAGIAN PAPAN PENGUMUMAN DINAMIS -->
 <div class="feature-band">
   <section class="section" id="pengumuman">
@@ -599,7 +555,7 @@
   </footer>
   <a class="back-top" href="#beranda" aria-label="Kembali ke atas">↑</a>
 
-<script>
+  <script>
     // 1. Konfigurasi Navigasi Mobile
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
@@ -664,38 +620,35 @@
       });
     }
 
+    // 4. Pengambilan Data Papan Pengumuman dari Google Sheets
+    const announcementURL = 'https://script.google.com/macros/s/AKfycbzsIuhngSp5NuaILT2c0A74lJb2pafC257IOY4XQxtcXBmKEEh9sRsp3JAMiAB3CNayvQ/exec';
+    const container = document.getElementById('announcementContainer');
 
-    </script>
-  const announcementURL = 'https://script.google.com/macros/s/AKfycbzsIuhngSp5NuaILT2c0A74lJb2pafC257IOY4XQxtcXBmKEEh9sRsp3JAMiAB3CNayvQ/exec';
-
-  const container = document.getElementById('announcementContainer');
-
-  if (container && announcementURL !== 'https://script.google.com/macros/s/AKfycbzsIuhngSp5NuaILT2c0A74lJb2pafC257IOY4XQxtcXBmKEEh9sRsp3JAMiAB3CNayvQ/exec') {
-    fetch(announcementURL)
-      .then(response => response.json())
-      .then(data => {
-        if (data && data.length > 0) {
-          // Urutkan dari yang terbaru jika perlu, atau tampilkan langsung
-          container.innerHTML = data.map(item => `
-            <article class="subject-card" style="--tile:#fff4d9; align-items: flex-start; display: flex; gap: 15px;">
-              <div class="subject-icon">📢</div>
-              <div style="flex-grow: 1;">
-                <span style="font-size: 0.72rem; font-weight: 900; color: var(--navy); background: var(--gold); padding: 2px 8px; border-radius: 99px;">${item.kategori || 'INFO'}</span>
-                <span style="font-size: 0.72rem; color: var(--muted); float: right;">${item.tanggal || ''}</span>
-                <h3 style="margin-top: 6px; font-size: 1.05rem; color: var(--navy);">${item.judul}</h3>
-                <p style="font-size: 0.88rem; margin-top: 4px; color: var(--muted);">${item.isi}</p>
-              </div>
-            </article>
-          `).join('');
-        } else {
-          container.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--muted);">Belum ada pengumuman saat ini.</div>';
-        }
-      })
-      .catch(error => {
-        console.error('Gagal memuat pengumuman:', error);
-        container.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--muted);">Gagal memuat data pengumuman.</div>';
-      });
-  }
+    if (container) {
+      fetch(announcementURL)
+        .then(response => response.json())
+        .then(data => {
+          if (data && data.length > 0) {
+            container.innerHTML = data.map(item => `
+              <article class="subject-card" style="--tile:#fff4d9; align-items: flex-start; display: flex; gap: 15px;">
+                <div class="subject-icon">📢</div>
+                <div style="flex-grow: 1;">
+                  <span style="font-size: 0.72rem; font-weight: 900; color: var(--navy); background: var(--gold); padding: 2px 8px; border-radius: 99px;">${item.kategori || 'INFO'}</span>
+                  <span style="font-size: 0.72rem; color: var(--muted); float: right;">${item.tanggal || ''}</span>
+                  <h3 style="margin-top: 6px; font-size: 1.05rem; color: var(--navy);">${item.judul}</h3>
+                  <p style="font-size: 0.88rem; margin-top: 4px; color: var(--muted);">${item.isi}</p>
+                </div>
+              </article>
+            `).join('');
+          } else {
+            container.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--muted);">Belum ada pengumuman saat ini.</div>';
+          }
+        })
+        .catch(error => {
+          console.error('Gagal memuat pengumuman:', error);
+          container.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--muted);">Gagal memuat data pengumuman.</div>';
+        });
+    }
 </script>
 </body>
 </html>
