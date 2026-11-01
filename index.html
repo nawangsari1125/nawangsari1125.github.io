@@ -261,13 +261,14 @@
       </a>
       <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">☰</button>
       <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
-        <a href="#beranda">Beranda</a>
-        <a href="#profil">Profil Sekolah</a>
-        <a href="#kelas">Pilih Kelas</a>
-        <a href="#aplikasi">Aplikasi Belajar</a>
-        <a href="#informasi">Informasi</a>
-        <a class="nav-cta" href="#kelas">Mulai Belajar ↗</a>
-      </nav>
+  <a href="#beranda">Beranda</a>
+  <a href="#profil">Profil Sekolah</a>
+  <a href="#kelas">Pilih Kelas</a>
+  <a href="#pengumuman">PPDB / Info</a> <!-- Tambahan Pintasan PPDB -->
+  <a href="#aplikasi">Aplikasi Belajar</a>
+  <a href="#informasi">Informasi</a>
+  <a class="nav-cta" href="#kelas">Mulai Belajar ↗</a>
+</nav>
     </div>
   </header>
 
@@ -292,6 +293,61 @@
         </div>
       </div>
     </section>
+
+    <!-- BANNER PPDB ONLINE INTERAKTIF -->
+<section class="section" style="padding-top: 20px; padding-bottom: 20px;">
+  <div style="
+    background: linear-gradient(135deg, #092c55 0%, #125da5 100%);
+    border-radius: var(--radius);
+    padding: 30px 26px;
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(9, 44, 85, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+  ">
+    <!-- Hiasan Background Latar -->
+    <div style="position: absolute; right: -30px; bottom: -30px; width: 150px; height: 150px; background: rgba(242, 189, 69, 0.15); border-radius: 50%;"></div>
+
+    <div style="max-width: 650px; position: relative; z-index: 1;">
+      <span style="
+        background: var(--gold);
+        color: var(--navy);
+        font-size: 0.78rem;
+        font-weight: 1000;
+        padding: 4px 12px;
+        border-radius: 999px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: inline-block;
+        margin-bottom: 10px;
+      ">
+        🎉 PPDB Tahun Ajaran 2026/2027
+      </span>
+      <h2 style="color: #ffffff !important; margin: 0 0 8px; font-size: clamp(1.4rem, 2.8vw, 1.9rem);">
+        Penerimaan Peserta Didik Baru (PPDB)
+      </h2>
+      <p style="color: #eaf5ff; margin: 0; font-size: 0.95rem;">
+        Mari bergabung bersama keluarga besar SD Negeri Nawangsari! Pendaftaran murid baru kini dapat dilakukan secara online dengan mudah dan cepat.
+      </p>
+    </div>
+
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; position: relative; z-index: 1;">
+      <!-- Tombol 1: Formulir Pendaftaran -->
+      <a href="https://ppdb-2026-2027-sdnawangsari.netlify.app/" target="_blank" class="btn" style="background: var(--gold); color: var(--navy); font-weight: 1000; border-radius: 12px;">
+        📝 Daftar Online Sekarang
+      </a>
+      <!-- Tombol 2: Informasi / Brosur -->
+      <a href="#informasi" class="btn" style="background: rgba(255,255,255,0.15); color: #ffffff; border: 1px solid rgba(255,255,255,0.3); border-radius: 12px;">
+        📄 Syarat & Info
+      </a>
+    </div>
+  </div>
+</section>
 
     <section class="section" id="kelas">
       <div class="section-head">
