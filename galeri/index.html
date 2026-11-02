@@ -47,23 +47,75 @@
     }
     .filter-btn:hover, .filter-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
 
-    /* Grid Galeri Foto */
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .gallery-card {
-      background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-      overflow: hidden; box-shadow: 0 6px 20px rgba(9,44,85,.05); transition: 0.25s; cursor: pointer;
-    }
-    .gallery-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
-    .gallery-img-box { width: 100%; height: 210px; overflow: hidden; position: relative; background: var(--sky); }
-    .gallery-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-    .gallery-card:hover .gallery-img-box img { transform: scale(1.06); }
-    .badge-tag {
-      position: absolute; top: 12px; left: 12px; background: rgba(9, 44, 85, 0.85); color: #fff;
-      font-size: 0.72rem; font-weight: 900; padding: 4px 10px; border-radius: 8px; backdrop-filter: blur(4px);
-    }
-    .gallery-body { padding: 18px; }
-    .gallery-body h3 { color: var(--navy); margin: 0 0 6px; font-size: 1.05rem; line-height: 1.35; }
-    .gallery-body p { color: var(--muted); margin: 0; font-size: 0.88rem; line-height: 1.5; }
+    /* Perbarui CSS Kartu Galeri agar teks berada di atas foto dengan latar belakang semi-transparan */
+.gallery-card {
+  background: #000; 
+  border: 1px solid var(--line); 
+  border-radius: var(--radius);
+  overflow: hidden; 
+  box-shadow: 0 6px 20px rgba(9,44,85,.05); 
+  transition: 0.25s; 
+  cursor: pointer;
+  position: relative; /* Penting agar teks bisa melayang di atas foto */
+  height: 260px;      /* Menentukan tinggi kartu agar pas */
+}
+
+.gallery-card:hover { 
+  transform: translateY(-6px); 
+  box-shadow: var(--shadow); 
+}
+
+/* Kotak Gambar memenuhi kartu */
+.gallery-img-box { 
+  width: 100%; 
+  height: 100%; 
+  position: absolute; 
+  inset: 0; 
+  background: var(--sky); 
+}
+
+.gallery-img-box img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  transition: transform 0.4s; 
+}
+
+.gallery-card:hover .gallery-img-box img { 
+  transform: scale(1.08); /* Efek zoom halus saat kursor diarahkan */
+}
+
+.badge-tag {
+  position: absolute; top: 12px; left: 12px; background: rgba(9, 44, 85, 0.85); color: #fff;
+  font-size: 0.72rem; font-weight: 900; padding: 4px 10px; border-radius: 8px; backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+/* Area Teks Melayang dengan Background Semi-Transparan (Blur Efek) */
+.gallery-body { 
+  position: absolute; 
+  bottom: 0; 
+  left: 0; 
+  right: 0; 
+  padding: 16px; 
+  background: linear-gradient(to top, rgba(9, 44, 85, 0.92) 20%, rgba(9, 44, 85, 0.6) 80%, transparent 100%);
+  backdrop-filter: blur(3px);
+  z-index: 2;
+}
+
+.gallery-body h3 { 
+  color: #ffffff !important; 
+  margin: 0 0 4px; 
+  font-size: 1.05rem; 
+  line-height: 1.35; 
+}
+
+.gallery-body p { 
+  color: var(--sky) !important; /* Warna teks deskripsi terang agar sangat kontras */
+  margin: 0; 
+  font-size: 0.85rem; 
+  line-height: 1.4; 
+}
 
     /* Modal Pop-up Zoom Gambar */
     .modal {
