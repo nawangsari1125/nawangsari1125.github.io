@@ -243,6 +243,109 @@
   </style>
 </head>
 <body>
+<!-- KOTAK INFO / TOP BAR -->
+<div class="top-info-bar">
+  <div class="top-info-container">
+    
+    <!-- Bagian Teks Berjalan (Running Text) -->
+    <div class="running-text-wrap">
+      <span class="badge-running">INFO</span>
+      <marquee behavior="scroll" direction="left" scrollamount="5" onmouseover="this.stop();" onmouseout="this.start();">
+        ✨ Selamat datang di Portal Resmi SD Negeri Nawangsari | Pendaftaran PPDB Tahun Ajaran 2027/2028 telah dibuka! | Mari bergabung bersama kami wujudkan generasi cerdas, berkarakter, dan berprestasi.
+      </marquee>
+    </div>
+
+    <!-- Bagian Jam Digital & Tanggal Otomatis -->
+    <div class="digital-clock" id="digitalClock">
+      Memuat Waktu...
+    </div>
+
+  </div>
+</div>
+
+<style>
+  /* Styling untuk Top Info Bar */
+  .top-info-bar {
+    background: #061e3a;
+    color: #ffffff;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .top-info-container {
+    max-width: 1160px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  .running-text-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+    flex: 1;
+  }
+  .badge-running {
+    background: #f2bd45;
+    color: #092c55;
+    font-weight: 900;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .digital-clock {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-weight: 800;
+    white-space: nowrap;
+    color: #f2bd45;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  /* Responsif untuk HP */
+  @media (max-width: 768px) {
+    .top-info-container {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 6px;
+    }
+    .digital-clock {
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  // Fungsi Jam Digital & Tanggal Real-Time Bahasa Indonesia
+  function updateJamDigital() {
+    const now = new Date();
+    
+    // Opsi format tanggal Indonesia
+    const options = { 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    };
+    const tanggalStr = now.toLocaleDateString('id-ID', options);
+    
+    // Format Jam (HH:MM:SS)
+    const jamStr = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    
+    // Gabungkan ke elemen HTML
+    document.getElementById('digitalClock').innerHTML = `📅 ${tanggalStr} | ⏰ ${jamStr} WIB`;
+  }
+
+  // Jalankan fungsi setiap 1 detik
+  setInterval(updateJamDigital, 1000);
+  updateJamDigital(); // Panggil sekali di awal agar langsung tampil
+</script>
   <div class="top-strip">
     <div class="wrap">
       <span>📚 Portal Informasi & Pembelajaran Digital</span>
