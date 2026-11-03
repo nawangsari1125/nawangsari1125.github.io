@@ -1,3 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplikasi & Game Interaktif Kelas 4 | SD Negeri Nawangsari</title>
+  <style>
+    :root {
+      --navy: #092c55;
+      --blue: #125da5;
+      --sky: #eaf5ff;
+      --gold: #f2bd45;
+      --ink: #172b45;
+      --muted: #61738a;
+      --line: #e4ebf3;
+      --white: #ffffff;
+      --shadow: 0 12px 34px rgba(9,44,85,.10);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: "Nunito", "Segoe UI", Arial, sans-serif;
+      color: var(--ink); background: #f7faff; line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    
+    header { background: var(--navy); color: #fff; padding: 16px 22px; position: sticky; top: 0; z-index: 10; }
+    .header-wrap { max-width: 900px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+    .brand-title { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 1.1rem; }
+    .btn-back { background: rgba(255,255,255,0.15); color: #fff; padding: 8px 16px; border-radius: 999px; font-size: 0.88rem; font-weight: 800; border: 1px solid rgba(255,255,255,0.2); transition: 0.2s; }
+    .btn-back:hover { background: var(--gold); color: var(--navy); }
+
+    .container { max-width: 850px; margin: 40px auto; padding: 0 20px; }
+    
+    .card-box {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 32px; box-shadow: var(--shadow);
+    }
+    .card-box h1 { color: var(--navy); font-size: 1.5rem; margin: 0 0 8px; }
+    .card-box p { color: var(--muted); margin: 0 0 24px; font-size: 0.95rem; }
+
+    /* Grid Pilihan Game Kelas */
+    .game-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+    .game-item {
+      background: #f9fbff; border: 2px solid var(--line); padding: 20px; border-radius: 16px;
+      display: block; text-decoration: none; transition: 0.2s;
+    }
+    .game-item:hover { border-color: var(--blue); background: var(--sky); transform: translateY(-3px); }
+    .game-item h3 { color: var(--navy); margin: 0 0 4px; font-size: 1.05rem; }
+    .game-item p { color: var(--muted); margin: 0; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-wrap">
+      <div class="brand-title">🎮 Ruang Game & Aplikasi Kelas 4</div>
+      <a href="../#kelas" class="btn-back">← Kembali ke Portal</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="card-box">
+      <span style="background:var(--sky); color:var(--blue); font-size:0.75rem; font-weight:900; padding:4px 12px; border-radius:99px; text-transform:uppercase;">Pusat Belajar Interaktif</span>
+      <h1>Pilihan Permainan & Simulasi Kelas 4</h1>
+      <p>Silakan pilih media pembelajaran atau game edukasi di bawah ini untuk memulai:</p>
+
+      <div class="game-grid">
+        <!-- Game 1 -->
+        <a href="https://link-game-matematika-kelas4.com" target="_blank" class="game-item">
+          <div style="font-size: 2rem; margin-bottom: 10px;">➕</div>
+          <h3>Game Tantangan Matematika</h3>
+          <p>Asah kemampuan berhitung operasi bilangan cacah.</p>
+        </a>
+
+        <!-- Game 2 -->
+        <a href="https://link-game-ipas-kelas4.com" target="_blank" class="game-item">
+          <div style="font-size: 2rem; margin-bottom: 10px;">🌱</div>
+          <h3>Kuis Interaktif IPAS</h3>
+          <p>Belajar struktur tumbuhan dan energi di sekitar kita.</p>
+        </a>
+
+        <!-- Game 3 -->
+        <a href="https://link-game-bahasa-kelas4.com" target="_blank" class="game-item">
+          <div style="font-size: 2rem; margin-bottom: 10px;">📖</div>
+          <h3>Tebak Kata & Bahasa</h3>
+          <p>Melatih kosakata dan pemahaman teks cerita.</p>
+        </a>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
+
 /* Styling Khusus Menu Aplikasi Kelas 4 */
 .custom-kelas4-apps {
   background: linear-gradient(135deg, #f0f7ff, #fffdf4);
