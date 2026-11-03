@@ -77,12 +77,37 @@
   <main class="container">
     <div class="tka-box">
       
-      <!-- HALAMAN PENGANTAR -->
+    <!-- HALAMAN PENGANTAR & PILIHAN GAME -->
       <div id="introScreen" class="tka-intro">
-        <span style="background:var(--sky); color:var(--blue); font-size:0.75rem; font-weight:900; padding:4px 12px; border-radius:99px; text-transform:uppercase;">Asesmen Literasi & Numerasi</span>
-        <h1>Selamat Datang di Simulasi TKA SD Negeri Nawangsari</h1>
-        <p>Simulasi ini dirancang untuk melatih kemampuan penalaran, literasi membaca, dan numerasi dasar siswa secara mandiri dan interaktif.</p>
-        <button class="btn-start" onclick="mulaiSimulasi()">Mulai Simulasi Sekarang 🚀</button>
+        <span style="background:var(--sky); color:var(--blue); font-size:0.75rem; font-weight:900; padding:4px 12px; border-radius:99px; text-transform:uppercase;">Asesmen & Permainan Edukatif</span>
+        <h1>Pilihan Simulasi & Game TKA</h1>
+        <p>Silakan pilih salah satu menu permainan atau simulasi di bawah ini untuk mulai belajar:</p>
+        
+        <!-- GRID PILIHAN LINK LEBIH DARI 1 -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 20px;">
+          
+          <!-- Pilihan Link 1 -->
+          <a href="https://link-game-pertama-anda.com" target="_blank" style="background: #f9fbff; border: 2px solid var(--line); padding: 18px; border-radius: 16px; display: block; text-decoration: none; transition: 0.2s;" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--line)'">
+            <div style="font-size: 1.8rem; margin-bottom: 8px;">🎮</div>
+            <h3 style="color: var(--navy); margin: 0 0 4px; font-size: 1.05rem;">Simulasi TKA Literasi</h3>
+            <p style="color: var(--muted); margin: 0; font-size: 0.85rem;">Latihan pemahaman bacaan & soal cerita.</p>
+          </a>
+
+          <!-- Pilihan Link 2 -->
+          <a href="https://link-game-kedua-anda.com" target="_blank" style="background: #f9fbff; border: 2px solid var(--line); padding: 18px; border-radius: 16px; display: block; text-decoration: none; transition: 0.2s;" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--line)'">
+            <div style="font-size: 1.8rem; margin-bottom: 8px;">🔢</div>
+            <h3 style="color: var(--navy); margin: 0 0 4px; font-size: 1.05rem;">Simulasi TKA Numerasi</h3>
+            <p style="color: var(--muted); margin: 0; font-size: 0.85rem;">Uji kemampuan logika hitung & matematika.</p>
+          </a>
+
+          <!-- Pilihan Link 3 (Bisa ditambah lagi jika ada) -->
+          <a href="https://link-game-ketiga-anda.com" target="_blank" style="background: #f9fbff; border: 2px solid var(--line); padding: 18px; border-radius: 16px; display: block; text-decoration: none; transition: 0.2s;" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--line)'">
+            <div style="font-size: 1.8rem; margin-bottom: 8px;">🎯</div>
+            <h3 style="color: var(--navy); margin: 0 0 4px; font-size: 1.05rem;">Kuis Interaktif Pilihan</h3>
+            <p style="color: var(--muted); margin: 0; font-size: 0.85rem;">Permainan tebak kata & materi kelas.</p>
+          </a>
+
+        </div>
       </div>
 
       <!-- AREA SOAL SIMULASI -->
