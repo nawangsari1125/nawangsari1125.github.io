@@ -192,11 +192,14 @@ const roman={1:'I',2:'II',3:'III',4:'IV',5:'V',6:'VI'};
 
 function updateExternalAppVisibility() {
     if (kelasEl.value === '4') {
-        externalAppsSection.style.display = 'block';
+        kelas4AppSection.style.display = 'block'; // Tampilkan khusus di Kelas 4
     } else {
-        externalAppsSection.style.display = 'none';
+        kelas4AppSection.style.display = 'none';  // Sembunyikan di kelas lain
     }
 }
+
+// Panggil fungsi saat halaman pertama kali dimuat
+updateExternalAppVisibility();
 
 function renderSubjects(){
     subjectGrid.innerHTML='';
