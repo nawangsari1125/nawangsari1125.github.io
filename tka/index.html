@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulasi TKA | SD Negeri Nawangsari</title>
+  <style>
+    :root {
+      --navy: #092c55;
+      --blue: #125da5;
+      --sky: #eaf5ff;
+      --gold: #f2bd45;
+      --ink: #172b45;
+      --muted: #61738a;
+      --line: #e4ebf3;
+      --white: #ffffff;
+      --shadow: 0 12px 34px rgba(9,44,85,.10);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: "Nunito", "Segoe UI", Arial, sans-serif;
+      color: var(--ink); background: #f7faff; line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    
+    header { background: var(--navy); color: #fff; padding: 16px 22px; position: sticky; top: 0; z-index: 10; }
+    .header-wrap { max-width: 900px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+    .brand-title { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 1.1rem; }
+    .btn-back { background: rgba(255,255,255,0.15); color: #fff; padding: 8px 16px; border-radius: 999px; font-size: 0.88rem; font-weight: 800; border: 1px solid rgba(255,255,255,0.2); transition: 0.2s; }
+    .btn-back:hover { background: var(--gold); color: var(--navy); }
 
+    .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+    
+    .tka-box {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 32px; box-shadow: var(--shadow); position: relative;
+    }
+    
+    .tka-intro h1 { color: var(--navy); font-size: 1.5rem; margin: 0 0 8px; }
+    .tka-intro p { color: var(--muted); margin: 0 0 24px; font-size: 0.95rem; }
+    
+    .btn-start {
+      background: var(--navy); color: #fff; border: none; padding: 14px 28px;
+      border-radius: 12px; font-weight: 900; font-size: 1rem; cursor: pointer; transition: 0.2s;
+    }
+    .btn-start:hover { background: var(--blue); }
+
+    .tka-quiz-area { display: none; }
+    .tka-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--line); padding-bottom: 12px; font-weight: 900; color: var(--blue); }
+    
+    .question-box { font-size: 1.15rem; font-weight: 900; color: var(--navy); margin-bottom: 20px; }
+    
+    .options-list { display: grid; gap: 12px; margin-bottom: 24px; }
+    .tka-option {
+      width: 100%; text-align: left; background: #f9fbff; border: 2px solid var(--line);
+      padding: 14px 18px; border-radius: 14px; font-weight: 800; font-size: 0.95rem; color: var(--navy);
+      cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 12px;
+    }
+    .tka-option:hover { background: var(--sky); border-color: var(--blue); }
+    .tka-option.selected { background: var(--sky); border-color: var(--blue); color: var(--blue); }
+
+    .btn-nav-wrap { display: flex; justify-content: space-between; margin-top: 20px; }
+    .btn-action { background: var(--navy); color: #fff; border: none; padding: 10px 20px; border-radius: 10px; font-weight: 900; cursor: pointer; }
+    .btn-action:hover { background: var(--blue); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-wrap">
+      <div class="brand-title">📊 Simulasi TKA (Tes Kompetensi Akademik)</div>
+      <a href="../#aplikasi" class="btn-back">← Kembali ke Portal</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="tka-box">
+      
+      <!-- HALAMAN PENGANTAR -->
+      <div id="introScreen" class="tka-intro">
+        <span style="background:var(--sky); color:var(--blue); font-size:0.75rem; font-weight:900; padding:4px 12px; border-radius:99px; text-transform:uppercase;">Asesmen Literasi & Numerasi</span>
+        <h1>Selamat Datang di Simulasi TKA SD Negeri Nawangsari</h1>
+        <p>Simulasi ini dirancang untuk melatih kemampuan penalaran, literasi membaca, dan numerasi dasar siswa secara mandiri dan interaktif.</p>
+        <button class="btn-start" onclick="mulaiSimulasi()">Mulai Simulasi Sekarang 🚀</button>
+      </div>
+
+      <!-- AREA SOAL SIMULASI -->
+      <div id="quizScreen" class="tka-quiz-area">
+        <div class="tka-header">
+          <span id="progressLabel">Soal 1 dari 2</span>
+          <span id="timerLabel" style="color:var(--gold);">⏱️ Mode Latihan</span>
+        </div>
+
+        <div class="question-box" id="soalTeks">Memuat soal...</div>
+
+        <div class="options-list" id="opsiContainer"></div>
+
+        <div class="btn-nav-wrap">
+          <button class="btn-action" id="btnSebelumnya" onclick="soalSebelumnya()" style="background:var(--muted);">← Sebelumnya</button>
+          <button class="btn-action" id="btnBerikutnya" onclick="soalBerikutnya()">Selanjutnya →</button>
+        </div>
+      </div>
+
+      <!-- HALAMAN SELESAI -->
+      <div id="resultScreen" style="display:none; text-align:center; padding: 20px;">
+        <div style="font-size: 3.5rem; margin-bottom: 10px;">🎉</div>
+        <h2 style="color:var(--navy); margin:0 0 10px;">Simulasi TKA Selesai!</h2>
+        <p style="color:var(--muted);">Terima kasih telah mengikuti simulasi asesmen kompetensi ini.</p>
+        <div style="font-size: 2.2rem; font-weight: 1000; color: var(--blue); margin: 20px 0;" id="skorAkhirText">Skor Anda: 100</div>
+        <button class="btn-start" onclick="location.reload()">Ulangi Simulasi 🔄</button>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Contoh Database Soal TKA (Bisa ditambah sesuai kebutuhan)
+    const databaseTKA = [
+      {
+        tanya: "Baca teks berikut: 'Disebuah kebun, Siti memetik 12 buah mangga. Ia memberikan 4 buah kepada adiknya.' Berapa sisa buah mangga Siti sekarang?",
+        opsi: ["6 buah", "8 buah", "10 buah", "16 buah"],
+        kunci: 1
+      },
+      {
+        tanya: "Manakah tindakan di bawah ini yang mencerminkan pengamalan sila ketiga Pancasila di lingkungan sekolah?",
+        opsi: [
+          "Berdoa sebelum memulai pelajaran di kelas",
+          "Bekerja sama membersihkan ruang kelas bersama teman",
+          "Menghormati guru yang sedang berbicara",
+          "Menabung sisa uang jajan di sekolah"
+        ],
+        kunci: 1
+      }
+    ];
+
+    let indeksSoal = 0;
+    let jawabanSiswa = {};
+
+    function mulaiSimulasi() {
+      document.getElementById('introScreen').style.display = 'none';
+      document.getElementById('quizScreen').style.display = 'block';
+      tampilkanSoal();
+    }
+
+    function tampilkanSoal() {
+      const current = databaseTKA[indeksSoal];
+      document.getElementById('progressLabel').textContent = `Soal ${indeksSoal + 1} dari ${databaseTKA.length}`;
+      document.getElementById('soalTeks').textContent = current.tanya;
+
+      const opsiContainer = document.getElementById('opsiContainer');
+      opsiContainer.innerHTML = current.opsi.map((item, idx) => `
+        <button class="tka-option ${jawabanSiswa[indeksSoal] === idx ? 'selected' : ''}" onclick="pilihOpsi(${idx})">
+          <span style="background:var(--sky); width:28px; height:28px; border-radius:50%; display:grid; place-items:center; font-size:0.8rem; font-weight:1000; color:var(--blue);">${String.fromCharCode(65 + idx)}</span>
+          <span>${item}</span>
+        </button>
+      `).join('');
+
+      document.getElementById('btnSebelumnya').style.display = indeksSoal === 0 ? 'none' : 'block';
+      document.getElementById('btnBerikutnya').textContent = indeksSoal === databaseTKA.length - 1 ? 'Selesai & Kirim 🏁' : 'Selanjutnya →';
+    }
+
+    function pilihOpsi(idxOpsi) {
+      jawabanSiswa[indeksSoal] = idxOpsi;
+      tampilkanSoal();
+    }
+
+    function soalBerikutnya() {
+      if (jawabanSiswa[indeksSoal] === undefined) {
+        alert("Silakan pilih salah satu jawaban terlebih dahulu!");
+        return;
+      }
+
+      if (indeksSoal < databaseTKA.length - 1) {
+        indeksSoal++;
+        tampilkanSoal();
+      } else {
+        hitungHasil();
+      }
+    }
+
+    function soalSebelumnya() {
+      if (indeksSoal > 0) {
+        indeksSoal--;
+        tampilkanSoal();
+      }
+    }
+
+    function hitungHasil() {
+      let benar = 0;
+      databaseTKA.forEach((soal, idx) => {
+        if (jawabanSiswa[idx] === soal.kunci) {
+          benar++;
+        }
+      });
+
+      const nilaiAkhir = Math.round((benar / databaseTKA.length) * 100);
+      document.getElementById('quizScreen').style.display = 'none';
+      document.getElementById('resultScreen').style.display = 'block';
+      document.getElementById('skorAkhirText').textContent = `Skor Akhir Anda: ${nilaiAkhir}`;
+    }
+  </script>
+</body>
+</html>
