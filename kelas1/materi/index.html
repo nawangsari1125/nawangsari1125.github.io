@@ -89,40 +89,59 @@ const subjects=[
  {id:'pjok',name:'PJOK',icon:'⚽',tile:'#e8fff0'}
 ];
 
-// Data materi dikosongkan sementara agar bisa diisi bertahap sesuai keinginan Anda
-const materi = [];
+// Array materi kelas 1 (bisa ditambah bertahap nanti)
+const materi = [
+  // Contoh jika nanti ingin diisi:
+  // { kelas: 1, subjek: 'mtk', judul: 'Bilangan 1-10', ringkas: 'Mengenal angka...', tujuan: '...', isi: [...], soal: [...] }
+];
 
-let selectedSubject='pai';
-const subjectGrid=document.getElementById('subjectGrid'), topicList=document.getElementById('topicList'), cariEl=document.getElementById('cari');
+let selectedSubject = 'pai';
+const subjectGrid = document.getElementById('subjectGrid');
+const topicList = document.getElementById('topicList');
+const cariEl = document.getElementById('cari');
 
-function renderSubjects(){
-    subjectGrid.innerHTML='';
-    subjects.forEach(s=>{
-        const count=materi.filter(m=>m.kelas===1&&m.subjek===s.id).length;
-        const b=document.createElement('button');
-        b.type='button';
-        b.className='subject'+(selectedSubject===s.id?' active':'');
-        b.style.setProperty('--tile',s.tile);
-        b.innerHTML=`<span class="icon">${s.icon}</span><span><strong>${s.name}</strong><small>${count?count+' materi':'Segera ditambahkan'}</small></span>`;
-        b.addEventListener('click',()=>{selectedSubject=s.id;renderSubjects();renderTopics()});
+function renderSubjects() {
+    subjectGrid.innerHTML = '';
+    subjects.forEach(s => {
+        const count = materi.filter(m => m.subjek === s.id).length;
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'subject' + (selectedSubject === s.id ? ' active' : '');
+        b.style.setProperty('--tile', s.tile);
+        b.innerHTML = `<span class="icon">${s.icon}</span><span><strong>${s.name}</strong><small>${count ? count + ' materi' : 'Segera ditambahkan'}</small></span>`;
+        b.addEventListener('click', () => {
+            selectedSubject = s.id;
+            renderSubjects();
+            renderTopics();
+        });
         subjectGrid.appendChild(b);
-    })
+    });
 }
 
-function renderTopics(){
-    const q=cariEl.value.trim().toLocaleLowerCase('id');
-    const list=materi.filter(m=>m.kelas===1&&m.subjek===selectedSubject&&m.judul.toLocaleLowerCase('id').includes(q));
-    topicList.innerHTML='';
-    if(!list.length){
-        topicList.innerHTML='<div class="empty">📚 Belum ada materi untuk mata pelajaran ini. Materi akan segera ditambahkan secara bertahap oleh pengelola.</div>';
+function renderTopics() {
+    const q = cariEl.value.trim().toLocaleLowerCase('id');
+    const list = materi.filter(m => m.subjek === selectedSubject && m.judul.toLocaleLowerCase('id').includes(q));
+    topicList.innerHTML = '';
+    
+    if (!list.length) {
+        topicList.innerHTML = '<div class="empty" style="grid-column: 1/-1;">📚 Belum ada materi untuk mata pelajaran ini. Materi akan segera ditambahkan secara bertahap.</div>';
         return;
     }
+    
+    list.forEach(m => {
+        const el = document.createElement('article');
+        el.className = 'topic';
+        el.innerHTML = `<div><h3>${m.judul}</h3><p>${m.ringkas}</p></div><button class="btn" type="button">Buka materi →</button>`;
+        topicList.appendChild(el);
+    });
 }
 
-cariEl.addEventListener('input',renderTopics);
-document.getElementById('year').textContent=new Date().getFullYear();
+cariEl.addEventListener('input', renderTopics);
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Jalankan fungsi render saat halaman dimuat
 renderSubjects();
 renderTopics();
-</script>
+
 </body>
 </html>
