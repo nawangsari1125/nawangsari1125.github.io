@@ -48,6 +48,74 @@
     .game-item:hover { border-color: var(--blue); background: var(--sky); transform: translateY(-3px); }
     .game-item h3 { color: var(--navy); margin: 0 0 4px; font-size: 1.05rem; }
     .game-item p { color: var(--muted); margin: 0; font-size: 0.85rem; }
+
+    /* --- PINDAHKAN CSS TAMBAHAN KE SINI --- */
+    .custom-kelas4-apps {
+      background: linear-gradient(135deg, #f0f7ff, #fffdf4);
+      border: 2px dashed #93c5fd;
+      border-radius: 20px;
+      padding: 22px;
+      margin: 30px 0;
+      box-shadow: 0 8px 24px rgba(18, 93, 165, 0.08);
+    }
+    .k4-header {
+      margin-bottom: 16px;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 10px;
+    }
+    .k4-header h3 {
+      color: #092c55;
+      font-size: 1.15rem;
+      margin: 0 0 4px;
+    }
+    .k4-header span {
+      color: #61738a;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .k4-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .k4-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-card);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .k4-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(9, 44, 85, 0.12);
+      border-color: #125da5;
+    }
+    .k4-icon {
+      font-size: 2.2rem;
+      background: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .k4-info h4 {
+      color: #092c55;
+      margin: 0 0 2px;
+      font-size: 1rem;
+    }
+    .k4-info p {
+      color: #526982;
+      margin: 0;
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
   </style>
 </head>
 <body>
@@ -92,71 +160,3 @@
 
 </body>
 </html>
-
-/* Styling Khusus Menu Aplikasi Kelas 4 */
-.custom-kelas4-apps {
-  background: linear-gradient(135deg, #f0f7ff, #fffdf4);
-  border: 2px dashed #93c5fd;
-  border-radius: 20px;
-  padding: 22px;
-  margin: 30px 0;
-  box-shadow: 0 8px 24px rgba(18, 93, 165, 0.08);
-}
-.k4-header {
-  margin-bottom: 16px;
-  border-bottom: 2px solid #e2e8f0;
-  padding-bottom: 10px;
-}
-.k4-header h3 {
-  color: #092c55;
-  font-size: 1.15rem;
-  margin: 0 0 4px;
-}
-.k4-header span {
-  color: #61738a;
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-.k4-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 14px;
-}
-.k4-card {
-  background: var(--bg-card);
-  border: 2px solid var(--border-card);
-  border-radius: 16px;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-.k4-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(9, 44, 85, 0.12);
-  border-color: #125da5;
-}
-.k4-icon {
-  font-size: 2.2rem;
-  background: white;
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-.k4-info h4 {
-  color: #092c55;
-  margin: 0 0 2px;
-  font-size: 1rem;
-}
-.k4-info p {
-  color: #526982;
-  margin: 0;
-  font-size: 0.82rem;
-  line-height: 1.4;
-}
