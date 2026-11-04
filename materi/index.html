@@ -100,6 +100,30 @@
 <!-- AKHIR BAGIAN APLIKASI -->
 
 <div class="section-title"><div><h2>1. Pilih Mata Pelajaran</h2><p>Pilih salah satu mata pelajaran di bawah ini.</p></div></div><div class="subject-grid" id="subjectGrid"></div>
+<!-- KONTEN APLIKASI KHUSUS KELAS 4 -->
+<div id="appSectionKelas4" class="app-container" style="display: none; background: linear-gradient(135deg, #f2eaff, #eaf5ff); border: 2px dashed #93c5fd; margin-bottom: 24px;">
+    <div class="app-header-mini">
+        <h3 style="color: var(--navy);">🎮 Pusat Game & Aplikasi Spesial Kelas IV</h3>
+        <span>Pilih media belajar interaktif kelas 4</span>
+    </div>
+    <div class="app-grid-compact" style="grid-template-columns: repeat(3, 1fr); gap: 12px;">
+        <!-- Tombol Game 1 Kelas 4 -->
+        <a href="URL_GAME_MATEMATIKA_KELAS_4" target="_blank" class="app-pill" style="background: white;">
+            <span class="app-icon">📐</span>
+            <span class="app-title">Matematika Kelas 4</span>
+        </a>
+        <!-- Tombol Game 2 Kelas 4 -->
+        <a href="URL_GAME_IPAS_KELAS_4" target="_blank" class="app-pill" style="background: white;">
+            <span class="app-icon">🌱</span>
+            <span class="app-title">IPAS Kelas 4</span>
+        </a>
+        <!-- Tombol Game 3 Kelas 4 -->
+        <a href="URL_GAME_BAHASA_KELAS_4" target="_blank" class="app-pill" style="background: white;">
+            <span class="app-icon">📖</span>
+            <span class="app-title">Bahasa Indonesia</span>
+        </a>
+    </div>
+</div>    
 <div class="section-title"><div><h2>2. Pilih Materi</h2><p id="topicSubtitle">Materi yang tersedia untuk kelas terpilih.</p></div></div><div class="topic-list" id="topicList"></div>
 <section class="lesson" id="lesson" aria-live="polite"><div class="eyebrow" id="lessonMeta">Materi pembelajaran</div><h2 id="lessonTitle"></h2><div id="lessonBody"></div><div class="quiz" id="quiz"></div><div class="lesson-actions"><button class="btn secondary" id="closeLesson" type="button">Tutup materi</button><button class="btn" id="topButton" type="button">Kembali ke daftar materi ↑</button></div></section>
 <p class="notice">Catatan untuk pengelola: materi ini merupakan bahan awal untuk pengembangan dan uji fungsi, bukan pengganti ATP/modul ajar resmi. Silakan tinjau dan sesuaikan urutan, kedalaman, serta istilah dengan ATP, modul ajar, dan buku yang digunakan SD Negeri Nawangsari.</p>
@@ -259,6 +283,24 @@ const requested=Number(params.get('kelas'));
 if(requested>=1&&requested<=6) kelasEl.value=String(requested);
 
 updateExternalAppVisibility();
+    const appSectionKelas3 = document.getElementById('externalAppsSection'); // Jika punya kelas 3
+const appSectionKelas4 = document.getElementById('appSectionKelas4');
+
+function updateCustomAppVisibility() {
+    const kelasTerpilih = kelasEl.value;
+
+    // Sembunyikan semua dulu secara default
+    if (appSectionKelas3) appSectionKelas3.style.display = 'none';
+    if (appSectionKelas4) appSectionKelas4.style.display = 'none';
+
+    // Tampilkan berdasarkan kelas yang aktif
+    if (kelasTerpilih === '3' && appSectionKelas3) {
+        appSectionKelas3.style.display = 'block';
+    } 
+    else if (kelasTerpilih === '4' && appSectionKelas4) {
+        appSectionKelas4.style.display = 'block'; // Muncul khusus saat Kelas 4 dipilih!
+    }
+}
 renderSubjects();
 renderTopics();
 </script>
