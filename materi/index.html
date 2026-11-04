@@ -283,24 +283,27 @@ const requested=Number(params.get('kelas'));
 if(requested>=1&&requested<=6) kelasEl.value=String(requested);
 
 updateExternalAppVisibility();
-    const appSectionKelas3 = document.getElementById('externalAppsSection'); // Jika punya kelas 3
-const appSectionKelas4 = document.getElementById('appSectionKelas4');
 
-function updateCustomAppVisibility() {
+const appSectionKelas3 = document.getElementById('externalAppsSection');
+const appSectionKelas4 = document.getElementById('appSectionKelas4');
+// (Jika nanti ada kelas 5 atau 6, Anda tinggal tambahkan variabelnya di sini)
+
+function updateExternalAppVisibility() {
     const kelasTerpilih = kelasEl.value;
 
-    // Sembunyikan semua dulu secara default
+    // 1. Sembunyikan semua menu aplikasi khusus kelas terlebih dahulu
     if (appSectionKelas3) appSectionKelas3.style.display = 'none';
     if (appSectionKelas4) appSectionKelas4.style.display = 'none';
 
-    // Tampilkan berdasarkan kelas yang aktif
+    // 2. Tampilkan hanya sesuai dengan nomor kelas yang sedang dipilih di dropdown
     if (kelasTerpilih === '3' && appSectionKelas3) {
         appSectionKelas3.style.display = 'block';
     } 
     else if (kelasTerpilih === '4' && appSectionKelas4) {
-        appSectionKelas4.style.display = 'block'; // Muncul khusus saat Kelas 4 dipilih!
+        appSectionKelas4.style.display = 'block'; // Muncul khusus saat Kelas 4 aktif!
     }
 }
+    
 renderSubjects();
 renderTopics();
 </script>
