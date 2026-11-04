@@ -31,7 +31,76 @@
 <div class="header"><header><a class="brand" href="../index.html"><img src="../logo-sekolah.png" alt="Logo SD Negeri Nawangsari" onerror="this.style.display='none'"><span><strong>SD NEGERI NAWANGSARI</strong><small>Materi Pembelajaran Kelas I–VI</small></span></a><a class="back" href="../index.html">← Beranda</a></header></div>
 <section class="hero"><div class="hero-inner"><span class="eyebrow">Ruang belajar anak hebat</span><h1>Yuk, Belajar Hari Ini! 📘</h1><p>Pilih kelas dan mata pelajaran, lalu buka materi yang ingin kamu pelajari. Setelah membaca, coba kerjakan latihan singkat untuk memeriksa pemahamanmu.</p></div></section>
 <main class="container">
-<div class="toolbar"><div class="field"><label for="kelas">🎒 Pilih kelas</label><select id="kelas"><option value="1">Kelas I</option><option value="2">Kelas II</option><option value="3" selected>Kelas III</option><option value="4">Kelas IV</option><option value="5">Kelas V</option><option value="6">Kelas VI</option></select></div><div class="field"><label for="cari">🔎 Cari materi</label><input id="cari" type="search" placeholder="Contoh: wudu, pecahan, membaca..."></div></div>
+
+    <main class="container">
+  
+  <!-- 1. Kotak Toolbar (Dropdown Kelas & Pencarian) -->
+  <div class="toolbar">
+    <div class="field">
+      <label for="kelas">🎒 Pilih kelas</label>
+      <select id="kelas">
+        <option value="1">Kelas I</option>
+        <option value="2">Kelas II</option>
+        <option value="3">Kelas III</option>
+        <option value="4" selected>Kelas IV</option>
+        <option value="5">Kelas V</option>
+        <option value="6">Kelas VI</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="cari">🔎 Cari materi</label>
+      <input id="cari" type="search" placeholder="Contoh: wudu, pecahan, membaca...">
+    </div>
+  </div>
+
+  <!-- 2. Bagian Pilihan Mata Pelajaran (JANGAN SAMPAI TERHAPUS) -->
+  <div class="section-title">
+    <div><h2>1. Pilih Mata Pelajaran</h2><p>Pilih salah satu mata pelajaran di bawah ini.</p></div>
+  </div>
+  <div class="subject-grid" id="subjectGrid"></div>
+
+  <!-- 3. MENU APLIKASI KHUSUS KELAS (Misal: Khusus Kelas 4) -->
+  <div id="appSectionKelas4" class="app-container" style="display: none; background: linear-gradient(135deg, #f2eaff, #eaf5ff); border: 2px dashed #93c5fd; margin-top: 24px; margin-bottom: 24px;">
+    <div class="app-header-mini">
+      <h3 style="color: var(--navy);">🎮 Pusat Game & Aplikasi Spesial Kelas IV</h3>
+      <span>Pilih media belajar interaktif kelas 4</span>
+    </div>
+    <div class="app-grid-compact" style="grid-template-columns: repeat(3, 1fr); gap: 12px;">
+      <a href="https://matematika-kelas-4.netlify.app/" target="_blank" class="app-pill" style="background: white;">
+        <span class="app-icon">📐</span>
+        <span class="app-title">Matematika</span>
+      </a>
+      <a href="https://ipaskelas4sdn.netlify.app/" target="_blank" class="app-pill" style="background: white;">
+        <span class="app-icon">🌱</span>
+        <span class="app-title">IPAS Alam</span>
+      </a>
+      <a href="https://bahasa-indonesia-kelas-4.netlify.app/" target="_blank" class="app-pill" style="background: white;">
+        <span class="app-icon">📖</span>
+        <span class="app-title">Bahasa Indonesia</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- 4. Bagian Pilihan Materi -->
+  <div class="section-title">
+    <div><h2>2. Pilih Materi</h2><p id="topicSubtitle">Materi yang tersedia untuk kelas terpilih.</p></div>
+  </div>
+  <div class="topic-list" id="topicList"></div>
+
+  <!-- 5. Bagian Detail Pelajaran / Modul Bacaan -->
+  <section class="lesson" id="lesson" aria-live="polite">
+    <div class="eyebrow" id="lessonMeta">Materi pembelajaran</div>
+    <h2 id="lessonTitle"></h2>
+    <div id="lessonBody"></div>
+    <div class="quiz" id="quiz"></div>
+    <div class="lesson-actions">
+      <button class="btn secondary" id="closeLesson" type="button">Tutup materi</button>
+      <button class="btn" id="topButton" type="button">Kembali ke daftar materi ↑</button>
+    </div>
+  </section>
+
+</main>
+    
 
 <!-- BAGIAN 10 TOMBOL APLIKASI ESTETIK & KOMPAK (KHUSUS KELAS III) -->
 <div id="externalAppsSection" class="app-container" style="display: none;">
