@@ -171,49 +171,112 @@
     // Database Daftar Soal Latihan Kelas 1 - 6
     const quizData = [
       {
-        id: 1, kelas: "1", mapel: "Matematika", judul: "Penjumlahan & Pengurangan Dasar",
-        deskripsi: "Mengenal konsep tambah dan kurang bilangan 1-20.", jumlah: 5, waktu: "10 Menit",
+        id: 1, 
+        kelas: "1", 
+        mapel: "Matematika", 
+        judul: "Penjumlahan & Pengurangan Dasar",
+        deskripsi: "Mengenal konsep tambah, kurang, urutan bilangan, dan bangun datar.", 
+        jumlah: 10, 
+        waktu: "15 Menit",
         soal: [
-          { t: "3 + 5 = ...", o: ["7", "8", "9"], j: 1, p: "3 ditambah 5 sama dengan 8." },
-          { t: "10 - 4 = ...", o: ["6", "5", "4"], j: 0, p: "10 dikurangi 4 sisanya 6." },
-          { t: "Ibu membeli 4 apel, lalu membeli lagi 2 apel. Jumlah apel ibu adalah ...", o: ["5", "6", "7"], j: 1, p: "4 + 2 = 6 apel." }
+          { t: "Berapakah jumlah buah apel di bawah ini? 🍎🍎🍎🍎🍎", o: ["4", "5", "6"], j: 1, p: "Jumlah apel ada 5." },
+          { t: "Hasil dari 3 + 4 adalah ...", o: ["6", "7", "8"], j: 1, p: "3 ditambah 4 sama dengan 7." },
+          { t: "Ibu memiliki 8 kue, lalu dimakan adik 3 kue. Sisa kue Ibu adalah ...", o: ["5", "4", "3"], j: 0, p: "8 dikurangi 3 sisanya 5." },
+          { t: "Manakah bilangan yang lebih besar antara 12 dan 9?", o: ["9", "12", "Sama besar"], j: 1, p: "12 lebih besar daripada 9." },
+          { t: "Urutan bilangan dari yang terkecil adalah ...", o: ["5, 6, 7, 8", "8, 7, 6, 5", "6, 5, 8, 7"], j: 0, p: "Urutan dari kecil ke besar: 5, 6, 7, 8." },
+          { t: "Bentuk bangun datar dari uang koin adalah ...", o: ["Segitiga", "Lingkaran", "Persegi"], j: 1, p: "Uang koin berbentuk lingkaran." },
+          { t: "Hasil dari 10 - 4 adalah ...", o: ["5", "6", "7"], j: 1, p: "10 dikurangi 4 sama dengan 6." },
+          { t: "Lambang bilangan dari 'Lima Belas' adalah ...", o: ["51", "15", "50"], j: 1, p: "Angka lima belas ditulis 15." },
+          { t: "7 + ... = 10. Angka yang tepat untuk mengisi titik-titik adalah ...", o: ["2", "3", "4"], j: 1, p: "7 + 3 = 10." },
+          { t: "Benda yang berbentuk tabung di bawah ini adalah ...", o: ["Kaleng susu", "Buku tulis", "Penggaris"], j: 0, p: "Kaleng susu memiliki bentuk tabung." }
         ]
       },
       {
-        id: 2, kelas: "2", mapel: "Bahasa Indonesia", judul: "Membaca Teks & Kalimat Tanya",
-        deskripsi: "Latihan menemukan informasi penting dan kata tanya.", jumlah: 5, waktu: "10 Menit",
+        id: 2, 
+        kelas: "1", 
+        mapel: "Bahasa Indonesia", 
+        judul: "Mengenal Huruf & Suku Kata",
+        deskripsi: "Latihan mengeja suku kata dan membaca kata pendek.", 
+        jumlah: 5, 
+        waktu: "10 Menit",
+        soal: [
+          { t: "Huruf konsonan pada kata 'BOLA' adalah ...", o: ["B dan L", "O dan A", "B dan O"], j: 0, p: "Huruf B dan L adalah huruf konsonan (mati)." },
+          { t: "Suku kata dari kata 'MATA' adalah ...", o: ["M-A-T-A", "MA - TA", "MAT - A"], j: 1, p: "Penggalan suku kata MATA yaitu MA - TA." }
+        ]
+      },
+      {
+        id: 3, 
+        kelas: "1", 
+        mapel: "PJOK", 
+        judul: "Gerak Lokomotor & Kebugaran",
+        deskripsi: "Mengenal gerak berjalan, berlari, dan melompat.", 
+        jumlah: 5, 
+        waktu: "10 Menit",
+        soal: [
+          { t: "Gerakan berpindah tempat dari satu titik ke titik lain disebut gerak ...", o: ["Lokomotor", "Non-lokomotor", "Manipulatif"], j: 0, p: "Gerak lokomotor ditandai dengan perpindahan tempat." },
+          { t: "Saat berlari, gerakan kaki kita menjadi ...", o: ["Lambat", "Cepat", "Diam"], j: 1, p: "Berlari membutuhkan gerakan kaki yang cepat." }
+        ]
+      },
+      {
+        id: 4, 
+        kelas: "2", 
+        mapel: "Bahasa Indonesia", 
+        judul: "Membaca Teks & Kalimat Tanya",
+        deskripsi: "Latihan menemukan informasi penting dan kata tanya.", 
+        jumlah: 5, 
+        waktu: "10 Menit",
         soal: [
           { t: "Kata tanya yang digunakan untuk menanyakan tempat adalah ...", o: ["Di mana", "Siapa", "Kapan"], j: 0, p: "'Di mana' digunakan untuk menanyakan lokasi/tempat." },
           { t: "Kalimat tanya selalu diakhiri dengan tanda ...", o: ["Titik (.)", "Tanda Tanya (?)", "Tanda Seru (!)"], j: 1, p: "Kalimat tanya diakhiri tanda tanya (?)." }
         ]
       },
       {
-        id: 3, kelas: "3", mapel: "IPAS / Sains", judul: "Wujud Benda & Perubahannya",
-        deskripsi: "Mengenal benda padat, cair, gas, serta sifat-sifatnya.", jumlah: 5, waktu: "10 Menit",
+        id: 5, 
+        kelas: "3", 
+        mapel: "IPAS / Sains", 
+        judul: "Wujud Benda & Perubahannya",
+        deskripsi: "Mengenal benda padat, cair, gas, serta sifat-sifatnya.", 
+        jumlah: 5, 
+        waktu: "10 Menit",
         soal: [
           { t: "Air yang dibekukan di dalam freezer akan berubah menjadi ...", o: ["Uap", "Es (Padat)", "Minyak"], j: 1, p: "Air (cair) jika dibekukan akan berubah wujud menjadi es (padat)." },
           { t: "Contoh benda cair di sekitar kita adalah ...", o: ["Batu", "Pensil", "Minyak goreng"], j: 2, p: "Minyak goreng memiliki wujud cair." }
         ]
       },
       {
-        id: 4, kelas: "4", mapel: "Pendidikan Pancasila", judul: "Pengamalan Sila-Sila Pancasila",
-        deskripsi: "Penerapan nilai Pancasila dalam kehidupan sehari-hari.", jumlah: 5, waktu: "15 Menit",
+        id: 6, 
+        kelas: "4", 
+        mapel: "IPAS", 
+        judul: "Tumbuhan, Sumber Kehidupan",
+        deskripsi: "Memahami bagian tubuh tumbuhan dan proses fotosintesis.", 
+        jumlah: 5, 
+        waktu: "15 Menit",
         soal: [
-          { t: "Berdoa sebelum dan sesudah belajar merupakan pengamalan sila ke-...", o: ["1", "2", "3"], j: 0, p: "Sila ke-1 berhubungan dengan keagamaan dan Ketuhanan." },
-          { t: "Gotong royong membersihkan kelas sesuai dengan sila ke-...", o: ["2", "3", "5"], j: 1, p: "Gotong royong mencerminkan persatuan (Sila ke-3)." }
+          { t: "Bagian tumbuhan yang menyerap air dari dalam tanah adalah ...", o: ["Daun", "Batang", "Akar"], j: 2, p: "Akar berfungsi menyerap air dan unsur hara dari tanah." },
+          { t: "Proses pembuatan makanan pada tumbuhan hijau disebut ...", o: ["Respirasi", "Fotosintesis", "Evaporasi"], j: 1, p: "Tumbuhan hijau membuat makanan sendiri melalui fotosintesis." }
         ]
       },
       {
-        id: 5, kelas: "5", mapel: "Matematika", judul: "Pecahan & Desimal",
-        deskripsi: "Latihan penjumlahan pecahan biasa dan desimal.", jumlah: 5, waktu: "15 Menit",
+        id: 7, 
+        kelas: "5", 
+        mapel: "Matematika", 
+        judul: "Pecahan & Desimal",
+        deskripsi: "Latihan penjumlahan pecahan biasa dan desimal.", 
+        jumlah: 5, 
+        waktu: "15 Menit",
         soal: [
-          { t: "Bentuk desimal dari pecahan 1/2 adalah ...", o: ["0,2", "0,5", "0,75"], j: 1, p: "1 divided by 2 = 0,5." },
-          { t: "1/4 + 2/4 = ...", o: ["3/4", "3/8", "2/4"], j: 0, p: "Karena penyebut sudah sama, tinggal menjumlahkan pembilang: 1 + 2 = 3/4." }
+          { t: "Bentuk desimal dari pecahan 1/2 adalah ...", o: ["0,2", "0,5", "0,75"], j: 1, p: "1 dibagi 2 sama dengan 0,5." },
+          { t: "1/4 + 2/4 = ...", o: ["3/4", "3/8", "2/4"], j: 0, p: "Karena penyebut sudah sama: 1 + 2 = 3/4." }
         ]
       },
       {
-        id: 6, kelas: "6", mapel: "Bahasa Indonesia", judul: "Gagasan Utama & Teks Eksplanasi",
-        deskripsi: "Menentukan ide pokok paragraf dan struktur teks.", jumlah: 5, waktu: "15 Menit",
+        id: 8, 
+        kelas: "6", 
+        mapel: "Bahasa Indonesia", 
+        judul: "Gagasan Utama & Teks Eksplanasi",
+        deskripsi: "Menentukan ide pokok paragraf dan struktur teks.", 
+        jumlah: 5, 
+        waktu: "15 Menit",
         soal: [
           { t: "Inti pembahasan atau pokok pikiran dalam suatu paragraf disebut ...", o: ["Gagasan utama", "Kalimat penjelas", "Judul"], j: 0, p: "Gagasan utama merupakan inti dari seluruh paragraf." }
         ]
