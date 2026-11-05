@@ -1,1 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pusat Unduhan - SD Negeri Nawangsari</title>
+    <link rel="stylesheet" href="style.css"> <!-- Sesuaikan dengan nama file CSS utama Anda -->
+    <style>
+        :root {
+            --navy: #092c55;
+            --gold: #f2bd45;
+            --bg-light: #f4f7f9;
+            --muted: #555;
+            --line: #e2e8f0;
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header-container {
+            background-color: var(--navy);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .header-container h1 {
+            margin: 0 0 8px 0;
+            font-size: 1.8rem;
+        }
+        .header-container p {
+            margin: 0;
+            opacity: 0.85;
+            font-size: 0.95rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .download-card {
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .download-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+        .download-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+        .download-card h3 {
+            margin: 0 0 8px 0;
+            color: var(--navy);
+            font-size: 1.2rem;
+        }
+        .download-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin: 0 0 20px 0;
+            line-height: 1.5;
+        }
+        .btn-download {
+            background: var(--navy);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .btn-download:hover {
+            background: #123d6e;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
 
+    <div class="header-container">
+        <h1>📁 Pusat Unduhan Dokumen & Berkas</h1>
+        <p>Silakan pilih kategori arsip, bahan bacaan, atau administrasi yang ingin diakses.</p>
+    </div>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← Kembali ke Beranda Utama</a>
+
+        <div class="download-grid">
+            
+            <!-- Kategori 1: Buku Paket Siswa -->
+            <div class="download-card">
+                <div>
+                    <div class="download-icon">📚</div>
+                    <h3>Buku Paket Siswa</h3>
+                    <p>Kumpulan buku teks pelajaran Kurikulum Merdeka untuk pegangan belajar siswa di rumah.</p>
+                </div>
+                <a href="URL_GOOGLE_DRIVE_BUKU_SISWA" target="_blank" class="btn-download">Buka Folder Buku</a>
+            </div>
+
+            <!-- Kategori 2: Bahan Bacaan & Modul -->
+            <div class="download-card">
+                <div>
+                    <div class="download-icon">📖</div>
+                    <h3>Bahan Bacaan & Modul</h3>
+                    <p>Materi literasi tambahan, cerita anak, dan modul latihan soal mandiri.</p>
+                </div>
+                <a href="URL_GOOGLE_DRIVE_MODUL" target="_blank" class="btn-download">Buka Bahan Bacaan</a>
+            </div>
+
+            <!-- Kategori 3: Administrasi & Berkas Guru -->
+            <div class="download-card">
+                <div>
+                    <div class="download-icon">📋</div>
+                    <h3>Administrasi Guru & Sekolah</h3>
+                    <p>Arsip dokumen penting, perangkat pembelajaran, dan format administrasi kelas.</p>
+                </div>
+                <a href="URL_GOOGLE_DRIVE_ADMINISTRASI" target="_blank" class="btn-download">Buka Arsip Guru</a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
