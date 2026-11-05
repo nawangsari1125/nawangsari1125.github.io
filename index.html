@@ -471,36 +471,38 @@
       <div class="notice">📘 Pilih kelas untuk membuka daftar mata pelajaran dan materi pembelajaran yang tersedia.</div>
     </section>
 
+<!-- Widget Hitung Mundur Agenda Sekolah (Ukuran Ringkas) -->
+<div class="countdown-card" style="background: linear-gradient(135deg, #092c55, #125da5); color: white; border-radius: 16px; padding: 16px 20px; margin-bottom: 24px; box-shadow: 0 6px 18px rgba(9,44,85,0.1); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
     
-<!-- Widget Hitung Mundur Agenda Sekolah -->
-<div class="countdown-card" style="background: linear-gradient(135deg, #092c55, #125da5); color: white; border-radius: 20px; padding: 24px; margin-bottom: 28px; box-shadow: 0 10px 25px rgba(9,44,85,0.15); display: flex; flex-direction: column; align-items: center; text-align: center;">
-    <div style="background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.5px;">
-        ⏳ HITUNG MUNDUR AGENDA SEKOLAH
+    <!-- Bagian Kiri: Info Agenda -->
+    <div style="flex: 1; min-width: 200px;">
+        <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px; color: #f2bd45; margin-bottom: 4px;">
+            ⏳ HITUNG MUNDUR AGENDA
+        </div>
+        <h4 id="countdown-title" style="margin: 0 0 2px 0; font-size: 1rem; font-weight: 700;">Asesmen Sumatif Akhir Semester</h4>
+        <p id="countdown-date-info" style="margin: 0; font-size: 0.78rem; opacity: 0.85;">Menuju hari pelaksanaan sumatif akhir semester 1</p>
     </div>
-    <h3 id="countdown-title" style="margin: 0 0 6px 0; font-size: 1.2rem; font-weight: 700;">Asesmen Sumatif Akhir Semester (ASAS)</h3>
-    <p id="countdown-date-info" style="margin: 0 0 20px 0; font-size: 0.85rem; opacity: 0.85;">Menuju hari pelaksanaan ujian</p>
     
-    <!-- Kotak Angka Waktu -->
-    <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
-        <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; padding: 12px 16px; min-width: 70px;">
-            <span id="days" style="display: block; font-size: 1.6rem; font-weight: 800; color: #f2bd45;">00</span>
-            <span style="font-size: 0.75rem; opacity: 0.8;">Hari</span>
+    <!-- Bagian Kanan: Kotak Angka Waktu (Lebih Kecil & Sejajar) -->
+    <div style="display: flex; gap: 8px;">
+        <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 8px 10px; text-align: center; min-width: 50px;">
+            <span id="days" style="display: block; font-size: 1.2rem; font-weight: 800; color: #f2bd45;">00</span>
+            <span style="font-size: 0.65rem; opacity: 0.8;">Hari</span>
         </div>
-        <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; padding: 12px 16px; min-width: 70px;">
-            <span id="hours" style="display: block; font-size: 1.6rem; font-weight: 800; color: #f2bd45;">00</span>
-            <span style="font-size: 0.75rem; opacity: 0.8;">Jam</span>
+        <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 8px 10px; text-align: center; min-width: 50px;">
+            <span id="hours" style="display: block; font-size: 1.2rem; font-weight: 800; color: #f2bd45;">00</span>
+            <span style="font-size: 0.65rem; opacity: 0.8;">Jam</span>
         </div>
-        <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; padding: 12px 16px; min-width: 70px;">
-            <span id="minutes" style="display: block; font-size: 1.6rem; font-weight: 800; color: #f2bd45;">00</span>
-            <span style="font-size: 0.75rem; opacity: 0.8;">Menit</span>
+        <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 8px 10px; text-align: center; min-width: 50px;">
+            <span id="minutes" style="display: block; font-size: 1.2rem; font-weight: 800; color: #f2bd45;">00</span>
+            <span style="font-size: 0.65rem; opacity: 0.8;">Menit</span>
         </div>
-        <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 14px; padding: 12px 16px; min-width: 70px;">
-            <span id="seconds" style="display: block; font-size: 1.6rem; font-weight: 800; color: #f2bd45;">00</span>
-            <span style="font-size: 0.75rem; opacity: 0.8;">Detik</span>
+        <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 8px 10px; text-align: center; min-width: 50px;">
+            <span id="seconds" style="display: block; font-size: 1.2rem; font-weight: 800; color: #f2bd45;">00</span>
+            <span style="font-size: 0.65rem; opacity: 0.8;">Detik</span>
         </div>
     </div>
 </div>
-
     
 <!-- BAGIAN PAPAN PENGUMUMAN DINAMIS -->
 <div class="feature-band">
@@ -631,12 +633,12 @@
     
     <!-- Daftar 7 Kebiasaan dengan Huruf Unik & Emoji -->
     <ul style="list-style: none; padding: 0; margin: 0; color: #333; font-size: 0.92rem; line-height: 1.8;">
-        <li style="margin-bottom: 6px;"><span style="font-size: 1.1rem; margin-right: 6px;">🌅</span> <strong style="font-family: monospace; letter-spacing: 0.5px; color: #0d3b66;">1. Banguh Pagi</strong></li>
+        <li style="margin-bottom: 6px;"><span style="font-size: 1.1rem; margin-right: 6px;">🌅</span> <strong style="font-family: monospace; letter-spacing: 0.5px; color: #0d3b66;">1. Bangun Pagi</strong></li>
         <li style="margin-bottom: 6px;"><span style="font-size: 1.1rem; margin-right: 6px;">🕌</span> <strong style="font-family: monospace; letter-spacing: 0.5px; color: #0d3b66;">2. Beribadah</strong></li>
         <li style="margin-bottom: 6px;"><span style="font-size: 1.1rem; margin-right: 6px;">🏃‍♂️</span> <strong style="font-family: monospace; letter-spacing: 0.5px; color: #0d3b66;">3. Berolahraga</strong></li>
         <li style="margin-bottom: 6px;"><span style="font-size: 1.1rem; margin-right: 6px;">🥗</span> <strong style="font-family: monospace; letter-spacing: 0.5px; color: #0d3b66;">4. Makan Sehat & Bergizi</strong></li>
         <li style="margin-bottom: 6px;"><span style="font-size: 1.1rem; margin-right: 6px;">📚</span> <strong style="font-family: monospace; letter-spacing: 0.5px; color: #0d3b66;">5. Gemar Belajar</strong></li>
-        <li style="margin-bottom: 6px;"><span style="font-size: 1.1rem; margin-right: 6px;">🤝</span> <strong style="font-family: monospace; letter-spacing: 0.5px; color: #0d3b66;">6. Bermasyarakat (Aktif & Suka Membantu)</strong></li>
+        <li style="margin-bottom: 6px;"><span style="font-size: 1.1rem; margin-right: 6px;">🤝</span> <strong style="font-family: monospace; letter-spacing: 0.5px; color: #0d3b66;">6. Bermasyarakat</strong></li>
         <li><span style="font-size: 1.1rem; margin-right: 6px;">🌙</span> <strong style="font-family: monospace; letter-spacing: 0.5px; color: #0d3b66;">7. Tidur Cepat (Istirahat Cukup)</strong></li>
     </ul>
 </div>
