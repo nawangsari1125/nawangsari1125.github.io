@@ -1,1 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Direktori Guru dan Staf Pengajar SD Negeri Nawangsari.">
+  <title>Direktori Guru & Staf | SD Negeri Nawangsari</title>
+  <style>
+    :root {
+      --navy: #092c55;
+      --blue: #125da5;
+      --sky: #eaf5ff;
+      --gold: #f2bd45;
+      --ink: #172b45;
+      --muted: #61738a;
+      --white: #ffffff;
+      --line: #e4ebf3;
+      --shadow: 0 12px 34px rgba(9,44,85,.10);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: "Nunito", "Segoe UI", Arial, sans-serif;
+      color: var(--ink); background: #f7faff; line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    
+    .top-strip { background: var(--navy); color: #fff; font-size: .84rem; }
+    .top-strip .wrap { max-width: 1160px; margin: auto; padding: 8px 22px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    
+    .header { background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); }
+    .nav-wrap { max-width:1160px; margin:auto; padding: 13px 22px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .brand img { width:48px; height:48px; object-fit:contain; }
+    .brand-name strong { display:block; color:var(--navy); font-size:1rem; }
+    .brand-name span { color:var(--muted); font-size:.78rem; }
+    .back-btn { background: var(--sky); color: var(--navy); border: 1px solid #c9e3ff; padding: 8px 16px; border-radius: 12px; font-weight: 800; font-size: 0.88rem; transition: .2s; }
+    .back-btn:hover { background: var(--navy); color: white; }
 
+    .hero-mini { background: linear-gradient(120deg,#eaf5ff 0%,#f8fbff 58%,#fff7df 100%); padding: 35px 22px; border-bottom: 1px solid var(--line); }
+    .hero-mini-inner { max-width: 1160px; margin: auto; }
+    .hero-mini h1 { color: var(--navy); margin: 6px 0 8px; font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+    .hero-mini p { color: var(--muted); margin: 0; max-width: 650px; }
+
+    .main-wrap { max-width: 1160px; margin: auto; padding: 35px 22px 60px; }
+
+    /* Grid Kartu Guru */
+    .teacher-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .teacher-card { background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; text-align: center; box-shadow: 0 6px 22px rgba(9,44,85,.04); transition: .2s; display: flex; flex-direction: column; align-items: center; }
+    .teacher-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: #b9d8f7; }
+    
+    .teacher-avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; background: var(--sky); border: 3px solid var(--blue); margin-bottom: 14px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--blue); }
+    .teacher-card h3 { color: var(--navy); margin: 0 0 4px; font-size: 1.05rem; }
+    .nip-text { font-size: 0.78rem; color: var(--muted); margin-bottom: 10px; font-family: monospace; }
+    .teacher-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; background: var(--sky); color: var(--blue); margin-bottom: 12px; }
+    .teacher-desc { font-size: 0.85rem; color: var(--muted); margin: 0; }
+
+    footer { background:#061e3a; color:#dce8f6; margin-top: 60px; }
+    .copyright { max-width:1160px; margin:auto; padding:20px 22px; font-size:.82rem; color:#a9bfd7; text-align: center; }
+
+    @media (max-width: 600px) {
+      .teacher-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-strip">
+    <div class="wrap">
+      <span>👨‍🏫 Direktori Pendidik & Tenaga Kependidikan</span>
+      <span>SD NEGERI NAWANGSARI</span>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">
+        <img src="logo-sekolah.png" alt="Logo SD Negeri Nawangsari" onerror="this.style.display='none'">
+        <span class="brand-name">
+          <strong>SD NEGERI NAWANGSARI</strong>
+          <span>Kec. Weleri, Kab. Kendal</span>
+        </span>
+      </a>
+      <a href="index.html" class="back-btn">← Kembali ke Beranda</a>
+    </div>
+  </header>
+
+  <section class="hero-mini">
+    <div class="hero-mini-inner">
+      <h1>Dewan Guru & Staf Pengajar 📚</h1>
+      <p>Mengenal lebih dekat para pendidik profesional yang berdedikasi membimbing dan mendampingi proses belajar siswa-siswi SD Negeri Nawangsari.</p>
+    </div>
+  </section>
+
+  <main class="main-wrap">
+    
+    <div class="teacher-grid">
+
+      <!-- Kepala Sekolah -->
+      <div class="teacher-card">
+        <img src="repan.jpg" alt="Repan" class="teacher-avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+        <h3>Nama Repan, S.Pd.</h3>
+        <div class="nip-text">NIP. 19671005 199103 1 005</div>
+        <span class="teacher-badge">Kepala Sekolah</span>
+        <p class="teacher-desc">Penanggung jawab kepemimpinan dan manajemen mutu pendidikan sekolah.</p>
+      </div>
+
+      <!-- Guru Kelas 1 -->
+      <div class="teacher-card">
+        <img src="nadila.jpg" alt="Nadila" class="teacher-avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+        <h3>Nadila Agustina, S.Pd</h3>
+        <div class="nip-text">Guru Kelas Profesional</div>
+        <span class="teacher-badge">Wali Kelas I</span>
+        <p class="teacher-desc">Pengampu pembelajaran Kurikulum Merdeka fase fondasi kelas 1.</p>
+      </div>
+
+      <!-- Guru Kelas 2 -->
+      <div class="teacher-card">
+        <img src="widhi.jpg" alt="Widhi" class="teacher-avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+        <h3>Teguh Widhi Antoko, S.Pd</h3>
+        <div class="nip-text">Guru Kelas</div>
+        <span class="teacher-badge">Wali Kelas II</span>
+        <p class="teacher-desc">Membimbing pembentukan karakter dan literasi dasar siswa.</p>
+      </div>
+
+      <!-- Guru Kelas 3 -->
+      <div class="teacher-card">
+        <img src="fardani.jpg" alt="Fardani" class="teacher-avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+        <h3>Fardani Krismananda Hidiar, S.Pd</h3>
+        <div class="nip-text">Guru Kelas</div>
+        <span class="teacher-badge">Wali Kelas III</span>
+        <p class="teacher-desc">Fokus penguatan numerasi dan sains tingkat dasar.</p>
+      </div>
+
+      <!-- Guru Kelas 4 -->
+      <div class="teacher-card">
+        <img src="novi.jpg" alt="Novi" class="teacher-avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+        <h3>Arie Noviana, S.Pd</h3>
+        <div class="nip-text">Guru Kelas</div>
+        <span class="teacher-badge">Wali Kelas IV</span>
+        <p class="teacher-desc">Pengampu transisi fase B kurikulum merdeka.</p>
+      </div>
+
+      <!-- Guru Kelas 5 -->
+      <div class="teacher-card">
+        <img src="intan.jpg" alt="Intan" class="teacher-avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+        <h3>Priyadina Intan Nurani, S.Pd</h3>
+        <div class="nip-text">Guru Kelas</div>
+        <span class="teacher-badge">Wali Kelas V</span>
+        <p class="teacher-desc">Pendampingan asesmen nasional dan penguatan proyek profil.</p>
+      </div>
+
+      <!-- Guru Kelas 6 -->
+      <div class="teacher-card">
+        <img src="ahda.jpg" alt="Ahda" class="teacher-avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+        <h3>Ahda Oman Choeruman, S.Pd</h3>
+        <div class="nip-text">Guru Kelas</div>
+        <span class="teacher-badge">Wali Kelas VI</span>
+        <p class="teacher-desc">Persiapan kelulusan dan pendalaman materi akhir sekolah.</p>
+      </div>
+
+      <!-- Guru Mapel Agama -->
+      <div class="teacher-card">
+        <img src="ainur.jpg" alt="Ainur" class="teacher-avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+        <h3>Ainur Rohmah, S.Pd.I</h3>
+        <div class="nip-text">Guru Mata Pelajaran</div>
+        <span class="teacher-badge">Pendidikan Agama Islam</span>
+        <p class="teacher-desc">Membina keimanan, ketakwaan, serta baca tulis Al-Qur'an.</p>
+      </div>
+
+      <!-- Guru Mapel PJOK -->
+      <div class="teacher-card">
+        <img src="ayu.jpg" alt="Ayu" class="teacher-avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+        <h3>Ayu Prasetyowati, S.Pd</h3>
+        <div class="nip-text">Guru Mata Pelajaran</div>
+        <span class="teacher-badge">PJOK & Olahraga</span>
+        <p class="teacher-desc">Melatih kebugaran jasmani, motorik, dan sportivitas siswa.</p>
+      </div>
+
+      <!-- Penjaga Sekolah -->
+      <div class="teacher-card">
+        <div class="teacher-avatar">👳‍♂️</div>
+        <h3>Achmad Muzahidin</h3>
+        <div class="nip-text">Tenaga Kependidikan</div>
+        <span class="teacher-badge">Penjaga Sekolah</span>
+        <p class="teacher-desc">Melaksanakan kegiatan pengamanan, pengawasan, pemeliharaan, serta menjaga ketertiban lingkungan sekolah agar tercipta suasana belajar yang aman, tertib, dan kondusif.</p>
+      </div>
+      
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="copyright">© <span id="year"></span> SD Negeri Nawangsari. Direktori Resmi Pendidik dan Tenaga Kependidikan.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
