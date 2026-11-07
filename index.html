@@ -783,44 +783,6 @@
 </div>
 
 
-      function cariSiswa() {
-        const query = document.getElementById("searchInput").value.toLowerCase().trim();
-        const resultDiv = document.getElementById("searchResult");
-
-        if (!query) {
-            resultDiv.style.display = "none";
-            return;
-        }
-
-        const filtered = dataSiswaCache.filter(s => 
-            (s.nama && s.nama.toString().toLowerCase().includes(query)) || 
-            (s.nisn && s.nisn.toString().includes(query)) ||
-            (s.nipd && s.nipd.toString().includes(query))
-        );
-
-        resultDiv.style.display = "block";
-        if (filtered.length === 0) {
-            resultDiv.innerHTML = `<div style="padding: 12px; background: #fff1f2; color: #be123c; border-radius: 10px; font-size: 0.88rem; font-weight: 700;">Data siswa tidak ditemukan. Periksa kembali ejaan nama, NISN, atau NIPD.</div>`;
-        } else {
-            let html = `<div style="display: flex; flex-direction: column; gap: 8px;">`;
-            filtered.forEach(s => {
-                html += `
-                    <div style="padding: 12px 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-                        <div>
-                            <strong style="color: #092c55; display: block; font-size: 0.95rem;">${s.nama}</strong>
-                            <span style="font-size: 0.78rem; color: #64748b;">NISN: ${s.nisn} | NIPD: ${s.nipd} | JK: ${s.jk}</span>
-                        </div>
-                        <span style="background: #e0f2fe; color: #0369a1; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 800;">
-                            Kelas ${s.kelas}
-                        </span>
-                    </div>
-                `;
-            });
-            html += `</div>`;
-            resultDiv.innerHTML = html;
-        }
-    }
-
       <!-- BUKU TAMU & KOTAK SARAN DIGITAL (Tampilan Baru Bergradasi) -->
       
       <div class="feedback-card">
@@ -977,6 +939,59 @@
       yearEl.textContent = new Date().getFullYear();
     }
 
+
+    const SPREADSHEET_API = "https://script.google.com/macros/s/AKfycbzXziYJd0WexHrbomWUDtEkMZGXs16lLvZd-nAITjdLG_cv2ulcPCCObzX2319LZwCTJQ/exec"; 
+    let dataSiswaCache = [];
+
+    async function loadDataSiswa() {
+        try {
+            const response = await fetch(SPREADSHEET_API);
+            dataSiswaCache = await response.json();
+        } catch (error) {
+            console.error("Gagal memuat data dari Spreadsheet:", error);
+        }
+    }
+    loadDataSiswa();
+
+    function cariSiswa() {
+        const query = document.getElementById("searchInput").value.toLowerCase().trim();
+        const resultDiv = document.getElementById("searchResult");
+
+        if (!query) {
+            resultDiv.style.display = "none";
+            return;
+        }
+
+        const filtered = dataSiswaCache.filter(s => 
+            (s.nama && s.nama.toString().toLowerCase().includes(query)) || 
+            (s.nisn && s.nisn.toString().includes(query)) ||
+            (s.nipd && s.nipd.toString().includes(query))
+        );
+
+        resultDiv.style.display = "block";
+        if (filtered.length === 0) {
+            resultDiv.innerHTML = `<div style="padding: 12px; background: #fff1f2; color: #be123c; border-radius: 10px; font-size: 0.88rem; font-weight: 700;">Data siswa tidak ditemukan. Periksa kembali ejaan nama, NISN, atau NIPD.</div>`;
+        } else {
+            let html = `<div style="display: flex; flex-direction: column; gap: 8px;">`;
+            filtered.forEach(s => {
+                html += `
+                    <div style="padding: 12px 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                        <div>
+                            <strong style="color: #092c55; display: block; font-size: 0.95rem;">${s.nama}</strong>
+                            <span style="font-size: 0.78rem; color: #64748b;">NISN: ${s.nisn} | NIPD: ${s.nipd} | JK: ${s.jk}</span>
+                        </div>
+                        <span style="background: #e0f2fe; color: #0369a1; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 800;">
+                            Kelas ${s.kelas}
+                        </span>
+                    </div>
+                `;
+            });
+            html += `</div>`;
+            resultDiv.innerHTML = html;
+        }
+    }
+
+    
     // 3. Integrasi Pengiriman Buku Tamu & Pesan/Saran ke Google Sheets
     const scriptURL = 'https://script.google.com/macros/s/AKfycbz-ZT-yDP5CZiHDcRx8meDZ3_LFJ6oC3ij2RZj1uh-1ibtCk1SjVuM3mL0K3MWdd774/exec';
     
