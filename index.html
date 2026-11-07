@@ -902,41 +902,47 @@
     </section>
   </main>
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <img src="logo-sekolah.png" alt="Logo sekolah">
-        <div><strong>SD NEGERI NAWANGSARI</strong><span>Portal Pendidikan & Pembelajaran</span></div>
-      </div>
-      <div class="footer-links">
-        <a href="#beranda">Beranda</a><a href="#profil">Profil Sekolah</a><a href="#kelas">Pilih Kelas</a><a href="#aplikasi">Aplikasi Belajar</a>
-      </div>
+  <!-- Footer Resmi SD Negeri Nawangsari (Clean & Single Footer) -->
+  <footer style="background: #061e3a; color: #dce8f6; margin-top: 60px; border-top: 1px solid #14355a;">
+    <div style="max-width: 1160px; margin: auto; padding: 40px 22px 20px;">
+        
+        <!-- Baris Atas: Identitas & Tautan Navigasi Cepat -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; padding-bottom: 25px; border-bottom: 1px solid #14355a;">
+            
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <img src="logo-sekolah.png" alt="Logo SD Negeri Nawangsari" style="width: 48px; height: 48px; object-fit: contain; background: white; border-radius: 10px; padding: 4px;">
+                <div>
+                    <strong style="display: block; color: white; font-size: 1rem;">SD NEGERI NAWANGSARI</strong>
+                    <span style="color: #819cb9; font-size: 0.8rem;">Portal Pendidikan & Pembelajaran</span>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.88rem; font-weight: 700;">
+                <a href="#beranda" style="color: #dce8f6; text-decoration: none;">Beranda</a>
+                <span style="color: #355375;">•</span>
+                <a href="guru.html" style="color: #f2bd45; text-decoration: none;">👨‍🏫 Direktori Guru & Staf</a>
+                <span style="color: #355375;">•</span>
+                <a href="unduhan.html" style="color: #dce8f6; text-decoration: none;">Pusat Unduhan</a>
+                <span style="color: #355375;">•</span>
+                <a href="galeri.html" style="color: #dce8f6; text-decoration: none;">Galeri Foto</a>
+            </div>
+
+        </div>
+
+        <!-- Baris Bawah: Hak Cipta -->
+        <div style="padding-top: 20px; font-size: 0.82rem; color: #819cb9; text-align: center;">
+            © <span id="year"></span> SD Negeri Nawangsari. All Rights Reserved. Mewujudkan Generasi Cerdas, Berkarakter, dan Berprestasi.
+        </div>
     </div>
-    <div class="copyright">© <span id="year"></span> SD Negeri Nawangsari. Portal pembelajaran untuk mendukung belajar sepanjang hayat.</div>
+  </footer>
 
-    <!-- Bagian Footer Beranda index.html -->
-<footer style="background: #061e3a; color: #dce8f6; padding: 40px 22px 20px; margin-top: 60px;">
-    <div style="max-width: 1160px; margin: auto; text-align: center;">
-        
-        <!-- Judul & Deskripsi Ringkas Footer -->
-        <h3 style="color: white; margin: 0 0 8px 0; font-size: 1.1rem;">SD NEGERI NAWANGSARI</h3>
-        <p style="color: #a9bfd7; font-size: 0.85rem; margin: 0 0 20px 0;">Mewujudkan Generasi Cerdas, Berkarakter, dan Berprestasi.</p>
-        
-        <!-- Tautan Cepat Navigasi Footer -->
-        <div style="display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; font-size: 0.88rem; margin-bottom: 24px; font-weight: 700;">
-            <a href="index.html" style="color: #dce8f6; text-decoration: none; transition: 0.2s;" onmouseover="this.style.color='#f2bd45'" onmouseout="this.style.color='#dce8f6'">Beranda</a>
-            <span style="color: #355375;">•</span>
-            <a href="guru.html" style="color: #f2bd45; text-decoration: none; transition: 0.2s;">👨‍🏫 Direktori Guru & Staf</a>
-            <span style="color: #355375;">•</span>
-            <a href="unduhan.html" style="color: #dce8f6; text-decoration: none; transition: 0.2s;" onmouseover="this.style.color='#f2bd45'" onmouseout="this.style.color='#dce8f6'">Pusat Unduhan</a>
-            <span style="color: #355375;">•</span>
-            <a href="galeri.html" style="color: #dce8f6; text-decoration: none; transition: 0.2s;" onmouseover="this.style.color='#f2bd45'" onmouseout="this.style.color='#dce8f6'">Galeri Foto</a>
-        </div>
+  <!-- Tombol Kembali ke Atas & Floating Visitor Badge -->
+  <a class="back-top" href="#beranda" aria-label="Kembali ke atas">↑</a>
 
-        <!-- Garis Pemisah & Hak Cipta -->
-        <div style="border-top: 1px solid #14355a; padding-top: 18px; font-size: 0.8rem; color: #819cb9;">
-            © <span id="year"></span> SD Negeri Nawangsari. All Rights Reserved.
-        </div>
+  <div style="position: fixed; bottom: 25px; right: 90px; z-index: 99; background: rgba(9, 44, 85, 0.855); padding: 6px 12px; border-radius: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 8px; backdrop-filter: blur(5px);">
+    <span style="font-size: 0.78rem; color: #fff; font-weight: 700;">👁️ Pengunjung:</span>
+    <img src="https://api.visitorbadge.io/api/combined?path=sdnnawangsari.github.io&label=Dilihat&countColor=%23f2bd45" alt="Visitor Counter" style="height: 18px;">
+  </div>
     </div>
 
   </footer>
