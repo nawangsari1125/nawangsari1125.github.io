@@ -782,6 +782,24 @@
     </div>
 </div>
 
+      <!-- 2. Fitur Pencarian Data Siswa dari Spreadsheet -->
+        <div style="background: white; border: 1px solid var(--line, #e4ebf3); border-radius: 20px; padding: 24px; box-shadow: 0 6px 20px rgba(9,44,85,0.05);">
+            <h3 style="margin: 0 0 6px 0; color: var(--navy, #092c55); font-size: 1.15rem; font-weight: 800;">
+                🔍 Cek & Cari Data Siswa
+            </h3>
+            <p style="margin: 0 0 16px 0; color: var(--muted, #61738a); font-size: 0.85rem;">Ketik nama siswa atau NISN untuk mengecek status kelas secara real-time.</p>
+
+            <div style="display: flex; gap: 10px; margin-bottom: 16px;">
+                <input type="text" id="searchInput" placeholder="Ketik Nama Siswa atau NISN..." style="flex: 1; padding: 12px 16px; border: 1px solid var(--line, #cbd5e1); border-radius: 12px; font-size: 0.9rem; outline: none;">
+                <button onclick="cariSiswa()" style="background: var(--navy, #092c55); color: white; border: none; padding: 12px 20px; border-radius: 12px; font-weight: 700; cursor: pointer;">Cari</button>
+            </div>
+
+            <!-- Area Hasil Pencarian -->
+            <div id="searchResult" style="display: none;"></div>
+        </div>
+
+    </div>
+      
 
       <!-- BUKU TAMU & KOTAK SARAN DIGITAL (Tampilan Baru Bergradasi) -->
       
