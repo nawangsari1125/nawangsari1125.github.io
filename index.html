@@ -800,35 +800,36 @@
 
     </div>
       
-
-      <!-- BUKU TAMU & KOTAK SARAN DIGITAL (Tampilan Baru Bergradasi) -->
       
-      <div class="feedback-card">
-        <h3 style="color: var(--navy); font-size: 1.2rem; margin: 0 0 6px;">💬 Buku Tamu & Pesan/Saran</h3>
-        <p style="color: var(--muted); font-size: 0.9rem; margin: 0 0 20px;">Sampaikan pertanyaan, masukan, atau saran Anda untuk kemajuan SD Negeri Nawangsari.</p>
+     <!-- BUKU TAMU & KOTAK SARAN DIGITAL (Versi Lebih Ringkas) -->
+      
+      <div class="feedback-card" style="padding: 20px 24px;"> <!-- Padding card diperkecil -->
+        <h3 style="color: var(--navy); font-size: 1.05rem; margin: 0 0 4px;">💬 Buku Tamu & Pesan/Saran</h3>
+        <p style="color: var(--muted); font-size: 0.82rem; margin: 0 0 14px;">Sampaikan pertanyaan, masukan, atau saran Anda untuk kemajuan SD Negeri Nawangsari.</p>
         
         <form id="feedbackForm">
           <div class="form-row">
-            <div class="form-group">
-              <label for="namaPengirim">Nama Lengkap *</label>
-              <input type="text" id="namaPengirim" name="nama" class="form-control" placeholder="Contoh: Bpk. Ahmad / Orang Tua Kelas 3" required>
+            <div class="form-group" style="margin-bottom: 10px;">
+              <label for="namaPengirim" style="font-size: 0.78rem; margin-bottom: 3px;">Nama Lengkap *</label>
+              <input type="text" id="namaPengirim" name="nama" class="form-control" placeholder="Contoh: Bpk. Ahmad / Orang Tua Kelas 3" style="padding: 8px 12px; font-size: 0.85rem;" required>
             </div>
-            <div class="form-group">
-              <label for="kontakPengirim">No. WhatsApp / Email</label>
-              <input type="text" id="kontakPengirim" name="kontak" class="form-control" placeholder="Contoh: 081234567890">
+            <div class="form-group" style="margin-bottom: 10px;">
+              <label for="kontakPengirim" style="font-size: 0.78rem; margin-bottom: 3px;">No. WhatsApp / Email</label>
+              <input type="text" id="kontakPengirim" name="kontak" class="form-control" placeholder="Contoh: 081234567890" style="padding: 8px 12px; font-size: 0.85rem;">
             </div>
           </div>
           
-          <div class="form-group">
-            <label for="pesanPengirim">Pesan / Masukan *</label>
-            <textarea id="pesanPengirim" name="pesan" class="form-control" rows="4" placeholder="Tuliskan saran atau masukan Anda di sini..." required></textarea>
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label for="pesanPengirim" style="font-size: 0.78rem; margin-bottom: 3px;">Pesan / Masukan *</label>
+            <!-- Atribut rows diubah dari 4 menjadi 2 atau 3 agar kotak pesan lebih pendek -->
+            <textarea id="pesanPengirim" name="pesan" class="form-control" rows="2" placeholder="Tuliskan saran atau masukan Anda di sini..." style="padding: 8px 12px; font-size: 0.85rem;" required></textarea>
           </div>
 
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 15px;">
-            <button type="submit" class="btn-submit" id="btnKirimPesan">Kirim Pesan 🚀</button>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+            <button type="submit" class="btn-submit" id="btnKirimPesan" style="padding: 8px 16px; font-size: 0.85rem;">Kirim Pesan 🚀</button>
             
             <!-- Kalimat Bantuan & Kontak Admin WhatsApp -->
-            <div style="font-size: 0.85rem; color: var(--muted); text-align: right;">
+            <div style="font-size: 0.78rem; color: var(--muted); text-align: right;">
               Butuh respon cepat? Hubungi Admin via <a href="https://wa.me/62895378275170?text=Halo%20Admin%20SD%20Negeri%20Nawangsari,%20saya%20ingin%20bertanya..." target="_blank" style="color: #25d366; font-weight: 800; text-decoration: underline;">WhatsApp 📞 62895378275170</a>
             </div>
           </div>
@@ -838,6 +839,7 @@
           ✅ Terima kasih! Pesan dan masukan Anda telah berhasil terkirim.
         </div>
       </div>
+      
 
   <!-- BAGIAN GALERI RINGKAS DENGAN LINK KE HALAMAN LENGKAP -->
 <div style="margin-top: 45px;">
