@@ -1,1 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget Prakiraan Cuaca - SD Negeri Nawangsari</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
 
+        /* Animated weather icon float effect */
+        @keyframes weatherFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-6px) scale(1.05); }
+        }
+        .weather-animated-icon {
+            animation: weatherFloat 4s ease-in-out infinite;
+        }
+
+        /* Glassmorphism inner cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Shimmer loading effect */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .animate-shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.05) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 p-4 sm:p-8 flex justify-center items-center min-h-screen">
+
+<!-- ========================================== -->
+<!-- WIDGET PRAKIRAAN CUACA SD NEGERI NAWANGSARI -->
+<!-- ========================================== -->
+<div class="w-full max-w-md mx-auto">
+    <div class="relative overflow-hidden rounded-3xl p-6 shadow-xl text-white transition-all duration-300 hover:shadow-2xl" 
+         style="background: linear-gradient(135deg, #092c55 0%, #125da5 100%); border: 2px solid #f2bd45;">
+        
+        <!-- Subtle Decorative Background Pattern -->
+        <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-sky-400/10 rounded-full blur-2xl pointer-events-none"></div>
+
+        <!-- Header Widget -->
+        <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10 relative z-10">
+            <div class="flex items-center gap-2">
+                <span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-amber-400/20 text-amber-300 border border-amber-400/30 text-sm">
+                    📍
+                </span>
+                <div>
+                    <h4 class="font-extrabold text-sm sm:text-base leading-tight tracking-wide text-white">
+                        Cuaca Nawangsari & Weleri
+                    </h4>
+                    <p class="text-[0.72rem] text-sky-100/80 font-medium">Kendal, Jawa Tengah</p>
+                </div>
+            </div>
+            
+            <button onclick="fetchWeatherData()" title="Perbarui Data Cuaca" 
+                    class="p-2 rounded-xl bg-white/10 hover:bg-amber-400 hover:text-slate-900 text-white transition-all duration-200 text-xs font-bold flex items-center gap-1 active:scale-95">
+                <svg id="refreshIcon" class="w-4 h-4 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Content Area (Suhu Utama & Ilustrasi) -->
+        <div id="weatherContent" class="relative z-10 py-2">
+            <!-- State Loading (Default saat pertama kali dimuat) -->
+            <div id="weatherLoading" class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="space-y-2">
+                        <div class="w-24 h-10 rounded-xl animate-shimmer"></div>
+                        <div class="w-32 h-4 rounded-lg animate-shimmer"></div>
+                    </div>
+                    <div class="w-16 h-16 rounded-full animate-shimmer"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-3 pt-2">
+                    <div class="h-16 rounded-2xl animate-shimmer"></div>
+                    <div class="h-16 rounded-2xl animate-shimmer"></div>
+                </div>
+            </div>
+
+            <!-- State Berhasil Tampil -->
+            <div id="weatherDisplay" class="hidden">
+                <div class="flex items-center justify-between my-2">
+                    <div>
+                        <div class="flex items-baseline gap-1">
+                            <span id="tempValue" class="text-4xl sm:text-5xl font-black tracking-tight text-white">--</span>
+                            <span class="text-2xl font-bold text-amber-300">°C</span>
+                        </div>
+                        <p id="weatherDesc" class="text-sm font-semibold text-sky-100 capitalize mt-1">Memuat kondisi...</p>
+                    </div>
+
+                    <!-- Emoji & Visual Ikon Cuaca -->
+                    <div class="text-center">
+                        <div id="weatherEmoji" class="text-5xl sm:text-6xl weather-animated-icon drop-shadow-lg">☀️</div>
+                    </div>
+                </div>
+
+                <!-- Info Detail (Kelembapan & Angin) -->
+                <div class="grid grid-cols-2 gap-3 mt-5">
+                    <div class="glass-card p-3 rounded-2xl flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-sky-400/20 flex items-center justify-center text-xl text-sky-200">
+                            💧
+                        </div>
+                        <div>
+                            <span class="block text-[0.7rem] uppercase font-bold text-sky-200/80 tracking-wider">Kelembapan</span>
+                            <span id="humidityValue" class="text-sm font-extrabold text-white">--%</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-3 rounded-2xl flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-400/20 flex items-center justify-center text-xl text-amber-200">
+                            Wind
+                        </div>
+                        <div>
+                            <span class="block text-[0.7rem] uppercase font-bold text-sky-200/80 tracking-wider">Angin</span>
+                            <span id="windValue" class="text-sm font-extrabold text-white">-- km/h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Notice / Status Koneksi -->
+        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[0.72rem] text-sky-100/70 relative z-10">
+            <span class="inline-flex items-center gap-1.5 font-medium">
+                <span id="statusDot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span id="statusText">Pembaruan otomatis</span>
+            </span>
+            <span id="updateTime" class="font-semibold text-amber-300">--:-- WIB</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Koordinat Presisi: Weleri / Nawangsari, Kendal, Jawa Tengah
+    const LAT = -6.97;
+    const LON = 110.07;
+    const API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=Asia%2FJakarta`;
+
+    // Pemetaan Kode Cuaca WMO Open-Meteo ke Bahasa Indonesia & Emoji
+    const weatherCodeMap = {
+        0: { desc: "Cerah Segar ☀️", emoji: "☀️" },
+        1: { desc: "Cerah Berawan 🌤️", emoji: "🌤️" },
+        2: { desc: "Berawan ⛅", emoji: "⛅" },
+        3: { desc: "Mendung / Sangat Berawan ☁️", emoji: "☁️" },
+        45: { desc: "Berkabut 🌫️", emoji: "🌫️" },
+        48: { desc: "Kabut Tebal 🌫️", emoji: "🌫️" },
+        51: { desc: "Gerimis Ringan 🌧️", emoji: "🌧️" },
+        53: { desc: "Gerimis Sedang 🌧️", emoji: "🌧️" },
+        55: { desc: "Gerimis Lebat 🌧️", emoji: "🌧️" },
+        61: { desc: "Hujan Ringan 🌧️", emoji: "🌧️" },
+        63: { desc: "Hujan Sedang 🌧️", emoji: "🌧️" },
+        65: { desc: "Hujan Lebat 🌧️", emoji: "🌧️" },
+        80: { desc: "Hujan Lokal 🌦️", emoji: "🌦️" },
+        81: { desc: "Hujan Deras 🌧️", emoji: "🌧️" },
+        82: { desc: "Hujan Badai ⛈️", emoji: "⛈️" },
+        95: { desc: "Hujan Petir / Hujan Badai 🌩️", emoji: "🌩️" },
+        96: { desc: "Badai Petir & Es ⛈️", emoji: "⛈️" }
+    };
+
+    // Data Cadangan Stasioner jika jaringan terputus (Fallback Static Display)
+    const fallbackData = {
+        temperature: 30,
+        humidity: 78,
+        windSpeed: 8,
+        weatherCode: 1,
+        time: "Tersimpan"
+    };
+
+    async function fetchWeatherData() {
+        const loadingEl = document.getElementById("weatherLoading");
+        const displayEl = document.getElementById("weatherDisplay");
+        const refreshIcon = document.getElementById("refreshIcon");
+        const statusDot = document.getElementById("statusDot");
+        const statusText = document.getElementById("statusText");
+        
+        // Putar ikon perbarui
+        refreshIcon.classList.add("rotate-180");
+        
+        try {
+            const response = await fetch(API_URL);
+            if (!response.ok) throw new Error("Gagal terhubung ke API cuaca");
+            
+            const data = await response.json();
+            const current = data.current;
+
+            updateUI({
+                temperature: Math.round(current.temperature_2m),
+                humidity: current.relative_humidity_2m,
+                windSpeed: Math.round(current.wind_speed_10m),
+                weatherCode: current.weather_code,
+                isLive: true
+            });
+
+        } catch (error) {
+            console.warn("Menggunakan data cuaca perkiraan cadangan karena gangguan koneksi:", error);
+            
+            // Gunakan data fallback
+            updateUI({
+                temperature: fallbackData.temperature,
+                humidity: fallbackData.humidity,
+                windSpeed: fallbackData.windSpeed,
+                weatherCode: fallbackData.weatherCode,
+                isLive: false
+            });
+
+            statusDot.className = "w-2 h-2 rounded-full bg-amber-400";
+            statusText.innerText = "Mode Cadangan";
+        } finally {
+            loadingEl.classList.add("hidden");
+            displayEl.classList.remove("hidden");
+            setTimeout(() => refreshIcon.classList.remove("rotate-180"), 500);
+        }
+    }
+
+    function updateUI({ temperature, humidity, windSpeed, weatherCode, isLive }) {
+        const weatherInfo = weatherCodeMap[weatherCode] || { desc: "Cerah Berawan", emoji: "🌤️" };
+        
+        document.getElementById("tempValue").innerText = temperature;
+        document.getElementById("weatherDesc").innerText = weatherInfo.desc;
+        document.getElementById("weatherEmoji").innerText = weatherInfo.emoji;
+        document.getElementById("humidityValue").innerText = `${humidity}%`;
+        document.getElementById("windValue").innerText = `${windSpeed} km/h`;
+
+        // Format waktu perbarui
+        const now = new Date();
+        const jam = String(now.getHours()).padStart(2, '0');
+        const menit = String(now.getMinutes()).padStart(2, '0');
+        document.getElementById("updateTime").innerText = `${jam}:${menit} WIB`;
+
+        if (isLive) {
+            document.getElementById("statusDot").className = "w-2 h-2 rounded-full bg-emerald-400 animate-pulse";
+            document.getElementById("statusText").innerText = "Langsung dari BMKG / Open-Meteo";
+        }
+    }
+
+    // Jalankan pemanggilan saat halaman siap dimuat
+    document.addEventListener("DOMContentLoaded", fetchWeatherData);
+</script>
+
+</body>
+</html>
