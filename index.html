@@ -1603,5 +1603,67 @@ const countdownTimer = setInterval(function() {
     <img src="https://api.visitorbadge.io/api/combined?path=sdnnawangsari.github.io&label=Dilihat&countColor=%23f2bd45" alt="Visitor Counter" style="height: 18px;">
 </div>
 
+<!-- KODE CUSTOM INTERACTIVE CURSOR -->
+<style>
+  /* Sembunyikan kursor bawaan di perangkat desktop agar diganti kursor kustom */
+  @media (min-width: 768px) {
+    body {
+      cursor: default;
+    }
+    
+    /* Lingkaran utama kursor */
+    #custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background: rgba(56, 189, 248, 0.8); /* Warna biru muda cerah */
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background-color 0.2s;
+      z-index: 99999;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+    }
+
+    /* Efek saat kursor menyorot menu/tombol (Berubah mencolok jadi warna oranye/kuning besar) */
+    body.cursor-hover #custom-cursor {
+      width: 45px;
+      height: 45px;
+      background: rgba(242, 189, 69, 0.6); /* Warna kuning keemasan khas sekolah */
+      border-color: #f2bd45;
+      box-shadow: 0 0 15px #f2bd45;
+    }
+  }
+</style>
+
+<!-- Elemen HTML Kursor -->
+<div id="custom-cursor"></div>
+
+<!-- Skrip Penggerak Kursor -->
+<script>
+  const cursor = document.getElementById('custom-cursor');
+
+  // Menggerakkan kursor mengikuti posisi mouse
+  window.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+
+  // Mendeteksi saat kursor mendekati tombol atau menu (tag 'a' atau 'button')
+  const interactiveElements = document.querySelectorAll('a, button, [role="button"]');
+
+  interactiveElements.forEach((el) => {
+    el.addEventListener('mouseenter', () => {
+      document.body.classList.add('cursor-hover');
+    });
+    el.addEventListener('mouseleave', () => {
+      document.body.classList.remove('cursor-hover');
+    });
+  });
+</script>
+  
 </body>
 </html>
