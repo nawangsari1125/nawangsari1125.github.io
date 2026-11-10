@@ -240,6 +240,35 @@
       .profile-panel { padding:24px; }
       .form-row { grid-template-columns: 1fr; }
     }
+
+    
+    /* PERBAIKAN RESPONSIF KHUSUS LAYAR HP (MAX-WIDTH: 680px) */
+@media (max-width: 680px) {
+  /* Memastikan semua kartu informasi/poster menjadi satu kolom penuh */
+  .profile > div, 
+  div[style*="display: flex"][style*="gap: 20px"] {
+    flex-direction: column !important;
+  }
+
+  /* Menyesuaikan ukuran padding widget cuaca & tautan penting agar tidak terpotong */
+  div[style*="max-width: 850px"] {
+    padding: 0 8px !important;
+  }
+
+  /* Menggeser posisi visitor badge agar tidak menutupi layar bawah HP */
+  div[style*="position: fixed"][style*="bottom: 25px"] {
+    right: 15px !important;
+    bottom: 70px !important; /* Di atas tombol back-to-top */
+    transform: scale(0.9);
+  }
+
+  /* Merapikan grid direktori tautan penting agar pas di HP */
+  .app-grid, .subject-grid, div[style*="grid-template-columns: repeat(auto-fit"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+    
   </style>
 </head>
 <body>
