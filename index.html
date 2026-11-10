@@ -561,6 +561,148 @@
             <p class="section-desc">Portal ini dirancang untuk mendukung pembelajaran di sekolah maupun di rumah, dengan tetap mengutamakan nilai karakter, kemandirian, dan semangat berprestasi.</p>
             <a class="btn btn-primary" href="#informasi" style="margin-top:18px">Lihat informasi sekolah</a>
           </div>
+
+          
+          <!-- KARTU POSTER PAKTA INTEGRITAS & KOMITMEN SEKOLAH -->
+<div style="max-width: 850px; margin: 20px auto; padding: 0 10px;">
+  <div style="
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 18px 20px;
+    box-shadow: 0 6px 20px rgba(9, 44, 85, 0.08);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  ">
+    
+    <!-- Bingkai Gambar Poster (Frame Menarik) -->
+    <div style="
+      flex: 0 0 200px;
+      max-width: 100%;
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      border: 3px solid #125da5;
+      background: #f8fafc;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    " 
+    onclick="openPosterModal(this.querySelector('img').src)"
+    onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 8px 20px rgba(18,93,165,0.25)';" 
+    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 14px rgba(0,0,0,0.15)';"
+    title="Klik untuk memperbesar poster">
+      
+      <!-- Label Mengambang di Poster -->
+      <span style="
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        background: rgba(9, 44, 85, 0.85);
+        color: #f2bd45;
+        font-size: 0.6rem;
+        font-weight: 900;
+        padding: 2px 8px;
+        border-radius: 99px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        backdrop-filter: blur(4px);
+        z-index: 2;
+      ">
+        🔍 Perbesar
+      </span>
+
+      <!-- File Gambar Poster (Ganti src dengan tautan foto poster Anda) -->
+      <img src="https://drive.google.com/file/d/1jeEsUZG95ltukYb-KtnwVFN5YxXgL5M4/view?usp=drive_link" 
+           alt="Pakta Integritas & Komitmen SD Negeri Nawangsari" 
+           style="width: 100%; height: auto; display: block; object-fit: cover;">
+    </div>
+
+    <!-- Deskripsi & Informasi Pendamping -->
+    <div style="flex: 1; min-width: 250px;">
+      <span style="
+        background: rgba(18, 93, 165, 0.1);
+        color: #125da5;
+        font-size: 0.65rem;
+        font-weight: 900;
+        padding: 3px 10px;
+        border-radius: 99px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      ">
+        🛡️ Komitmen Publik
+      </span>
+
+      <h3 style="margin: 6px 0 4px 0; font-size: 1.15rem; font-weight: 800; color: #092c55;">
+        Pakta Integritas & Maklumat Pelayanan
+      </h3>
+
+      <p style="font-size: 0.82rem; color: #475569; margin: 0 0 12px 0; line-height: 1.4;">
+        SD Negeri Nawangsari berkomitmen penuh dalam mewujudkan lingkungan pendidikan yang bersih, transparan, akuntabel, serta memberikan pelayanan terbaik bebas dari korupsi dan gratifikasi.
+      </p>
+
+      <!-- Poin-poin Komitmen Ringkas -->
+      <div style="display: flex; flex-direction: column; gap: 6px; font-size: 0.78rem; color: #1e293b; font-weight: 700;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="color: #16a34a;">✓</span> Pelayanan Ramah, Cepat & Tanpa Pungli
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="color: #16a34a;">✓</span> Umpan Balik & Layanan Pengaduan Transparan
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="color: #16a34a;">✓</span> Integritas Moral & Profesionalisme Guru
+        </div>
+      </div>
+
+      <!-- Tombol Pintasan -->
+      <button onclick="openPosterModal(document.querySelector('#posterImg').src)" style="
+        margin-top: 14px;
+        background: #092c55;
+        color: #ffffff;
+        border: none;
+        padding: 7px 14px;
+        border-radius: 8px;
+        font-size: 0.75rem;
+        font-weight: 800;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      ">
+        📜 Lihat Poster Penuh
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL UNTUK MEMPERBESAR POSTER SAAT DIKLIK -->
+<div id="posterModal" style="
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  z-index: 99999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+" onclick="this.style.display='none'">
+  <img id="modalImg" src="" style="max-width: 90%; max-height: 90vh; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+</div>
+
+<script>
+  function openPosterModal(imageSrc) {
+    document.getElementById('modalImg').src = imageSrc;
+    document.getElementById('posterModal').style.display = 'flex';
+  }
+</script>
+
+          
           <div class="profile-panel">
             <div class="profile-label">Nawangsari BERSEMI</div>
             <h2>Belajar dengan hati, tumbuh dengan karakter.</h2>
