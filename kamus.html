@@ -1,1 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kamus Bahasa Indonesia SD | SD Negeri Nawangsari</title>
+  <style>
+    :root {
+      --navy: #092c55;
+      --blue: #125da5;
+      --sky: #eaf5ff;
+      --gold: #f2bd45;
+      --ink: #172b45;
+      --muted: #61738a;
+      --white: #ffffff;
+      --line: #e4ebf3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Nunito", "Segoe UI", Arial, sans-serif;
+      background: #f7faff;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .header {
+      background: var(--navy);
+      color: white;
+      padding: 28px 20px;
+      text-align: center;
+      border-bottom: 4px solid var(--gold);
+    }
+    .header h1 {
+      margin: 8px 0 6px;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    }
+    .header p {
+      margin: 0 auto;
+      max-width: 600px;
+      font-size: 0.95rem;
+      color: #d9e7f7;
+    }
+    .back-btn {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      transition: 0.2s;
+    }
+    .back-btn:hover { background: var(--gold); color: var(--navy); }
+    
+    .container {
+      max-width: 900px;
+      margin: 24px auto 60px;
+      padding: 0 16px;
+    }
 
+    /* Kotak Pencarian Besar & Ramah Anak */
+    .search-box {
+      background: white;
+      padding: 20px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(9, 44, 85, 0.08);
+      border: 2px solid #c9e3ff;
+      margin-bottom: 20px;
+    }
+    .search-input-wrap {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-input {
+      flex: 1;
+      min-width: 220px;
+      padding: 14px 18px;
+      font-size: 1.05rem;
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      outline: none;
+      font-family: inherit;
+    }
+    .search-input:focus { border-color: var(--blue); }
+
+    /* Filter Kelas */
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .pill {
+      background: var(--sky);
+      color: var(--navy);
+      border: 1px solid #c9e3ff;
+      padding: 7px 14px;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .pill.active, .pill:hover {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+    }
+
+    /* Daftar Kartu Kata */
+    .word-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 14px;
+    }
+    .word-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 4px 14px rgba(9, 44, 85, 0.04);
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .word-card:hover { transform: translateY(-3px); border-color: #b9d8f7; }
+    .word-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      border-bottom: 1px dashed var(--line);
+      padding-bottom: 6px;
+    }
+    .word-title {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--navy);
+    }
+    .word-badge {
+      background: #fff4d9;
+      color: #926008;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 99px;
+    }
+    .word-meaning {
+      font-size: 0.92rem;
+      color: var(--ink);
+      margin: 0 0 8px;
+    }
+    .word-example {
+      font-size: 0.82rem;
+      color: var(--muted);
+      background: #f8fafc;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border-left: 3px solid var(--blue);
+      margin-bottom: 12px;
+    }
+    .kbbi-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--sky);
+      color: var(--blue);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid #c9e3ff;
+      transition: 0.2s;
+      text-align: center;
+    }
+    .kbbi-btn:hover {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <a href="index.html" class="back-btn">← Kembali ke Beranda</a>
+    <h1>📖 Kamus & Istilah Bahasa Indonesia SD</h1>
+    <p>Temukan arti kata sulit dan istilah pelajaran untuk siswa Kelas 1 sampai Kelas 6 SD Negeri Nawangsari.</p>
+  </header>
+
+  <main class="container">
+    <div class="search-box">
+      <div class="search-input-wrap">
+        <input type="text" id="searchKamus" class="search-input" placeholder="🔍 Ketik kata atau istilah yang dicari (contoh: adaptasi, antonim, ekosistem)..." onkeyup="filterKamus()">
+      </div>
+      
+      <div class="filter-pills" id="filterPills">
+        <button class="pill active" onclick="setFilter('Semua', this)">Semua Jenjang</button>
+        <button class="pill" onclick="setFilter('Kelas 1-2', this)">Kelas 1–2 (Dasar)</button>
+        <button class="pill" onclick="setFilter('Kelas 3-4', this)">Kelas 3–4 (Menengah)</button>
+        <button class="pill" onclick="setFilter('Kelas 5-6', this)">Kelas 5–6 (Lanjut)</button>
+      </div>
+    </div>
+
+    <div id="jumlahHasil" style="font-size: 0.85rem; font-weight: 800; color: var(--muted); margin-bottom: 12px;"></div>
+    <div class="word-list" id="wordList"></div>
+
+    <!-- Kotak Bantuan jika kata tidak ditemukan -->
+    <div id="kbbiPrompt" style="display: none; margin-top: 20px; background: white; border: 1px dashed var(--blue); border-radius: 16px; padding: 20px; text-align: center;">
+      <p style="margin: 0 0 10px; font-size: 0.9rem; color: var(--muted);">Kata yang kamu cari tidak ada di daftar lokal SD? Cari langsung di database resmi pemerintah:</p>
+      <a id="kbbiDirectLink" href="https://kbbi.kemdikbud.go.id/" target="_blank" class="kbbi-btn" style="padding: 10px 20px; font-size: 0.9rem; background: var(--navy); color: white;">
+        🔍 Cari Definisi di KBBI Resmi Kemendikbud →
+      </a>
+    </div>
+  </main>
+
+  <script>
+    // DATABASE KOSAKATA & ISTILAH SD
+    const dataKamus = [
+      { kata: "Abjad", jenjang: "Kelas 1-2", arti: "Kumpulan huruf (aksara) berdasarkan urutan yang lazim dalam bahasa tertentu (A sampai Z).", contoh: "Rani belajar mengurutkan nama teman sesuai abjad." },
+      { kata: "Adaptasi", jenjang: "Kelas 5-6", arti: "Penyesuaian diri makhluk hidup terhadap lingkungan tempat tinggalnya agar bertahan hidup.", contoh: "Bunglon melakukan adaptasi dengan mengubah warna kulitnya." },
+      { kata: "Antonim", jenjang: "Kelas 3-4", arti: "Kata yang maknanya berlawanan dengan kata lain (lawan kata).", contoh: "Antonim dari kata 'tinggi' adalah 'rendah'." },
+      { kata: "Budi Pekerti", jenjang: "Kelas 1-2", arti: "Tingkah laku, perangai, atau akhlak yang baik dan sopan.", contoh: "Anak yang memiliki budi pekerti selalu menghormati orang tua dan guru." },
+      { kata: "Daur Ulang", jenjang: "Kelas 3-4", arti: "Pemrosesan kembali bahan yang pernah dipakai menjadi barang baru yang berguna.", contoh: "Botol plastik bekas dapat didaur ulang menjadi pot bunga." },
+      { kata: "Ekosistem", jenjang: "Kelas 5-6", arti: "Hubungan timbal balik yang tidak terpisahkan antara makhluk hidup dan lingkungannya.", contoh: "Sawah merupakan salah satu contoh ekosistem buatan." },
+      { kata: "Fabel", jenjang: "Kelas 1-2", arti: "Cerita fiksi atau dongeng yang menggambarkan watak manusia dengan tokoh hewan.", contoh: "Kisah Si Kancil dan Buaya termasuk jenis cerita fabel." },
+      { kata: "Fotosintesis", jenjang: "Kelas 3-4", arti: "Proses tumbuhan hijau membuat makanannya sendiri dengan bantuan cahaya matahari.", contoh: "Daun membutuhkan sinar matahari untuk melakukan fotosintesis." },
+      { kata: "Gagasan Pokok", jenjang: "Kelas 3-4", arti: "Ide utama atau inti permasalahan yang dibahas dalam suatu paragraf.", contoh: "Gagasan pokok paragraf pertama terletak di awal kalimat." },
+      { kata: "Gotong Royong", jenjang: "Kelas 1-2", arti: "Bekerja bersama-sama dan tolong-menolong untuk mencapai tujuan bersama.", contoh: "Warga desa bergotong royong membersihkan saluran air." },
+      { kata: "Hemat", jenjang: "Kelas 1-2", arti: "Berhati-hati dalam membelanjakan uang atau menggunakan barang; tidak boros.", contoh: "Mematikan lampu di siang hari adalah sikap hemat energi." },
+      { kata: "Ide Pokok", jenjang: "Kelas 5-6", arti: "Masalah utama yang dibahas atau diungkapkan dalam sebuah bacaan.", contoh: "Bacalah teks dengan saksama untuk menemukan ide pokoknya." },
+      { kata: "Kalimat Efektif", jenjang: "Kelas 5-6", arti: "Kalimat yang disusun sesuai kaidah bahasa sehingga mudah dipahami pembaca.", contoh: "Gunakan kalimat efektif saat menulis laporan pengamatan." },
+      { kata: "Kosakata", jenjang: "Kelas 3-4", arti: "Perbendaharaan kata yang dimiliki oleh suatu bahasa atau seseorang.", contoh: "Membaca buku setiap hari dapat memperkaya kosakata kita." },
+      { kata: "Majemuk", jenjang: "Kelas 5-6", arti: "Terdiri atas beberapa bagian yang merupakan kesatuan (beragam).", contoh: "Indonesia adalah negara majemuk yang memiliki beragam suku dan budaya." },
+      { kata: "Majas", jenjang: "Kelas 5-6", arti: "Gaya bahasa kiasan yang digunakan untuk memperindah kalimat dalam karya sastra.", contoh: "Angin berbisik lembut di telingaku adalah contoh majas personifikasi." },
+      { kata: "Rukun", jenjang: "Kelas 1-2", arti: "Baik dan damai; tidak bertengkar dengan sesama.", contoh: "Kita harus hidup rukun dengan adik, kakak, dan teman di sekolah." },
+      { kata: "Sinonim", jenjang: "Kelas 3-4", arti: "Bentuk bahasa yang maknanya mirip atau sama dengan bentuk bahasa lain (persamaan kata).", contoh: "Sinonim dari kata 'pintar' adalah 'pandai' atau 'cerdas'." },
+      { kata: "Toleransi", jenjang: "Kelas 3-4", arti: "Sikap menghargai dan menghormati perbedaan pendapat, agama, atau kebiasaan orang lain.", contoh: "Sikap toleransi menjaga persatuan di lingkungan sekolah." },
+      { kata: "Wawancara", jenjang: "Kelas 3-4", arti: "Kegiatan tanya jawab dengan seseorang untuk dimintai keterangan atau pendapatnya.", contoh: "Siswa kelas 4 melakukan wawancara dengan pedagang di sekitar sekolah." }
+    ];
+
+    let jenjangAktif = "Semua";
+
+    function setFilter(jenjang, btn) {
+      jenjangAktif = jenjang;
+      document.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+      btn.classList.add("active");
+      filterKamus();
+    }
+
+    function filterKamus() {
+      const keyword = document.getElementById("searchKamus").value.toLowerCase().trim();
+      const hasil = dataKamus.filter(item => {
+        const cocokJenjang = (jenjangAktif === "Semua" || item.jenjang === jenjangAktif);
+        const cocokKata = item.kata.toLowerCase().includes(keyword) || item.arti.toLowerCase().includes(keyword);
+        return cocokJenjang && cocokKata;
+      });
+
+      hasil.sort((a, b) => a.kata.localeCompare(b.kata));
+
+      document.getElementById("jumlahHasil").innerText = `Menampilkan ${hasil.length} kosakata / istilah`;
+      const container = document.getElementById("wordList");
+      const kbbiPrompt = document.getElementById("kbbiPrompt");
+
+      if (hasil.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 30px; background: white; border-radius: 16px; color: var(--muted);">Kata <strong>"${keyword}"</strong> tidak ditemukan di kamus lokal.</div>`;
+        
+        // Munculkan opsi tombol ke KBBI resmi dengan keyword yang diketik siswa
+        if(keyword.length > 0) {
+          document.getElementById("kbbiDirectLink").href = `https://kbbi.kemdikbud.go.id/entri/${encodeURIComponent(keyword)}`;
+          kbbiPrompt.style.display = "block";
+        } else {
+          kbbiPrompt.style.display = "none";
+        }
+        return;
+      }
+
+      kbbiPrompt.style.display = "none";
+
+      container.innerHTML = hasil.map(item => `
+        <div class="word-card">
+          <div>
+            <div class="word-header">
+              <span class="word-title">${item.kata}</span>
+              <span class="word-badge">${item.jenjang}</span>
+            </div>
+            <p class="word-meaning">${item.arti}</p>
+            <div class="word-example"><strong>Contoh:</strong> "${item.contoh}"</div>
+          </div>
+          <div>
+            <a href="https://kbbi.kemdikbud.go.id/entri/${encodeURIComponent(item.kata)}" target="_blank" class="kbbi-btn">
+              📖 Cek Definisi di KBBI Resmi ↗
+            </a>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    filterKamus();
+  </script>
+
+</body>
+</html>
