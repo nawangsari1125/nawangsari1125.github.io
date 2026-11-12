@@ -213,9 +213,9 @@
 
     <!-- Kotak Bantuan jika kata tidak ditemukan -->
     <div id="kbbiPrompt" style="display: none; margin-top: 20px; background: white; border: 1px dashed var(--blue); border-radius: 16px; padding: 20px; text-align: center;">
-      <p style="margin: 0 0 10px; font-size: 0.9rem; color: var(--muted);">Kata yang kamu cari tidak ada di daftar lokal SD? Cari langsung di database resmi pemerintah:</p>
-      <a id="kbbiDirectLink" href="https://kbbi.kemdikbud.go.id/" target="_blank" class="kbbi-btn" style="padding: 10px 20px; font-size: 0.9rem; background: var(--navy); color: white;">
-        🔍 Cari Definisi di KBBI Resmi Kemendikbud →
+      <p style="margin: 0 0 10px; font-size: 0.9rem; color: var(--muted);">Kata yang kamu cari tidak ada di daftar lokal SD? Cari langsung di database resmi kamus sekolah:</p>
+      <a id="kbbiDirectLink" href="https://kamus-sekolah.netlify.app/" target="_blank" class="kbbi-btn" style="padding: 10px 20px; font-size: 0.9rem; background: var(--navy); color: white;">
+        🔍 Cari Definisi di kamus sekolah bersumber KBBI dan Kemdikbud  →
       </a>
     </div>
   </main>
@@ -273,7 +273,7 @@
         
         // Munculkan opsi tombol ke KBBI resmi dengan keyword yang diketik siswa
         if(keyword.length > 0) {
-          document.getElementById("kbbiDirectLink").href = `https://kbbi.kemdikbud.go.id/entri/${encodeURIComponent(keyword)}`;
+          document.getElementById("kbbiDirectLink").href = `https://kamus-sekolah.netlify.app/${encodeURIComponent(keyword)}`;
           kbbiPrompt.style.display = "block";
         } else {
           kbbiPrompt.style.display = "none";
@@ -294,7 +294,7 @@
             <div class="word-example"><strong>Contoh:</strong> "${item.contoh}"</div>
           </div>
           <div>
-            <a href="https://www.google.com/search?q=arti+kata+${encodeURIComponent(item.kata)}+KBBI" target="_blank" class="kbbi-btn" style="background: #e0f2fe; color: #0369a1;">
+            <a href="https://kamus-sekolah.netlify.app/${encodeURIComponent(item.kata)}+KBBI" target="_blank" class="kbbi-btn" style="background: #e0f2fe; color: #0369a1;">
               🔍 Cari Arti "${item.kata}" via Google/KBBI ↗
             </a>
           </div>
