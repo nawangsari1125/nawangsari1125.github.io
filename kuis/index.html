@@ -182,33 +182,673 @@
     // Bank Soal Terpisah Berdasarkan Kelas (Masing-masing 2 contoh soal, siap ditambah)
     const databaseSoal = {
       1: [
-        {
-          tanya: "Lambang bilangan setelah angka 4 adalah ...",
-          opsi: ["3", "5", "6", "2"],
-          jawaban: 1,
-          pembahasan: "Urutan bilangan dari terkecil adalah 1, 2, 3, 4, 5."
-        },
-        {
-          tanya: "Bunyi huruf b-u-k-u jika digabung menjadi kata ...",
-          opsi: ["buka", "buku", "baku", "beku"],
-          jawaban: 1,
-          pembahasan: "Gabungan huruf b-u-k-u dibaca buku."
-        }
-      ],
+
+  // =====================================
+  // 1. MATEMATIKA (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "Hasil dari 3 + 2 adalah ...",
+    opsi: ["4", "5", "6", "7"],
+    jawaban: 1,
+    pembahasan: "3 ditambah 2 sama dengan 5."
+  },
+  {
+    tanya: "Hasil dari 8 - 3 adalah ...",
+    opsi: ["4", "5", "6", "7"],
+    jawaban: 1,
+    pembahasan: "8 dikurangi 3 sama dengan 5."
+  },
+  {
+    tanya: "Bilangan setelah 9 adalah ...",
+    opsi: ["8", "10", "11", "12"],
+    jawaban: 1,
+    pembahasan: "Urutan bilangan adalah 8, 9, 10, 11. Jadi setelah 9 adalah 10."
+  },
+  {
+    tanya: "Bilangan yang lebih besar dari 6 adalah ...",
+    opsi: ["3", "4", "5", "8"],
+    jawaban: 3,
+    pembahasan: "Angka 8 lebih besar daripada angka 6."
+  },
+  {
+    tanya: "Bangun datar yang bentuknya seperti roda adalah ...",
+    opsi: ["Segitiga", "Persegi", "Lingkaran", "Persegi panjang"],
+    jawaban: 2,
+    pembahasan: "Roda berbentuk lingkaran karena bentuknya bulat."
+  },
+
+  // =====================================
+  // 2. BAHASA INDONESIA (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "Huruf pertama dalam abjad adalah ...",
+    opsi: ["B", "C", "A", "D"],
+    jawaban: 2,
+    pembahasan: "Urutan abjad dimulai dari A, B, C, D, dan seterusnya."
+  },
+  {
+    tanya: "Huruf awal pada kata 'Bola' adalah ...",
+    opsi: ["A", "B", "O", "L"],
+    jawaban: 1,
+    pembahasan: "Kata Bola diawali dengan huruf B."
+  },
+  {
+    tanya: "Kita membaca menggunakan ...",
+    opsi: ["Mata", "Telinga", "Hidung", "Kaki"],
+    jawaban: 0,
+    pembahasan: "Mata digunakan untuk melihat tulisan ketika membaca."
+  },
+  {
+    tanya: "Lawan kata 'panas' adalah ...",
+    opsi: ["Hangat", "Dingin", "Terang", "Besar"],
+    jawaban: 1,
+    pembahasan: "Lawan kata panas adalah dingin."
+  },
+  {
+    tanya: "Kalimat yang tepat ketika meminta bantuan adalah ...",
+    opsi: [
+      "Pergi sana!",
+      "Tolong bantu saya.",
+      "Kamu harus pergi!",
+      "Jangan bicara!"
+    ],
+    jawaban: 1,
+    pembahasan: "Kata tolong digunakan untuk meminta bantuan dengan sopan."
+  },
+
+  // =====================================
+  // 3. PENDIDIKAN PANCASILA (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "Dasar negara Indonesia adalah ...",
+    opsi: ["Pancasila", "Garuda", "Bendera", "Lagu"],
+    jawaban: 0,
+    pembahasan: "Pancasila adalah dasar negara Indonesia."
+  },
+  {
+    tanya: "Lambang sila pertama Pancasila adalah ...",
+    opsi: ["Pohon beringin", "Bintang", "Rantai", "Padi dan kapas"],
+    jawaban: 1,
+    pembahasan: "Sila pertama Pancasila dilambangkan dengan bintang."
+  },
+  {
+    tanya: "Kepada orang tua kita harus ...",
+    opsi: ["Membentak", "Melawan", "Hormat", "Mengejek"],
+    jawaban: 2,
+    pembahasan: "Kita harus menghormati dan menyayangi orang tua."
+  },
+  {
+    tanya: "Jika teman jatuh, kita sebaiknya ...",
+    opsi: [
+      "Menertawakan",
+      "Membantu",
+      "Meninggalkan",
+      "Mengejek"
+    ],
+    jawaban: 1,
+    pembahasan: "Membantu teman yang jatuh merupakan perbuatan baik."
+  },
+  {
+    tanya: "Bendera negara Indonesia berwarna ...",
+    opsi: [
+      "Merah dan putih",
+      "Biru dan putih",
+      "Hijau dan kuning",
+      "Merah dan biru"
+    ],
+    jawaban: 0,
+    pembahasan: "Bendera Indonesia berwarna merah putih."
+  },
+
+  // =====================================
+  // 4. PENDIDIKAN AGAMA ISLAM (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "Tuhan umat Islam adalah ...",
+    opsi: ["Malaikat", "Allah Swt.", "Manusia", "Nabi"],
+    jawaban: 1,
+    pembahasan: "Umat Islam menyembah Allah Swt. sebagai Tuhan Yang Maha Esa."
+  },
+  {
+    tanya: "Kitab suci umat Islam adalah ...",
+    opsi: ["Injil", "Taurat", "Al-Qur'an", "Zabur"],
+    jawaban: 2,
+    pembahasan: "Al-Qur'an adalah kitab suci umat Islam."
+  },
+  {
+    tanya: "Sebelum makan kita membaca ...",
+    opsi: ["Basmalah", "Takbir", "Hamdalah", "Salam"],
+    jawaban: 0,
+    pembahasan: "Sebelum makan kita dianjurkan membaca Bismillahirrahmanirrahim."
+  },
+  {
+    tanya: "Nabi terakhir adalah Nabi ...",
+    opsi: ["Adam a.s.", "Nuh a.s.", "Ibrahim a.s.", "Muhammad saw."],
+    jawaban: 3,
+    pembahasan: "Nabi Muhammad saw. adalah nabi dan rasul terakhir."
+  },
+  {
+    tanya: "Jika bertemu teman, kita sebaiknya mengucapkan ...",
+    opsi: ["Selamat tidur", "Assalamu'alaikum", "Selamat malam saja", "Pergi sana"],
+    jawaban: 1,
+    pembahasan: "Mengucapkan salam merupakan kebiasaan baik dalam Islam."
+  },
+
+  // =====================================
+  // 5. PJOK (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "Kita berjalan menggunakan ...",
+    opsi: ["Tangan", "Kaki", "Kepala", "Telinga"],
+    jawaban: 1,
+    pembahasan: "Kaki digunakan untuk berjalan dan berpindah tempat."
+  },
+  {
+    tanya: "Sebelum olahraga kita melakukan ...",
+    opsi: ["Tidur", "Pemanasan", "Makan permen", "Duduk"],
+    jawaban: 1,
+    pembahasan: "Pemanasan membantu mempersiapkan tubuh sebelum olahraga."
+  },
+  {
+    tanya: "Alat untuk bermain sepak bola adalah ...",
+    opsi: ["Bola", "Buku", "Pensil", "Penggaris"],
+    jawaban: 0,
+    pembahasan: "Sepak bola adalah permainan yang menggunakan bola."
+  },
+  {
+    tanya: "Agar badan sehat, kita harus ...",
+    opsi: [
+      "Malas bergerak",
+      "Rajin berolahraga",
+      "Tidur terus",
+      "Makan permen terus"
+    ],
+    jawaban: 1,
+    pembahasan: "Rajin berolahraga membantu menjaga tubuh tetap sehat dan kuat."
+  },
+  {
+    tanya: "Kita menggosok gigi menggunakan ...",
+    opsi: ["Sikat gigi", "Sisir", "Handuk", "Pensil"],
+    jawaban: 0,
+    pembahasan: "Sikat gigi digunakan untuk membersihkan gigi."
+  },
+
+  // =====================================
+  // 6. SENI BUDAYA (SENI RUPA) (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "Warna daun biasanya adalah ...",
+    opsi: ["Merah", "Hijau", "Biru", "Ungu"],
+    jawaban: 1,
+    pembahasan: "Daun pada umumnya berwarna hijau."
+  },
+  {
+    tanya: "Alat untuk menggambar adalah ...",
+    opsi: ["Pensil", "Sendok", "Piring", "Sepatu"],
+    jawaban: 0,
+    pembahasan: "Pensil dapat digunakan untuk membuat gambar."
+  },
+  {
+    tanya: "Bentuk bola adalah ...",
+    opsi: ["Kotak", "Segitiga", "Bulat", "Persegi"],
+    jawaban: 2,
+    pembahasan: "Bola memiliki bentuk bulat seperti bangun ruang bola."
+  },
+  {
+    tanya: "Warna langit saat cerah biasanya adalah ...",
+    opsi: ["Biru", "Hitam", "Cokelat", "Ungu"],
+    jawaban: 0,
+    pembahasan: "Langit saat cuaca cerah biasanya tampak berwarna biru."
+  },
+  {
+    tanya: "Alat untuk mewarnai gambar adalah ...",
+    opsi: ["Penggaris", "Krayon", "Penghapus", "Gunting"],
+    jawaban: 1,
+    pembahasan: "Krayon digunakan untuk memberikan warna pada gambar."
+  },
+
+  // =====================================
+  // 7. BAHASA INGGRIS (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "What is the meaning of 'Cat'?",
+    opsi: ["Anjing", "Kucing", "Ayam", "Sapi"],
+    jawaban: 1,
+    pembahasan: "Cat berarti kucing."
+  },
+  {
+    tanya: "What is the meaning of 'Book'?",
+    opsi: ["Buku", "Pensil", "Meja", "Kursi"],
+    jawaban: 0,
+    pembahasan: "Book berarti buku."
+  },
+  {
+    tanya: "What color is a banana?",
+    opsi: ["Red", "Blue", "Yellow", "Black"],
+    jawaban: 2,
+    pembahasan: "Yellow berarti kuning. Pisang yang matang umumnya berwarna kuning."
+  },
+  {
+    tanya: "How do you say 'Satu' in English?",
+    opsi: ["Two", "Three", "Four", "One"],
+    jawaban: 3,
+    pembahasan: "One adalah bahasa Inggris dari satu."
+  },
+  {
+    tanya: "What is the meaning of 'Mother'?",
+    opsi: ["Ayah", "Ibu", "Kakak", "Adik"],
+    jawaban: 1,
+    pembahasan: "Mother berarti ibu."
+  },
+
+  // =====================================
+  // 8. BAHASA JAWA (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "Basa Jawane 'Mata' yaiku ...",
+    opsi: ["Kuping", "Mripat", "Irung", "Sikil"],
+    jawaban: 1,
+    pembahasan: "Mripat tegese mata."
+  },
+  {
+    tanya: "Basa Jawane 'Makan' yaiku ...",
+    opsi: ["Turu", "Lunga", "Mangan", "Adus"],
+    jawaban: 2,
+    pembahasan: "Mangan tegese makan."
+  },
+  {
+    tanya: "Yen esuk ketemu guru, kita ngucapake ...",
+    opsi: ["Sugeng enjing", "Sugeng dalu", "Sugeng sonten", "Sugeng wengi"],
+    jawaban: 0,
+    pembahasan: "Sugeng enjing digunakake kanggo menehi salam nalika esuk."
+  },
+  {
+    tanya: "Basa Jawane 'Ayah' yaiku ...",
+    opsi: ["Ibu", "Bapak", "Adhi", "Mbak"],
+    jawaban: 1,
+    pembahasan: "Bapak minangka sebutan kanggo ayah ing basa Jawa."
+  },
+  {
+    tanya: "Tembung kosok balen saka 'gedhe' yaiku ...",
+    opsi: ["Dawa", "Dhuwur", "Cilik", "Abot"],
+    jawaban: 2,
+    pembahasan: "Gedhe tegese besar, dene cilik tegese kecil."
+  }
+
+],
+
       2: [
-        {
-          tanya: "Kata tanya yang digunakan untuk menanyakan tempat adalah ...",
-          opsi: ["Siapa", "Kapan", "Di mana", "Mengapa"],
-          jawaban: 2,
-          pembahasan: "Kata “di mana” berfungsi untuk menanyakan lokasi atau tempat."
-        },
-        {
-          tanya: "Hasil dari 15 ditambah 10 adalah ...",
-          opsi: ["20", "25", "30", "35"],
-          jawaban: 1,
-          pembahasan: "15 + 10 = 25."
-        }
-      ],
+
+  // =====================================
+  // 1. MATEMATIKA (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "Hasil dari 25 + 14 adalah ...",
+    opsi: ["37", "39", "40", "41"],
+    jawaban: 1,
+    pembahasan: "25 + 14 = 39."
+  },
+  {
+    tanya: "Hasil dari 48 - 23 adalah ...",
+    opsi: ["25", "26", "27", "28"],
+    jawaban: 0,
+    pembahasan: "48 - 23 = 25."
+  },
+  {
+    tanya: "Bilangan setelah 79 adalah ...",
+    opsi: ["78", "80", "81", "89"],
+    jawaban: 1,
+    pembahasan: "Urutan bilangan setelah 79 adalah 80."
+  },
+  {
+    tanya: "Bilangan 56 terdiri dari ...",
+    opsi: [
+      "5 satuan dan 6 puluhan",
+      "5 puluhan dan 6 satuan",
+      "6 puluhan dan 5 satuan",
+      "5 ratusan dan 6 satuan"
+    ],
+    jawaban: 1,
+    pembahasan: "Bilangan 56 terdiri dari 5 puluhan dan 6 satuan."
+  },
+  {
+    tanya: "Bangun datar yang memiliki empat sisi sama panjang adalah ...",
+    opsi: ["Segitiga", "Lingkaran", "Persegi", "Persegi panjang"],
+    jawaban: 2,
+    pembahasan: "Persegi memiliki empat sisi yang sama panjang."
+  },
+
+  // =====================================
+  // 2. BAHASA INDONESIA (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "Huruf pertama pada nama orang harus ditulis menggunakan huruf ...",
+    opsi: ["Kecil", "Kapital", "Sambung", "Miring"],
+    jawaban: 1,
+    pembahasan: "Huruf pertama nama orang harus menggunakan huruf kapital, misalnya Budi dan Siti."
+  },
+  {
+    tanya: "Lawan kata dari 'besar' adalah ...",
+    opsi: ["Tinggi", "Panjang", "Kecil", "Lebar"],
+    jawaban: 2,
+    pembahasan: "Lawan kata besar adalah kecil."
+  },
+  {
+    tanya: "Kalimat yang digunakan untuk bertanya diakhiri dengan tanda ...",
+    opsi: ["Titik", "Koma", "Tanya", "Seru"],
+    jawaban: 2,
+    pembahasan: "Kalimat tanya diakhiri dengan tanda tanya (?)."
+  },
+  {
+    tanya: "Susunan kata yang benar adalah ...",
+    opsi: [
+      "Sekolah pergi Budi ke",
+      "Budi ke sekolah pergi",
+      "Pergi Budi sekolah ke",
+      "Ke pergi sekolah Budi"
+    ],
+    jawaban: 1,
+    pembahasan: "Susunan kalimat yang tepat adalah 'Budi ke sekolah pergi'."
+  },
+  {
+    tanya: "Perhatikan kalimat berikut: 'Ibu memasak nasi di dapur.' Siapa yang memasak nasi?",
+    opsi: ["Ayah", "Ibu", "Adik", "Kakak"],
+    jawaban: 1,
+    pembahasan: "Pada kalimat tersebut, orang yang memasak nasi adalah ibu."
+  },
+
+  // =====================================
+  // 3. PENDIDIKAN PANCASILA (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "Dasar negara Indonesia adalah ...",
+    opsi: ["Pancasila", "Garuda", "Bendera", "Bahasa Indonesia"],
+    jawaban: 0,
+    pembahasan: "Pancasila merupakan dasar negara Republik Indonesia."
+  },
+  {
+    tanya: "Lambang negara Indonesia adalah ...",
+    opsi: ["Harimau", "Garuda Pancasila", "Burung Merpati", "Elang"],
+    jawaban: 1,
+    pembahasan: "Lambang negara Indonesia adalah Garuda Pancasila."
+  },
+  {
+    tanya: "Contoh sikap hidup rukun dengan teman adalah ...",
+    opsi: [
+      "Saling mengejek",
+      "Saling membantu",
+      "Saling bertengkar",
+      "Berebut mainan"
+    ],
+    jawaban: 1,
+    pembahasan: "Saling membantu merupakan contoh sikap hidup rukun dan saling menyayangi."
+  },
+  {
+    tanya: "Ketika teman berbeda agama sedang beribadah, kita harus ...",
+    opsi: [
+      "Mengganggunya",
+      "Mengejeknya",
+      "Menghormatinya",
+      "Mengajaknya bermain"
+    ],
+    jawaban: 2,
+    pembahasan: "Kita harus menghormati teman yang sedang menjalankan ibadah sesuai agamanya."
+  },
+  {
+    tanya: "Contoh aturan di rumah adalah ...",
+    opsi: [
+      "Membuang sampah sembarangan",
+      "Membantu orang tua",
+      "Bermain sepanjang hari",
+      "Tidak merapikan mainan"
+    ],
+    jawaban: 1,
+    pembahasan: "Membantu orang tua merupakan salah satu perilaku baik dalam menaati aturan keluarga."
+  },
+
+  // =====================================
+  // 4. PENDIDIKAN AGAMA ISLAM (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "Kitab suci umat Islam adalah ...",
+    opsi: ["Injil", "Taurat", "Al-Qur'an", "Zabur"],
+    jawaban: 2,
+    pembahasan: "Al-Qur'an adalah kitab suci yang diturunkan Allah Swt. kepada Nabi Muhammad saw."
+  },
+  {
+    tanya: "Jumlah salat wajib dalam sehari semalam adalah ...",
+    opsi: ["3 waktu", "4 waktu", "5 waktu", "6 waktu"],
+    jawaban: 2,
+    pembahasan: "Salat wajib dilaksanakan lima waktu, yaitu Subuh, Zuhur, Asar, Magrib, dan Isya."
+  },
+  {
+    tanya: "Sebelum makan, umat Islam dianjurkan membaca ...",
+    opsi: ["Hamdalah", "Basmalah", "Istigfar", "Takbir"],
+    jawaban: 1,
+    pembahasan: "Sebelum makan kita dianjurkan membaca basmalah, yaitu Bismillahirrahmanirrahim."
+  },
+  {
+    tanya: "Nabi terakhir yang diutus Allah Swt. adalah Nabi ...",
+    opsi: ["Adam a.s.", "Musa a.s.", "Isa a.s.", "Muhammad saw."],
+    jawaban: 3,
+    pembahasan: "Nabi Muhammad saw. adalah nabi dan rasul terakhir."
+  },
+  {
+    tanya: "Jika bertemu guru, sebaiknya kita mengucapkan ...",
+    opsi: ["Salam", "Teriakan", "Ejekan", "Keluhan"],
+    jawaban: 0,
+    pembahasan: "Mengucapkan salam ketika bertemu guru merupakan salah satu contoh sikap sopan santun."
+  },
+
+  // =====================================
+  // 5. PJOK (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "Sebelum berolahraga kita sebaiknya melakukan ...",
+    opsi: ["Tidur", "Pemanasan", "Makan banyak", "Duduk diam"],
+    jawaban: 1,
+    pembahasan: "Pemanasan dilakukan untuk mempersiapkan tubuh sebelum berolahraga."
+  },
+  {
+    tanya: "Gerakan berjalan termasuk gerak ...",
+    opsi: ["Lokomotor", "Diam", "Tidur", "Duduk"],
+    jawaban: 0,
+    pembahasan: "Berjalan termasuk gerak lokomotor karena menyebabkan tubuh berpindah tempat."
+  },
+  {
+    tanya: "Alat yang digunakan untuk bermain sepak bola adalah ...",
+    opsi: ["Raket", "Bola", "Tongkat", "Kok"],
+    jawaban: 1,
+    pembahasan: "Permainan sepak bola menggunakan bola yang dimainkan dengan kaki."
+  },
+  {
+    tanya: "Agar gigi tetap bersih dan sehat, kita harus ...",
+    opsi: [
+      "Jarang menggosok gigi",
+      "Menggosok gigi secara teratur",
+      "Makan permen terus",
+      "Tidak berkumur"
+    ],
+    jawaban: 1,
+    pembahasan: "Menggosok gigi secara teratur membantu menjaga kebersihan dan kesehatan gigi."
+  },
+  {
+    tanya: "Gerakan melompat menggunakan kekuatan otot ...",
+    opsi: ["Tangan", "Kaki", "Leher", "Jari"],
+    jawaban: 1,
+    pembahasan: "Melompat membutuhkan kekuatan otot kaki untuk mendorong tubuh ke atas."
+  },
+
+  // =====================================
+  // 6. SENI BUDAYA (SENI RUPA) (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "Warna daun pada umumnya adalah ...",
+    opsi: ["Merah", "Biru", "Hijau", "Ungu"],
+    jawaban: 2,
+    pembahasan: "Daun pada umumnya berwarna hijau karena mengandung zat hijau daun atau klorofil."
+  },
+  {
+    tanya: "Alat yang digunakan untuk mewarnai gambar adalah ...",
+    opsi: ["Penggaris", "Krayon", "Penghapus", "Gunting"],
+    jawaban: 1,
+    pembahasan: "Krayon merupakan alat yang dapat digunakan untuk mewarnai gambar."
+  },
+  {
+    tanya: "Bentuk roda sepeda menyerupai bangun datar ...",
+    opsi: ["Segitiga", "Persegi", "Lingkaran", "Persegi panjang"],
+    jawaban: 2,
+    pembahasan: "Roda sepeda berbentuk lingkaran."
+  },
+  {
+    tanya: "Alat untuk membuat garis lurus adalah ...",
+    opsi: ["Kuas", "Penggaris", "Krayon", "Palet"],
+    jawaban: 1,
+    pembahasan: "Penggaris digunakan untuk membantu membuat garis lurus."
+  },
+  {
+    tanya: "Kegiatan menempel potongan kertas menjadi sebuah gambar disebut ...",
+    opsi: ["Kolase", "Menyanyi", "Menari", "Berlari"],
+    jawaban: 0,
+    pembahasan: "Kolase adalah karya seni yang dibuat dengan menempelkan berbagai bahan pada bidang gambar."
+  },
+
+  // =====================================
+  // 7. BAHASA INGGRIS (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "What is the English word for 'Apel'?",
+    opsi: ["Banana", "Apple", "Orange", "Mango"],
+    jawaban: 1,
+    pembahasan: "Apple adalah bahasa Inggris dari apel."
+  },
+  {
+    tanya: "What is the meaning of 'Cat'?",
+    opsi: ["Anjing", "Burung", "Kucing", "Ikan"],
+    jawaban: 2,
+    pembahasan: "Cat berarti kucing."
+  },
+  {
+    tanya: "How many fingers do we have on one hand?",
+    opsi: ["Three", "Four", "Five", "Six"],
+    jawaban: 2,
+    pembahasan: "Five berarti lima. Satu tangan memiliki lima jari."
+  },
+  {
+    tanya: "What color is the sky on a clear day?",
+    opsi: ["Blue", "Black", "Green", "Pink"],
+    jawaban: 0,
+    pembahasan: "Blue berarti biru. Langit cerah biasanya tampak berwarna biru."
+  },
+  {
+    tanya: "What is the English word for 'Ibu'?",
+    opsi: ["Father", "Brother", "Sister", "Mother"],
+    jawaban: 3,
+    pembahasan: "Mother adalah bahasa Inggris dari ibu."
+  },
+
+  // =====================================
+  // 8. BAHASA JAWA (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "Basa Jawane 'Makan' yaiku ...",
+    opsi: ["Turu", "Mangan", "Lunga", "Adus"],
+    jawaban: 1,
+    pembahasan: "Mangan tegese makan."
+  },
+  {
+    tanya: "Basa Jawane 'Mata' yaiku ...",
+    opsi: ["Kuping", "Irung", "Mripat", "Cangkem"],
+    jawaban: 2,
+    pembahasan: "Mripat tegese mata."
+  },
+  {
+    tanya: "Tembung kosok balen saka 'dhuwur' yaiku ...",
+    opsi: ["Cendhek", "Dawa", "Gedhe", "Amba"],
+    jawaban: 0,
+    pembahasan: "Dhuwur tegese tinggi, dene cendhek tegese pendek utawa rendah."
+  },
+  {
+    tanya: "Yen ketemu guru, kita kudu ...",
+    opsi: ["Mlayu", "Ngguyu banter", "Salim lan menehi salam", "Ngganggu"],
+    jawaban: 2,
+    pembahasan: "Nalika ketemu guru, kita kudu sopan, menehi salam, lan ngajeni guru."
+  },
+  {
+    tanya: "Basa kramane 'Aku' yaiku ...",
+    opsi: ["Kowe", "Kula", "Dheweke", "Panjenengan"],
+    jawaban: 1,
+    pembahasan: "Tembung 'aku' yen nganggo basa krama dadi 'kula'."
+  },
+
+  // =====================================
+  // 9. LITERASI UMUM (5 SOAL)
+  // =====================================
+
+  {
+    tanya: "Kita berangkat ke sekolah untuk ...",
+    opsi: [
+      "Bermain sepanjang hari",
+      "Belajar dan mencari ilmu",
+      "Tidur di kelas",
+      "Mengganggu teman"
+    ],
+    jawaban: 1,
+    pembahasan: "Sekolah merupakan tempat untuk belajar dan memperoleh ilmu pengetahuan."
+  },
+  {
+    tanya: "Tempat untuk meminjam dan membaca buku disebut ...",
+    opsi: ["Pasar", "Perpustakaan", "Terminal", "Kantin"],
+    jawaban: 1,
+    pembahasan: "Perpustakaan adalah tempat menyimpan, membaca, dan meminjam buku."
+  },
+  {
+    tanya: "Jika melihat sampah di halaman sekolah, sebaiknya kita ...",
+    opsi: [
+      "Membiarkannya",
+      "Menendangnya",
+      "Membuangnya ke tempat sampah",
+      "Menyembunyikannya"
+    ],
+    jawaban: 2,
+    pembahasan: "Membuang sampah pada tempatnya merupakan perilaku menjaga kebersihan lingkungan."
+  },
+  {
+    tanya: "Kendaraan yang berjalan di atas rel adalah ...",
+    opsi: ["Mobil", "Sepeda", "Kereta api", "Bus"],
+    jawaban: 2,
+    pembahasan: "Kereta api merupakan kendaraan yang berjalan di atas rel."
+  },
+  {
+    tanya: "Saat menyeberang jalan, kita sebaiknya menggunakan ...",
+    opsi: [
+      "Tempat bermain",
+      "Zebra cross",
+      "Tengah jalan sembarangan",
+      "Trotoar untuk kendaraan"
+    ],
+    jawaban: 1,
+    pembahasan: "Zebra cross merupakan tempat penyeberangan jalan bagi pejalan kaki."
+  }
+
+],
+
       3: [
   // ================= MATEMATIKA =================
   {
