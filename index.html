@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
+  <!-- Tombol Sakelar Mode Gelap -->
+<button id="darkModeToggle" aria-label="Aktifkan Mode Gelap" style="
+  background: transparent;
+  border: 2px solid var(--border-color);
+  color: var(--text-main);
+  padding: 8px 12px;
+  border-radius: 99px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.2s;
+">
+  <span id="darkModeIcon">🌙</span> <span id="darkModeText">Mode Gelap</span>
+</button>
   <meta property="og:title" content="SD Negeri Nawangsari | Portal Pembelajaran" />
 <meta property="og:description" content="Portal resmi informasi dan pembelajaran digital SD Negeri Nawangsari." />
 <meta property="og:image" content="logo-sekolah.png" />
@@ -9,6 +27,46 @@
   <meta name="description" content="Portal resmi informasi dan pembelajaran SD Negeri Nawangsari.">
   <title>SD Negeri Nawangsari | Portal Pembelajaran</title>
   <style>
+
+    /* 1. Definisikan Warna Default (Mode Terang / Light Mode) */
+:root {
+  --bg-color: #e6eef8;       /* Latar belakang utama (Biru es lembut yang ramah di mata) */
+  --card-bg: #f3f7fc;        /* Latar kartu / kotak */
+  --text-main: #172b45;      /* Warna teks utama */
+  --text-muted: #52657c;     /* Warna teks sekunder / deskripsi */
+  --border-color: #cbd9ea;   /* Warna garis batas */
+  --navy: #092c55;           /* Warna aksen utama */
+  --blue: #125da5;           /* Warna biru tombol/tautan */
+}
+
+/* 2. Definisikan Warna Ketika Mode Gelap Aktif */
+body.dark-mode {
+  --bg-color: #0b1320;       /* Latar belakang utama gelap */
+  --card-bg: #152238;        /* Latar kartu gelap elegan */
+  --text-main: #f1f5f9;      /* Teks putih terang */
+  --text-muted: #94a3b8;     /* Teks abu-abu redup */
+  --border-color: #27374d;   /* Garis batas gelap */
+  --navy: #38bdf8;           /* Penyesuaian warna aksen terang */
+  --blue: #60a5fa;           /* Penyesuaian warna biru terang */
+}
+
+/* 3. Terapkan Variabel ke Seluruh Elemen Website */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Pastikan kotak-kotak kartu otomatis mengikuti variabel */
+.app-card, 
+.info-card, 
+.search-box, 
+.feature-band {
+  background-color: var(--card-bg) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-main) !important;
+}
+    
     :root {
       --navy: #092c55;
       --blue: #125da5;
@@ -2032,6 +2090,31 @@ const countdownTimer = setInterval(function() {
     });
   });
 </script>
+
+  const toggleBtn = document.getElementById('darkModeToggle');
+const iconSpan = document.getElementById('darkModeIcon');
+const textSpan = document.getElementById('darkModeText');
+
+// Cek apakah pengguna sebelumnya sudah mengaktifkan mode gelap
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark-mode');
+  iconSpan.textContent = '☀️';
+  textSpan.textContent = 'Mode Terang';
+}
+
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  
+  if (document.body.classList.contains('dark-mode')) {
+    localStorage.setItem('theme', 'dark');
+    iconSpan.textContent = '☀️';
+    textSpan.textContent = 'Mode Terang';
+  } else {
+    localStorage.setItem('theme', 'light');
+    iconSpan.textContent = '🌙';
+    textSpan.textContent = 'Mode Gelap';
+  }
+});
   
 </body>
 </html>
