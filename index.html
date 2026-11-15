@@ -9,8 +9,159 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Portal resmi informasi dan pembelajaran SD Negeri Nawangsari.">
   <title>SD Negeri Nawangsari | Portal Pembelajaran</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
 
+/* =========================================================
+   TEMA MODERN SD NEGERI NAWANGSARI (SLATE & ROYAL BLUE)
+   ========================================================= */
+:root {
+  /* Warna Dasar Mode Terang (Slate & Royal Blue) */
+  --bg-page: #f8fafc;          /* slate-50: Latar belakang bersih & lembut */
+  --bg-band: #f1f5f9;          /* slate-100: Latar section selang-seling */
+  --bg-card: #ffffff;          /* Putih bersih untuk kartu */
+  --bg-subtle: #f1f5f9;        /* Latar sub-elemen / kotak dalam kartu */
+  
+  --primary-900: #172554;      /* Biru dongker gelap (Header/Topbar) */
+  --primary-800: #1e3a8a;      /* Biru utama */
+  --primary-600: #1d4ed8;      /* Biru tombol/aksen aktif */
+  --primary-50:  #eff6ff;      /* Biru sangat muda untuk sorotan */
+  --accent-500:  #f59e0b;      /* Emas/Kuning aksen */
+  --accent-400:  #fbbf24;
+
+  --text-main: #0f172a;        /* slate-900: Judul & teks utama */
+  --text-body: #334155;        /* slate-700: Teks isi */
+  --text-muted: #64748b;       /* slate-500: Teks keterangan */
+  --border-color: #e2e8f0;     /* slate-200: Garis tepi halus */
+  --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  --card-hover-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+}
+
+/* Warna Dasar Mode Gelap (Slate 950 & 900 - Nyaman di Mata) */
+body.dark-mode, html.dark body {
+  --bg-page: #020617;          /* slate-950: Gelap pekat namun lembut */
+  --bg-band: #090d16;          /* Variasi gelap untuk section selang-seling */
+  --bg-card: #0f172a;          /* slate-900: Kartu gelap elegan */
+  --bg-subtle: #1e293b;        /* slate-800: Kotak di dalam kartu */
+
+  --primary-50:  rgba(29, 78, 216, 0.18);
+  --text-main: #f8fafc;        /* slate-50: Putih lembut tidak silau */
+  --text-body: #cbd5e1;        /* slate-300: Teks isi terang */
+  --text-muted: #94a3b8;       /* slate-400: Teks keterangan */
+  --border-color: #1e293b;     /* slate-800: Garis tepi gelap */
+  --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+  --card-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+}
+
+/* 1. TIPOGRAFI (Plus Jakarta Sans & Inter) */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background-color: var(--bg-page) !important;
+  color: var(--text-body) !important;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, .font-display, .section-title {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  color: var(--text-main) !important;
+  letter-spacing: -0.02em;
+}
+
+/* 2. LATAR SECTION & BAND */
+.feature-band {
+  background-color: var(--bg-band) !important;
+  border-top: 1px solid var(--border-color) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* 3. BENTUK & GAYA KOTAK MENU (Rounded-3xl ala Referensi) */
+.app-card, 
+.info-card, 
+.stat-card, 
+.card,
+.search-box {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 24px !important; /* Sudut membulat besar (rounded-3xl) */
+  box-shadow: var(--card-shadow) !important;
+  color: var(--text-body) !important;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.25s ease !important;
+}
+
+.app-card:hover, 
+.info-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--card-hover-shadow) !important;
+  border-color: #60a5fa !important; /* Sorotan biru lembut saat disentuh */
+}
+
+/* Ikon di dalam Kartu Menu (Rounded-2xl) */
+.app-icon {
+  border-radius: 16px !important;
+  width: 54px !important;
+  height: 54px !important;
+  display: grid !important;
+  place-items: center !important;
+  font-size: 1.5rem !important;
+  transition: transform 0.25s ease;
+}
+
+.app-card:hover .app-icon {
+  transform: scale(1.08);
+}
+
+/* Tombol Tautan di dalam Kartu */
+.app-link {
+  color: var(--primary-600) !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+}
+
+body.dark-mode .app-link {
+  color: #60a5fa !important;
+}
+
+/* 4. PERBAIKAN TEKS & GRAFIK AGAR TIDAK HILANG DI MODE GELAP/TERANG */
+p, .section-desc, .app-card p, .info-card p {
+  color: var(--text-muted) !important;
+}
+
+/* Mengecualikan Hero Banner & Header Gelap agar teksnya tetap putih/emas */
+header, .hero, .top-bar, footer {
+  background: linear-gradient(135deg, #172554 0%, #1e3a8a 55%, #0f172a 100%) !important;
+  color: #f8fafc !important;
+}
+
+header h1, header h2, header h3, .hero h1, .hero h2, footer h3 {
+  color: #ffffff !important;
+}
+
+header p, .hero p, footer p {
+  color: #cbd5e1 !important;
+}
+
+/* Menjaga Grafik Peserta Didik (Canvas / SVG / Bar Chart) Selalu Terlihat */
+canvas, svg {
+  background-color: transparent !important;
+}
+
+svg text {
+  fill: var(--text-main) !important;
+}
+
+/* Jika grafik memakai batang CSS atau tabel statistik */
+.chart-box, .statistik-card, [id*="grafik"], [class*="chart"] {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border-color) !important;
+}
+    
     :root {
       --navy: #092c55;
       --blue: #125da5;
