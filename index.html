@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
-<button id="darkModeToggle" type="button" style="padding: 8px 14px; border-radius: 99px; border: 1px solid #cbd9ea; cursor: pointer; font-weight: 800;">
-  🌙 Mode Gelap
-</button>
   
   <meta property="og:title" content="SD Negeri Nawangsari | Portal Pembelajaran" />
 <meta property="og:description" content="Portal resmi informasi dan pembelajaran digital SD Negeri Nawangsari." />
@@ -15,87 +11,6 @@
   <title>SD Negeri Nawangsari | Portal Pembelajaran</title>
   <style>
 
-/* --- 1. PALET WARNA DASAR --- */
-:root {
-  --bg-page: #e6eef8;        
-  --bg-card: #f3f7fc;        
-  --text-main: #172b45;      
-  --text-muted: #52657c;     
-  --border-color: #cbd9ea;   
-  --shadow: rgba(9, 44, 85, 0.06);
-}
-
-/* --- 2. PALET WARNA MODE GELAP --- */
-body.dark-mode {
-  --bg-page: #111827;        
-  --bg-card: #1f2937;        
-  --text-main: #f3f4f6;      
-  --text-muted: #9ca3af;     
-  --border-color: #374151;   
-  --shadow: rgba(0, 0, 0, 0.3);
-}
-
-/* --- 3. PENERAPAN UTAMA --- */
-body {
-  background-color: var(--bg-page) !important;
-  color: var(--text-main) !important;
-  transition: background-color 0.25s ease, color 0.25s ease;
-}
-
-/* Semua kartu, section, kotak pencarian, dan kontainer */
-section, 
-.feature-band, 
-.app-card, 
-.info-card, 
-.search-box, 
-.word-card,
-div[style*="background"] {
-  background-color: var(--bg-card) !important;
-  color: var(--text-main) !important;
-  border-color: var(--border-color) !important;
-  box-shadow: 0 4px 14px var(--shadow) !important;
-}
-
-/* --- 4. SOLUSI KHUSUS TEKS & GRAFIK AGAR TIDAK HILANG --- */
-
-/* Memaksa semua teks mewarisi warna tema yang aktif */
-body.dark-mode p, 
-body.dark-mode span, 
-body.dark-mode h1, 
-body.dark-mode h2, 
-body.dark-mode h3, 
-body.dark-mode h4, 
-body.dark-mode h5, 
-body.dark-mode h6, 
-body.dark-mode label, 
-body.dark-mode strong,
-body.dark-mode a {
-  color: var(--text-main) !important;
-}
-
-/* Memperhalus warna teks deskripsi/sekunder */
-p, .section-desc, .app-card p, .info-card p, .word-meaning, .word-example {
-  color: var(--text-muted) !important;
-}
-
-/* KHUSUS GRAFIK PESERTA DIDIK (Canvas, SVG, Chart Container, & Bar Chart) */
-canvas, 
-svg, 
-.chart-container, 
-.statistik-box, 
-.grafik-wrapper {
-  background-color: transparent !important;
-  color: var(--text-main) !important;
-}
-
-/* Jika grafik Anda menggunakan elemen teks SVG / label angka batang grafik */
-svg text, 
-.chart-label, 
-.axis text {
-  fill: var(--text-main) !important;
-  color: var(--text-main) !important;
-}
-    
     :root {
       --navy: #092c55;
       --blue: #125da5;
@@ -2120,24 +2035,5 @@ const countdownTimer = setInterval(function() {
   });
 </script>
 
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggleBtn = document.getElementById("darkModeToggle");
-    if (!toggleBtn) return;
-
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark-mode");
-      toggleBtn.textContent = "☀️ Mode Terang";
-    }
-
-    toggleBtn.addEventListener("click", function () {
-      document.body.classList.toggle("dark-mode");
-      const isDark = document.body.classList.contains("dark-mode");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-      toggleBtn.textContent = isDark ? "☀️ Mode Terang" : "🌙 Mode Gelap";
-    });
-  });
-</script>
-  
 </body>
 </html>
