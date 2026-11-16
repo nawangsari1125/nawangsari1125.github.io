@@ -39,6 +39,73 @@
   box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.08);
 }
 
+    /* Mengatur grid agar pas dan tidak terlalu besar */
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Memperkecil ukuran kotak (padding lebih ringkas) dan memberi warna ceria */
+.app-card {
+  background-color: var(--app-bg, #ffffff) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 20px !important; /* Membuat sudut sedikit lebih compact */
+  padding: 1.25rem !important;     /* Memperkecil ruang dalam agar tidak terlalu tinggi */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Ukuran ikon dan teks di dalam kartu */
+.app-card .app-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.app-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.app-card p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #52657c;
+  margin-bottom: 1rem;
+}
+
+.app-card .app-link {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+/* Penyesuaian saat Mode Gelap aktif */
+body.dark-mode .app-card, 
+html.dark .app-card {
+  background-color: #1e293b !important;
+  border: 1px solid #334155 !important;
+}
+
+body.dark-mode .app-card p, 
+html.dark .app-card p {
+  color: #94a3b8 !important;
+}
+
+body.dark-mode .app-card .app-link, 
+html.dark .app-card .app-link {
+  color: #60a5fa !important;
+}
     
 /* =========================================================
    TEMA MODERN SD NEGERI NAWANGSARI (SLATE & ROYAL BLUE)
@@ -848,53 +915,57 @@ svg text {
         </div>
       </div>
       
-      <div class="app-grid">
-        <article class="app-card" style="--tile:#e8f4ff">
-          <div class="app-icon">📝</div>
-          <h3>Latihan Soal</h3>
-          <p>Berlatih soal pilihan ganda dan periksa hasil latihan secara langsung.</p>
-          <a class="app-link" href="latihan/">Buka latihan →</a>
-        </article>
+     <div class="app-grid">
+  <!-- Kartu 1: Latihan Soal (Nuansa Biru Es) -->
+  <div class="app-card" style="--app-bg: #e8f4ff">
+    <div class="app-icon">📝</div>
+    <h3>Latihan Soal</h3>
+    <p>Berlatih soal pilihan ganda dan periksa hasil latihan secara langsung.</p>
+    <a href="#" class="app-link">Buka latihan →</a>
+  </div>
 
-        <article class="app-card" style="--tile:#fff4d9">
-          <div class="app-icon">📄</div>
-          <h3>LKPD Digital</h3>
-          <p>Lembar Kerja Peserta Didik interaktif berbasis isian & tugas mandiri.</p>
-          <a class="app-link" href="lkpd/">Buka LKPD →</a>
-        </article>
+  <!-- Kartu 2: LKPD Digital (Nuansa Kuning Pasir) -->
+  <div class="app-card" style="--app-bg: #fff4d9">
+    <div class="app-icon">📄</div>
+    <h3>LKPD Digital</h3>
+    <p>Lembar Kerja Peserta Didik interaktif berbasis isian & tugas mandiri.</p>
+    <a href="#" class="app-link">Buka LKPD →</a>
+  </div>
 
-        <article class="app-card" style="--tile:#e8fff0">
-          <div class="app-icon">🎯</div>
-          <h3>Arena Kuis</h3>
-          <p>Uji pemahaman melalui kuis edukatif yang seru dan menantang.</p>
-          <a class="app-link" href="kuis/">Masuk arena kuis →</a>
-        </article>
+  <!-- Kartu 3: Arena Kuis (Nuansa Hijau Lembut) -->
+  <div class="app-card" style="--app-bg: #e8fff0">
+    <div class="app-icon">🎯</div>
+    <h3>Arena Kuis</h3>
+    <p>Uji pemahaman melalui kuis edukatif yang seru dan menantang.</p>
+    <a href="#" class="app-link">Masuk arena kuis →</a>
+  </div>
 
-        <article class="app-card" style="--tile:#f2eaff">
-          <div class="app-icon">📊</div>
-          <h3>Simulasi TKA</h3>
-          <p>Simulasi Tes Kompetensi Akademik bergaya asesmen nasional untuk siswa.</p>
-          <a class="app-link" href="tka/">Mulai Simulasi →</a>
-        </article>
+  <!-- Kartu 4: Simulasi TKA (Nuansa Ungu Lembut) -->
+  <div class="app-card" style="--app-bg: #f2eaff">
+    <div class="app-icon">📊</div>
+    <h3>Simulasi TKA</h3>
+    <p>Simulasi Tes Kompetensi Akademik bergaya asesmen nasional untuk siswa.</p>
+    <a href="#" class="app-link">Mulai Simulasi →</a>
+  </div>
 
-        <!-- Pusat Unduhan (Desain Diseragamkan) -->
-        <article class="app-card" style="--tile:#e8f4ff">
-          <div class="app-icon">📥</div>
-          <h3>Pusat Unduhan</h3>
-          <p>Unduh berkas administrasi, formulir sekolah, dan dokumen pendukung pembelajaran.</p>
-          <a class="app-link" href="unduhan.html">Buka Unduhan →</a>
-        </article>
+  <!-- Kartu 5: Pusat Unduhan (Nuansa Merah Muda) -->
+  <div class="app-card" style="--app-bg: #ffe9e9">
+    <div class="app-icon">📥</div>
+    <h3>Pusat Unduhan</h3>
+    <p>Unduh berkas administrasi, formulir sekolah, dan dokumen pendukung.</p>
+    <a href="#" class="app-link">Buka Unduhan →</a>
+  </div>
 
-        <!-- Kamus Bahasa Indonesia (Langsung ke Aplikasi Netlify) -->
-        <article class="app-card" style="--tile:#e2faff">
-          <div class="app-icon">📖</div>
-          <h3>Kamus Bahasa Indonesia</h3>
-          <p>Cari arti kosakata, istilah pelajaran, dan sinonim untuk jenjang SD Kelas 1–6.</p>
-          <a class="app-link" href="https://kamus-sekolah.netlify.app/" target="_blank" rel="noopener">Buka Kamus ↗</a>
-        </article>
-      </div>
+  <!-- Kartu 6: Kamus Bahasa Indonesia (Nuansa Tosca / Biru Laut) -->
+  <div class="app-card" style="--app-bg: #e2faff">
+    <div class="app-icon">📖</div>
+    <h3>Kamus Bahasa Indonesia</h3>
+    <p>Cari arti kosakata, istilah pelajaran, dan sinonim untuk jenjang SD.</p>
+    <a href="#" class="app-link">Buka Kamus ↗</a>
+  </div>
+</div>
         
-      </div>
+  
       <div class="notice">ℹ️ Menu latihan, simulasi, dan kuis mandiri akan dikembangkan bertahap. Untuk mulai belajar, silakan pilih kelas pada bagian “Ayo, Pilih Kelasmu!”.</div>
     </section>
 
