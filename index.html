@@ -1860,7 +1860,6 @@ svg text {
   </div>
 </div>
 
-  
 <footer class="bg-slate-900 dark:bg-slate-950 text-slate-300 border-t-4 border-amber-500 mt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         
@@ -1920,11 +1919,11 @@ svg text {
             </div>
         </div>
 
-    </div> <!-- Penutup kontainer max-w-7xl yang sebelumnya kurang -->
+    </div>
 </footer>
 
-
-  <script>
+<!-- SCRIPT UTAMA & KUSTOM KURSOR DILETAKKAN DI LUAR FOOTER SECARA AMAN -->
+<script>
     // 1. Konfigurasi Navigasi Mobile
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
@@ -1946,11 +1945,10 @@ svg text {
     }
 
     // 2. Tahun Otomatis di Footer
-    const yearEl = document.getElementById('year');
+    const yearEl = document.getElementById('current-year');
     if (yearEl) {
       yearEl.textContent = new Date().getFullYear();
     }
-
 
     const SPREADSHEET_API = "https://script.google.com/macros/s/AKfycbzXziYJd0WexHrbomWUDtEkMZGXs16lLvZd-nAITjdLG_cv2ulcPCCObzX2319LZwCTJQ/exec"; 
     let dataSiswaCache = [];
@@ -2003,12 +2001,9 @@ svg text {
         }
     }
 
-
-    // URL Web App Google Apps Script khusus database alumni Anda
     const ALUMNI_SPREADSHEET_API = "https://script.google.com/macros/s/AKfycbwluFPrWTOkFKZEBK5hb-tz5JzxwUpgbnp9sN5uOT_wmTQX0VNjsCB8T4vOcCUjj8xT/exec"; 
     let dataAlumniCache = [];
 
-    // Fungsi memuat data alumni saat halaman dibuka
     async function loadDataAlumni() {
         try {
             const response = await fetch(ALUMNI_SPREADSHEET_API);
@@ -2019,7 +2014,6 @@ svg text {
     }
     loadDataAlumni();
 
-    // Fungsi Pencarian Alumni
     function cariAlumni() {
         const query = document.getElementById("searchAlumniInput").value.toLowerCase().trim();
         const resultDiv = document.getElementById("searchAlumniResult");
@@ -2029,7 +2023,6 @@ svg text {
             return;
         }
 
-        // Pencarian berdasarkan kolom: nama, nisn, atau nipd
         const filtered = dataAlumniCache.filter(a => 
             (a.nama && a.nama.toString().toLowerCase().includes(query)) || 
             (a.nisn && a.nisn.toString().includes(query)) ||
@@ -2044,14 +2037,14 @@ svg text {
             filtered.forEach(a => {
                 html += `
                     <div style="padding: 12px 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-            <div>
-                <strong style="color: #092c55; display: block; font-size: 0.95rem;">${a.nama}</strong>
-                <span style="font-size: 0.78rem; color: #64748b;">NIPD: ${a.nipd} | NISN: ${a.nisn} | Lahir: ${a.tempatLahir}, ${a.tanggalLahir}</span>
-            </div>
-            <span style="background: #fef3c7; color: #d97706; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 800;">
-                JK: ${a.jk}
-            </span>
-        </div>
+                        <div>
+                            <strong style="color: #092c55; display: block; font-size: 0.95rem;">${a.nama}</strong>
+                            <span style="font-size: 0.78rem; color: #64748b;">NIPD: ${a.nipd} | NISN: ${a.nisn} | Lahir: ${a.tempatLahir}, ${a.tanggalLahir}</span>
+                        </div>
+                        <span style="background: #fef3c7; color: #d97706; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 800;">
+                            JK: ${a.jk}
+                        </span>
+                    </div>
                 `;
             });
             html += `</div>`;
@@ -2059,10 +2052,7 @@ svg text {
         }
     }
 
-    
-    // 3. Integrasi Pengiriman Buku Tamu & Pesan/Saran ke Google Sheets
     const scriptURL = 'https://script.google.com/macros/s/AKfycbz-ZT-yDP5CZiHDcRx8meDZ3_LFJ6oC3ij2RZj1uh-1ibtCk1SjVuM3mL0K3MWdd774/exec';
-    
     const feedbackForm = document.getElementById('feedbackForm');
     const alertSuccess = document.getElementById('alertSuccess');
     const btnKirim = document.getElementById('btnKirimPesan');
@@ -2070,7 +2060,6 @@ svg text {
     if (feedbackForm) {
       feedbackForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
         btnKirim.disabled = true;
         btnKirim.textContent = 'Mengirim Pesan...';
 
@@ -2098,7 +2087,6 @@ svg text {
       });
     }
 
-    // 4. Pengambilan Data Papan Pengumuman dari Google Sheets
     const announcementURL = 'https://script.google.com/macros/s/AKfycbzsIuhngSp5NuaILT2c0A74lJb2pafC257IOY4XQxtcXBmKEEh9sRsp3JAMiAB3CNayvQ/exec';
     const container = document.getElementById('announcementContainer');
 
@@ -2128,59 +2116,44 @@ svg text {
         });
     }
 
-// Atur tanggal target hitung mundur di sini (Format: Tahun, Bulan (0-11), Tanggal, Jam, Menit)
-// Contoh: Tanggal 15 Desember 2026 jam 07:00 pagi
-const targetDate = new Date(2026, 11, 7, 7, 0, 0).getTime();
+    const targetDate = new Date(2026, 11, 7, 7, 0, 0).getTime();
+    const countdownTimer = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
 
-const countdownTimer = setInterval(function() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
+        if (distance < 0) {
+            clearInterval(countdownTimer);
+            document.getElementById("countdown-title").innerHTML = "Agenda Sedang Berlangsung / Telah Selesai";
+            document.getElementById("days").innerHTML = "0";
+            document.getElementById("hours").innerHTML = "0";
+            document.getElementById("minutes").innerHTML = "0";
+            document.getElementById("seconds").innerHTML = "0";
+            return;
+        }
 
-    if (distance < 0) {
-        clearInterval(countdownTimer);
-        document.getElementById("countdown-title").innerHTML = "Agenda Sedang Berlangsung / Telah Selesai";
-        document.getElementById("days").innerHTML = "0";
-        document.getElementById("hours").innerHTML = "0";
-        document.getElementById("minutes").innerHTML = "0";
-        document.getElementById("seconds").innerHTML = "0";
-        return;
-    }
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
-    document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
-    document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
-    document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
-}, 1000);
-    
-    
+        document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+        document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+        document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+        document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+    }, 1000);
 </script>
-
-  <div style="position: fixed; bottom: 25px; right: 90px; z-index: 99; background: rgba(9, 44, 85, 0.855); padding: 6px 12px; border-radius: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 8px; backdrop-filter: blur(5px);">
-    <span style="font-size: 0.78rem; color: #fff; font-weight: 700;">👁️ Pengunjung:</span>
-    <img src="https://api.visitorbadge.io/api/combined?path=sdnnawangsari.github.io&label=Dilihat&countColor=%23f2bd45" alt="Visitor Counter" style="height: 18px;">
-</div>
 
 <!-- KODE CUSTOM INTERACTIVE CURSOR -->
 <style>
-  /* Sembunyikan kursor bawaan di perangkat desktop agar diganti kursor kustom */
   @media (min-width: 768px) {
-    body {
-      cursor: default;
-    }
-    
-    /* Lingkaran utama kursor */
+    body { cursor: default; }
     #custom-cursor {
       position: fixed;
       top: 0;
       left: 0;
       width: 20px;
       height: 20px;
-      background: rgba(56, 189, 248, 0.8); /* Warna biru muda cerah */
+      background: rgba(56, 189, 248, 0.8);
       border: 2px solid #ffffff;
       border-radius: 50%;
       pointer-events: none;
@@ -2189,43 +2162,31 @@ const countdownTimer = setInterval(function() {
       z-index: 99999;
       box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
     }
-
-    /* Efek saat kursor menyorot menu/tombol (Berubah mencolok jadi warna oranye/kuning besar) */
     body.cursor-hover #custom-cursor {
       width: 45px;
       height: 45px;
-      background: rgba(242, 189, 69, 0.6); /* Warna kuning keemasan khas sekolah */
+      background: rgba(242, 189, 69, 0.6);
       border-color: #f2bd45;
       box-shadow: 0 0 15px #f2bd45;
     }
   }
 </style>
 
-<!-- Elemen HTML Kursor -->
 <div id="custom-cursor"></div>
 
-<!-- Skrip Penggerak Kursor -->
 <script>
   const cursor = document.getElementById('custom-cursor');
-
-  // Menggerakkan kursor mengikuti posisi mouse
   window.addEventListener('mousemove', (e) => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
   });
 
-  // Mendeteksi saat kursor mendekati tombol atau menu (tag 'a' atau 'button')
   const interactiveElements = document.querySelectorAll('a, button, [role="button"]');
-
   interactiveElements.forEach((el) => {
-    el.addEventListener('mouseenter', () => {
-      document.body.classList.add('cursor-hover');
-    });
-    el.addEventListener('mouseleave', () => {
-      document.body.classList.remove('cursor-hover');
-    });
+    el.addEventListener('mouseenter', () => { document.body.classList.add('cursor-hover'); });
+    el.addEventListener('mouseleave', () => { document.body.classList.remove('cursor-hover'); });
   });
+  
 </script>
-
 </body>
 </html>
