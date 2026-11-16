@@ -157,10 +157,96 @@
       <button class="filter-btn" onclick="filterGaleri('ekstra', this)">⛺ Ekstrakurikuler</button>
       <button class="filter-btn" onclick="filterGaleri('serba-serbi', this)">Serba-Serbi</button>
 
-      <!-- Tombol Pintasan Album Google Drive yang Menarik -->
-<a href="https://drive.google.com/drive/folders/16JWIS9B6SMC0iLUtmY_eU2knTrYOTTIr?usp=drive_link" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f2bd45, #e09f3e); color: #092c55; padding: 8px 18px; border-radius: 50px; font-weight: 700; font-size: 0.9rem; text-decoration: none; box-shadow: 0 4px 10px rgba(242, 189, 69, 0.4); transition: transform 0.2s ease, box-shadow 0.2s ease; border: 2px solid #fff;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 15px rgba(242, 189, 69, 0.6)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 10px rgba(242, 189, 69, 0.4)';">
-    <span style="font-size: 1.1rem;">📁</span>
-    <span>Album Lengkap (Drive)</span>
+      <!-- Tombol Pemicu Akses Terbatas -->
+<button onclick="bukaModalIzin()" style="
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s;
+" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+  📁 Album Lengkap (Drive) 🔒
+</button>
+
+<!-- MODAL PERMINTAAN IZIN AKSES (POPUP) -->
+<div id="modalIzinDrive" style="
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(2, 6, 23, 0.8);
+  z-index: 99999;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  backdrop-filter: blur(5px);
+">
+  <div style="
+    background: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+    position: relative;
+    color: #0f172a;
+    text-align: left;
+  ">
+    <!-- Tombol Tutup (X) -->
+    <button onclick="tutupModalIzin()" style="
+      position: absolute; top: 16px; right: 16px;
+      background: #f1f5f9; border: none; width: 32px; height: 32px;
+      border-radius: 50%; font-weight: bold; cursor: pointer; color: #64748b;
+    ">✕</button>
+
+    <div style="text-align: center; margin-bottom: 16px;">
+      <div style="font-size: 2.5rem; margin-bottom: 4px;">🔒</div>
+      <h3 style="margin: 0; font-size: 1.25rem; font-weight: 800; color: #092c55;">Akses Album Terbatas</h3>
+      <p style="margin: 4px 0 0; font-size: 0.82rem; color: #64748b;">
+        Dokumentasi ini dilindungi. Silakan ajukan permohonan izin ke Admin Sekolah untuk membukanya.
+      </p>
+    </div>
+
+    <!-- Form Permohonan -->
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div>
+        <label style="font-size: 0.78rem; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">Nama Lengkap:</label>
+        <input type="text" id="namaPemohon" placeholder="Contoh: Bpk. Budi / Siska" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 0.88rem; outline: none;">
+      </div>
+
+      <div>
+        <label style="font-size: 0.78rem; font-weight: 700; color: #334155; display: block; margin-bottom: 4px;">Keperluan / Hubungan dengan Sekolah:</label>
+        <input type="text" id="keperluanPemohon" placeholder="Contoh: Orang Tua Siswa / Alumni / Guru" style="width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 0.88rem; outline: none;">
+      </div>
+
+      <!-- Pilihan 1: Minta Akses via WhatsApp Admin -->
+      <button onclick="kirimPermintaanWA()" style="
+        background: #25d366; color: white; border: none; padding: 12px;
+        border-radius: 12px; font-weight: 800; font-size: 0.9rem; cursor: pointer;
+        display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 4px;
+      ">
+        💬 Minta Akses ke Admin via WhatsApp
+      </button>
+
+      <!-- Pilihan 2: Masukkan Kode PIN (Jika Anda ingin memberikan PIN khusus ke orang tertentu) -->
+      <div style="border-top: 1px dashed #e2e8f0; padding-top: 12px; margin-top: 4px;">
+        <label style="font-size: 0.75rem; font-weight: 700; color: #64748b; display: block; margin-bottom: 4px;">Sudah punya Kode PIN Akses dari Admin?</label>
+        <div style="display: flex; gap: 8px;">
+          <input type="password" id="inputPinAkses" placeholder="Masukkan PIN..." style="flex: 1; padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.85rem; outline: none;">
+          <button onclick="cekPinDrive()" style="background: #092c55; color: white; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer;">Buka</button>
+        </div>
+        <small id="pesanErrorPin" style="color: #dc2626; font-size: 0.72rem; display: none; margin-top: 4px;">Kode PIN salah!</small>
+      </div>
+    </div>
+  </div>
+</div>
 </a>
       
 </div>
@@ -674,6 +760,56 @@
     function tutupModal() {
       document.getElementById('modalFoto').classList.remove('show');
     }
+
+    
+ // Ganti dengan Link Google Drive Asli Anda
+const LINK_GOOGLE_DRIVE = "https://drive.google.com/drive/folders/16JWIS9B6SMC0iLUtmY_eU2knTrYOTTIr?usp=drive_link";
+
+// PIN Rahasia untuk membuka langsung (Bisa Anda ubah kodenya sesuka hati)
+const PIN_RAHASIA_SEKOLAH = "satu bahasa"; 
+
+function bukaModalIzin() {
+  document.getElementById('modalIzinDrive').style.display = 'flex';
+}
+
+function tutupModalIzin() {
+  document.getElementById('modalIzinDrive').style.display = 'none';
+  document.getElementById('pesanErrorPin').style.display = 'none';
+  document.getElementById('inputPinAkses').value = '';
+}
+
+// Opsi 1: Mengarahkan otomatis ke WhatsApp Admin dengan format teks rapi
+function kirimPermintaanWA() {
+  const nama = document.getElementById('namaPemohon').value.trim();
+  const keperluan = document.getElementById('keperluanPemohon').value.trim();
+
+  if (!nama || !keperluan) {
+    alert("Mohon isi Nama Lengkap dan Keperluan terlebih dahulu!");
+    return;
+  }
+
+  // Nomor WhatsApp Admin Sekolah (Ganti dengan nomor Anda)
+  const nomorAdmin = "62895378275170"; 
+  const pesan = `Halo Admin SD Negeri Nawangsari, saya ${nama} (${keperluan}) ingin meminta izin/akses untuk membuka link Album Foto Lengkap (Drive) sekolah. Mohon bantuannya, terima kasih.`;
+  
+  const urlWA = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(pesan)}`;
+  window.open(urlWA, '_blank');
+}
+
+// Opsi 2: Verifikasi PIN Instan
+function cekPinDrive() {
+  const pinInput = document.getElementById('inputPinAkses').value.trim();
+  const errorPesan = document.getElementById('pesanErrorPin');
+
+  if (pinInput === PIN_RAHASIA_SEKOLAH) {
+    alert("PIN Benar! Membuka Album Drive...");
+    window.open(LINK_GOOGLE_DRIVE, '_blank');
+    tutupModalIzin();
+  } else {
+    errorPesan.style.display = 'block';
+  }
+}
+    
   </script>
 </body>
 </html>
