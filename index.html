@@ -157,18 +157,25 @@ p, .section-desc, .app-card p, .info-card p {
   color: var(--text-muted) !important;
 }
 
-/* Mengecualikan Hero Banner & Header Gelap agar teksnya tetap putih/emas */
-header, .hero, .top-bar, footer {
+/* Hanya untuk Header, Hero, & Top-bar (Footer dikeluarkan) */
+header, .hero, .top-bar {
   background: linear-gradient(135deg, #172554 0%, #1e3a8a 55%, #0f172a 100%) !important;
   color: #f8fafc !important;
 }
 
-header h1, header h2, header h3, .hero h1, .hero h2, footer h3 {
+header h1, header h2, header h3, .hero h1, .hero h2 {
   color: #ffffff !important;
 }
 
-header p, .hero p, footer p {
+header p, .hero p {
   color: #cbd5e1 !important;
+}
+
+/* Pengaturan khusus untuk Footer agar normal dan tidak melebar */
+footer {
+  background: #061e3a !important;
+  color: #dce8f6 !important;
+  background-image: none !important;
 }
 
 /* Menjaga Grafik Peserta Didik (Canvas / SVG / Bar Chart) Selalu Terlihat */
