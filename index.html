@@ -26,6 +26,20 @@
   font-weight: 600;
 }
 
+    
+    /* Menggunakan variabel --tile untuk warna latar belakang kotak menu kelas */
+.grade-card {
+  background-color: var(--tile) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Efek saat kursor menyentuh kotak menu */
+.grade-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.08);
+}
+
+    
 /* =========================================================
    TEMA MODERN SD NEGERI NAWANGSARI (SLATE & ROYAL BLUE)
    ========================================================= */
