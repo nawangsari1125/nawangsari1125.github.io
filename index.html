@@ -1860,13 +1860,14 @@ svg text {
   </div>
 </div>
 
+  
 <footer class="bg-slate-900 dark:bg-slate-950 text-slate-300 border-t-4 border-amber-500 mt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         
         <!-- Baris Atas: Logo, Info Sekolah & Media Sosial -->
         <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 pb-8 border-b border-slate-800">
             <div class="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 max-w-xl">
-                <!-- Logo Sekolah (Dipastikan Menggunakan Sumber Gambar yang Benar) -->
+                <!-- Logo Sekolah -->
                 <div class="w-16 h-16 rounded-2xl bg-white p-1 shadow-md shrink-0 flex items-center justify-center">
                     <img src="logo-sekolah.png" alt="Logo SD Negeri Nawangsari" onerror="this.src='https://placehold.co/100x100/1e3a8a/ffffff?text=SDN'" class="w-full h-full object-contain">
                 </div>
@@ -1911,20 +1912,16 @@ svg text {
             <p>Didesain dengan <i class="fa-solid fa-heart text-rose-500 mx-0.5"></i> untuk Pendidikan Indonesia</p>
         </div>
 
-    </div>
+        <!-- Widget Pengunjung (Diposisikan rapi di dalam footer) -->
+        <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
+            <div style="background: rgba(15, 23, 42, 0.9); padding: 6px 14px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 0.78rem; color: #cbd5e1; font-weight: 600;">👁️ Pengunjung:</span>
+                <img src="https://api.visitorbadge.io/api/combined?path=sdnnawangsari.github.io&label=Dilihat&countColor=%23f2bd45" alt="Visitor Counter" style="height: 18px;">
+            </div>
+        </div>
+
+    </div> <!-- Penutup kontainer max-w-7xl yang sebelumnya kurang -->
 </footer>
-
-  <!-- Tombol Kembali ke Atas & Floating Visitor Badge -->
-  <a class="back-top" href="#beranda" aria-label="Kembali ke atas">↑</a>
-
-  <div style="position: fixed; bottom: 25px; right: 90px; z-index: 99; background: rgba(9, 44, 85, 0.855); padding: 6px 12px; border-radius: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 8px; backdrop-filter: blur(5px);">
-    <span style="font-size: 0.78rem; color: #fff; font-weight: 700;">👁️ Pengunjung:</span>
-    <img src="https://api.visitorbadge.io/api/combined?path=sdnnawangsari.github.io&label=Dilihat&countColor=%23f2bd45" alt="Visitor Counter" style="height: 18px;">
-  </div>
-    </div>
-
-  </footer>
-  <a class="back-top" href="#beranda" aria-label="Kembali ke atas">↑</a>
 
 
   <script>
