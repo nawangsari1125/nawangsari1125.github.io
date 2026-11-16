@@ -157,25 +157,18 @@ p, .section-desc, .app-card p, .info-card p {
   color: var(--text-muted) !important;
 }
 
-/* Hanya untuk Header, Hero, & Top-bar (Footer dikeluarkan) */
-header, .hero, .top-bar {
+/* Mengecualikan Hero Banner & Header Gelap agar teksnya tetap putih/emas */
+header, .hero, .top-bar, footer {
   background: linear-gradient(135deg, #172554 0%, #1e3a8a 55%, #0f172a 100%) !important;
   color: #f8fafc !important;
 }
 
-header h1, header h2, header h3, .hero h1, .hero h2 {
+header h1, header h2, header h3, .hero h1, .hero h2, footer h3 {
   color: #ffffff !important;
 }
 
-header p, .hero p {
+header p, .hero p, footer p {
   color: #cbd5e1 !important;
-}
-
-/* Pengaturan khusus untuk Footer agar normal dan tidak melebar */
-footer {
-  background: #061e3a !important;
-  color: #dce8f6 !important;
-  background-image: none !important;
 }
 
 /* Menjaga Grafik Peserta Didik (Canvas / SVG / Bar Chart) Selalu Terlihat */
@@ -386,6 +379,203 @@ svg text {
     .footer-brand img { width: 55px; height: 55px; object-fit: contain; background: white; border-radius: 12px; padding: 4px; }
     .footer-brand strong { display: block; color: #fff; }
     .footer-brand span { font-size: .84rem; color: #b8cbe0; }
+
+/* =========================================================
+   FOOTER RESPONSIF - PILIHAN A
+   Latar footer selebar layar, isi dibatasi dan rata tengah.
+   ========================================================= */
+footer.site-footer {
+  width: 100%;
+  display: block;
+  margin-top: 40px;
+  padding: 0;
+  color: #dce8f6;
+  background: linear-gradient(135deg, #172554 0%, #1e3a8a 55%, #0f172a 100%) !important;
+  border-top: 4px solid #f2bd45;
+  clear: both;
+}
+.site-footer .footer-container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 34px 22px 24px;
+}
+.site-footer .footer-top {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid rgba(255,255,255,.16);
+}
+.site-footer .footer-identity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 700px;
+  min-width: 0;
+}
+.site-footer .footer-logo {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+  display: grid;
+  place-items: center;
+  padding: 5px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 5px 16px rgba(0,0,0,.18);
+}
+.site-footer .footer-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.site-footer .footer-school-name {
+  margin: 0;
+  color: #fff !important;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+.site-footer .footer-contact {
+  margin: 7px 0 0;
+  color: #cbd5e1 !important;
+  font-size: .82rem;
+  line-height: 1.75;
+}
+.site-footer .footer-social-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+.site-footer .footer-social-label {
+  color: #cbd5e1;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.site-footer .footer-social-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.site-footer .footer-social-link {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 13px;
+  background: rgba(15,23,42,.55);
+  color: #fff;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: transform .2s ease, background-color .2s ease;
+}
+.site-footer .footer-social-link:hover {
+  transform: translateY(-3px);
+  background: #1d4ed8;
+}
+.site-footer .footer-disclaimer-wrap {
+  padding: 24px 0;
+}
+.site-footer .footer-disclaimer {
+  margin: 0;
+  padding: 17px 19px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 16px;
+  background: rgba(15,23,42,.48);
+  color: #cbd5e1;
+  font-size: .8rem;
+  line-height: 1.75;
+  box-shadow: inset 0 1px 5px rgba(0,0,0,.08);
+}
+.site-footer .footer-disclaimer strong {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+  color: #fff;
+  font-size: .76rem;
+  letter-spacing: .06em;
+}
+.site-footer .footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.14);
+  color: #cbd5e1;
+  font-size: .78rem;
+}
+.site-footer .footer-bottom p {
+  margin: 0;
+  color: #cbd5e1 !important;
+}
+.site-footer .footer-visitor {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.site-footer .footer-visitor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 13px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 999px;
+  background: rgba(15,23,42,.58);
+}
+.site-footer .footer-visitor-badge span {
+  color: #cbd5e1;
+  font-size: .76rem;
+  font-weight: 700;
+}
+.site-footer .footer-visitor-badge img {
+  display: block;
+  max-width: 130px;
+  height: 18px;
+  object-fit: contain;
+}
+@media (max-width: 680px) {
+  .site-footer .footer-container { padding: 28px 17px 22px; }
+  .site-footer .footer-top {
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    text-align: center;
+  }
+  .site-footer .footer-identity {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .site-footer .footer-contact { overflow-wrap: anywhere; }
+  .site-footer .footer-social-area { align-items: center; }
+  .site-footer .footer-disclaimer { padding: 15px; text-align: left; }
+  .site-footer .footer-bottom {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .site-footer .footer-visitor { justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-footer .footer-social-link { transition: none; }
+}
     .footer-links { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; font-size: .88rem; }
     .copyright { max-width: 1160px; margin: auto; padding: 15px 22px 22px; border-top: 1px solid rgba(255,255,255,.13); font-size: .82rem; color: #a9bfd7; }
     .back-top { position: fixed; right: 18px; bottom: 18px; width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: var(--gold); color: var(--navy); font-size: 1.2rem; font-weight: 1000; box-shadow: var(--shadow); }
@@ -1867,66 +2057,74 @@ svg text {
   </div>
 </div>
 
-<footer class="bg-slate-900 dark:bg-slate-950 text-slate-300 border-t-4 border-amber-500 mt-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        
-        <!-- Baris Atas: Logo, Info Sekolah & Media Sosial -->
-        <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 pb-8 border-b border-slate-800">
-            <div class="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 max-w-xl">
-                <!-- Logo Sekolah -->
-                <div class="w-16 h-16 rounded-2xl bg-white p-1 shadow-md shrink-0 flex items-center justify-center">
-                    <img src="logo-sekolah.png" alt="Logo SD Negeri Nawangsari" onerror="this.src='https://placehold.co/100x100/1e3a8a/ffffff?text=SDN'" class="w-full h-full object-contain">
-                </div>
-                <div>
-                    <h3 class="font-display font-extrabold text-lg text-white tracking-tight">SD NEGERI NAWANGSARI</h3>
-                    <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-                        Jl. Gunung Muria Rt 18 Rw 03, Kec. Weleri, Kab. Kendal, Jawa Tengah. <br>
-                        Email: sdnnawangsari01@gmail.com | WhatsApp: 0895-3782-75170
-                    </p>
-                </div>
-            </div>
+<footer class="site-footer" aria-label="Informasi dan identitas sekolah">
+  <div class="footer-container">
 
-            <!-- Tautan Akun Media Sosial (Facebook & Telegram) -->
-            <div class="flex flex-col items-center md:items-end gap-2">
-                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Ikuti Kami</span>
-                <div class="flex items-center gap-3">
-                    <!-- Facebook -->
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook SD Negeri Nawangsari" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-blue-600 text-white flex items-center justify-center transition-colors shadow cursor-pointer">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
-                    <!-- Telegram -->
-                    <a href="https://t.me" target="_blank" rel="noopener noreferrer" aria-label="Telegram SD Negeri Nawangsari" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-sky-500 text-white flex items-center justify-center transition-colors shadow cursor-pointer">
-                        <i class="fa-brands fa-telegram"></i>
-                    </a>
-                </div>
-            </div>
+    <!-- Baris atas: identitas sekolah dan media sosial -->
+    <div class="footer-top">
+      <div class="footer-identity">
+        <div class="footer-logo">
+          <img src="logo-sekolah.png"
+               alt="Logo SD Negeri Nawangsari"
+               onerror="this.onerror=null; this.src='https://placehold.co/100x100/1e3a8a/ffffff?text=SDN';">
         </div>
-
-        <!-- Baris Tengah: Kotak Disclaimer Resmi Sekolah -->
-        <div class="py-6">
-            <div class="p-4 sm:p-5 rounded-2xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300 leading-relaxed shadow-inner">
-                <strong class="text-white uppercase tracking-wider block mb-1.5 flex items-center gap-1.5">
-                    <i class="fa-solid fa-shield-halved text-amber-400"></i> DISCLAIMER RESMI SEKOLAH:
-                </strong>
-                Seluruh informasi, materi pembelajaran, dokumentasi kegiatan, dan data yang dipublikasikan pada portal website <strong>SD Negeri Nawangsari</strong> dikelola secara resmi oleh tim IT dan tenaga pendidik sekolah untuk kepentingan layanan informasi publik dan edukasi peserta didik. Dilarang menyalahgunakan foto maupun data siswa tanpa izin tertulis dari pihak sekolah.
-            </div>
+        <div>
+          <h3 class="footer-school-name">SD NEGERI NAWANGSARI</h3>
+          <p class="footer-contact">
+            Jl. Gunung Muria RT 18 RW 03, Kec. Weleri, Kab. Kendal, Jawa Tengah.<br>
+            Email: <a href="mailto:sdnnawangsari01@gmail.com">sdnnawangsari01@gmail.com</a>
+            <span aria-hidden="true"> | </span>
+            WhatsApp: <a href="https://wa.me/62895378275170" target="_blank" rel="noopener noreferrer">0895-3782-75170</a>
+          </p>
         </div>
+      </div>
 
-        <!-- Baris Bawah: Hak Cipta & Pembuat -->
-        <div class="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-3">
-            <p>&copy; <span id="current-year">2026</span> SD Negeri Nawangsari. Hak Cipta Dilindungi Undang-Undang.</p>
-            <p>Didesain dengan <i class="fa-solid fa-heart text-rose-500 mx-0.5"></i> untuk Pendidikan Indonesia</p>
+      <div class="footer-social-area">
+        <span class="footer-social-label">Ikuti Kami</span>
+        <div class="footer-social-links">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+             aria-label="Facebook SD Negeri Nawangsari" class="footer-social-link">
+            <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+          </a>
+          <a href="https://t.me" target="_blank" rel="noopener noreferrer"
+             aria-label="Telegram SD Negeri Nawangsari" class="footer-social-link">
+            <i class="fa-brands fa-telegram" aria-hidden="true"></i>
+          </a>
         </div>
-
-        <!-- Widget Pengunjung (Diposisikan rapi di dalam footer) -->
-        <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
-            <div style="background: rgba(15, 23, 42, 0.9); padding: 6px 14px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; gap: 8px;">
-                <span style="font-size: 0.78rem; color: #cbd5e1; font-weight: 600;">👁️ Pengunjung:</span>
-                <img src="https://api.visitorbadge.io/api/combined?path=sdnnawangsari.github.io&label=Dilihat&countColor=%23f2bd45" alt="Visitor Counter" style="height: 18px;">
-            </div>
-        </div>
-
+      </div>
     </div>
+
+    <!-- Disclaimer resmi sekolah -->
+    <div class="footer-disclaimer-wrap">
+      <div class="footer-disclaimer">
+        <strong>
+          <i class="fa-solid fa-shield-halved" style="color:#fbbf24" aria-hidden="true"></i>
+          DISCLAIMER RESMI SEKOLAH:
+        </strong>
+        Seluruh informasi, materi pembelajaran, dokumentasi kegiatan, dan data yang dipublikasikan pada portal website
+        <strong style="display:inline; margin:0; font-size:inherit; letter-spacing:normal;">SD Negeri Nawangsari</strong>
+        dikelola secara resmi oleh tim IT dan tenaga pendidik sekolah untuk kepentingan layanan informasi publik dan edukasi peserta didik.
+        Dilarang menyalahgunakan foto maupun data siswa tanpa izin tertulis dari pihak sekolah.
+      </div>
+    </div>
+
+    <!-- Hak cipta -->
+    <div class="footer-bottom">
+      <p>&copy; <span id="current-year">2026</span> SD Negeri Nawangsari. Hak Cipta Dilindungi Undang-Undang.</p>
+      <p>Didesain dengan <i class="fa-solid fa-heart" style="color:#fb7185" aria-hidden="true"></i> untuk Pendidikan Indonesia</p>
+    </div>
+
+    <!-- Penghitung pengunjung -->
+    <div class="footer-visitor">
+      <div class="footer-visitor-badge">
+        <span>👁️ Pengunjung:</span>
+        <img src="https://api.visitorbadge.io/api/combined?path=sdnnawangsari.github.io&amp;label=Dilihat&amp;countColor=%23f2bd45"
+             alt="Penghitung pengunjung website SD Negeri Nawangsari"
+             loading="lazy">
+      </div>
+    </div>
+
+  </div>
 </footer>
 
 <!-- SCRIPT UTAMA & KUSTOM KURSOR DILETAKKAN DI LUAR FOOTER SECARA AMAN -->
@@ -1963,16 +2161,27 @@ svg text {
     async function loadDataSiswa() {
         try {
             const response = await fetch(SPREADSHEET_API);
-            dataSiswaCache = await response.json();
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const hasil = await response.json();
+            dataSiswaCache = Array.isArray(hasil) ? hasil : [];
         } catch (error) {
             console.error("Gagal memuat data dari Spreadsheet:", error);
         }
     }
     loadDataSiswa();
 
+    // Mengamankan teks dari Spreadsheet sebelum ditampilkan sebagai HTML.
+    function escapeHTML(value) {
+        return String(value ?? '').replace(/[&<>"']/g, karakter => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        })[karakter]);
+    }
+
     function cariSiswa() {
-        const query = document.getElementById("searchInput").value.toLowerCase().trim();
+        const input = document.getElementById("searchInput");
         const resultDiv = document.getElementById("searchResult");
+        if (!input || !resultDiv) return;
+        const query = input.value.toLowerCase().trim();
 
         if (!query) {
             resultDiv.style.display = "none";
@@ -1994,11 +2203,11 @@ svg text {
                 html += `
                     <div style="padding: 12px 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
                         <div>
-                            <strong style="color: #092c55; display: block; font-size: 0.95rem;">${s.nama}</strong>
-                            <span style="font-size: 0.78rem; color: #64748b;">NISN: ${s.nisn} | NIPD: ${s.nipd} | JK: ${s.jk}</span>
+                            <strong style="color: #092c55; display: block; font-size: 0.95rem;">${escapeHTML(s.nama)}</strong>
+                            <span style="font-size: 0.78rem; color: #64748b;">NISN: ${escapeHTML(s.nisn)} | NIPD: ${escapeHTML(s.nipd)} | JK: ${escapeHTML(s.jk)}</span>
                         </div>
                         <span style="background: #e0f2fe; color: #0369a1; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 800;">
-                            Kelas ${s.kelas}
+                            Kelas ${escapeHTML(s.kelas)}
                         </span>
                     </div>
                 `;
@@ -2014,7 +2223,9 @@ svg text {
     async function loadDataAlumni() {
         try {
             const response = await fetch(ALUMNI_SPREADSHEET_API);
-            dataAlumniCache = await response.json();
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const hasil = await response.json();
+            dataAlumniCache = Array.isArray(hasil) ? hasil : [];
         } catch (error) {
             console.error("Gagal memuat data dari Spreadsheet Alumni:", error);
         }
@@ -2022,8 +2233,10 @@ svg text {
     loadDataAlumni();
 
     function cariAlumni() {
-        const query = document.getElementById("searchAlumniInput").value.toLowerCase().trim();
+        const input = document.getElementById("searchAlumniInput");
         const resultDiv = document.getElementById("searchAlumniResult");
+        if (!input || !resultDiv) return;
+        const query = input.value.toLowerCase().trim();
 
         if (!query) {
             resultDiv.style.display = "none";
@@ -2045,11 +2258,11 @@ svg text {
                 html += `
                     <div style="padding: 12px 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
                         <div>
-                            <strong style="color: #092c55; display: block; font-size: 0.95rem;">${a.nama}</strong>
-                            <span style="font-size: 0.78rem; color: #64748b;">NIPD: ${a.nipd} | NISN: ${a.nisn} | Lahir: ${a.tempatLahir}, ${a.tanggalLahir}</span>
+                            <strong style="color: #092c55; display: block; font-size: 0.95rem;">${escapeHTML(a.nama)}</strong>
+                            <span style="font-size: 0.78rem; color: #64748b;">NIPD: ${escapeHTML(a.nipd)} | NISN: ${escapeHTML(a.nisn)} | Lahir: ${escapeHTML(a.tempatLahir)}, ${escapeHTML(a.tanggalLahir)}</span>
                         </div>
                         <span style="background: #fef3c7; color: #d97706; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 800;">
-                            JK: ${a.jk}
+                            JK: ${escapeHTML(a.jk)}
                         </span>
                     </div>
                 `;
@@ -2064,7 +2277,7 @@ svg text {
     const alertSuccess = document.getElementById('alertSuccess');
     const btnKirim = document.getElementById('btnKirimPesan');
 
-    if (feedbackForm) {
+    if (feedbackForm && btnKirim && alertSuccess) {
       feedbackForm.addEventListener('submit', function(e) {
         e.preventDefault();
         btnKirim.disabled = true;
@@ -2099,17 +2312,20 @@ svg text {
 
     if (container) {
       fetch(announcementURL)
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          return response.json();
+        })
         .then(data => {
-          if (data && data.length > 0) {
+          if (Array.isArray(data) && data.length > 0) {
             container.innerHTML = data.map(item => `
               <article class="subject-card" style="--tile:#fff4d9; align-items: flex-start; display: flex; gap: 15px;">
                 <div class="subject-icon">📢</div>
                 <div style="flex-grow: 1;">
-                  <span style="font-size: 0.72rem; font-weight: 900; color: var(--navy); background: var(--gold); padding: 2px 8px; border-radius: 99px;">${item.kategori || 'INFO'}</span>
-                  <span style="font-size: 0.72rem; color: var(--muted); float: right;">${item.tanggal || ''}</span>
-                  <h3 style="margin-top: 6px; font-size: 1.05rem; color: var(--navy);">${item.judul}</h3>
-                  <p style="font-size: 0.88rem; margin-top: 4px; color: var(--muted);">${item.isi}</p>
+                  <span style="font-size: 0.72rem; font-weight: 900; color: var(--navy); background: var(--gold); padding: 2px 8px; border-radius: 99px;">${escapeHTML(item.kategori || 'INFO')}</span>
+                  <span style="font-size: 0.72rem; color: var(--muted); float: right;">${escapeHTML(item.tanggal || '')}</span>
+                  <h3 style="margin-top: 6px; font-size: 1.05rem; color: var(--navy);">${escapeHTML(item.judul)}</h3>
+                  <p style="font-size: 0.88rem; margin-top: 4px; color: var(--muted);">${escapeHTML(item.isi)}</p>
                 </div>
               </article>
             `).join('');
@@ -2183,16 +2399,18 @@ svg text {
 
 <script>
   const cursor = document.getElementById('custom-cursor');
-  window.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-  });
+  if (cursor) {
+    window.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
 
-  const interactiveElements = document.querySelectorAll('a, button, [role="button"]');
-  interactiveElements.forEach((el) => {
-    el.addEventListener('mouseenter', () => { document.body.classList.add('cursor-hover'); });
-    el.addEventListener('mouseleave', () => { document.body.classList.remove('cursor-hover'); });
-  });
+    const interactiveElements = document.querySelectorAll('a, button, [role="button"]');
+    interactiveElements.forEach((el) => {
+      el.addEventListener('mouseenter', () => { document.body.classList.add('cursor-hover'); });
+      el.addEventListener('mouseleave', () => { document.body.classList.remove('cursor-hover'); });
+    });
+  }
   
 </script>
 </body>
