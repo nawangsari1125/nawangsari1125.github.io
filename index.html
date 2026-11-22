@@ -2747,5 +2747,37 @@ Sebuah ruang tanpa batas yang tidak membutuhkan sejengkal pun tanah tambahan, na
   }
   
 </script>
+
+  <script>
+  (function () {
+    const btn = document.getElementById('themeToggleBtn');
+    const KEY = 'sdn_nawangsari_theme';
+
+    function applyDarkMode(isDark) {
+      document.body.classList.toggle('dark-mode', isDark);
+      if (btn) {
+        btn.textContent = isDark ? '☀️ Mode Terang' : '🌙 Mode Gelap';
+      }
+      try {
+        localStorage.setItem(KEY, isDark ? 'dark' : 'light');
+      } catch (e) {}
+    }
+
+    let initialDark = false;
+    try {
+      initialDark = localStorage.getItem(KEY) === 'dark';
+    } catch (e) {}
+
+    applyDarkMode(initialDark);
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        const nextState = !document.body.classList.contains('dark-mode');
+        applyDarkMode(nextState);
+      });
+    }
+  })();
+</script>
+  
 </body>
 </html>
