@@ -777,6 +777,108 @@ footer.site-footer {
       text-align: center;
     }
   }
+
+  /* Tombol ganti Mode Gelap / Mode Terang */
+.theme-toggle-btn {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.24);
+  transform: translateY(-1px);
+}
+
+/* Penyesuaian elemen ber-inline style saat Mode Gelap aktif */
+body.dark-mode section > div[style*="background: #ffffff"],
+body.dark-mode section > div[style*="background: white"],
+body.dark-mode div[style*="background: #ffffff"],
+body.dark-mode div[style*="background: white"],
+body.dark-mode div[style*="background: #f8fafc"],
+body.dark-mode a[style*="background: #ffffff"],
+body.dark-mode a[style*="background: #f8fafc"] {
+  background: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-body) !important;
+}
+
+body.dark-mode section > div[style*="background: linear-gradient(135deg, #ffffff"] {
+  background: linear-gradient(135deg, #0f172a 0%, #172554 100%) !important;
+  border-color: #1e3a8a !important;
+}
+
+body.dark-mode .feedback-card {
+  background: linear-gradient(135deg, #0f172a 0%, #172554 100%) !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Pastikan teks utama, judul, label, dan daftar tetap jelas di Mode Gelap */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode strong,
+body.dark-mode label {
+  color: var(--text-main) !important;
+}
+
+body.dark-mode p,
+body.dark-mode li,
+body.dark-mode span,
+body.dark-mode .section-desc,
+body.dark-mode .form-control {
+  color: var(--text-body) !important;
+}
+
+/* Khusus paragraf profil yang memakai inline style warna biru gelap */
+body.dark-mode #profil p.section-desc {
+  color: #93c5fd !important;
+}
+
+body.dark-mode .form-control {
+  background-color: var(--bg-subtle) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .notice {
+  background: rgba(245, 158, 11, 0.14) !important;
+  border-color: rgba(245, 158, 11, 0.35) !important;
+  color: #fde68a !important;
+}
+
+/* Pertahankan warna teks pada banner/header/footer gelap */
+body.dark-mode header h1,
+body.dark-mode header h2,
+body.dark-mode header h3,
+body.dark-mode .hero h1,
+body.dark-mode .hero h2,
+body.dark-mode .hero p,
+body.dark-mode .top-info-bar,
+body.dark-mode .top-strip,
+body.dark-mode .countdown-card,
+body.dark-mode footer,
+body.dark-mode footer h3,
+body.dark-mode footer p {
+  color: #f8fafc !important;
+}
+
+body.dark-mode .brand-name span,
+body.dark-mode .digital-clock,
+body.dark-mode .profile-label,
+body.dark-mode .countdown-card [style*="color: #f2bd45"] {
+  color: #fbbf24 !important;
+}
 </style>
 
 <script>
@@ -803,6 +905,38 @@ footer.site-footer {
   // Jalankan fungsi setiap 1 detik
   setInterval(updateJamDigital, 1000);
   updateJamDigital(); // Panggil sekali di awal agar langsung tampil
+
+  // 3. Mode Gelap & Terang (tersimpan di localStorage)
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const THEME_KEY = 'sdn_nawangsari_theme';
+
+    function setTheme(isDark) {
+      document.body.classList.toggle('dark-mode', isDark);
+      if (themeToggleBtn) {
+        themeToggleBtn.innerHTML = isDark ? '☀️ Mode Terang' : '🌙 Mode Gelap';
+        themeToggleBtn.setAttribute('aria-pressed', String(isDark));
+      }
+      try {
+        localStorage.setItem(THEME_KEY, isDark ? 'dark' : 'light');
+      } catch (err) {}
+    }
+
+    const savedTheme = (() => {
+      try {
+        return localStorage.getItem(THEME_KEY) === 'dark';
+      } catch (err) {
+        return false;
+      }
+    })();
+
+    setTheme(savedTheme);
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        setTheme(!document.body.classList.contains('dark-mode'));
+      });
+    }
+  
 </script>
   <div class="top-strip">
     <div class="wrap">
@@ -822,6 +956,9 @@ footer.site-footer {
       </a>
       <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">☰</button>
       <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Ganti mode gelap atau terang">
+  🌙 Mode Gelap
+</button>
   <a href="#beranda">Beranda</a>
   <a href="#profil">Profil Sekolah</a>
   <a href="#kelas">Pilih Kelas</a>
