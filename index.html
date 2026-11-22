@@ -2688,6 +2688,29 @@ Sebuah ruang tanpa batas yang tidak membutuhkan sejengkal pun tanah tambahan, na
       });
     }
 
+function formatIsiPengumuman(rawText) {
+      const safeText = escapeHTML(rawText || '');
+
+      const normalized = safeText
+        .replace(/\s+(?=\d+\.\s)/g, '\n')
+        .replace(/\s+(?=Catatan\s*:)/gi, '\n');
+
+      const baris = normalized
+        .split(/\r?\n+/)
+        .map(line => line.trim())
+        .filter(Boolean);
+
+      return baris.map(line => {
+        if (/^Catatan\s*:/i.test(line)) {
+          return `<div class="pengumuman-note">${line}</div>`;
+        }
+        if (/^\d+\.\s/.test(line)) {
+          return `<div class="pengumuman-item">${line}</div>`;
+        }
+        return `<p class="pengumuman-line">${line}</p>`;
+      }).join('');
+    }
+
     const announcementURL = 'https://script.google.com/macros/s/AKfycbzsIuhngSp5NuaILT2c0A74lJb2pafC257IOY4XQxtcXBmKEEh9sRsp3JAMiAB3CNayvQ/exec';
     const container = document.getElementById('announcementContainer');
 
@@ -2702,11 +2725,13 @@ Sebuah ruang tanpa batas yang tidak membutuhkan sejengkal pun tanah tambahan, na
             container.innerHTML = data.map(item => `
               <article class="subject-card" style="--tile:#fff4d9; align-items: flex-start; display: flex; gap: 15px;">
                 <div class="subject-icon">📢</div>
-                <div style="flex-grow: 1;">
-                  <span style="font-size: 0.72rem; font-weight: 900; color: var(--navy); background: var(--gold); padding: 2px 8px; border-radius: 99px;">${escapeHTML(item.kategori || 'INFO')}</span>
-                  <span style="font-size: 0.72rem; color: var(--muted); float: right;">${escapeHTML(item.tanggal || '')}</span>
-                  <h3 style="margin-top: 6px; font-size: 1.05rem; color: var(--navy);">${escapeHTML(item.judul)}</h3>
-                  <p style="font-size: 0.88rem; margin-top: 4px; color: var(--muted);">${escapeHTML(item.isi)}</p>
+                <div style="flex-grow: 1; min-width: 0;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap;">
+                    <span style="font-size: 0.72rem; font-weight: 900; color: var(--navy); background: var(--gold); padding: 2px 10px; border-radius: 999px;">${escapeHTML(item.kategori || 'INFO')}</span>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">${escapeHTML(item.tanggal || '')}</span>
+                  </div>
+                  <h3 style="margin-top: 8px; font-size: 1.05rem;">${escapeHTML(item.judul)}</h3>
+                  <div class="pengumuman-content">${formatIsiPengumuman(item.isi)}</div>
                 </div>
               </article>
             `).join('');
@@ -2719,7 +2744,7 @@ Sebuah ruang tanpa batas yang tidak membutuhkan sejengkal pun tanah tambahan, na
           container.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: var(--muted);">Gagal memuat data pengumuman.</div>';
         });
     }
-
+  
     const targetDate = new Date(2026, 11, 7, 7, 0, 0).getTime();
     const countdownTimer = setInterval(function() {
         const now = new Date().getTime();
@@ -3038,6 +3063,43 @@ body.cursor-hover #custom-cursor {
     padding: 7px 10px !important;
     font-size: 0.78rem !important;
   }
+}
+
+  /* Kerapian teks pengumuman dari Google Sheets */
+.pengumuman-content {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  text-align: left;
+}
+
+.pengumuman-line {
+  margin: 0 !important;
+  color: var(--text-body) !important;
+}
+
+.pengumuman-item {
+  padding-left: 2px;
+  color: var(--text-body) !important;
+}
+
+.pengumuman-note {
+  margin-top: 4px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: rgba(245, 158, 11, 0.12);
+  border-left: 3px solid #f59e0b;
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: #78350f !important;
+}
+
+body.dark-mode .pengumuman-note {
+  background: rgba(245, 158, 11, 0.14);
+  color: #fde68a !important;
 }
   
 </style>
