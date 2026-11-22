@@ -35,7 +35,14 @@
   background-color: var(--tile) !important;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+/* Mode Gelap: teks di dalam kotak pastel kelas dibuat gelap agar kontras */
+body.dark-mode .grade-card strong {
+  color: #092c55 !important;
+}
 
+body.dark-mode .grade-card span {
+  color: #334155 !important;
+}
 /* Efek saat kursor menyentuh kotak menu */
 .grade-card:hover {
   transform: translateY(-4px);
