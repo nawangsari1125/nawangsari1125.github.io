@@ -3101,6 +3101,57 @@ body.dark-mode .pengumuman-note {
   background: rgba(245, 158, 11, 0.14);
   color: #fde68a !important;
 }
+
+/* Memaksimalkan lebar isi teks pengumuman agar margin kiri tidak terlalu lebar */
+#pengumuman .subject-card {
+  flex-direction: column !important;
+  gap: 10px !important;
+  padding: 20px !important;
+}
+
+#pengumuman .subject-card > .subject-icon {
+  display: none !important;
+}
+
+#pengumuman .subject-card h3 {
+  text-align: left !important;
+}
+
+.pengumuman-content {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  text-align: justify;
+  width: 100%;
+}
+
+.pengumuman-line,
+.pengumuman-item {
+  margin: 0 !important;
+  padding-left: 0 !important;
+  text-align: justify !important;
+  color: var(--text-body) !important;
+}
+
+.pengumuman-note {
+  margin-top: 4px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: rgba(245, 158, 11, 0.12);
+  border-left: 3px solid #f59e0b;
+  font-size: 0.83rem;
+  line-height: 1.5;
+  text-align: justify;
+  color: #78350f !important;
+}
+
+body.dark-mode .pengumuman-note {
+  background: rgba(245, 158, 11, 0.14);
+  color: #fde68a !important;
+}
   
 </style>
 
