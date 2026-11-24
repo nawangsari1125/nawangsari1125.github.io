@@ -3359,6 +3359,86 @@ body.dark-mode .poster-card::after {
     right: 12px;
   }
 }
+
+
+  /* =========================================================
+   ORNAMEN CERIA PADA AREA HERO (AWAN, BINTANG & WARNA-WARNI)
+   ========================================================= */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Memastikan konten utama hero berada di atas ornamen latar */
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Awan lembut di pojok kanan atas hero */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 28px;
+  right: 8%;
+  width: 120px;
+  height: 38px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow:
+    22px -8px 0 -4px rgba(255, 255, 255, 0.22),
+    -20px -5px 0 -7px rgba(254, 240, 138, 0.22);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Taburan bintang & aksen warna-warni di sekitar sisi kanan hero */
+.hero::after {
+  content: "★";
+  position: absolute;
+  right: 36%;
+  top: 44px;
+  font-size: 1.35rem;
+  color: #facc15;
+  text-shadow:
+    38px 68px 0 rgba(110, 231, 183, 0.75),
+    -28px 145px 0 rgba(244, 114, 182, 0.7),
+    46px 215px 0 rgba(125, 211, 252, 0.8),
+    -18px 255px 0 rgba(251, 191, 36, 0.65);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Penyesuaian saat Mode Gelap aktif agar tetap harmonis */
+body.dark-mode .hero::before {
+  background: rgba(148, 163, 184, 0.14);
+  box-shadow:
+    22px -8px 0 -4px rgba(148, 163, 184, 0.14),
+    -20px -5px 0 -7px rgba(250, 204, 21, 0.12);
+}
+
+body.dark-mode .hero::after {
+  opacity: 0.75;
+}
+
+/* Penyesuaian di layar HP / tablet agar tidak menumpuk di atas teks */
+@media (max-width: 900px) {
+  .hero::before {
+    top: 14px;
+    right: 14px;
+    transform: scale(0.75);
+    transform-origin: top right;
+  }
+
+  .hero::after {
+    right: 10%;
+    top: 72px;
+    font-size: 1rem;
+    text-shadow:
+      18px 42px 0 rgba(110, 231, 183, 0.65),
+      -14px 92px 0 rgba(244, 114, 182, 0.6);
+  }
+}
   
 </style>
 
