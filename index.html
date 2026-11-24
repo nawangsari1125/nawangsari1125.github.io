@@ -1449,6 +1449,14 @@ body.dark-mode #profil div[style*="color:#1e293b"] {
           <p>Kuis Hari Guru</p>
           <a class="app-link" href="https://hari-guru-nasional-sd-nawangsari.netlify.app/" target="_blank" rel="noopener">Buka Aplikasi ↗</a>
         </article>
+
+        <!-- Hari anak sedunia (Langsung ke Aplikasi Netlify) -->
+        <article class="app-card" style="--tile:#e2faff">
+          <div class="app-icon">📖</div>
+          <h3>Jelajah Nusantara</h3>
+          <p>Wilayah Indonesia dari Sabang - Merauke.</p>
+          <a class="app-link" href="https://jelajah-nusantara.netlify.app/" target="_blank" rel="noopener">Buka Aplikasi ↗</a>
+        </article>
         
       </div>
         
@@ -3229,6 +3237,126 @@ body.dark-mode .pengumuman-note {
 
   .poster-body p {
     font-size: 0.72rem;
+  }
+}
+
+/* =========================================================
+   ORNAMEN CERIA: AWAN LEMBUT, BINTANG & AKSEN WARNA-WARNI
+   ========================================================= */
+
+/* Aksen warna-warni lembut di latar bagian konten */
+.section {
+  position: relative;
+}
+
+#kelas.section::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 140px;
+  height: 46px;
+  border-radius: 999px;
+  background: rgba(186, 230, 253, 0.55);
+  box-shadow:
+    26px -10px 0 -4px rgba(186, 230, 253, 0.55),
+    -24px -6px 0 -8px rgba(254, 240, 138, 0.45);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#kelas.section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hiasan bintang kecil & garis warna-warni pada judul bagian */
+.section-head {
+  position: relative;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--border-color, #e2e8f0);
+}
+
+.section-head::before {
+  content: "✦";
+  position: absolute;
+  right: 8px;
+  top: 2px;
+  font-size: 1.15rem;
+  color: #f59e0b;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.section-head::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 96px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #38bdf8, #facc15, #f472b6, #4ade80);
+  pointer-events: none;
+}
+
+/* Pita warna-warni di bagian atas kartu kelas & poster */
+.grade-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.grade-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--tile, #38bdf8);
+  filter: brightness(0.85);
+}
+
+.poster-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.poster-card::after {
+  content: "★";
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-size: 0.9rem;
+  color: rgba(245, 158, 11, 0.35);
+  pointer-events: none;
+}
+
+/* =========================================================
+   PENYESUAIAN ORNAMEN SAAT MODE GELAP AKTIF
+   ========================================================= */
+body.dark-mode #kelas.section::before {
+  background: rgba(56, 189, 248, 0.12);
+  box-shadow:
+    26px -10px 0 -4px rgba(56, 189, 248, 0.12),
+    -24px -6px 0 -8px rgba(250, 204, 21, 0.10);
+}
+
+body.dark-mode .section-head::before {
+  color: #fbbf24;
+  opacity: 0.75;
+}
+
+body.dark-mode .poster-card::after {
+  color: rgba(251, 191, 36, 0.25);
+}
+
+@media (max-width: 680px) {
+  #kelas.section::before {
+    width: 96px;
+    height: 32px;
+    top: 12px;
+    right: 12px;
   }
 }
   
